@@ -1,0 +1,10 @@
+@mixin btn_style($bgc:blue,$txtcol:white){
+    background-color: $bgc;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    color: $txtcol;
+    cursor: pointer;
+    outline: none;
+}
+// import in other file using @import "filename";

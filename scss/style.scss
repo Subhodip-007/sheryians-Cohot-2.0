@@ -1,3 +1,4 @@
+@import "button";
 @mixin flexCenter{
     display: flex;
     align-items: center;
@@ -63,8 +64,10 @@ main{
     @include buttonTemp(blue);
 }
 .blue{
-    @include buttonTemp(green);
+    @include btn_style(red,white) //impoet from that file
 }
 
 
 // partials and imports.....
+// in production a scss file can go up to large..20000 lines is not acceptable so quality of file
+//lets create a file _button.scss .the file starting with _ dont have any css or css.map file

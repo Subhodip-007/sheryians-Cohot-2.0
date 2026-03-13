@@ -40,8 +40,11 @@ main section h1 {
 }
 
 .blue {
-  padding: 20px;
+  background-color: red;
+  padding: 10px 15px;
+  border-radius: 5px;
   border: none;
-  background-color: green;
-  font-size: 10px;
+  color: white;
+  cursor: pointer;
+  outline: none;
 }/*# sourceMappingURL=style.css.map */
