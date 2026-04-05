@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+html,body{
+    height: 100%;
+    width: 100%;
+    background-color: black;
+}
+#main{
+      height: 100%;
+    width: 100%;
+     display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+
+}
+.child{
+    height: 50%;
+    width: 50%;
+    background-color: aqua;
+       justify-self: center;
+        align-self: center;
+}
