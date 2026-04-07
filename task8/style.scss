@@ -5,7 +5,7 @@
 
 }
 html,body{
-
+    height: 100%;
     width: 100%;
     background-color: rgb(20, 20, 20);
 }
@@ -13,19 +13,15 @@ main{
     width: 100%;
 
 }
-view1{
+.view-1{
+    padding: 1rem;
     width: 100%;
-    .view1 img{
+    img{
+        width: 100%;
 
-        object-fit: cover;
-        width: fit-content;
+
     }
 }
 @media(min-width:600px){
-    .view1{
-        width: 100%;
-        img{
-            width: fit-content;
-        }
-    }
+   
 }

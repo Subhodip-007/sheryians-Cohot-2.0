@@ -5,6 +5,7 @@
 }
 
 html, body {
+  height: 100%;
   width: 100%;
   background-color: rgb(20, 20, 20);
 }
@@ -13,22 +14,10 @@ main {
   width: 100%;
 }
 
-view1 {
+.view-1 {
+  padding: 1rem;
   width: 100%;
 }
-view1 .view1 img {
-  -o-object-fit: cover;
-     object-fit: cover;
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
-@media (min-width: 600px) {
-  .view1 {
-    width: 100%;
-  }
-  .view1 img {
-    width: -moz-fit-content;
-    width: fit-content;
-  }
+.view-1 img {
+  width: 100%;
 }/*# sourceMappingURL=style.css.map */
