@@ -221,22 +221,31 @@ if(limit==3){
 
 // 12. Ask user for words until they type “stop”. Count how many times they typed “yes”
 // Loop until "stop" is typed. Count "yes".
-let stop="stop";
-let count=0;
+let stop = "stop";
+let count = 0;
 
- while(true){
-   let ip= prompt("enter any word");
-   ip=ip.trim().toLocaleLowerCase();
-   if(ip!==stop){
+while (true) {
+    let ip = prompt("enter any word");
+
+    // handle cancel
+    if (ip === null) {
+        console.log("cancelled");
+        break;
+    }
+
+    ip = ip.trim().toLowerCase();
+
+    if (ip === stop) {
+        console.log("stopped");
+        break;
+    }
+
+    if (ip === "yes") {
         count++;
-        console.log(`yes ${count}`)
-   }
-   else{
-    console.log("stopped");
-    break;
-   }
-
+    }
 }
+
+console.log(count);
 
 // 13. Print numbers divisible by 7 from 1 to 50
 // Use modulo % and loop.
@@ -300,6 +309,30 @@ for(let i=1;i<=5;i++){
 // Start with ₹1000 balance. Ask withdrawal amount 3 times.
 // If enough balance → deduct
 // Else → print “Insufficient balance”
+let withdrawl=0;
+let balance=1000;
+while(withdrawl<3){
+   let amt= prompt("entet the amount you want to deduct");
+   amt=Number(amt);
+   if(amt==null|| isNaN(amt)){
+    console.log("please enter a valid amount");
+    continue;
+   }
+    if(amt<=balance){
+        withdrawl++
+         balance=balance-amt;
+        console.log(`you withdraw : ${amt} \n
+                     your currrent balance :${Math.floor(balance)} \n
+                     your remainaig attempts : ${3-withdrawl} \n`)
+                    
+    }else if(balance<amt || balance<=0){
+        console.log(`Insufficient balance \n
+            your currrent balance :${balance} \n
+            `)
+    }
+
+   }
+console.log("limit reached");
 ////////////////////////////////////////////////////////////////////////////
 // 34 day js loops and conditions
 // Level 1 – Pure Beginner Practice
@@ -345,3 +378,6 @@ for(let i=1;i<=5;i++){
 // Start with ₹1000 balance. Ask withdrawal amount 3 times.
 // If enough balance → deduct
 // // Else → print “Insufficient balance”
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+// day 35 js loops condition
+// level 2 of assignmet
