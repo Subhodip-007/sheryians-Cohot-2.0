@@ -168,6 +168,118 @@ console.log(key, user[key]);
 // . Pattern: Print triangle using *
 // . Sum of even numbers in an array using forEach
 //functions
+//function name(){........}
+function run(){          //function decleration / function statement
+    console.log("running");
+}
+let fuc=function(){ //function experssion
+    console.log("running");// function name is outside that is fnc
+}
+// fat arrow
+//()=>{...} fat() arrow=> body{}
+let es6=()=>{};
+// parameter & argument
+let carstart=function(){
+    console.log("car started.... ") //now every time u call it will print the the same
+}
+carstart();
+carstart(); // now i want different name to print
+let carst=function(car){ // now car here parameter
+    console.log(`${car} started`);
+}
+carst("honda"); //honda started; and honda is arguments
+// now 
+let add=function(v1,v2){
+    console.log(v1+v2);
+}
+add() // now add is empty v1 and v2 dont have any val to take
+// let v1 and let v2 so resule undefined + undefined = NaN
+// now here comes uscase of by default value (v1=0,v2=0)
+// now lets understnd rest and spread
+//now 
+//  rest & spread
+let print=function(a,b,c,d,f,g){
+    console.log(a,b,c,d,f,g);     //wrong
+}
+print(1,2,3,4,5)
+//better
+let prt=function(...rest){  //... is in parameter space of function {rest}
+    console.log(rest);      // and if in array and obj then {spread};
+}
+prt(1,2,3,4,5)// outpur [1,2,3,4,5] array
+
+//return
+// jaha se nikla hai wahi dal dungi
+function ret(v1){
+    return 12 + v1;    //will return 
+}
+
+
+let val=ret(2); // for 218 line we went to 213 jaha se aaya ho 
+// return bola 218 pe 12 daal
+console.log(val);
+
+// first class functions concept
+// function that r treated like a value that can be passed in function , save in variable
+let fcf=function(val){}  //this is a HOF function
+
+
+fcf(function(){ // this is a first class fuc
+    console.log("i am a first class function")
+}); // this is val val=function(){}
+
+// higher order function
+//  a function that takes an function in paremeter or return a function hof....
+
+function abc(val){
+    return function(){
+        console.log();
+    }
+}
+abc()()// abc is called for line 239 go to 234 return a function and that alsu need to be run()
+
+function abc(outerVal){
+    return function(innerval){
+        console.log(outerVal+innerval);
+    }
+}
+abc(34)(5);
+// pure and impure functions
+// a function that dont evvect a outer or global val is pure function 
+let va=12;
+function say(){
+    console.log(12);
+}
+//but
+// impure function //effect the outside varible
+let counter = 12;
+function inc() {
+    console.log(++counter);
+}
+inc();
+
+//// closures imppp!!!!
+// one fnc -> that return another fun ->and returning function will use parent fucs variable
+function closer(){
+    let a=10;
+    return function(){
+        console.log(a)
+    }
+}
+// lexical scoping
+function parent(){
+    let a=10;          // a is accessable for line 271-277
+    function child(){
+        let b=12;     // b i accessable for line 273-276
+        function subchild(){
+            let c=10; // c ------> 275
+        }
+    }
+}
+//IIFE 
+(function(){
+
+})();
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 
