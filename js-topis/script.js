@@ -1,108 +1,133 @@
 // js learn everything
 // how js was made 
 // history 
-//  Chapter 1: Variables & Declarations
-// Variables are containers that hold data.
-// In JavaScript, you create these boxes using keywords: var , let , or const .
-// var – Old and risky
-var score = 10;
-// Scoped to functions, not blocks
-{
-var a=30;
+//words vs keywords
+harsh 
+ram 
+sham 
+// but 
+//for // is a keyword in js 
+// var // is a keyword in js
+// let // is a keyword in js 
+// const // is a keyword in js
+ 
+// var let const line-by-line explanation
+// us to store data 
+var a = 10; // now for this line var will exist in program and it will store value 10 in variable a
+  // we can declare like 
+  a= 20; // but this in a bad practice because it can create confusion for other developers who are reading our code and they will not understand that we are changing the value of a variable a
+  // decleration 
+  var a;
+ var a = 10; // this is declaration and initialization in one line
+// and
+let b=10;
+// so whats the difference between var and let
+// var add itself to window
+// var is function scoped 
+function test(){
+    if(true){
+        var a = 10;
+    }
+    // in other languages if we declare a variable inside a block then it will not be accessible outside that block but in js if we declare a variable with var inside a block then it will be accessible outside that block
+    console.log(a); // this will print 10 because var is function scoped and it is accessible outside the block
 }
-console.log(a)// can be accessed
-// Can be redeclared and reassigned
-var score = 20; 
-// Hoisted to the top with undefined value
+test();
 
-// let – Modern and safe
-// Scoped to blocks ( {} )
-{
-    let a=20;
+// var can be redeclared and updated no error
+var a = 10;
+var a = 20;
+// so insted of var we can use let
+let a=10;
+let a=20; // this will give error because we cannot redeclare a variable with let
+//  let is not added in window
+// now const
+const c = 10;
+// const cannot be updated or redeclared 
+// c = 20; // this will give error because we cannot update a variable declared with const
+// const c = 20; // this will give error because we cannot redeclare a variable declared with const
+// scope (global scope, function scope, block scope)
+ var a = 10; // global scope
+ {
+        var a = 20; //var dont respect block so it can be used anywhere BUT IT IS FUNCTION SCOPE
+ } // THIS IF NOT A FUNCTION
+ {
+    let b = 10; // block scope respect parent scope
+ }
+ function test(){
+    if(true){
+        var a = 10;
+    }
+    // in other languages if we declare a variable inside a block then it will not be accessible outside that block but in js if we declare a variable with var inside a block then it will be accessible outside that block
+    console.log(a); // this will print 10 because var is function scoped and it is accessible outside the block
 }
-console.log(a); //ReferenceError: a is not defined
-// Can be reassigned but not redeclared
-// let a=30; X
-// but can be
-a=30;// reassigned
-// Hoisted, but stays in the Temporal Dead Zone (TDZ)
+// reassignment and redeclaration
+var a = 10; // declaration and initialization
+a = 20; // reassignment
+let d = 10; // declaration and initialization
+d = 20; // reassignment can be done 
+//but 
+// let d= 10; // declaration not !!!
+  // temporald dead zone
+  console.log(e); // error is not defined
+  //  but 
+  console.log(e); // error cannot access 'e' before initialization
+  let e=10;
+  // noramlly other languages will give error is not defined
+  //  but in js it gives error cannot access 'e' before initialization because of temporal dead zone
+  // the area in which js knows value exist but cannot access it is called temporal dead zone
+  // line 1-73 is temporal dead zone for variable e
 
-// const – Constant values
-// Scoped to blocks
-{
-    const PI = 3.14;
+  // hoisting impact per time 
+  //  let suppose u have var a=10;
+  // while exicution it divides into two parts 
+  // top declaration phase
+  // bottom initialization phase
+  // var a=undefined; // this is declaration phase
+    // a=10; // this is initialization phase
+    // the y we see this error cannot access 'a' before initialization 
+    // this is a contoversial topic  in js var is hoisted but not let and const
+    // it happnes in all 
+    // prove 
+     let a=undefined;
+     console.log(a); // cannot access 'a' before initialization because a is in temporal dead zone
+     let a =10; // so yes it happnessss
+     // var->HOISTED->undefined
+     // let->HOISTED->temporal dead zone
+     // const->HOISTED->temporal dead zone
+
+     // EXERCISE
+     Console(nm);// output undefined....
+     var nm="harsh"
+// ex2
+    console.log(r);// cannot access r before initilization
+     let r=2;
+     // ex3
+     var x=2;
+     {
+        var x=3;
+     }
+     console.log(x);//x=3
+     // block level counter 
+     function runBlock() {
+    let counter = 0;
+
+    counter++;
+    console.log("Counter:", counter);
 }
-confirm.log(PI); // CANT BE ACCESSED
-// Cannot be reassigned or redeclared
-// Value must be assigned at declaration
-// TDZ applies here too
-// But: If const holds an object/array, you can still change its contents:
-const student = { name: "Riya" };
-student.name = "Priya"; //  OK
-student = {}; // not possible
-// Scope in Real Life
-// Block Scope → Code inside {} like in loops, if , etc.
-// Function Scope → Code inside a function
-// let and const follow block scope.
-// var ignores block scope — which leads to bugs.
-{
-var x = 5;
-let y = 10;
-const z = 15;
+
+runBlock(); // 1
+runBlock(); // 1 (resets every time)
+
+// better closer
+function counter(){
+    let count=0;
+    return function(){
+        return count++;
+    }
 }
-console.log(x); //  5
-console.log(y); //  ReferenceError
-console.log(z); // ReferenceError
-
-// Hoisting
-// JavaScript prepares memory before running code.
-// It moves all declarations to the top — this is called hoisting.
-// But:
-// var is hoisted and set to undefined
-// let and const are hoisted but not initialized — so accessing them early gives
-//phase one 
-var a=undefined;
-console.log(a); // undefined
-//line 64 - 68 TDZ same happnes with let and const but output is different 
-
- a = 10; //decleration phase two
- //divided into two parts 
-//phase one initialization go to the top of code
-// decleration
-//  Practice Zone
-// . Declare your name and city using const , and your age using let .
-// . Try this and observe the result:
-    let x = 5;
-    let x = 10;
-
-// . Guess the output:
-    console.log(count);
-        var count = 42;
-// . Create a const object and add a new key to it — does it work?
-// . Try accessing a let variable before declaring it — what error do you see?
-// . Change a const array by pushing a value. Will it throw an error?
-//Chapter 2: Data Types + Type System
-// In JavaScript, every value has a type.
-// These types define what kind of data is being stored — a number, text, boolean, object, etc.
-// There are two categories:
-// Primitive types – stored directly.
-// . String → Text
-"hello" , 'Sheryians'
-// . Number → Any numeric value
- 3 , -99 , 3.14
-// . Boolean → True or false
- true , false
-// . Undefined → Variable declared but not assigned
-let x;// → x is undefined
-// . Null → Intentional empty value
-    let x = null;
-// . Symbol → Unique identifier (rarely used)
-// . BigInt → Very large integers
- 123456789012345678901234567890n
-// Reference types – stored as memory references.
-//Object →
- let obj ={ name: "Harsh", ag: 26 }
-/////continue
+let count=counter();
+// 1hr 6min..
+/////////////////////////////////////////////////////////////////////////////////////
 // control flow statement 
 // if else if else
 if(true)
@@ -282,7 +307,305 @@ function parent(){
 })();
 
 //////////////////////////////////////////////////////////////////////////////////////////////
+// now cohot 2.0
+// introduction to js 26
+// why it is imp ? - it is used in webpage -for animation interaction
+//what can it do for you?
+//  script tab ka use karke attach krna hai js ko,
+// js ko browser mein run karna 
+// var let const.....
+// console.... prompt alart 
+// string kya hota hai
+// slice template string split replace include
+ var a=12;
+ let a=12;
+ const t=13;
+ // can be declared 
+ a=14;
+ b=15;
+ // const cant be 
+ // t =14 X
+ // just brief 
+ console.log();
+ console.error();
+ console.warn();
+ prompt();
+ alert();
+// strings 
+// h ,ada,sdfsf,sfsd "string"
+//slice
+slice(2,5)// 2-4
+//return part of string
 
+// template string // using ` ` // also called template literal
+`back-tick`
+//split 
+"shub aap appna app ho"
+split('a')// ja ha a hai waha se toorke array me daldo
+// output ['shub' ,'a','ap' ,'appn','a','app','ho']
+split('a').join(" "); // remove a and join
+replace('a',"hui hui");
+replaceall('a',"hui hui");
+includes('A')// CHECK IF EXIST OR NOT RETURN TRUE OR FALSE;
+//////////////////////////////////////////////////////////////////////////////////////////////
+// 27 js basics in cohot
+// var let const 
+var a=12; // old js
+let a=12 // new js
+ // y to use let 
+ // when we will learn function conept will clear...
+ // const 
+ const pi=3.14;
+ //  cant be changed...
+ // console.log
+ console.log(); // to console
+ console.warn(); //  to console warn yellow
+ console.error(); // error console red
+ let inpu = prompt("name");// take input and store 
+//  this take input and store in the variable name input 
+console.log(input);
+alert("oioioioioioio")
+
+// string
+//  something written in " " or ' '
+let s= "shub";
+//slice
+" shub bhai how r u".slice(2,5); 
+// template string
+// ` `
+// "shub 2+2" - shub22
+"shub 2+2"
+//"shub"+(2+2) - subh4
+"shub"+(2+2)
+ // but ` shub ${2+2}`
+  ` shub ${2+2}`
+split('a')// ja ha a ha i waha se toorke array me daldo
+// output ['shub' ,'a','ap' ,'appn','a','app','ho']
+split('a').join(" "); // remove a and join
+replace('a',"hui hui");
+replaceall('a',"hui hui");
+includes('A')// CHECK IF EXIST OR NOT RETURN TRUE OR FALSE;
+ // statements and extressions
+ //  code which is complets with ;
+ var a=12; // statements 
+ // expression
+ 12+13
+ /// some extra things
+ ///////////////////////////////////// imp
+ console.info();  /// same hai but kuck browser mai bss alag terika hota 
+ // hai bss ek i sigh aajata hai 
+
+ console.table({name:"shub"})// we need a object...
+ ///////////////////////////////////// imp
+/////////////////////////////////////////////////////////////////////////////////////////////
+// cohot js day 3 datatypes 28
+// add comments
+// using (//) you can add comment ctrl+/
+// data types-type of data
+// "harsh"-string 
+let str="shub";
+// 12- number
+let x=12;
+// false true - boolean
+let bool=true;
+// [] -array -let arr=[1,2,3,4] ["harsh","3",true,class animal{}] -- MORE THEN ONE USER
+let arr= ["harsh","3",true,class animal{}]
+// {} - object { NAME:"shub", age:21}; detalis properties of one user 
+let obj={
+ NAME:"shub", age:21  
+}
+// symbols- in detail in obj
+// float
+// 12.3 float
+let fr=12.3;
+// null - no value
+let x=null;
+// let user = null;
+//NaN- aaisa operation jis ke ans numaric nahi hai 12*"shub"
+12*"shun" //- NaN
+ // undefined  var a =undefines or var a; same in let
+ var a = undefined;
+//infinity
+var inf=Infinity;
+//relative and primitive datatype in js
+// var a=12 primitive
+// var a=[1,2,3,4]; relative, ref
+// a=b; not this is not a copy this is reference
+// if u change some val in a then it will change in b also;
+// b.pop()
+//////////////////////////////////////////////////////////////////////////////////////////////
+//assignment1 // day 30
+// new things to learn
+{/* <script defer src=""></script> */}
+// typeof();
+// by default prompt gives string..
+Number();//  make a string number 
+ 
+
+
+//
+//////////////////////////////////////////////////////////////////////////////////////////////
+//29  js day 4
+// operaters in js
+// arithmetic operater in js
+// + - / * % **
+12 + 12 
+12 - 13
+12 * 13
+12 / 12
+12 % 2
+12 ** 12 // power 12
+// asignment operater
+// = += -= *= /= %=
+let q=1;
+q += 1; // 1+1=2
+q *= 2;
+q /= 2;
+q %= 2;
+ // comparison poerater
+// == not strict compare(value only)
+// === strict compare (value + datatype)
+2 == "2"//true
+2 === "2"//false
+2!="2"// false
+2!=="2"// true
+//12>3
+//12<13
+//12<=12 and 12>=12
+ 
+// logical ope
+// && || !
+// AND OR NOT basicllly
+// true && true =true
+// true && false = false
+// true || true = true
+// fales || true = true
+ //!true - fales
+ // !false- true
+ // ternary opoerater
+ // condition ? dothis(if true):dothis( if false)
+let n=Number(prompt("enter a number"));
+n%2==0 ?console.log("even"):console.log("false");
+// type of checking operation 
+// typeof()
+typeof(12);
+// instance of 
+let ar=[];
+ar instanceof Array;
+// + (concationation)
+"sh"+"ub";
+// spread and rest (...)
+//  if u want acopy of arr not reff
+
+///////////////////////////////////////////// imp
+//sperad
+let ar1=[1,2,3];
+let ar2=[...ar1]; // this have a copy of the ar1 value 
+// and if it is changed not effect on arr1
+// rest
+function abc( ...arg){}
+
+abc(1,2,3,4); //  when a parameter takes multiple val ... converts into array
+// nullish coalescing operator
+// check if first val in null or undefined if the fallback
+// user ?? console.log(no found);
+12<13 ?? console.log("not found")
+null ?? console.log("not found")
+
+//optional chaining
+// safe way to access nested value
+// let suppose we have a obj
+obj1={
+    name:"shun",
+    age:26,
+}// we dont know if something exist like name or nat 
+// to asscss in safer way we use 
+obj1?.name?.age;
+// HOISTING
+ // hoisting impact per time 
+  //  let suppose u have var a=10;
+  // while exicution it divides into two parts 
+  // top declaration phase
+  // bottom initialization phase
+  // var a=undefined; // this is declaration phase
+    // a=10; // this is initialization phase
+    // the y we see this error cannot access 'a' before initialization 
+    // this is a contoversial topic  in js var is hoisted but not let and const
+    // it happnes in all 
+    // prove 
+     let a=undefined;
+     console.log(a); // cannot access 'a' before initialization because a is in temporal dead zone
+     let a =10; // so yes it happnessss
+     // var->HOISTED->undefined
+     // let->HOISTED->temporal dead zone
+     // const->HOISTED->temporal dead zone
+/////////////////////////////////////////////imp
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// js day 31 js 6
+//assignment2 basic operations
+test() // yes possible
+function test(){
+ console.log("hello");
+}
+//but
+//hoisting 
+vr(); /// nooo!!!!!!!!!!!
+let vr=function say(){
+    console.log("hey")
+}
+
+
+////////////////////////
+//////////////////////////////////
+//day32 js7 loops and conditional in js
+ //if // else
+    let a=12;
+    if(a<13){
+        console.log("yes");
+    }else{
+        console("no")
+    }
+    // now what
+      if("shub"){}
+      if(12){}
+    // here comes the concept of truthy and falsey
+    // (0 false NaN undefined null document.all) will return false
+    // rest all values r true 
+    // now 
+    if(false){}
+    else if(false){}
+    else if(false){}
+    else{
+        true;
+    }
+    // now ternary operater 
+    12>13? true:false;
+    // 
+    let opt=1;
+    switch(opt){
+        case 1:
+        console.log(1);
+        break;
+        case 2:
+        console.log(1);
+        break;
+     case 3:
+        console.log(1);
+        break;
+        default:
+            console.log("not found");
+    }
+/// loops
+// for 
+//for(start; end; change)
+for(let i=0;i<6;i++){ //  static loop 
+    console.log("shub")
+}
+for(let i=1;i<=10;i++){ // dynamic
+    console.log(i);
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
 // // day 33 loop and conditions 
 // print form 1 to 10
 for(let i=0;i<=10;i++){
@@ -361,7 +684,7 @@ for(let i=1;i<=10;i++){
 
 // 9. Count how many numbers between 1 and 15 are greater than 8
 // Loop and count conditionally.
-let count=0;
+let cout=0;
 for(let i=1;i<=15;i++){
 if(i>8){
     count++;
@@ -423,7 +746,7 @@ if(limit==3){
 // 12. Ask user for words until they type “stop”. Count how many times they typed “yes”
 // Loop until "stop" is typed. Count "yes".
 let stop = "stop";
-let count = 0;
+let cou = 0;
 
 while (true) {
     let ip = prompt("enter any word");
@@ -490,7 +813,7 @@ for(let i=st;i<=end;i++){
 
 // 17. Print only first 3 odd numbers from 1 to 20
 // Use loop. Stop with break after 3 odd prints.
-let count=0;
+let coun=0;
 for(let i=1;i<20;i++){
     if(count<=3&&i%2!==0){
         console.log(i);
