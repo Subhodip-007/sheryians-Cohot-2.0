@@ -81,6 +81,95 @@ console.log(a); // undefined
 // . Create a const object and add a new key to it — does it work?
 // . Try accessing a let variable before declaring it — what error do you see?
 // . Change a const array by pushing a value. Will it throw an error?
+//Chapter 2: Data Types + Type System
+// In JavaScript, every value has a type.
+// These types define what kind of data is being stored — a number, text, boolean, object, etc.
+// There are two categories:
+// Primitive types – stored directly.
+// . String → Text
+"hello" , 'Sheryians'
+// . Number → Any numeric value
+ 3 , -99 , 3.14
+// . Boolean → True or false
+ true , false
+// . Undefined → Variable declared but not assigned
+let x;// → x is undefined
+// . Null → Intentional empty value
+    let x = null;
+// . Symbol → Unique identifier (rarely used)
+// . BigInt → Very large integers
+ 123456789012345678901234567890n
+// Reference types – stored as memory references.
+//Object →
+ let obj ={ name: "Harsh", ag: 26 }
+/////continue
+// control flow statement 
+// if else if else
+if(true)
+    if(false)
+        if(12,3)
+            if(65)//true
+// concept of truthy and falsy 
+if(loggedin&&admin){
+
+}else if(loggedin){
+
+}else{
+
+}
+// switch case
+switch(val){
+    case 1:
+        break;
+        case 2:
+            break;
+            default:
+
+}
+//early return pattern 
+function getval(val){
+    if(val<50)return "c+"
+    else if(val<75)return "b"
+    else return "A"
+}
+getval(80);
+// practice session
+// fun getgrade() return grade 
+// rock paper scissor logic
+// confution 
+// plz add break in cases or all cases will run together
+//looooops and conditions
+// for while do-while foreach
+// for-in and for-of
+// for-of – Arrays & Strings
+for (let char of "Sheryians") {
+console.log(char);
+}
+// forEach – Arrays
+let nums = [10, 20, 30];
+nums.forEach((num) => {
+console.log(num);
+});
+// for-in – Objects (and arrays if needed)
+let user = { name: "Harsh", age: 26 };
+for (let key in user) {
+console.log(key, user[key]);
+}
+
+// Practice Zone
+// . Print 1 to 10 using for
+// . Print even numbers between 1 to 20
+// . Reverse a string using loop
+// . Sum of all numbers in an array
+// . Print all characters of a name using for-of
+// . Print all object keys and values using for-in
+// . Use continue to skip a specific number
+// . Guess number game – use while to ask until correct
+// . Pattern: Print triangle using *
+// . Sum of even numbers in an array using forEach
+//functions
+
+//////////////////////////////////////////////////////////////////////////////////////////////
 
 // // day 33 loop and conditions 
 // print form 1 to 10
@@ -381,3 +470,14 @@ console.log("limit reached");
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 // day 35 js loops condition
 // level 2 of assignmet
+////////////////////////////////////////////////////////////////////////////////////////
+// day 36 loops and function
+// remainning question of assignment
+// do while
+do{
+    console.log("hey")
+     
+} while(3>12)
+    //while and if 
+
+    //recurtion 
