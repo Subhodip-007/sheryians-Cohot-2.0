@@ -303,9 +303,99 @@ function parent(){
 }
 //IIFE 
 (function(){
-
+console.log("hello")      // we dont have to call it is alraedy called
 })();
+// hoisting decleration vs expression
 
+ho();
+
+                    // hoisting this will run(statement)
+
+function ho(){}
+// but 
+exp();
+
+        // this wont run 
+let exp=function(){ 
+
+}
+//Q what is the diff btw fuc decleration and fuc experssion in hoisting
+// Q what will be the ouptut 
+greet();
+function greet(){
+    console.log("heool");
+}
+// Q convet this function into arrow func
+function multipiy(a,b){
+    return a*b
+}
+//Q  identify parameter and argument
+function hi(a){
+    return a
+}
+hi(1)
+// 
+function getscore(...arg){
+    let total=0;
+    arg.forEach(function(val){
+        total+=total+val;
+    })
+    return total;
+}
+getscore(10,20,30);
+// use case of IIFE
+//to make privet veriable
+(function(){
+  let pin=0;
+  return {
+    getpin:function(){
+        console.log(pin)
+    },
+    setpin:function(val){
+        pin=val;
+    }
+    
+    
+  }  
+})(); // pin cant be accsed directly // we can js lib from this 
+
+// built a BMI calc
+// return weight / (height*height)
+// use .tofixed(2);
+    //  crate a reusable discout  calc using HOF
+    function discCalc(discount){
+        return function(price){
+            return price - price * (discount / 100);
+        }
+    }
+    let ten=discCalc(10);
+    let twenty=discCalc(20)
+    ten(200);
+    twenty(200); // reuse of function
+    // counter
+    function conuter(val){
+        return function(){
+            return val++
+        }
+    }
+    let counterfunc=conuter(1);
+    counterfunc();
+    //  create a pure function to transform a vlaue 
+    function squ(val){
+        return val*val;
+    }
+    squ();
+    // creeate a IIFE to isolate variable 
+   (function(){
+    let password="1234";
+    console.log(password); //can be accessed 
+   })
+   console.log(password);// cant be accsed
+// when to use ()=> and function(){}
+// in objercts we cant use ()=> key:()=>{}
+
+
+     
 //////////////////////////////////////////////////////////////////////////////////////////////
 // now cohot 2.0
 // introduction to js 26
