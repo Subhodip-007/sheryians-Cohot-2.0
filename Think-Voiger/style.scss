@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: monospace;
+}
+html,body {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
+
+main {
+    height: 100%;
+    width: 100%;
+}
+.page1{
+    background-image: url("https://i.pinimg.com/originals/1f/ff/35/1fff351c0c3c9558f412d04f58ba6731.gif");
+    height: 100%;
+    background-size: cover;
+    background-position: center;   
+    
+}
+.nav{
+    height: 10%;
+    width: 100%;
+    border-bottom: 2px solid rgb(0, 0, 0);
+
+}
+

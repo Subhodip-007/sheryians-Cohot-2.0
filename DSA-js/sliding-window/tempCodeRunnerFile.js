@@ -7,13 +7,12 @@ for(let i=st;i<end;i++){
     sum+=arr[i]
     
 }
-res=sum;
 while(end<arr.length){
- sum-=arr[st];
- st++;
- sum+=arr[end]
- end++
- res=Math.max(res,sum);
+    st++;
+    end++;
+    res=Math.max(res,sum)
+    sum-=arr[st-1];
+    sum+=arr[end];
 }
  return res;
 }

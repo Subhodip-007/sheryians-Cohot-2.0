@@ -1006,3 +1006,150 @@ do{
     //while and if 
 
     //recurtion 
+    // function calling itself
+    let countrec = (n)=>{
+        if(n===5){
+            return;
+        }
+        console.log(n);
+        countrec(n+1);
+    }
+    countrec(0)
+    // loop control statement (break,continue)
+    // function in js
+    //appke code jo turant nahi chalta pr jaab chalaya taab chalta hai
+    // and reuse it
+    function dosomething(name,age,rollno){
+        console.log(arguments[0]); // arguments 
+    }
+    dosomething("harsh",23,"3");
+    //  day 37 js..................
+    // block of code reusable 
+    // code runs when you call the function
+
+    // arguments vs parameter
+    function abcd(age,name){
+        // parameter
+    }
+    abcd(23,"name")// argument
+
+    // rest parameter
+    function dets(nam,age,...num){
+
+    } //... in parameter means rest operater 
+    dets("shub",32,1,2,3,4,5,6,7,8,9); // rest io converted into array 
+     // hoistion variable vs function
+
+     console.log(teee);
+        var teee=2;
+      // two phase decleratioon and initilization 
+     var teee=undefined;
+
+        // TDZ
+
+     teee=2;
+     // in function 
+     hois() //  yes can be called 
+     function hois(){}
+     // expression
+     hois(); // cant
+       let hois=function(){}
+     // statements  can be called
+     // expression cant be 
+ // parameter
+ function abcd(a,b,c,d){  // required parameter value which are required if not given 
+  return a,b,c,d;
+
+ }
+ abcd();// undefined 
+//  destructuring(array and obj )
+
+
+function drt(obj){
+    console.log(obj); // print obj that is passed
+    obj.age; // to access particuler property of obj 
+} // function drt({name,age}){ // now need of using obj.name or .age
+drt({name:"shub",age:12});
+
+// defaule value in parametar 
+function def(name,age,level=0){ // level has a default value 
+ 
+}
+def("shub",29)// as level is not passed so it will be default
+// arguments 
+// positional arguments
+//  the order u have passed parameter in fnc the same way you will pass argument\
+//(a,b=0,c,d)
+//(1,,3,4) 
+
+//  sperad argument
+let arr1=[1,2,3,4] // if you want to sent all elem
+// spread( arr[0],arr[1]) // wrong
+function abcd(a,b,c,d){
+
+}
+abcd(...arr1); // a=1,b=2,c=3,d=4
+
+// function
+//classic function
+function classic(){
+
+}
+// nested function
+function nest(){
+    function nest2(){
+        console.log("nested fnc call")  // 
+    }
+    nest2()
+}
+nest();  // when nest is call nest call nest2 -> nest2 runs and console
+
+// scope chain...
+let glob=1; // can be used in whole code // global scope
+function chain(){
+    let infnc=2; //  can be used in whole function even inside innerchain()
+ function innnerchain(){
+ 
+ }
+}
+// IIFE() function
+(function(){
+ let balance=2000;
+})(); // use form creating privet variable 
+// immdiadely call  when written 
+
+//ES6 // fat arrow function
+let fat=()=>{
+    console.log("fesfef");
+}
+
+// // anonymous
+// function(){ //  function without name
+
+// }
+// HOF
+// HOF func--> that return a function or accept a function(fun(parameter)) in parameter
+function HOF(fuc){
+ return function(){   // use case in foreach
+
+ }
+}
+
+
+// collback fun
+function callback(cb){  //cb got a function this function is know as callback
+
+}
+callback(function(){     // this is acctually cb in which we function passed
+
+})
+
+// first class function
+// is a concept this is not a js concept it is a programming concept in all scripting language
+//  which says function can be used as variable  
+//function that in passed in function 
+function FCF(a,b){
+ return a,b;
+}
+FCF(function(){console.log("passed as value")},12);
+// pure function

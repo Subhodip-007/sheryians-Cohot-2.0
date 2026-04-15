@@ -68,6 +68,10 @@ main .bottom {
   background-color: aliceblue;
   border-radius: 20px;
   box-shadow: 8px 6px 3px rgb(92, 92, 92);
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  gap: 0.85rem;
 }
 main .circle {
   height: 3rem;
@@ -77,4 +81,44 @@ main .circle {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 1;
+}
+main .circle:hover {
+  box-shadow: 4px 4px 3px rgb(16, 16, 16);
+  background-color: rgb(89, 89, 89);
+}
+
+.bottom {
+  position: relative;
+}
+
+/* Game Over Screen */
+.game-over {
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  font-family: sans-serif;
+}
+
+.game-over h2 {
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+
+.game-over p {
+  font-size: 20px;
+}
+
+button {
+  padding: 1rem;
+  background-color: black;
+  color: #fff;
+  border-radius: 20px;
+  border: none;
 }/*# sourceMappingURL=style.css.map */

@@ -105,24 +105,24 @@
 // let on=once(add)
 // on(2,3);
 //
-const add = x => x + 3;
-const multiply = x => x * 3;
+// const add = x => x + 3;
+// const multiply = x => x * 3;
 
-function compose(...fun) {
-  return function(val) {
-    let result = val;
+// function compose(...fun) {
+//   return function(val) {
+//     let result = val;
 
-    for (let i = fun.length - 1; i >= 0; i--) {
-      result = fun[i](result);
-    }
+//     for (let i = fun.length - 1; i >= 0; i--) {
+//       result = fun[i](result);
+//     }
 
-    return result;
-  }
-}
+//     return result;
+//   }
+// }
 
-let sum = compose(add, multiply);
+// let sum = compose(add, multiply);
 
-console.log(sum(5)); // 18
+// console.log(sum(5)); // 18
 
 // 🧠 Level 1 — Basic Understanding
 // Q1. Higher Order Function
@@ -233,3 +233,119 @@ console.log(sum(5)); // 18
 // compose(...functions)
 // returns a function
 // executes from right → left
+    // let countrec = (n)=>{
+    //     if(n===5){
+    //         return;
+    //     }
+    //     console.log(n);
+    //     countrec(n+1);
+    // }
+    // countrec(0)
+//     function printRightTriangle(n) {
+//     for(let i=0;i<n;i++){
+//         for(let j=0;j<=n-i;j++){
+//             process.stdout.write("  ");
+//         }
+//         for(let j=0;j<=i;j++){
+                     
+//             process.stdout.write(" *");
+
+//         }
+//          process.stdout.write("\n");
+//     }
+// }
+//  printRightTriangle(5);
+
+// FCF
+// let passedfnc=(...val)=>{
+//  console.log(`passed function execute ${val}`)
+// }
+
+// function execute(fn,...arg){
+//     fn(...arg)
+        
+// }
+// execute(passedfnc,1,2,3,4,5);
+// HOF
+// let index=0;
+// let acc=()=>{
+//     return "action number";
+// }
+// function repeat(n,action){
+//     if(n!==0){
+//         index++;
+//         console.log(`the current index is ${index}`);
+//         repeat(n-1,action)
+//     }
+// }
+//  with loop
+// function repeat(n,action){
+//     for(let i=0; i <= n; i++){
+//         console.log(action(),`: ${i}`)
+        
+//     }
+// }
+// IIFE
+// let counter=(function(){
+//  let conut=0;
+//  console.log(`Initialized ${conut}`)
+// })()
+// rest operater 
+
+// function sumAll(...arg){
+//     if(isNaN(arg)||arg==null){
+//         return "cant be operated"
+//     }
+//     let sum=0
+//     for(let i=0;i<arg.length;i++){
+//         sum+=arg[i];
+//     }
+//     return sum;
+// }
+// function outer(){
+//     let vari = 10;
+//     return function inner(){
+//        return vari++;
+//     }
+// }
+// let out=outer();
+// out()
+ 
+// function createCounter(){
+//     let count=0;
+//     return{
+//                 get:function getvalue(){
+//           return count;
+//         },
+//         inc:function increment(){
+//             return ++count;
+//         },
+//         dec:function decrement(){
+//             return --count;
+//         },
+
+//     }
+// }
+// let count=createCounter();
+// function makemultiplier(a){
+//     return function(b){
+//         return a*b;
+//     }
+// }
+// let twomul=makemultiplier(2);
+// twomul(4);
+function bankAccount(){
+    return function(){
+        return{
+             Deposit:function (){
+          return count;
+         },
+         WithDraw:function increment(){
+             return ++count;
+         },
+         GetBalace:function decrement(){
+             return --count;
+         },
+        }
+    }
+}

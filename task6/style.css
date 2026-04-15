@@ -84,7 +84,9 @@ main {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: 50px 1fr 1fr;
-  grid-template-areas: "left right-top" "left right-bottom" "lowleft lowright";
+  grid-template-areas: "left right-top"
+                      "left right-bottom"
+                      "lowleft lowright";
   gap: 20px;
 }
 
