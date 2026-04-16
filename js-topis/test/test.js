@@ -334,18 +334,42 @@
 // }
 // let twomul=makemultiplier(2);
 // twomul(4);
-function bankAccount(){
-    return function(){
-        return{
-             Deposit:function (){
-          return count;
-         },
-         WithDraw:function increment(){
-             return ++count;
-         },
-         GetBalace:function decrement(){
-             return --count;
-         },
-        }
-    }
-}
+// function bankAccount(){
+//     let balance=0;
+
+//         return{
+//              Deposit:function put(val){
+//           return balance+=val;
+//          },
+//          WithDraw:function wd(val){
+//              return balance-=val;
+//          },
+//          GetBalace:function get(){
+//              return balance;
+//          },
+//         }
+//     }
+
+// let acc1=bankAccount()
+
+// let yourname=(function(){
+//  let name=null;
+//  return{
+//           GetName:function get(){
+//                   return name;
+//              },
+//               SetName:function set(val){
+//                 if(name!==null) return `already set ${name} please use .reset` 
+//                  return name = val;
+//           },
+//           reset:function rset(){
+//             name=null;
+//             return" reset name !";
+//           }
+
+            
+          
+//  }
+// })();
+
+

@@ -11,6 +11,7 @@ html, body {
 
 body {
   height: 100%;
+  background-color: black;
 }
 
 main {
@@ -19,14 +20,68 @@ main {
 }
 
 .page1 {
-  background-image: url("https://i.pinimg.com/originals/1f/ff/35/1fff351c0c3c9558f412d04f58ba6731.gif");
+  background-image: url("https://i.pinimg.com/originals/24/e1/b5/24e1b51dcfaf8b9d7aeb5d49e91be623.gif");
+  background-color: rgba(0, 0, 0, 0.4);
   height: 100%;
   background-size: cover;
-  background-position: center;
+}
+
+.nav-cont {
+  display: flex;
+  justify-content: center;
 }
 
 .nav {
-  height: 10%;
-  width: 100%;
-  border-bottom: 2px solid rgb(0, 0, 0);
+  margin-top: 2.5rem;
+  width: 90%;
+  border-bottom: 2px solid rgba(186, 186, 186, 0.69);
+  border-radius: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  color: aliceblue;
+}
+.nav .logo {
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+.nav a {
+  text-decoration: none;
+  color: aliceblue;
+  text-transform: capitalize;
+}
+.nav a span {
+  color: #414141;
+  padding: 0.3rem;
+  border-radius: 20px;
+  background-color: #ffffff;
+  font-weight: 700;
+}
+
+.nav-left {
+  display: flex;
+  gap: 5rem;
+  justify-content: space-between;
+}
+
+.tag-group {
+  display: flex;
+  gap: 5rem;
+}
+
+.nav-right .icon {
+  height: 35px;
+  width: 70px;
+  border-radius: 1.5rem;
+  display: flex;
+  align-items: center;
+  background-color: aliceblue;
+}
+.nav-right .icon .inner-icon {
+  margin-left: 0.5rem;
+  height: 90%;
+  width: 45%;
+  border-radius: 50%;
+  background-color: black;
 }/*# sourceMappingURL=style.css.map */

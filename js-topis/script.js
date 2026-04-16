@@ -1125,6 +1125,7 @@ let fat=()=>{
 
 // // anonymous
 // function(){ //  function without name
+//question so how we will call 
 
 // }
 // HOF
@@ -1152,4 +1153,108 @@ function FCF(a,b){
  return a,b;
 }
 FCF(function(){console.log("passed as value")},12);
+// day 38 js
 // pure function
+let elem=10;
+function pure(){
+    console.log(elem)
+}
+//umpure
+let a=10;
+function impure(val){
+    return a+=val;
+    console.log(a);
+}
+ impure()
+// closure
+// every colsure is a HOf function
+function clo(){
+    let avr=10
+    return function(){
+        avr++;
+    }
+}
+// ARRAY
+[]
+[2,3,4,5,6,7]
+        // 0 1 2 3 4 5 6 7 8 9
+let array=[1,2,3,4,5,6,7,7,8,6]
+// two ways to create array
+let array1=[];
+let array2=new Array();
+// how to access elem in arr
+arr[1];
+arr[2];
+// function in array
+arr.push(9); // at the end add
+arr.pop()// will pop a last value 
+arr.shift()//remove value from front
+arr.unshift(2)//add value in front
+arr.indexOf(8); //give index of tgt element;
+// array destructucturing
+let [a,b]=arr; // now a and b will have first values of array respectively 
+//   a=1 b=2  what if i want a= to have third value and b have 5th
+[ , , a, ,b];
+// filter
+// form a org array it creats a new array fo filtered values in it 
+let arrfilter=arr.filter((val)=>{
+    //return true;   // if will send all elem to new array
+    //condition return val<3;
+})                 // if flase no elements 
+// some
+//map                 // questions
+// reduce
+ //spread
+ let arr=[1,2,3,4];
+ let spreadarr=[...arr];// a copy of arr to spreadarr that will have no effech if val changed
+
+// slice
+// reverse
+// sort                   // question
+// join 
+// toString
+ // iteration over array 
+ for(let i=0;i<arr.length;i++){
+    console.log(arr[i])
+ }
+ arr.forEach((val) => {
+      console.log(val)
+ });
+ //  what are objects in js
+ {}// obj
+ //  way to create object
+ let obj={
+    //key - value pair!
+    name:"shub",
+    age:23,
+    email:"subh@gmail.com"
+ };
+ let obj2=new Object();
+// creation obj accesing properties,deleting poroperty and Nesteed obj
+// accessing
+obj.name;
+obj['name'];
+// delete
+delete obj.name;
+
+// nested object
+let nestobj={
+    name:{
+        firstname:"shub",
+        middlename:null,
+        lastname:"chatterjee"
+    },
+    info:{
+        email:"subhodip",
+        genToken:function gettoken(){
+            return `your current token no : ${Math.floor(Math.random()*10)}`;
+
+
+        }
+    }
+}
+
+//  how to study like a developer 
+// dont remeber code
+// your code in stuck u dont know the code 
+//but u have to find 
