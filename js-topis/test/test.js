@@ -372,4 +372,32 @@
 //  }
 // })();
 
+// function vPattern(n) {
+// //     for (let i = 0; i < n; i++) {
 
+// //         for (let j = 0; j <= 2 * n; j++) {
+
+// //             if (j === i || j === (2 * n-1 - 1 - i)) {
+// //                 process.stdout.write("*");
+// //             } else {
+// //                 process.stdout.write(" ");
+// //             }
+// //         }
+
+// //         process.stdout.write("\n"); // move to next line
+// //     }
+// // }
+
+// // vPattern(5);
+
+var mirrorDistance = function(n) {
+    let rev=0;
+    let org_n = n;
+    while(n>0){
+        let dig = n % 10;
+        rev = rev * 10 + dig;
+        n=Math.floor(n  / 10);
+     }
+     return Math.abs(org_n-rev);
+};
+mirrorDistance(32)

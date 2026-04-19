@@ -393,9 +393,133 @@ getscore(10,20,30);
    console.log(password);// cant be accsed
 // when to use ()=> and function(){}
 // in objercts we cant use ()=> key:()=>{}
+// array
+[]
+[1,"hey",2.3,true,{num:2,fight:3},function fun(val){return val%10;}]// not like other language that store only one type of value  
+//two ways to write array 
+let arr=[1,2,3,4,5]
+let arr1=new Array();
+// .something() in knows as method (function inside object)
+//arr.splice(index,num of values)
+arr.splice(2,3);//eg forn index 2 remove 3 val 3,4,5 so remainning in arr [1,2]
+let newarr=arr.slice(0,3); //create a new copy of arr form 0 to 2 y not 3 bcz it takes the before value(main array will not change)
+let char =['A','D','E'];
+// add B and c in index 1
+
+char.splice(1,0,'B','C');
+//  to reverse 
+arr.reverse(); //  change array
+arr.sort(function(a,b){
+    return a-b;  //assending
+})
+arr.sort(function(a,b){  // the reason we give conparison because 
+    return b-a;  //desc   // by default sort converts the number into str and return a new array 
+    //.sort(blank)only used when array have character
+})
+// foreach
+arr.forEach(function(val){
+   return val+1; 
+});
+// map;
+// map is use when you want to make a new array of a aray
+let newmap = arr.map(function(val){ 
+    return val>2;  //[undefined,undefined,3,4,5]
+})
+// but in filter
+let filter=arr.filter(function(val){
+    return val>2;   //[3,4,5]
+})
+// reduce
+arr.reduce(function(sum,val){
+    return sum+val;      // 0+1+2+3+4+5=SUM
+},0)
+// FIND
+arr.find(function(val){
+    return val===1;   // first value the true the condition
+})
+// some
+let is=arr.some(function(val){
+    return val>85;   // eg if even one student have above 85 marks return true
+})
+let is=arr.every(function(val){
+    return val>85;   // eg if each and every student have above 85 marks then only return true return true
+})
+// dstructure 
+// let suppose u want two elem form a aray
+//  normally u will do  a=arr[o] and b=arr[1]
+let [a, , ,b]=arr; // a=1 and b=2
+// if  b to have 4
+//  spread opreater
+let arr2=arr;// this will create reference val
+let arr2=[...arr]; // copy
+// objects
+{}
+//creation
+let object={
+    name:"shub",
+    age:23
+};
+// // access . nothation
+// there are two ways to access name
+object.name; // this will litrelly find LITRELLY !! that key
+object['name'];  // y two
+// let assume 
+let aa="name"
+object.aa // aa is now there 
+// but i have written aa="name";
+// of you want to convert 
+object[aa] //aa->"name"
+// key : value structure
+// . vs [] notation
+// deep obj
+const user={
+    loc:{
+        lat:12234,
+        log:432564
+    },
+    city:{
+        pin:23324,        // nesting in obj
+        name:bhopal,
+
+    }
+}
+user.city.pin;    // deep access
+
+// destructuring
+let {pin}=user.city.pin;
+// loop
+// for in
+for(let key in obj){
+    return key;
+    // if u want key and val
+    return key,obj[key];
+
+}
+// object.keys(abj); make array of all keys of the object
+// object.entries(obj); array of arrays
+//
+// coping obj
+ // spreat
+ let speradibj={...obj};
+ // object,assigh(pass a blank//or any thing filled obj , the obj u want to copy)
+ let newob=Object.assign(obj,obj2);
+// deep-cloning
+let speradibj={...obj}; // this dont work in nested object { copy{ref}}
+speradibj.name="hsofih";
+// here comes a concept deepclone
+//  convert it into string
+JSON.stringify(speradibj);
+// give a string
+JSON.parse(speradibj);
+//convert to real form
+let deepclone=(JSON.stringify(speradibj));
+//optional chaning
+speradibj.name="hsofih";// maybe name dont exist only in speradibj?.name?="hsofih"; // if mot then undefined
+// deepcopy 
+// shallow copy
 
 
-     
+///////
 //////////////////////////////////////////////////////////////////////////////////////////////
 // now cohot 2.0
 // introduction to js 26
@@ -1258,3 +1382,38 @@ let nestobj={
 // dont remeber code
 // your code in stuck u dont know the code 
 //but u have to find 
+// day 39 js 
+// recognize how obj are stored 
+//  traverse keys of an object
+// array as an object
+
+
+// timing events 
+// // question lvl 1
+// # 🟢 Level 1 – Basic Function, Array & Object Code Tasks (Easy)
+
+// 1. Write a function `sayHello()` that prints `"Hello JavaScript"`.
+// 2. Create a function `add(a, b)` that returns their sum and log the result.
+// 3. Write a function with a default parameter `name = "Guest"` that prints `"Hi <name>"`.
+// 4. Use rest parameters to make a function that adds unlimited numbers.
+// 5. Create an IIFE that prints `"I run instantly!"`.
+// 6. Make a nested function where the inner one prints a variable from the outer one.
+// 7. Create an array of 5 fruits. Add one at the end and remove one from the beginning.
+// 8. Use a `for` loop to print all elements of an array.
+// 9. Create an object `person` with keys `name`, `age`, and `city`, and print each key’s value.
+// 10. Use `setTimeout()` to log `"Time’s up!"` after 2 seconds.
+
+// ---
+
+// # 🟡 Level 2 – Functional Thinking & Logic Tasks (Intermediate)
+
+// 1. Write a higher-order function `runTwice(fn)` that takes another function and executes it two times.
+// 2. Create one pure function that always returns the same output for a given input, and one impure function using a global variable.
+// 3. Write a function that uses object destructuring inside parameters to extract and print `name` and `age`.
+// 4. Demonstrate the difference between normal function and arrow function when used as object methods (the `this` issue).
+// 5. Given an array of numbers, use `map()` to create a new array where each number is squared.
+// 6. Use `filter()` to get only even numbers from an array.
+// 7. Use `reduce()` to find the total salary from an array of numbers `[1000, 2000, 3000]`.
+// 8. Create an array of names and use `some()` and `every()` to test a condition (e.g., all names longer than 3 chars).
+// 9. Create an object `user` and test the behavior of `Object.freeze()` and `Object.seal()` by adding/changing keys.
+// 10. Create a nested object (`user → address → city`) and access the city name inside it.
