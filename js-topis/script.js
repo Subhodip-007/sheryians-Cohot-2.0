@@ -1393,27 +1393,197 @@ let nestobj={
 // # 🟢 Level 1 – Basic Function, Array & Object Code Tasks (Easy)
 
 // 1. Write a function `sayHello()` that prints `"Hello JavaScript"`.
+ function sayHello(){
+    console.log("Hello JavaScript")
+ }
 // 2. Create a function `add(a, b)` that returns their sum and log the result.
+function add(a,b){
+    return ` sum : ${a+b}`;
+}
 // 3. Write a function with a default parameter `name = "Guest"` that prints `"Hi <name>"`.
+function defaul(name="guest"){
+    return `hi ${name}`
+}
 // 4. Use rest parameters to make a function that adds unlimited numbers.
+let sum=0;
+ function restOpe(...arg){
+    arg.forEach(val => {
+        sum+=val;
+    });
+    return sum;
+ }
 // 5. Create an IIFE that prints `"I run instantly!"`.
+(function(){
+  console.log("I run instantly!")
+})()
 // 6. Make a nested function where the inner one prints a variable from the outer one.
+   function outer(){
+        let inval=12;
+         return function inner(){
+            return inval;
+        }
+    }
+   let oute=outer()
 // 7. Create an array of 5 fruits. Add one at the end and remove one from the beginning.
+let fruits=["apple","banana","mango","orange","liche"];
+fruits.push("cherry");
+fruits.shift();
 // 8. Use a `for` loop to print all elements of an array.
+    let fruits=["apple","banana","mango","orange","liche"];
+    for(let i=0;i<fruits.length;i++){
+        console.log(fruits[i]);
+    }
 // 9. Create an object `person` with keys `name`, `age`, and `city`, and print each key’s value.
+let userobj={
+    name:"shub",
+    age: 12,
+    city :"kolkata",
+}
+for (let key in userobj) {
+  console.log(key,userobj[key])
+    
+}
+
 // 10. Use `setTimeout()` to log `"Time’s up!"` after 2 seconds.
+let timup=setTimeout(()=>{
+    console.log("Times up")
+    clearTimeout(timup);
+},2000)
 
 // ---
 
-// # 🟡 Level 2 – Functional Thinking & Logic Tasks (Intermediate)
+// # 🟡 Level 2 – Functional Thinking & Logic Tasks (Intermediate) day 41
 
 // 1. Write a higher-order function `runTwice(fn)` that takes another function and executes it two times.
+let limit=2;
+function runtwice(fn){
+ while(limit>0){
+    fn();
+    limit--;
+ }
+}
+runtwice(function(){
+    console.log(`run ${limit}`)
+})
 // 2. Create one pure function that always returns the same output for a given input, and one impure function using a global variable.
+let glob=10;
+ function pure(a){
+    return glob+a;
+ }
+ function impure(a){
+    glob++;
+ return glob + a;
+ }
 // 3. Write a function that uses object destructuring inside parameters to extract and print `name` and `age`.
+function objdestructure({ name, age } = obj) {
+    console.log(name, age);
+}
 // 4. Demonstrate the difference between normal function and arrow function when used as object methods (the `this` issue).
+ // this 
+ console.log(this)
+ // this in global scope
+ console.log(this)
+ // this in function(){}
+ function logthis(){
+     console.log(this)
+ }
+  let logarrowthis=()=>{
+     console.log(this)
+ }
+ // in method
+ let userobj={
+    name:"shub",
+    age: 12,
+    city :"kolkata",
+    thismethod:function(){
+        console.log(this)
+    },
+    thisarrowmethod:()=>{
+        console.log(this)
+    },
+    nestedthismethodarrow:function() {
+        let funarro=()=>{
+            console.log(this);
+        }
+        funarro()
+
+    },nestedthismethod:function() {
+         function fuc(){
+            console.log(this);
+        }
+
+
+    },
+    
+
+
+}
+userobj.thismethod() // this return obj itself
+userobj.thisarrowmethod(); // this return window
+nestedthismethodarrow();// this will return obj itself
+nestedthismethod(); // conflict and rebinds to window 
 // 5. Given an array of numbers, use `map()` to create a new array where each number is squared.
+ let maparr1=[1,2,3,4,5];
+
+ arr.map(function(val){
+    return val*val;
+ })
+
 // 6. Use `filter()` to get only even numbers from an array.
+ let maparr1=[1,2,3,4,5,6,7,8,9,10];
+
+ arr.filter(function(val){
+    return val%2==0;
+ })
 // 7. Use `reduce()` to find the total salary from an array of numbers `[1000, 2000, 3000]`.
+let salary=[1000,2000,3000];
+let all=salary.reduce(function(acc,val){
+    acc+=val;
+},0)
+
 // 8. Create an array of names and use `some()` and `every()` to test a condition (e.g., all names longer than 3 chars).
+const names = [
+  "Avi",     // 3
+  "John",    // 4
+  "Sam",     // 3
+  "Alexander", // 9
+  "Ria",     // 3
+  "Neha",    // 4
+  "Max",     // 3
+  "Christopher", // 11
+  "Leo",     // 3
+  "Ananya"   // 6
+];
+let lent=names.some(function(name){
+    return name.length > 3;
+})
+
+
+
 // 9. Create an object `user` and test the behavior of `Object.freeze()` and `Object.seal()` by adding/changing keys.
+ let userobj={
+    name:"shub",
+    age: 12,
+    city :"kolkata",
+ }
+ Object.freeze(userobj); // now we cant change any property
+ // but we can add property
+
+ Object.seal(userobj); // here your can add a new property
+
 // 10. Create a nested object (`user → address → city`) and access the city name inside it.
+let usesets={
+    name:{
+        firstname:"subhodip",
+        lastname:"chatterjee"
+    },
+    location:{
+        address:"23,lane naidu road",
+        landmark:"tela nagar",
+        city:"goa",
+
+    }
+}
+console.log(usesets?.location?.city);
+// to dont write manualy 
+let {city}=usesets?.location; // destructure

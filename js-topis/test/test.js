@@ -390,14 +390,80 @@
 
 // // vPattern(5);
 
-var mirrorDistance = function(n) {
-    let rev=0;
-    let org_n = n;
-    while(n>0){
-        let dig = n % 10;
-        rev = rev * 10 + dig;
-        n=Math.floor(n  / 10);
-     }
-     return Math.abs(org_n-rev);
-};
-mirrorDistance(32)
+// var mirrorDistance = function(n) {
+//     let rev=0;
+//     let org_n = n;
+//     while(n>0){
+//         let dig = n % 10;
+//         rev = rev * 10 + dig;
+//         n=Math.floor(n  / 10);
+//      }
+//      return Math.abs(org_n-rev);
+// };
+// mirrorDistance(32)
+// let sum=0;
+//  function restOpe(...arg){
+//     arg.forEach(val => {
+//         sum+=val;
+//     });
+//     return sum;
+//  }
+//    function outer(){
+//         let inval=12;
+//          return function inner(){
+//             return inval;
+//         }
+//     }
+//    let oute=outer()
+// let glob=10;
+//  function pure(a){
+//     return glob+a;
+//  }
+//  function impure(a){
+//     glob++;
+//  return glob + a;
+//  }
+
+// // this in global scope
+//  console.log(this)
+//  // this in function(){}
+//  function logthis(){
+//      console.log(this)
+//  }
+//   let logarrowthis=()=>{
+//      console.log(this)
+//  }
+//  // in method
+//  let userobj={
+//     name:"shub",
+//     age: 12,
+//     city :"kolkata",
+//     thismethod:function(){
+//         console.log(this)
+//     },
+//     thisarrowmethod:()=>{
+//         console.log(this)
+//     }
+
+// }
+// userobj.thismethod()
+// userobj.thisarrowmethod();
+// let salary=[1000,2000,3000];
+// let all=salary.reduce(function(acc,val){
+//     // returnacc+=val;
+// },0)
+const names = [
+  "Avi",     // 3
+  "John",    // 4
+  "Sam",     // 3
+  "Alexander", // 9
+  "Ria",     // 3
+  "Neha",    // 4
+  "Max",     // 3
+  "Christopher", // 11
+  "Leo",     // 3
+  "Ananya"   // 6
+];
+let lent=names.some(function(name){
+    return name.length > 3;
+})

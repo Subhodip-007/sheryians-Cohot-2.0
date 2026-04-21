@@ -70,21 +70,27 @@ main{
     background-color: aliceblue;
     border-radius: 20px;
     box-shadow: 8px 6px 3px rgb(92, 92, 92);
-    display: flex;
-    flex-wrap: wrap;
-    overflow: hidden;
-    gap: .85rem;
+    // display: flex;
+    // flex-wrap: wrap;
+     overflow: hidden;
+    display: grid;
+        grid-template-columns: repeat(15,1fr);
+    grid-template-rows: repeat(10,1fr);
+    gap: .5rem;
 
 }
 .circle{
-    height: 3rem;
-    width: 3rem;
+    height: 4.8vh;
+    width: 2.8vw;
     border-radius: 50%;
     background-color: rgb(29, 29, 29);
+    align-self: center;
+    justify-self: center;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 1;
+    font-size: 1.6rem;
+   
 
 }
     .circle:hover{
