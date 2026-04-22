@@ -60,7 +60,7 @@ h1.textContent='<i>list</i>';  // change into text
 
 
 // todays TASK -
-// a h2 , a inc btn , dec btn;
+// a h2 , a inc btn , dec btn; {COMPLETED}
 // your btn should display val when click on inc dec
 // dom youtube video  2 vid dom and 5 projects 
 let display=document.querySelector(".count-text");
@@ -75,13 +75,23 @@ dec.addEventListener("click",function(){
     initcount--;
  display.textContent=`${initcount}`;
 })
-
-
-
-
-
-
-
+// [YOUTUBE DOM WHAT MATTERS][COMPLETED]
+// TASK A BULB WHEN CLICK NO AND CLICK AGAI OFF
+let bul=document.querySelector(".bulb");
+let bulbbtn=document.querySelector(".bulb-button");
+bulbbtn.addEventListener("click",function(){
+    if(bulbbtn.textContent=="OFF"){
+        bul.style.backgroundColor="yellow";
+        bulbbtn.textContent="ON";
+    }else{
+        bul.style.backgroundColor="transparent";
+        bulbbtn.textContent="OFF";
+    }
+});
+// FIVE PROJECTS(YOUTUBE)
+// practice one a cont of img and text {friend or stranger} two button one for add and one for remove{followup - make it one button}
+// instagran love bth using scale() and timeout cont -> img -> heart at center {scale(0) to scale(1)} and then disappear {scale(1) to scale(0)}
+// custom cursor - main-> cursor(absoulte) "mousemove" event -> cursor.style.left = e.pageX + "px"; cursor.style.top = e.pageY + "px"; (css property mix-blend-mode: difference;)
 
 
 
