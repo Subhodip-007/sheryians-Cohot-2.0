@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  background-color: #111;
+  color: #fff;
+  font-family: monospace;
+}
+
+#main {
+  height: 100%;
+  width: 100%;
+  background-color: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cont-insta-friend-feature {
+  width: 20%;
+  background-color: rgb(44, 28, 17);
+  padding: 1rem;
+  border-radius: 1rem;
+}
+.cont-insta-friend-feature img {
+  height: 80%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  background-position: center;
+  border-radius: 1rem;
+}
+.cont-insta-friend-feature .button-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  width: 100%;
+}
+.cont-insta-friend-feature button {
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 2px solid #fff;
+  box-shadow: 2px 4px 1px white;
+  font-weight: 700;
+  color: #fff;
+  text-transform: capitalize;
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+.cont-insta-friend-feature button:hover {
+  background-color: #fff;
+  color: #111;
+  box-shadow: 2px 4px 1px #fff;
+}
+.cont-insta-friend-feature h1 {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}/*# sourceMappingURL=style.css.map */
