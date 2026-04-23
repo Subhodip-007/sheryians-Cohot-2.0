@@ -26,19 +26,21 @@ html, body {
   background-color: rgb(44, 28, 17);
   padding: 1rem;
   border-radius: 1rem;
+  position: relative;
 }
 .cont-insta-friend-feature img {
-  height: 80%;
   width: 100%;
+  height: 80%;
   -o-object-fit: cover;
      object-fit: cover;
-  background-position: center;
+  -o-object-position: center;
+     object-position: center;
   border-radius: 1rem;
 }
 .cont-insta-friend-feature .button-group {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 1rem;
   width: 100%;
 }
@@ -63,4 +65,15 @@ html, body {
   text-align: center;
   font-size: 1rem;
   margin-bottom: 1rem;
+}
+
+.ri-thumb-up-fill {
+  position: absolute;
+  font-size: 15rem;
+  top: 50%;
+  left: 50%;
+  z-index: 100;
+  opacity: 0.8;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform ease 1s;
 }/*# sourceMappingURL=style.css.map */
