@@ -89,10 +89,10 @@ bulbbtn.addEventListener("click",function(){
     }
 });
 // FIVE PROJECTS(YOUTUBE)
-// practice one a cont of img and text {friend or stranger} two button one for add and one for remove{followup - make it one button}
-// instagran love bth using scale() and timeout cont -> img -> heart at center {scale(0) to scale(1)} and then disappear {scale(1) to scale(0)}
-// custom cursor - main-> cursor(absoulte) "mousemove" event -> cursor.style.left = e.pageX + "px"; cursor.style.top = e.pageY + "px"; (css property mix-blend-mode: difference;)
-// img move with cursor like cintheya uguye foreach(val) val.childnode[0,1,2]ilke a array and then val.style.left = e.pageX + "px"; val.style.top = e.pageY + "px"; (css property mix-blend-mode: difference;) mouse enter -> opacity 1 mouse leave -> opacity 0`;
+// practice one a cont of img and text {friend or stranger} two button one for add and one for remove{followup - make it one button} [completed]
+// instagran love bth using scale() and timeout cont -> img -> heart at center {scale(0) to scale(1)} and then disappear {scale(1) to scale(0)} [completed]
+// custom cursor - main-> cursor(absoulte) "mousemove" event -> cursor.style.left = e.pageX + "px"; cursor.style.top = e.pageY + "px"; (css property mix-blend-mode: difference;) [completed]
+// img move with cursor like cintheya uguye foreach(val) val.childnode[0,1,2]ilke a array and then val.style.left = e.pageX + "px"; val.style.top = e.pageY + "px"; (css property mix-blend-mode: difference;) mouse enter -> opacity 1 mouse leave -> opacity 0`;[morking]
 // insta story  display inlinebolck ,no wrap sliding bar webkit scrollbar -> css property ::-webkit-scrollbar{display:none;}
 //arr[{userstory},[dp,story,}]]->foreach concept clutter template literal -> story.innerHTML = `<img src=${val[0]} alt="story">`;
 // DRIBBLE BANNAOO
@@ -110,8 +110,9 @@ Math.random()// 0 to 0.99999999;*100 -> 0 to 99.9999999
 // math.round(4.5) -> 5
 // math.round(4.4) -> 4
 // task
-// generate color using js math.randow
+// generate color using js math.randow[completed]
 // arr access with math.random with a button
 // array of objects [{},{}.{},{}] create a  obj team and access team using math.random on button click
-
- 
+//day 44 DOM
+//create element
+// addending a child

@@ -41,5 +41,6 @@ font-family: monospace;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    transition:  ease 200ms;
+    transition:  300ms ease-out;
+     mix-blend-mode: difference;
 }
