@@ -32,4 +32,10 @@ const users = [
   { id: 29, name: "Deepak", age: 26, skill: "DevOps" },
   { id: 30, name: "Naina", age: 22, skill: "System Design" }
 ];
-
+let bt6n=document.querySelector("#btn");
+let display=document.querySelector("#user");
+btn.addEventListener("click",function(){
+  let rn=Math.floor(Math.random()*users.length);
+  display.textContent=`name:${users[rn]?.name}`;
+  console.log(users[rn]);
+})

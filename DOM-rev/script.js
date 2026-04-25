@@ -92,7 +92,7 @@ bulbbtn.addEventListener("click",function(){
 // practice one a cont of img and text {friend or stranger} two button one for add and one for remove{followup - make it one button} [completed]
 // instagran love bth using scale() and timeout cont -> img -> heart at center {scale(0) to scale(1)} and then disappear {scale(1) to scale(0)} [completed]
 // custom cursor - main-> cursor(absoulte) "mousemove" event -> cursor.style.left = e.pageX + "px"; cursor.style.top = e.pageY + "px"; (css property mix-blend-mode: difference;) [completed]
-// img move with cursor like cintheya uguye foreach(val) val.childnode[0,1,2]ilke a array and then val.style.left = e.pageX + "px"; val.style.top = e.pageY + "px"; (css property mix-blend-mode: difference;) mouse enter -> opacity 1 mouse leave -> opacity 0`;[morking]
+// img move with cursor like cintheya uguye foreach(val) val.childnode[0,1,2]ilke a array and then val.style.left = e.pageX + "px"; val.style.top = e.pageY + "px"; (css property mix-blend-mode: difference;) mouse enter -> opacity 1 mouse leave -> opacity 0`;[erroer]
 // insta story  display inlinebolck ,no wrap sliding bar webkit scrollbar -> css property ::-webkit-scrollbar{display:none;}
 //arr[{userstory},[dp,story,}]]->foreach concept clutter template literal -> story.innerHTML = `<img src=${val[0]} alt="story">`;
 // DRIBBLE BANNAOO
@@ -109,10 +109,50 @@ Math.random()// 0 to 0.99999999;*100 -> 0 to 99.9999999
 // math.ceil(4.1) -> 5
 // math.round(4.5) -> 5
 // math.round(4.4) -> 4
-// task
+// {task}
 // generate color using js math.randow[completed]
-// arr access with math.random with a button
-// array of objects [{},{}.{},{}] create a  obj team and access team using math.random on button click
+// arr access with math.random with a button[completd]
+// array of objects[{},{}.{},{}] create a  obj team and access team using math.random on button click.[completed]
+
 //day 44 DOM
 //create element
 // addending a child
+// {task}
+// create a button on click create a div
+// give div position abs
+// using randow position left=x.px
+//top=y=px;
+// also randow color
+// style.retare =r+deg;
+//  followup make a array of string create a h1 using rendow pick a elem form array and add it in h1 and give position absolute and random position
+
+// day 45 DOM
+// settimeout and setintreval
+// sync -- single process at a time JS is sync by nature 
+// asyns -- we can make JS asyns
+// set timeout _> makes the code execute delay
+console.log("hello1")
+setTimeout(()=>{
+console.log("hello2")
+
+},1000)
+console.log("hello3")
+// output -> hello1,hello2,hello3
+// NOW CREATE A BUTTON ON CLUCK CHANGE H1 TEXT ON SET TIME OUT
+
+// SET INTERVAL -> THE SAME CODE WILL RUN IN INTERVAL NOW IT CAN GO UPTO INFINITY 
+// TO RESTRICT IT WE USE clearInterval()
+let a=0;
+let intv=setInterval(()=>{
+    
+    a++;
+    console.log(a);
+},100)
+    setTimeout(()=>{
+        clearInterval(intv);
+    },2000)
+// {task}
+// create a card-> a bar  outer and inner percentage and download 
+//btn.style.pointerEvents="none"; make the range randow [completed]
+
+// day 46

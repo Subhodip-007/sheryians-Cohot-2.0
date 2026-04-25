@@ -7,17 +7,19 @@
 
 }
 html,body{
-    height: 100vh;
+    height: 100%;
+    width: 100%;
     background-color: black;
     color: white;
 }
-main{
+#main{
     height: 100%;
+    width: 100%;
+    position: relative;
 }
  .cont{
     height: 100%;
-    position: relative;
-    
+    width: 100%;
  }
 .elem{
     height: 20%;
@@ -25,28 +27,27 @@ main{
     border-bottom: 1px solid rgb(255, 255, 255);
     display: flex;
     justify-content: flex-start;
-    gap: 1rem;
     align-items: center;
     padding: 2rem;
     position: relative;
+    // overflow: hidden;
+
+
+}
     img{
-        height: 200px;
-        width: 200px;
+        height: 100px;
+        width: 100px;
         object-fit: cover;
         border-radius: 50%;
         mix-blend-mode: difference;
-        opacity: 0;
+        opacity: 1;
         position: absolute;
-        top: 0;
-        left: 0;
-        transform: translate(-50%,-50%);
-       
-
+       transform:translate(-50%,-50%);
+       transition: linear 0.5S;
     }
+    
     h1{
         text-transform: capitalize;
         font-size: 2.5rem;
         letter-spacing: 5px;
     }
-
-}
