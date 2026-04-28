@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+#main {
+  height: 100%;
+  width: 100%;
+  background-color: rgb(30, 30, 30);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cont {
+  height: 30%;
+  width: 40%;
+  background-color: aliceblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cont h4 {
+  color: rgb(0, 0, 0);
+  font-size: 4rem;
+  letter-spacing: 1px;
+  font-weight: 800;
+  font-family: monospace;
+}/*# sourceMappingURL=style.css.map */

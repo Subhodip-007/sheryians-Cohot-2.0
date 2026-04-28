@@ -124,7 +124,7 @@ Math.random()// 0 to 0.99999999;*100 -> 0 to 99.9999999
 //top=y=px;
 // also randow color
 // style.retare =r+deg;
-//  followup make a array of string create a h1 using rendow pick a elem form array and add it in h1 and give position absolute and random position
+//  followup make a array of string create a h1 using rendow pick a elem form array and add it in h1 and give position absolute and random position[completed]
 
 // day 45 DOM
 // settimeout and setintreval
@@ -155,4 +155,90 @@ let intv=setInterval(()=>{
 // create a card-> a bar  outer and inner percentage and download 
 //btn.style.pointerEvents="none"; make the range randow [completed]
 
+
+
+//////////////' too doooooo' 
+
+
 // day 46
+//work with multiple events
+// create a like on dblclick like insta     img get large ang go up 
+//video lvl 2
+//js proj 1
+
+// day 47 
+// array
+let arr=[1,"shun",true];
+console.log(arr)
+let obj={name:"shub",
+        age:12
+}
+// now array of objs
+const users = [
+  {
+    id: 1,
+    name: "Aarav Sharma",
+    username: "aarav01",
+    email: "aarav.sharma@example.com",
+    age: 21,
+    isActive: true,
+    role: "student",
+    skills: ["HTML", "CSS", "JavaScript"]
+  },
+  {
+    id: 2,
+    name: "Diya Verma",
+    username: "diya.codes",
+    email: "diya.verma@example.com",
+    age: 23,
+    isActive: true,
+    role: "frontend developer",
+    skills: ["React", "CSS", "GSAP"]
+  }  
+];
+// OPERATIONS IN ARRAY
+let sumofage=0;
+users.forEach(val, idx => {
+    sum+=val.age;
+});
+// task 
+// create a card from arrobj data 
+// free api JSONplaceholder.com , lorempicsum
+// using concept of clutter 
+// clutter= ' ';
+// foreach(()=>{
+// clutter+= `card html copy past`
+//})                                      [COMPLETED]
+// main.innerhtml=cluttre;  
+
+// day 48
+// different types of event listners in DOM
+// click
+// dblclick
+//mouseenter
+//mouseleave
+// mousemove
+// main.addevtlis("event",function(info){
+// console.log(info); all evets like keyboard pointer scroll mouse 
+//})
+// task
+// make custom mouse use position fixed(problem scroll)       [COMPLETED]
+// keydown target on screen
+//piano make througe keyboard        [pending]
+//make a obj of key and audio or let aud = new Audio(''); (imp)
+// evt(()=>{
+ //   Audio.play()})
+
+ //day 49
+ let h1=document.querySelectorAll("h1")// u will get a node list like array
+  // so here h1 is a array 
+  // now target parent and access child inside 
+  // praent.childnodes
+  // create tree card add access its child througe above concept
+   // namw             addfriendbtn 
+  //day50
+//   eventbubbleing
+//   formhandleing
+//   API calling change structure
+//   insted of make HTML CSS JS file we use a bundler vut
+  //  make youtbe reel section `
