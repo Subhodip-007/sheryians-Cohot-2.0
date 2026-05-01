@@ -1,22 +1,22 @@
-function fixedSizewindowmaxsum(arr,k){
- let st=0;
-let end=k;
-let sum=0;
-let res=-Infinity
-for(let i=st;i<end;i++){
-    sum+=arr[i]
-    
+function maxSumOfFixedWindow(arr, k) {
+    let start = 0;
+    let end = k;
+    let res = -Infinity;
+    let sum = 0;
+    for (let i = start; i < k; i++) {
+        sum += arr[i];
+    }
+    res = Math.max(res, sum);
+    while (end < arr.length) {
+
+        sum -= arr[start];
+        sum += arr[end];
+        res = Math.max(res, sum);
+                start++;
+        end++;
+    }
+    return res;
 }
-res=sum;
-while(end<arr.length){
- sum-=arr[st];
- st++;
- sum+=arr[end]
- end++
- res=Math.max(res,sum);
-}
- return res;
-}
-let arr=[10,20,30,40,50]
-let k=2;
-console.log(fixedSizewindowmaxsum(arr,k));
+let arr = [10, 20, 40, 30, 10];
+let k = 2;
+console.log(maxSumOfFixedWindow(arr, k));

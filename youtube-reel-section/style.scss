@@ -1,0 +1,96 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #ffffff;
+    /* ADDED: YouTube's standard font stack for a native look */
+    font-family: "Roboto", Arial, sans-serif; 
+}
+html,body{
+    height: 100%;
+    width: 100%;
+    background-color: black;
+}
+#main{
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}   
+.shorts-cont{
+  height: 500px;
+  width: 100%;
+  overflow-y: scroll;  
+  scrollbar-width: none;
+  scroll-snap-type: y mandatory;
+  /* CHANGED: from 'margin-left: 40%' to 'margin: 0 auto' to let the #main flexbox perfectly center the container naturally */
+  margin-left:40%; 
+}
+.short {
+  position: relative;
+  width: 300px;
+  height: 500px;
+  overflow: hidden;
+  background-color: aliceblue;
+  scroll-snap-align: start;
+  overflow: hidden;
+}
+
+.short video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-color: black;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  /* CHANGED: from '0rem 1rem' to '0 12px 16px 16px' so the content doesn't hug the bottom/side edges too tightly */
+  padding: 0 12px 16px 16px; 
+}
+.right-elem-group{
+    display: flex;
+    flex-direction: column;
+    /* CHANGED: from '1.5rem' to '1.2rem' to group icons slightly closer together */
+    gap: 1.2rem; 
+    /* CHANGED: from '1rem' to '12px' for tighter alignment with the bottom */
+    margin-bottom: 12px; 
+    /* CHANGED: from '1.5rem' to '1.6rem' to make the icons slightly larger */
+    font-size: 1rem; 
+}
+#main-screen{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.left-content-info{
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    /* CHANGED: from '0rem 1rem' to '0 16px 12px 4px' to match the updated overlay padding and align text */
+    padding: 0 16px 12px 4px; 
+    /* ADDED: Pushes the text area away from the right-side icons so they don't overlap */
+    margin-right: 16px; 
+}
+.text {
+    /* CHANGED: from '1rem' to '0.85rem' (~13px/14px), which is YouTube's standard smaller text size for stat counts */
+    font-size: 0.85rem; 
+    text-align: center;
+    /* ADDED: Creates a small visual gap between the icon and its text label */
+    margin-top: 4px; 
+}
+.subscribe{
+    padding: .5rem;
+    border-radius: 1rem;
+    background-color: aliceblue;
+    border: none;
+    color: black;
+}

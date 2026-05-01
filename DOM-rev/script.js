@@ -224,7 +224,7 @@ users.forEach(val, idx => {
 // task
 // make custom mouse use position fixed(problem scroll)       [COMPLETED]
 // keydown target on screen
-//piano make througe keyboard        [pending]
+//piano make througe keyboard        [COMPLETED]
 //make a obj of key and audio or let aud = new Audio(''); (imp)
 // evt(()=>{
  //   Audio.play()})
@@ -241,4 +241,17 @@ users.forEach(val, idx => {
 //   formhandleing
 //   API calling change structure
 //   insted of make HTML CSS JS file we use a bundler vut
-  //  make youtbe reel section `
+  //  make youtbe reel section `                                      [completed]
+
+  // day 51
+//   foreach
+let arr=[1,2,3,4,5,6];
+arr.forEach(element,idx => {
+    console.log(element,idx)
+});
+// now in reels foreach dec element , idx -> target like and set its text count pointerevt none and set idx as id in like
+//now add the whole code in a function adddata() now this will use the concept of eventbubleing
+// event bubbleing
+// in storysont add evtlist->click and run the function inside->(dets) find something called target dets.targt will give wher u clicked  now look for dets.tgt.idx ->reels[dets.tgt.idx].ikescount ++ islike true if () else{}-> (also for follow)we will ge obj now show it  and call the function again 
+// for now it will make change inwhile page but react will make it effective [add muted and play btm also ]
+

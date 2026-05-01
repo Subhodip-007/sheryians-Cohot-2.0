@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,body{
+    height: 100%;
+    width: 100%;
+    background-color: black;
+}
+#main{
+    height: 100%;
+    width: 100%;
+    background-color: black;
+}
+//linear-gradient
+.box{
+height: 100px;
+width: 100px;
+border:2px solid bisque;
+background: linear-gradient(to left,white,red,purple);
+background: linear-gradient(in oklab to right,white,red,purple) !important;
+background: linear-gradient(in hsl to right,white,red,purple) !important;
+}
+.box2{
+height: 100px;
+width: 100px;
+border: 1px solid beige;
+background: radial-gradient(50px at var(--x) var(--y),red,blue);
+}
+// custom css variable 
+// css root variable
+:root{
+  --red:red;  
+  --x:10px;
+  --y:10px;
+}
+.box3{
+    height: 100px;
+    width: 100px;
+    background-color: var(--red);
+}
