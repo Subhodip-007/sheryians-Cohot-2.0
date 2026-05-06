@@ -1,0 +1,63 @@
+// box shodow : (inset:used when shadow inside box)xpx ypx spreadrediuspx color;
+// text shadow:xpx ypx spreadrediuspx color;
+//DropShadow use in img
+//  background:conic-gradient(fron 0deg, black,rgb(36, 36, 36));
+// keyframes used for animation
+//
+//@property
+// :has()
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,body{
+    height: 100%;
+    width: 100%;
+    background-color: #111;
+
+}
+#main{
+ height: 100%;
+    width: 100%;
+    background:conic-gradient(black,rgb(36, 36, 36),white),rgb(128, 128, 128);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+
+}
+@keyframes changebgcolour{
+    from{background-color: #fff;}
+    to{background-color: #202020;
+        border-radius: 40px;
+        scale: 0.5;
+    }
+
+}
+.box{
+    border-radius: 20px;
+    height: 40%;
+    width: 30%;
+    background-color: #202020;
+    box-shadow: 1px 2px 5px wheat;
+    animation: changebgcolour 5s infinite both alternate ;
+      //  animation: changebgcolour 5s infinite both forwards backwards;
+}
+@keyframes changetranform{
+    from{transform: translate(0) scale(1);
+        border-radius: 1rem;
+    }
+    to{transform: translate(100px) scale(0);
+        border-radius: 5rem;
+    }
+}
+.box2{
+     height: 40%;
+    width: 30%;
+    border: 1px solid whitesmoke;
+    border-radius: 1rem;
+    animation: changetranform 5s infinite alternate;
+    
+
+}
