@@ -452,18 +452,28 @@
 // let all=salary.reduce(function(acc,val){
 //     // returnacc+=val;
 // },0)
-const names = [
-  "Avi",     // 3
-  "John",    // 4
-  "Sam",     // 3
-  "Alexander", // 9
-  "Ria",     // 3
-  "Neha",    // 4
-  "Max",     // 3
-  "Christopher", // 11
-  "Leo",     // 3
-  "Ananya"   // 6
-];
-let lent=names.some(function(name){
-    return name.length > 3;
-})
+// const names = [
+//   "Avi",     // 3
+//   "John",    // 4
+//   "Sam",     // 3
+//   "Alexander", // 9
+//   "Ria",     // 3
+//   "Neha",    // 4
+//   "Max",     // 3
+//   "Christopher", // 11
+//   "Leo",     // 3
+//   "Ananya"   // 6
+// ];
+// let lent=names.some(function(name){
+//     return name.length > 3;
+// })
+class LaptopMaker{
+    constructor(name,price,color){         // when constructor runs 
+        this.name=name;
+        this.price=price;
+        this.color=color
+    }
+}
+let laptop1=new LaptopMaker("HP","60,000rs","blue");  
+            // new-> blank obj run class()->constructor() will automatically run inside constructor value of this that blank obj
+

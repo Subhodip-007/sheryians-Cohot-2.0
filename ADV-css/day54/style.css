@@ -21,6 +21,7 @@ html, body {
   height: 100%;
   width: 100%;
   background-color: #000000;
+  font-family: monospace;
 }
 
 #main {
@@ -42,14 +43,39 @@ html, body {
   animation: aniBgcolo 3s infinite alternate;
 }
 
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes animateRotate {
+  from {
+    --rotate:0deg;
+  }
+  to {
+    --rotate:360deg;
+  }
+}
 .box2 {
   height: 400px;
   width: 300px;
-  border: 1px solid white;
   border-radius: 1rem;
-  padding: 1rem;
-  background: linear-gradient(black) padding-box, conic-gradient(from var(--rotate), black, rgb(255, 0, 123), black) border-box;
-  border: 5px solid rgba(255, 255, 255, 0);
+  padding-inline: 1rem;
+  padding-top: 1rem;
+  color: whitesmoke;
+  background: linear-gradient(black) padding-box, conic-gradient(from var(--rotate), black, rgb(0, 255, 0), black) border-box;
+  animation: animateRotate 1s infinite;
+  animation-timing-function: linear;
+  animation-play-state: paused;
+  transition: all 0.3s linear;
+}
+
+.box2:hover {
+  animation-play-state: running;
+  border: 5px solid rgba(0, 0, 0, 0);
+  box-shadow: 0 0 10rem rgb(0, 255, 0);
+  color: limegreen;
+  text-shadow: 0 0 20px lightgreen;
 }
 
 .img-cont {
@@ -69,8 +95,19 @@ html, body {
 .text-cont {
   width: 100%;
 }
+.text-cont h1 {
+  font-size: 1rem;
+  padding-inline-start: 1rem;
+  line-height: 20px;
+  text-transform: capitalize;
+}
+.text-cont p {
+  padding-inline-start: 1rem;
+  font-size: 0.8rem;
+}
 
 .icon-cont {
+  margin-top: 1rem;
   width: 100%;
   display: flex;
   align-items: center;

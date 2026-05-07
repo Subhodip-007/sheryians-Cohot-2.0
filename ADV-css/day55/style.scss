@@ -1,0 +1,53 @@
+// anchor property
+// three box
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,body{
+    height: 100%;
+    width: 100%;
+    background-color: black;
+        display: flex;
+    align-items: center;
+    justify-content: center;
+    // gap: 1rem;
+}
+.box{
+    height: 100px;
+    width: 100px;
+
+
+}
+    .one{
+        background-color: antiquewhite;
+                 // now this is a target element
+    }
+        .two{
+        background-color: rgb(134, 105, 0);
+    }
+        .three{
+        background-color: rgb(255, 145, 0);
+    }
+    .box:hover{
+        anchor-name: --anchor1;  
+    }
+    .anchor{           // positioned element
+        background-color: rgba(181, 181, 181, 0.678);
+        border-radius: 1rem;
+        position: absolute;
+        position-anchor: --anchor1;
+        left: anchor(left);
+        top:anchor(top);
+        height: 50px;
+        width: 60px;
+        transition: all 0.3s linear;
+        mix-blend-mode: difference;
+    }
+    // target element 
+    //according to target element we will keep positioned element
+    //now according to property of .box we can positon .anchor
+    // positioned element
+
+    

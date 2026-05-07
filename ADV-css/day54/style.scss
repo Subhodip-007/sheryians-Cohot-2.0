@@ -22,6 +22,7 @@ html,body{
     height: 100%;
     width: 100%;
     background-color: #000000;
+    font-family: monospace;
 
 }
 #main{
@@ -41,20 +42,44 @@ html,body{
     background-color: var(--bgc);
     animation: aniBgcolo 3s infinite alternate;
 }
-
+@property --rotate{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+@keyframes animateRotate{
+    from{
+        --rotate:0deg;
+    }
+    to{
+        --rotate:360deg;
+    }
+}
 .box2{
     height: 400px;
     width: 300px;
-    border: 1px solid white;
     border-radius: 1rem;
-    padding: 1rem;
- background:
-        linear-gradient(black) padding-box,
-        conic-gradient(from var(--rotate), black, rgb(255, 0, 123), black) border-box;
-    border: 5px solid rgba(255, 255, 255, 0);
-    
-    
+    padding-inline: 1rem;
+    padding-top:1rem ;
+    color: whitesmoke;
+
+
+    background: linear-gradient(black)padding-box,conic-gradient( from var(--rotate), black,rgb(0, 255, 0),black)border-box;
+    animation:animateRotate 1s infinite;
+    // animation-iteration-count: infinite;
+    animation-timing-function: linear; // easeing
+    animation-play-state: paused; // running
+    transition: all 0.3s linear;
+
+
 }
+    .box2:hover{
+        animation-play-state: running;
+            border: 5px solid rgba(0, 0, 0, 0);
+                box-shadow: 0 0 10rem rgb(0, 255, 0) ;
+                color: limegreen;
+                text-shadow: 0 0 20px lightgreen;
+    }
 .img-cont{
     height: 60%;
     width: 100%;
@@ -68,8 +93,21 @@ html,body{
 }
 .text-cont{
     width: 100%;
+    h1{
+        font-size: 1rem;
+         padding-inline-start:1rem;
+         line-height: 20px;
+         text-transform: capitalize;
+
+    }
+    p{
+        padding-inline-start:1rem;
+        font-size: .8rem;
+    }
+
 }
 .icon-cont{
+    margin-top: 1rem;
     width: 100%;
     display: flex;
     align-items: center;
@@ -79,3 +117,22 @@ i{
     color: antiquewhite;
     font-size: 1.2rem;
 }
+// limitations 
+// keyframe cant animate bg properties !!
+// sop with custom property me can
+// evere div of element have four things 
+//   ╔══════════════════════════════════════════════════════════════════════════════╗
+//   ║            [margin]    [margin]      [margin]      [margin]     [margin] 
+
+//                [margin]    [padding]     [padding]    [padding]    [margin]
+
+//                [margin]    [padding]     [content]     [padding]    [margin]
+
+//                [margin]    [padding]     [padding]     [padding]    [margin]
+
+//                [margin]    [margin]      [margin]       [margin]    [margin]                                   ║
+//   ╚══════════════════════════════════════════════════════════════════════════════╝
+
+
+
+               

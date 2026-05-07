@@ -931,7 +931,7 @@ else {
 // 11. Allow only 3 attempts to enter correct password
 // If user gets it right early, stop. If not → “Account locked”
 let savespassWord="shub@2005";
-let limit=0
+let limi=0
 while(limit<3){
 let i_p=prompt("enter your password")
 if(i_p==null){
@@ -939,7 +939,7 @@ if(i_p==null){
     continue;
 }else{
     if(i_p.trim()!==savespassWord || i_p.trim()=="" ){
-        limit++;
+        limi++;
         console.error(`your password is incorrect & you have more ${3-limit}
              left to enter correct password`);
         
@@ -949,7 +949,7 @@ if(i_p==null){
     }
 
 }
-if(limit==3){
+if(limi==3){
      console.log("locked") 
 }
 
@@ -995,14 +995,14 @@ for(let i=1;i<=50;i++){
 
 // 14. Sum of all odd numbers from 1 to 30
 // Add only odd numbers. Print final sum.
-let sum=0; 
+let sum1=0; 
 for(let i=0;i<31;i++){
     if(i%2!==0){
     console.log(`the number is ${i}`)
-        sum+=i;
+        sum1+=i;
     }
 }
-console.log(sum)
+console.log(sum1)
 
 
 // 15. Keep asking number until user enters an even number
@@ -1207,7 +1207,7 @@ def("shub",29)// as level is not passed so it will be default
 //(1,,3,4) 
 
 //  sperad argument
-let arr1=[1,2,3,4] // if you want to sent all elem
+let arr5=[1,2,3,4] // if you want to sent all elem
 // spread( arr[0],arr[1]) // wrong
 function abcd(a,b,c,d){
 
@@ -1229,7 +1229,7 @@ function nest(){
 nest();  // when nest is call nest call nest2 -> nest2 runs and console
 
 // scope chain...
-let glob=1; // can be used in whole code // global scope
+let globe=1; // can be used in whole code // global scope
 function chain(){
     let infnc=2; //  can be used in whole function even inside innerchain()
  function innnerchain(){
@@ -1329,8 +1329,8 @@ let arrfilter=arr.filter((val)=>{
 //map                 // questions
 // reduce
  //spread
- let arr=[1,2,3,4];
- let spreadarr=[...arr];// a copy of arr to spreadarr that will have no effech if val changed
+ let arr6=[1,2,3,4];
+ let spreadarr=[...arr6];// a copy of arr to spreadarr that will have no effech if val changed
 
 // slice
 // reverse
@@ -1347,7 +1347,7 @@ let arrfilter=arr.filter((val)=>{
  //  what are objects in js
  {}// obj
  //  way to create object
- let obj={
+ let obj1={
     //key - value pair!
     name:"shub",
     age:23,
@@ -1356,10 +1356,10 @@ let arrfilter=arr.filter((val)=>{
  let obj2=new Object();
 // creation obj accesing properties,deleting poroperty and Nesteed obj
 // accessing
-obj.name;
-obj['name'];
+obj1.name;
+obj1['name'];
 // delete
-delete obj.name;
+delete obj1.name;
 
 // nested object
 let nestobj={
@@ -1425,22 +1425,22 @@ let sum=0;
     }
    let oute=outer()
 // 7. Create an array of 5 fruits. Add one at the end and remove one from the beginning.
-let fruits=["apple","banana","mango","orange","liche"];
-fruits.push("cherry");
-fruits.shift();
+let fruits1=["apple","banana","mango","orange","liche"];
+fruits1.push("cherry");
+fruits1.shift();
 // 8. Use a `for` loop to print all elements of an array.
     let fruits=["apple","banana","mango","orange","liche"];
     for(let i=0;i<fruits.length;i++){
         console.log(fruits[i]);
     }
 // 9. Create an object `person` with keys `name`, `age`, and `city`, and print each key’s value.
-let userobj={
+let userobj1={
     name:"shub",
     age: 12,
     city :"kolkata",
 }
-for (let key in userobj) {
-  console.log(key,userobj[key])
+for (let key in userobj1) {
+  console.log(key,userobj1[key])
     
 }
 
@@ -1491,7 +1491,7 @@ function objdestructure({ name, age } = obj) {
      console.log(this)
  }
  // in method
- let userobj={
+ let userobj3={
     name:"shub",
     age: 12,
     city :"kolkata",
@@ -1530,7 +1530,7 @@ nestedthismethod(); // conflict and rebinds to window
  })
 
 // 6. Use `filter()` to get only even numbers from an array.
- let maparr1=[1,2,3,4,5,6,7,8,9,10];
+ let maparr2=[1,2,3,4,5,6,7,8,9,10];
 
  arr.filter(function(val){
     return val%2==0;
