@@ -467,13 +467,13 @@
 // let lent=names.some(function(name){
 //     return name.length > 3;
 // })
-class LaptopMaker{
-    constructor(name,price,color){         // when constructor runs 
-        this.name=name;
-        this.price=price;
-        this.color=color
-    }
-}
-let laptop1=new LaptopMaker("HP","60,000rs","blue");  
-            // new-> blank obj run class()->constructor() will automatically run inside constructor value of this that blank obj
+// class LaptopMaker{
+//     constructor(name,price,color){         // when constructor runs 
+//         this.name=name;
+//         this.price=price;
+//         this.color=color
+//     }
+// }
+// let laptop1=new LaptopMaker("HP","60,000rs","blue");  
+//             // new-> blank obj run class()->constructor() will automatically run inside constructor value of this that blank obj
 
