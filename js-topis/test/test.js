@@ -11,6 +11,8 @@
   // practice
   // HOF
 
+
+
 // // operation functions
 // const add = (a, b) => a + b;
 // const multiply = (a, b) => a * b;
@@ -476,4 +478,54 @@
 // }
 // let laptop1=new LaptopMaker("HP","60,000rs","blue");  
 //             // new-> blank obj run class()->constructor() will automatically run inside constructor value of this that blank obj
+
+// let name1=new classname;
+// let classname=class{//.... 
+//     }
+// class Honda{
+//     constructor(){
+//          this.wheels=4;
+//          this.doors=5;
+//          this.companyname="honda";
+//          this.horn=true;
+//     }
+
+//    }
+//    class civic extends Honda{
+//     constructor(mondel_year,color){
+//         super();
+//         this.mondel_year=mondel_year;
+//         this.color=color;
+//     }
+//    }
+//    let civic1=new civic();
+//    class LockBalance{
+//     constructor(){
+//         this._pin=null;
+//     }
+//     set setPin(val){
+//         if(val==null){
+//             return "pin current value in void please set a pin value";
+//         }
+//         this._pin=val;
+//     }
+//     get fetchPin(){
+//         return this._pin;
+//     }
+//    }
+//    let makepin= new LockBalance();
+// let userObj={
+//     name:"shub",
+//     email:"shub@example.com",
+//     print:function(){
+//         return"user logged in"
+//     }
+// }
+//  function democall(){
+//     console.log("hey")          //created outside
+//   }
+//   function takingafunc(fn){
+//     fn();
+//   }
+//   takingafunc(democall)
 
