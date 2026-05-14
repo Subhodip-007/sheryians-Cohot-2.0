@@ -1,15 +1,15 @@
 // pahale ye dekho ke mouse rectangle kay andar aaya ke nahi 
 // now calc ke mouse center se left pe hai ke right pe
- //255       //red         0      //blue             255
- //Range(0-255)
- //  select your center on cont 
- //dqs
- //addEventListeneron rec/cont/center(moucemove = console.log)
- // now weneed to find where is our mouse
- // find the end point of rec/cont both side by x and y
- // rect. getboundingclientrect()= inof of position of obj
-  // practice
-  // HOF
+//255       //red         0      //blue             255
+//Range(0-255)
+//  select your center on cont 
+//dqs
+//addEventListeneron rec/cont/center(moucemove = console.log)
+// now weneed to find where is our mouse
+// find the end point of rec/cont both side by x and y
+// rect. getboundingclientrect()= inof of position of obj
+// practice
+// HOF
 
 
 
@@ -23,19 +23,19 @@
 // }
 // console.log(applyOperation(2, 3, add));      // 5
 // console.log(applyOperation(2, 3, multiply));
-    
 
-  
-    // closer counter 
-    // function counter(){
-    //   let count=0;
-    //   return function(){
-    //     return ++count;
-    //   }
-    // }
-    // let count=counter();
 
-    
+
+// closer counter 
+// function counter(){
+//   let count=0;
+//   return function(){
+//     return ++count;
+//   }
+// }
+// let count=counter();
+
+
 // // Q3. First-Class Functions
 
 // Store a function inside an array and:
@@ -47,7 +47,7 @@
 // }
 
 //   let arr=[1,say,4]
- 
+
 //   function FCfuc(name){
 //     return `${say()},${name}`
 //   }
@@ -235,21 +235,21 @@
 // compose(...functions)
 // returns a function
 // executes from right → left
-    // let countrec = (n)=>{
-    //     if(n===5){
-    //         return;
-    //     }
-    //     console.log(n);
-    //     countrec(n+1);
-    // }
-    // countrec(0)
+// let countrec = (n)=>{
+//     if(n===5){
+//         return;
+//     }
+//     console.log(n);
+//     countrec(n+1);
+// }
+// countrec(0)
 //     function printRightTriangle(n) {
 //     for(let i=0;i<n;i++){
 //         for(let j=0;j<=n-i;j++){
 //             process.stdout.write("  ");
 //         }
 //         for(let j=0;j<=i;j++){
-                     
+
 //             process.stdout.write(" *");
 
 //         }
@@ -265,7 +265,7 @@
 
 // function execute(fn,...arg){
 //     fn(...arg)
-        
+
 // }
 // execute(passedfnc,1,2,3,4,5);
 // HOF
@@ -284,7 +284,7 @@
 // function repeat(n,action){
 //     for(let i=0; i <= n; i++){
 //         console.log(action(),`: ${i}`)
-        
+
 //     }
 // }
 // IIFE
@@ -312,7 +312,7 @@
 // }
 // let out=outer();
 // out()
- 
+
 // function createCounter(){
 //     let count=0;
 //     return{
@@ -369,8 +369,8 @@
 //             return" reset name !";
 //           }
 
-            
-          
+
+
 //  }
 // })();
 
@@ -528,4 +528,170 @@
 //     fn();
 //   }
 //   takingafunc(democall)
+// let newMaxnumberobj={
+//     title:"maxnumberfinder",
+//     numbers:[],
+//     find:function(){
+//         let max=0;
+//         this.numbers.forEach(element => {
+//             max=Math.max(max,element);
+//         });
+//         return max;
+//     }
+// }
+// let newaddobj={
+//     title:"i am form obj2",
+//      numbers: [10, 25, 7, 99, 3]
+// }
+
+// console.log(newMaxnumberobj.find.apply(newaddobj));
+let laptop = {
+    brand: "HP", price: 60000, loptopStart: function () {
+        console.log("started");
+    },
+    incPrice: function () {
+        this.price * 10 / 100;
+        let finalPrice = this.price + this.price * 10 / 100;
+        return finalPrice;
+    }
+
+}
+// class Employee{
+//     constructor(name,salary){
+//         this.name=name;
+//         this.salary=salary;
+//     }// Add a method showDetails that prints name and salary.
+//     showDetails(){
+//         console.log(this.name,this.salary)
+//     }
+// }
+// let emp1=new Employee("shub",200000);
+// let emp2=new Employee("raghay",240000);
+// let emp3=new Employee("tushar",100000);
+// function fn(fn1) {
+//     fn1(function (fn3) {
+//         fn3(function (fn4) {
+//             fn4(function (fn5) {
+//                 fn5()
+//             })
+//         })
+//     })
+// }
+// fn(function (fn2) {
+//     fn2(function (fn3) {
+//         fn3(function (fn5) {
+//             fn5(function () {
+//                 console.log('helo')
+//             })
+//         })
+//     })
+// })
+
+////////////////////////////////////////////////////////
+function kuchderbaadchaluga(fnc) {
+    setTimeout(fnc, Math.floor(Math.random() * 10) * 10000)
+}
+
+
+kuchderbaadchaluga(function () { // this function is callback 
+    console.log("hello")
+})
+// ek function ko agar ek function bhej detay ho to uss function ko callback boltay hai
+//  at first there was no promises/async/await didnt exist so we need to do it in callback inside callbacks 
+//for example 
+// accepts a username    // and run the function cb
+function profileLakerAao(username, cb) {
+    console.log(`profile fetching of ${username}.....`)
+    setTimeout(() => {
+        cb({ username: "harsh", age: 21, id: "e3nai83" });        // now this function is somewhere in library 
+    }, 2000)
+
+}
+function sarepostlakeraao(id, cb) {
+    console.log("fetching posts.......")
+    setTimeout(() => {
+        cb([{ _id: id }, { post1: "hui" }, { post2: "burblr" }, { savedposts: [{ post5: '1LKM' }] }])
+    }, 3000);
+}
+function savedpostlakaraao(id, cb) {
+    console.log("fetching posts.......")
+    setTimeout(() => {
+        cb([{ _id: id }, { savedposts: [{ post5: '1LKM' }] }])
+    }, 4000);
+}
+
+/// we actually write this code to get something
+profileLakerAao("shub", function (profiledata) {
+    console.log(profiledata);
+    sarepostlakeraao(profiledata.id, function (posts) {
+        console.log(posts)
+    })
+    savedpostlakaraao(profiledata.id, function (saved) {
+        console.log(saved)
+    })
+
+})
+//now we will see what is promises how can it improve the callbackhell
+// promises 
+//  ek promise do state pe chalta hai ya to resolve hoga ya tou reject hame dona ka code likhna padhta hai
+
+
+let pr = new Promise(function (res, rej) {   //  pr have three states pendind || fullfilled with res/rej || rejected 
+    setTimeout(() => {
+        let rn = Math.floor(Math.random() * 10);
+        if (rn > 5) {
+            res(`success 5<${rn}`)
+
+        } else {
+            rej(`error`)
+        }     // 3sec tk it will stat in pending state 
+    }, 3000);
+})
+
+// future when it will run 
+// if resolve res
+// pr
+// .then(function(val){
+//  console.log(val)
+// })
+// //  if reject 
+// .catch(function(val){
+// console.log(val)
+
+// })   /// now async/await saves you from this .then .catch more cleaner way to handle
+async function handlethenCatch() {
+    // andar ke code ko try and catch mai rakho
+    try {
+        let wait = await pr;
+        console.log(wait)
+    } catch (err) {
+        console.log(err)
+
+    }
+
+
+}
+handlethenCatch()
+
+// fetch API  HTTP
+// random user api... https://randomuser.me/api/ 
+//  in this url info is in JSON format 
+// {"name":"shub"}
+//  fetch
+fetch("https://randomuser.me/api/?results=500")
+// .then(function(data){
+//     console.log(data); // this data i rawdata readable stream 
+//     return data.json();
+// })
+.then((data)=> data.json()) //inplesit way 
+// .then((actdata)=>{
+//     console.log(actdata)
+//     console.log(actdata.results[0])
+// })
+.then((actdata)=>console.log(actdata.results))
+.catch(function(err){
+     console.log(err);
+})
+   
+
 

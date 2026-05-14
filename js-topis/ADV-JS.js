@@ -203,7 +203,7 @@ class Honda{
 
 
  
-   // SECTION 1: Objects and OOPS Thinking (Foundation)
+// SECTION 1: Objects and OOPS Thinking (Foundation)
 // 	1.	Create a user object that stores name and email and has a login method which prints “User logged in”.
 let userObj={
     name:"shub",
@@ -227,7 +227,7 @@ users.set("user2", {
   online: false
 });
 
-console.log(users.get("user1"));
+// console.log(users.get("user1"));
 //
 const userss = {
   user1: {
@@ -246,10 +246,86 @@ const userss = {
   }
 };
 
-console.log(users.user1);
-console.log(users["user2"]);
+// console.log(users.user1);
+// console.log(users["user2"]);
+class usersss{
+    constructor(name,email,age,gender){
+        this.name=name;
+        this.email=email;
+        this.age=age;
+        this.gender=gender;
+    }
+    print(){
+       console.log( {name:this.name,
+        email:this.email,
+        age:this.age,
+        gender:this.gender});
+    }
+}
+let userA=new usersss("shub","email@example.com",21,"male");
+let userB=new usersss("bipasha","email@example.com",21,"female");
+let userC=new usersss("snax","email@example.com",21,"NOT-KNOWN");
+let userD=new usersss("knox","email@example.com",21,"male");
+let userE=new usersss("rexy","rexy@example.com",21,"male");
 
 // 	3.	Create a product object that stores name and price and has a method which returns the final price after discount.
+// class Products{
+//   constructor(name,price){
+//     this.name=name;
+//     this.price=price;
+//     this.discount_per=null;
+//     this.finalPrice=price;
+
+//   }
+//   discount(discount){
+//     this.discount_per=discount;
+//     let discountAmount = (this.price*discount) / 100;
+//     this.finalPrice = this.price - discountAmount;
+//     return this;
+//   }
+// }
+// let productA=new Products("shub",9000);
+let products = {
+  product1: {
+    name: "laptop",
+    price: 9000,
+    discount_per: null,
+    finalPrice: 9000,
+    discount: function(val) {
+      let finalamt = this.price - (this.price * val / 100);
+      this.finalPrice=finalamt;
+      this.discount_per=val;
+    }
+  },
+
+  product2: {
+    name: "radio",
+    price: 10000,
+    discount: function(val) {
+      let finalamt = this.price - (this.price * val / 100);
+      this.finalPrice=finalamt;
+    }
+  }
+};
+
+
+// let text = "Loading";
+// let dots = "";
+
+// setInterval(() => {
+
+//     if (dots === "...") {
+//         dots = "";
+//     } else {
+//         dots += ".";
+//     }
+
+//     console.log(text + dots);
+
+// }, 500);
+
+
+
 
 // The goal of this section is to understand why keeping data and behavior together makes code easier to manage.
 
@@ -259,21 +335,63 @@ console.log(users["user2"]);
 // 	4.	Create a Car class with the following:
 // brand
 // speed
+   class car{
+    constructor(brand,speed){
+      this.brand=brand;
+      this.speed=speed;
+    }
+    drive(){
+      return {brand:this.brand,speed:this.speed,name:this.name="shub"}
+    }
+
+   }
+   
+// a drive method that prints the car brand and speed
 // a drive method that prints the car brand and speed
 // 	5.	Create two different car objects from the same class and verify that their data is different.
+let car1=new car("honda","200kmph");
+let car2=new car("BMW","250kmph");
 // 	6.	Answer this in your own words:
 // If classes did not exist, how would you write this logic and what problems might occur when the project becomes large?
+
 
 // ⸻
 
 // SECTION 3: Constructor and this keyword
 // 	7.	Create a Student class whose constructor accepts name and roll number.
 // Add a method introduce that prints both values.
+class Student{
+  constructor(name,roll){
+    this.name=name;
+    this.roll=this.roll;
+
+  }
+  introduce(){
+    return{name:this.name,roll_no:this.roll}
+  }
+}
+let Student1=new Student();
+console.log()
 // 	8.	Inside the constructor, set values using this.
 // Then try removing this and notice what error occurs and why.
+class tRy{
+  constructor(name,age){
+    name=name;
+    this.age=age;
+  }
+}
+let try1=new tRy("shub",12)
 // 	9.	Create an object with two methods:
 // One method using a normal function
 // One method using an arrow function
+let objmethod={
+ printThisFnc:function(){
+  return this;
+ },
+  printThisarrowFnc:()=>{
+  return this;
+ }
+}
 
 // Inside both, print this and observe the difference.
 
@@ -283,24 +401,120 @@ console.log(users["user2"]);
 
 // SECTION 4: Constructor Functions and Prototypes
 // 	10.	Create a User constructor function (do not use class syntax).
+// before es6 (classed was introduced) there was a concept called constructor function 
+// when we have contructor function what is the need of class class is more effective
+function userFnc(name){
+  this.name=name;
+ this.login=function(){
+  return"loggined";
+ }
+}
+
+let fun=new userFnc();
+let fun1=new userFnc(); 
 // 	11.	Add a login method in two ways:
 // First, inside the constructor
 // Then, move the method to the prototype
+userFnc.prototype.logout=function(){
+  return "logout"
+}
 // 	12.	Create two User objects and compare their login methods using equality.
 // Explain why the result is true or false.
-
+ //fun.login==fun1.login  false
+ //fun.logout==fun1.logout  true because of prototype
 // The purpose here is to understand how prototypes help share behavior efficiently.
 
 // ⸻
 
 // SECTION 5: call, apply, bind
 // 	13.	Create a function that prints this.name.
+    function printThis(...args){
+     console.log( this.name,...args)
+     console.log();
+    }
+    let callobj={
+      name:"shub"
+    }
+  printThis.call(callobj);
+   printThis.apply(callobj, [1,2,3,4,5]);
+   let newBindfun=printThis.bind(callobj,1,2,3,4);
 // 	14.	Create an object that contains a name property.
-
 // Use call to run the function using the object
 // Use apply to run the function using the object
 // Use bind to create a new function and then call it
+let newobj={
+  name:"subhodip",
+  age:12,
+  gender:"male"
+}
+
+function objcallprint(...arg){
+console.log(this.name,this.age,...arg);
+}
+objcallprint.call(newobj);
+objcallprint.apply(newobj,[{id:1,role:"cloud"},{id:2,role:"dcx"}]);
+let newbindobjfun=objcallprint.bind(newobj,1,2,3,4,4,5);
+
 // 	15.	Borrow a method from one object and run it for another object using call.
+let newobj1={
+  name:"shub",
+  say:function(sec){
+    console.log(`heool ${this.name} in am form `+sec);
+  }
+
+};
+let newobj2={
+  name:"shub2"
+};
+newobj1.say.call(newobj2,"cse6");
+// Create two objects and borrow a method using call() to print another object's data.
+let exampleNewobj1={
+  name:"shub",
+  say:function(){
+    console.log(`i am ${this.name} `)
+  }
+}
+let exampleNewobj2={
+  name:"bipasha"
+}
+exampleNewobj1.say.call(exampleNewobj2);
+
+// Use apply() to pass an array of numbers to a function that finds the maximum number.
+let newMaxnumberobj={
+    title:"maxnumberfinder",
+    numbers:[],
+    find:function(){
+        let max=0;
+        this.numbers.forEach(element => {
+            max=Math.max(max,element);
+        });
+        return max;
+    }
+}
+let newaddobj={
+    title:"i am form obj2",
+     numbers: [10, 25, 7, 99, 3]
+}
+
+console.log(newMaxnumberobj.find.apply(newaddobj));
+// Create a function introduce() and use bind() to permanently bind it to another object.
+// Borrow a method from one student object and use it for a teacher object using call().
+// Create a calculator object and use apply() to add numbers from an array.
+// Use bind() to create a new function that always prints a fixed user's name.
+// Create two car objects and borrow a start() method using call().
+// Use call() to invoke a function with different employee objects.
+// Create a function that prints full details (name, age, city) and invoke it using apply().
+// Create a method in one object and execute it for three different objects using call().
+// Use bind() inside setTimeout() to preserve this.
+// Create a game player object and borrow its method for another player using call().
+// Use apply() to multiply numbers stored inside an array.
+// Create a reusable greeting function and attach different users using bind().
+// Compare call(), apply(), and bind() with one example each.
+// Create an object method and use call() to change the this reference dynamically.
+// Use apply() with Math.max() and Math.min().
+// Create a banking object and borrow its checkBalance() method for another account.
+// Use bind() to delay execution of a function while keeping correct this.
+// Create a method in one mobile object and use it for another mobile object using call().
 
 // The goal is to understand how this can be manually controlled.
 
@@ -308,9 +522,46 @@ console.log(users["user2"]);
 ///////////////////
 // SECTION 1: OOPS Thinking with Objects
 // 	1.	Create an object called laptop that contains brand, price, and a start method that prints “Laptop started”.
-// 	2.	Add one more method to the same object that increases the price by 10 percent.
+let laptop={
+    brand:"HP", price:60000,loptopStart:function(){
+        console.log("started");
+    },
+    // 	2.	Add one more method to the same object that increases the price by 10 percent.
+    incPrice:function(){
+        this.price*10/100;
+        let finalPrice=this.price+this.price*10/100;
+        return finalPrice;
+    }
+        
+}
+
 // 	3.	Now imagine you need 10 laptops with same structure but different data.
 // Write down (in words or code) what problems you will face if you keep using plain objects.
+// i have to create a individual object for every individual product or laptop
+let laptop2={
+    brand:"HPvictus", price:50000,loptopStart:function(){
+        console.log("started");
+    },
+    // 	2.	Add one more method to the same object that increases the price by 10 percent.
+    incPrice:function(){
+        this.price*10/100;
+        let finalPrice=this.price+this.price*10/100;
+        return finalPrice;
+    }
+        
+}
+let laptop3={
+    brand:"HPlogan", price:80000,loptopStart:function(){
+        console.log("started");
+    },
+    // 	2.	Add one more method to the same object that increases the price by 10 percent.
+    incPrice:function(){
+        this.price*10/100;
+        let finalPrice=this.price+this.price*10/100;
+        return finalPrice;
+    }
+        
+}
 
 // ⸻
 
@@ -318,16 +569,33 @@ console.log(users["user2"]);
 // 	4.	Create a class named Employee that stores:
 // name
 // salary
+class Employee{
+    constructor(name,salary){
+        this.name=name;
+        this.salary=salary;
+    }// Add a method showDetails that prints name and salary.
+    showDetails(){
+        console.log(this.name,this.salary)
+    }
+}
 
-// Add a method showDetails that prints name and salary.
 // 	5.	Create three employee objects from the same class and verify that modifying one employee does not affect the others.
+let emp1=new Employee("shub",200000);
+let emp2=new Employee("raghay",240000);
+let emp3=new Employee("tushar",100000);
+
+
 // 	6.	Explain in your own words:
 // Why is class considered a better option than writing similar objects again and again?
+// class make it easy to make objects or it works like a blueprint and make a new object with a new key and unique name 
 
 // ⸻
 
 // SECTION 3: Constructor and Initialization
 // 	7.	Create a class named BankAccount.
+class BankAccount{
+
+}
 // Its constructor should accept accountHolderName and balance.
 // 	8.	Inside the constructor, store both values using this.
 // 	9.	Add a method deposit(amount) that increases the balance.
@@ -376,6 +644,17 @@ console.log(users["user2"]);
 // 	30.	Explain why bind is useful when functions are executed later or inside callbacks.
 
 // day 59
+// told to study video
+//////////////////////////
+// 03:08:05 – 03:49:54 • Callbacks, Promises & Async/Await
+// callback
+//  ek aaise f
+function kuchderbaadchaluga(val){
+    setTimeout(()=>{
+        console.log(val)
+    },1000)
+}
+/////////////////////////
 // async js 
 // js is single threaded  one work at a time
 // syncronus approch first work done the other work
@@ -422,8 +701,153 @@ console.log(users["user2"]);
   takingafunc(function(fn1){      // here is what 
     fn1()
   })
-
+  // callback hell 
+  function fn(fn1) {
+    fn1(function (fn3) {
+        fn3(function (fn4) {
+            fn4(function (fn5) {
+                fn5()
+            })
+        })
+    })
+}
+fn(function (fn2) {
+    fn2(function (fn3) {
+        fn3(function (fn5) {
+            fn5(function () {
+                console.log('helo')
+            })
+        })
+    })
+})
   // to practice callback we bring data from situation _github repo data laao 
   //getuserdets("username"callback)
   //getallrepo("userid",callback)
   //getrepodets(repo[0],callback)
+
+
+//   Level 1 — Core Callback Basics (no tricks, just clarity)
+
+// Start here. If anything feels shaky, don’t move on.
+
+// What is a callback function?
+// → Write a function that takes another function and executes it.
+// Create a function greet(name, callback)
+// → It should print the name, then call the callback.
+// Pass different callbacks:
+// one that says "Good morning"
+// one that says "Good evening"
+
+// Write your own version of forEach:
+
+// myForEach(arr, callback)
+
+// Why is this a callback?
+
+// setTimeout(() => console.log("Hello"), 1000);
+
+// 👉 If you can’t explain why, you don’t fully get callbacks yet.
+
+// Level 2 — Real Usage (Async Thinking Starts Here)
+
+// Now introduce delay + unpredictability.
+
+// Simulate an API call:
+
+// function fetchData(callback) {
+//     setTimeout(() => {
+//         callback("data received");
+//     }, 1000);
+// }
+
+// → Print the data using the callback.
+
+// Add error handling:
+
+// callback(error, data)
+
+// → Practice Node.js style callbacks.
+
+// Write:
+
+// function login(user, callback)
+// function getProfile(callback)
+// function showDashboard()
+
+// → Chain them using callbacks
+
+// Level 3 — Callback Hell (feel the pain)
+
+// Now intentionally make messy code.
+
+// Rewrite this using only callbacks:
+// Login
+// Fetch user data
+// Fetch posts
+// Fetch comments
+
+// 👉 All nested.
+
+// You should end up with something like:
+
+// login(user, function() {
+//     getData(function() {
+//         getPosts(function() {
+//             getComments(function() {
+//                 console.log("done");
+//             });
+//         });
+//     });
+// });
+// Add error handling in each level 😈
+// → This is where things become ugly fast.
+// Level 4 — Understand the Problem Deeply
+
+// Don’t skip this thinking step.
+
+// Answer these:
+
+// Why is callback hell bad?
+// Is it just about indentation? Or something deeper?
+// What happens when debugging?
+// What about reusability?
+
+// If your answer is only “it looks messy,” you're missing the real issue.
+
+// Level 5 — Fixing Callback Hell
+
+// Now evolve.
+
+// Convert your callback hell code into:
+// named functions
+// cleaner structure
+// Then convert it into Promises
+// Then convert it into async/await
+// Level 6 — Advanced Callback Thinking
+
+// This is where most learners stop—but this is where mastery begins.
+
+// Write a function that:
+// takes a callback
+// calls it multiple times (like events)
+// Create your own:
+// function eventListener(callback)
+// What’s the difference between:
+// synchronous callback
+// asynchronous callback
+// Trick question:
+// console.log("Start");
+
+// setTimeout(() => console.log("Callback"), 0);
+
+// console.log("End");
+
+// 👉 Explain the output properly (not just guess it).
+
+// Level 7 — Interview-Level Understanding
+// What is inversion of control in callbacks?
+// What are the risks of callbacks?
+// trust issues
+// multiple calls
+// never called
+// How do Promises fix these?
