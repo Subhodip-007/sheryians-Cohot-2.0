@@ -679,19 +679,191 @@ handlethenCatch()
 // {"name":"shub"}
 //  fetch
 fetch("https://randomuser.me/api/?results=500")
-// .then(function(data){
-//     console.log(data); // this data i rawdata readable stream 
-//     return data.json();
-// })
-.then((data)=> data.json()) //inplesit way 
-// .then((actdata)=>{
-//     console.log(actdata)
-//     console.log(actdata.results[0])
-// })
-.then((actdata)=>console.log(actdata.results))
-.catch(function(err){
-     console.log(err);
-})
-   
+    // .then(function(data){
+    //     console.log(data); // this data i rawdata readable stream 
+    //     return data.json();
+    // })
+    .then((data) => data.json()) //inplesit way 
+    // .then((actdata)=>{
+    //     console.log(actdata)
+    //     console.log(actdata.results[0])
+    // })
+    .then((actdata) => console.log(actdata.results))
+    .catch(function (err) {
+        console.log(err);
+    })
 
+function instagramPrrJaooDataLakarao(username, cb) {
+    setTimeout(() => {
+        cb({ id: "1f38i", name: username, age: 12, posts: 12 })
+    }, 1000);
+}
+function jaooWapasUssIdKaPostLakeraaoo(id, cb) {
+    setTimeout(() => {// data takes time to come so to mimic we set a timeout 
+        //logic in backend // data taking some time to come
+        // run cb and pass the data u wanted in it 
+        cb({ _id: id, posts: [{ posts1: "url" }, { posts2: "url" }] }) // data passed
+    }, 6000);
+}
+//  our main focus on this 
+instagramPrrJaooDataLakarao("shub", function (getdata) {
+    console.log(getdata)
+    jaooWapasUssIdKaPostLakeraaoo(getdata.id, function (getposts) {  // data came here
+        console.log(getposts);
+    })
+})
+
+// # Day 60 — Exercises
+
+// ---
+
+// ## Exercise 1 — Very Easy (Warming up)
+
+// **Task (Hindi):** Ek function banao `afterDelay`
+
+// **Requirements:**
+// - Ye function do cheezein lega:
+//   1. `time` (milliseconds)
+//   2. `callback` function
+// - Given `time` ke baad `callback` call kare
+// - Callback ke andar `"Callback executed"` print hona chahiye
+function afterDelay(time,cb){
+    setTimeout(() => {
+       cb("callback executed"); 
+    }, time);
+}
+afterDelay(8000,function(data){
+ console.log(data)
+})
+// **Use case:**
+// > “2 second baad ek kaam karna hai”
+
+// **Goal:**
+// - Samajhna ki callback delay ke baad kaise execute hota hai
+// - Ye `setTimeout` + callback connection hai
+
+// ---
+
+// ## Exercise 2 — Intermediate (Data flow)
+
+// **Task (Hindi):** Ek function banao `getUser`
+
+// **Requirements:**
+// - `getUser` `username` lega
+// - 1 second ke baad `callback` ko ek object de:
+//   - `id`
+//   - `username`
+
+// **Then:**
+// - Callback ke andar ek aur function call karo `getUserPosts`
+
+// **`getUserPosts` requirements:**
+// - `userId` lega
+// - 1 second ke baad `callback` ko `posts` ka array de
+
+// **Final output:**
+// - User ka `username` print ho
+// - Fir uske `posts` print ho
+function getUser(username,cb){
+    console.log(`fetching data.... of ${username}`);
+    setTimeout(() => {
+        cb({id:"69",name:"jhanduBam"})
+    }, 1000);
+}
+function getuserposts(id,cb){
+    setTimeout(() => {
+       cb({id:id,posts:[{post1:"img"}]}) 
+    }, 1000);
+}
+getUser("shub",function(rawdata){
+    console.log(rawdata);
+getuserposts(rawdata.id,function(posts){
+console.log(posts)
+
+})
+})
+
+
+// **Goal:**
+// - Samajhna ki ek async ka result next async ko kaise milta hai
+// - Callback chaining practice
+
+// ---
+
+// ## Exercise 3 — Intermediate (Callback dependency — thoda painful)
+
+// **Task (Hindi):** Teen functions banao:
+
+// 1. `loginUser`
+//    - 1 second baad callback ko `user` object de
+// 2. `fetchPermissions`
+//    - `userId` lega
+//    - 1 second baad callback ko `permissions` array de
+// 3. `loadDashboard`
+//    - `permissions` lega
+//    - 1 second baad callback ko `"Dashboard loaded"` bole
+
+// **Flow:**
+// - Pehle `loginUser`
+// - Uske andar `fetchPermissions`
+// - Uske andar `loadDashboard`
+// - Final output console mein print ho
+function loginUser(username,pin,cb){
+    setTimeout(() => {
+          if(username==="shub" && pin===1234){
+        cb("login successfull")
+    }  else{
+        return cb("incorrect username and password")
+        
+    }
+    }, 15000);
+
+}
+
+function fetchpermision(key,cb){
+   
+    setTimeout(() => {
+        if(key==="admin1"){
+             cb("permission granted")
+        }else{
+            cb("access denied")
+            return
+        }
+       
+    }, 17000);
+}
+function loadDashboard(cb){
+ setTimeout(() => {
+    cb(`╔══════════════════════════════════════════════════════════════════════════════╗
+║                          ● heool●                                   ║
+║                                                                              ║
+║                           • i am a developer •                                    ║
+╚══════════════════════════════════════════════════════════════════════════════╝`);
+ }, 19000);
+}
+loginUser("shub",1232,function(data){
+    console.log(data)
+    fetchpermision("admin1",function(perm){
+        console.log(perm);
+        loadDashboard(function(dashboard){
+            console.log(dashboard);
+        })
+    })
+
+})
+
+// **Goal:**
+// - Callback nesting ko feel karna
+// - Yehi structure baad mein callback hell banta hai
+
+// ---
+
+// ### Notes
+// - Practice in plain JavaScript using `setTimeout` and callbacks to understand the flow before converting to Promises/async–await.
+// Promises is JS
+// The states  of a promise is like a love letter
+
+// Pending → you're still waiting for a reply
+// Resolved (.then()) → your crush accepts it
+// Rejected (.catch()) → her mother catches it 😅
 
