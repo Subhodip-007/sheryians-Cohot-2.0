@@ -851,3 +851,348 @@ fn(function (fn2) {
 // multiple calls
 // never called
 // How do Promises fix these?
+function kuchderbaadchaluga(fnc) {
+
+    setTimeout(fnc, Math.floor(Math.random() * 10) * 10000)
+}
+
+
+kuchderbaadchaluga(function () { // this function is callback 
+    console.log("hello")
+})
+// ek function ko agar ek function bhej detay ho to uss function ko callback boltay hai
+//  at first there was no promises/async/await didnt exist so we need to do it in callback inside callbacks 
+//for example 
+// accepts a username    // and run the function cb
+function profileLakerAao(username, cb) {
+    console.log(`profile fetching of ${username}.....`)
+    setTimeout(() => {
+        cb({ username: "harsh", age: 21, id: "e3nai83" });        // now this function is somewhere in library 
+    }, 2000)
+
+}
+function sarepostlakeraao(id, cb) {
+    console.log("fetching posts.......")
+    setTimeout(() => {
+        cb([{ _id: id }, { post1: "hui" }, { post2: "burblr" }, { savedposts: [{ post5: '1LKM' }] }])
+    }, 3000);
+}
+function savedpostlakaraao(id, cb) {
+    console.log("fetching posts.......")
+    setTimeout(() => {
+        cb([{ _id: id }, { savedposts: [{ post5: '1LKM' }] }])
+    }, 4000);
+}
+
+/// we actually write this code to get something
+profileLakerAao("shub", function (profiledata) {
+    console.log(profiledata);
+    sarepostlakeraao(profiledata.id, function (posts) {
+        console.log(posts)
+    })
+    savedpostlakaraao(profiledata.id, function (saved) {
+        console.log(saved)
+    })
+
+})
+//now we will see what is promises how can it improve the callbackhell
+// promises 
+//  ek promise do state pe chalta hai ya to resolve hoga ya tou reject hame dona ka code likhna padhta hai
+
+
+let pr = new Promise(function (res, rej) {   //  pr have three states pendind || fullfilled with res/rej || rejected 
+    setTimeout(() => {
+        let rn = Math.floor(Math.random() * 10);
+        if (rn > 5) {
+            res(`success 5<${rn}`)
+
+        } else {
+            rej(`error`)
+        }     // 3sec tk it will stat in pending state 
+    }, 3000);
+})
+
+// future when it will run 
+// if resolve res
+// pr
+// .then(function(val){
+//  console.log(val)
+// })
+// //  if reject 
+// .catch(function(val){
+// console.log(val)
+
+// })   /// now async/await saves you from this .then .catch more cleaner way to handle
+async function handlethenCatch() {
+    // andar ke code ko try and catch mai rakho
+    try {
+        let wait = await pr;
+        console.log(wait)
+    } catch (err) {
+        console.log(err)
+
+    }
+
+
+}
+handlethenCatch()
+
+// fetch API  HTTP
+// random user api... https://randomuser.me/api/ 
+//  in this url info is in JSON format 
+// {"name":"shub"}
+//  fetch
+fetch("https://randomuser.me/api/?results=500")
+    // .then(function(data){
+    //     console.log(data); // this data i rawdata readable stream 
+    //     return data.json();
+    // })
+    .then((data) => data.json()) //inplesit way 
+    // .then((actdata)=>{
+    //     console.log(actdata)
+    //     console.log(actdata.results[0])
+    // })
+    .then((actdata) => console.log(actdata.results))
+    .catch(function (err) {
+        console.log(err);
+    })
+
+function instagramPrrJaooDataLakarao(username, cb) {
+    setTimeout(() => {
+        cb({ id: "1f38i", name: username, age: 12, posts: 12 })
+    }, 1000);
+}
+function jaooWapasUssIdKaPostLakeraaoo(id, cb) {
+    setTimeout(() => {// data takes time to come so to mimic we set a timeout 
+        //logic in backend // data taking some time to come
+        // run cb and pass the data u wanted in it 
+        cb({ _id: id, posts: [{ posts1: "url" }, { posts2: "url" }] }) // data passed
+    }, 6000);
+}
+//  our main focus on this 
+instagramPrrJaooDataLakarao("shub", function (getdata) {
+    console.log(getdata)
+    jaooWapasUssIdKaPostLakeraaoo(getdata.id, function (getposts) {  // data came here
+        console.log(getposts);
+    })
+})
+
+// # Day 60 — Exercises
+
+// ---
+
+// ## Exercise 1 — Very Easy (Warming up)
+
+// **Task (Hindi):** Ek function banao `afterDelay`
+
+// **Requirements:**
+// - Ye function do cheezein lega:
+//   1. `time` (milliseconds)
+//   2. `callback` function
+// - Given `time` ke baad `callback` call kare
+// - Callback ke andar `"Callback executed"` print hona chahiye
+function afterDelay(time,cb){
+    setTimeout(() => {
+       cb("callback executed"); 
+    }, time);
+}
+afterDelay(8000,function(data){
+ console.log(data)
+})
+// **Use case:**
+// > “2 second baad ek kaam karna hai”
+
+// **Goal:**
+// - Samajhna ki callback delay ke baad kaise execute hota hai
+// - Ye `setTimeout` + callback connection hai
+
+// ---
+
+// ## Exercise 2 — Intermediate (Data flow)
+
+// **Task (Hindi):** Ek function banao `getUser`
+
+// **Requirements:**
+// - `getUser` `username` lega
+// - 1 second ke baad `callback` ko ek object de:
+//   - `id`
+//   - `username`
+
+// **Then:**
+// - Callback ke andar ek aur function call karo `getUserPosts`
+
+// **`getUserPosts` requirements:**
+// - `userId` lega
+// - 1 second ke baad `callback` ko `posts` ka array de
+
+// **Final output:**
+// - User ka `username` print ho
+// - Fir uske `posts` print ho
+function getUser(username,cb){
+    console.log(`fetching data.... of ${username}`);
+    setTimeout(() => {
+        cb({id:"69",name:"jhanduBam"})
+    }, 1000);
+}
+function getuserposts(id,cb){
+    setTimeout(() => {
+       cb({id:id,posts:[{post1:"img"}]}) 
+    }, 1000);
+}
+getUser("shub",function(rawdata){
+    console.log(rawdata);
+getuserposts(rawdata.id,function(posts){
+console.log(posts)
+
+})
+})
+
+
+// **Goal:**
+// - Samajhna ki ek async ka result next async ko kaise milta hai
+// - Callback chaining practice
+
+// ---
+
+// ## Exercise 3 — Intermediate (Callback dependency — thoda painful)
+
+// **Task (Hindi):** Teen functions banao:
+
+// 1. `loginUser`
+//    - 1 second baad callback ko `user` object de
+// 2. `fetchPermissions`
+//    - `userId` lega
+//    - 1 second baad callback ko `permissions` array de
+// 3. `loadDashboard`
+//    - `permissions` lega
+//    - 1 second baad callback ko `"Dashboard loaded"` bole
+
+// **Flow:**
+// - Pehle `loginUser`
+// - Uske andar `fetchPermissions`
+// - Uske andar `loadDashboard`
+// - Final output console mein print ho
+function loginUser(username,pin,cb){
+    setTimeout(() => {
+          if(username==="shub" && pin===1234){
+        cb("login successfull")
+    }  else{
+        return cb("incorrect username and password")
+        
+    }
+    }, 15000);
+
+}
+
+function fetchpermision(key,cb){
+   
+    setTimeout(() => {
+        if(key==="admin1"){
+             cb("permission granted")
+        }else{
+            cb("access denied")
+            return
+        }
+       
+    }, 17000);
+}
+function loadDashboard(cb){
+ setTimeout(() => {
+    cb(`╔══════════════════════════════════════════════════════════════════════════════╗
+║                          ● heool●                                   ║
+║                                                                              ║
+║                           • i am a developer •                                    ║
+╚══════════════════════════════════════════════════════════════════════════════╝`);
+ }, 19000);
+}
+loginUser("shub",1232,function(data){
+    console.log(data)
+    fetchpermision("admin1",function(perm){
+        console.log(perm);
+        loadDashboard(function(dashboard){
+            console.log(dashboard);
+        })
+    })
+
+})
+
+// **Goal:**
+// - Callback nesting ko feel karna
+// - Yehi structure baad mein callback hell banta hai
+
+// ---
+
+// ### Notes
+// - Practice in plain JavaScript using `setTimeout` and callbacks to understand the flow before converting to Promises/async–await.
+// Promises is JS
+// The states  of a promise is like a love letter
+
+// Pending → you're still waiting for a reply
+// Resolved (.then()) → your crush accepts it
+// Rejected (.catch()) → her mother catches it 😅
+
+// day 61 ADVJS
+// promises, async,setTimeout,setintervel
+
+//promises
+// ek kaam jake karo
+//state
+//-> pending state krr rahay ho
+// -> ya hogaaya (resolve)
+// -> ya to nahi hua (reject)
+
+// 
+const prm= new promise((reslove,reject)=>{ /// jaao orr laker aao
+    // -> logic to go and bring data
+    //-> if data aaya ->resolve
+    // else reject
+ setTimeout(()=>{
+    reslove()
+ },3000)
+
+})
+prm
+.thne(function(){
+ console.log("resolved")
+})
+.catch(function () {
+    console.log("reject")
+})
+// real world example (plz dont try to understand before u know what is fetch and async await)
+fetch(`https://randomuser.me/api/`) // where is promises jisne fetch banaya hai usne promises banaya hoga 
+.then(function(notReadableData){
+return notReadableData.json();
+})
+.then(function(readableData) {
+    console.log(readableData);
+})
+.catch(function(err){
+    console.log(err)
+})
+// fetch se kisi url pe ja saktay hai
+ // fetch ka data by default not readable hota hai
+ // ussay  json banake read kartay hai 
+ // uske baad radable hota hai 
+
+// async await 
+// promises based hota 
+ // await sirj promises ke pahale lagth hai
+ // await ko ek function ke andar banana zaruri hai or uske aagaya async likhna hai !!!
+ 
+function getnum(){
+    return new promise((resolve,reject)=>{
+        setTimeout(()=>{
+            let rn=Math.floor(Math.random()*10);
+            if(num>5){
+                resolve(true);
+            }else reject(false)
+        },1000)
+    })
+}
+//getnum().then or catch
+// but in async await
+
+async function asyawt() {
+    await getnum();
+}
+//  real world we dont write promises 
