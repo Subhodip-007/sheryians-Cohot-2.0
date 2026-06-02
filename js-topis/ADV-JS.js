@@ -1196,3 +1196,32 @@ async function asyawt() {
     await getnum();
 }
 //  real world we dont write promises 
+// day62 js
+// introduction to error handling 
+// common errors in js
+// syntax error // error in let-> leet x 
+// runtime error // when code is exicuted at runtime error 
+// logical error // u write a function name add but u return a*b;
+// now to prevent your code from crashing me use try{} catch(){} block
+try{
+    let a=10;
+    console.log(a.name); //depends
+}catch(err){
+    console.log(err);
+}finally{
+    console.log("lol wrong code asshole");
+}
+//  understanding error object
+//[massage,name,stack]
+//catch(err){ console.log(err.massage,name,stack)}
+// how to throw errors in js
+try{
+    let a=12;
+} catch(err){
+throw new Error("wait for a while") // custom error (u can also write new Error)
+
+}
+
+
+
+
