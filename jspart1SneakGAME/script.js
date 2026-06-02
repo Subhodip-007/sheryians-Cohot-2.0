@@ -4,8 +4,9 @@ let rows=Math.floor(board.clientHeight/30);
 let direction="right";
 
 let arrayBlocks=[]; 
+let food={x:Math.floor(Math.random()*rows),y:Math.floor(Math.random()*columns)}
 
-let sneak=[{x:1,y:2},{x:1,y:3},{x:1,y:4}]
+let sneak=[{x:1,y:2}]
 for(let i=0;i<rows;i++){
     for(let j=0;j<columns;j++){
        
@@ -24,8 +25,8 @@ function render(){
       arrayBlocks[`${obj.x},${obj.y}`].classList.add("fill")
     });
 }
-
-setInterval(()=>{
+arrayBlocks[`${food.x},${food.y}`].classList.add('food')
+let intvid=setInterval(()=>{
         
     let head=null
     if(direction==="left"){
@@ -37,6 +38,19 @@ setInterval(()=>{
     }else if(direction==="down"){
           head={x:sneak[0].x+1,y:sneak[0].y}
     }
+    if(head.x<0 || head.x>=rows|| head.y<0 || head.y>=columns){
+        alert("out of bound")
+        clearInterval(intvid)
+    }
+    if(head.x===food.x && head.y===food.y){
+        console.log("food !!!!")
+        arrayBlocks[`${food.x},${food.y}`].classList.remove("food")
+        food={x:Math.floor(Math.random()*rows),y:Math.floor(Math.random()*columns)}
+        arrayBlocks[`${food.x},${food.y}`].classList.add("food")
+        sneak.unshift(head)
+        
+
+    }
 
     sneak.unshift(head);
          sneak.forEach(obj => {
@@ -44,7 +58,7 @@ setInterval(()=>{
     });
     sneak.pop()
 
-       
+       render()
 
 },300)
 console.log(arrayBlocks)

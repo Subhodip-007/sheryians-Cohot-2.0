@@ -96,4 +96,8 @@ section .infos .info {
 
 .fill {
   background-color: whitesmoke;
+}
+
+.food {
+  background-color: red;
 }/*# sourceMappingURL=style.css.map */
