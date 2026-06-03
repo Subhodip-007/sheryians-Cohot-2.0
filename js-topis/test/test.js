@@ -545,17 +545,17 @@
 // }
 
 // console.log(newMaxnumberobj.find.apply(newaddobj));
-let laptop = {
-    brand: "HP", price: 60000, loptopStart: function () {
-        console.log("started");
-    },
-    incPrice: function () {
-        this.price * 10 / 100;
-        let finalPrice = this.price + this.price * 10 / 100;
-        return finalPrice;
-    }
+// let laptop = {
+//     brand: "HP", price: 60000, loptopStart: function () {
+//         console.log("started");
+//     },
+//     incPrice: function () {
+//         this.price * 10 / 100;
+//         let finalPrice = this.price + this.price * 10 / 100;
+//         return finalPrice;
+//     }
 
-}
+// }
 // class Employee{
 //     constructor(name,salary){
 //         this.name=name;
@@ -589,3 +589,35 @@ let laptop = {
 
 ////////////////////////////////////////////////////////
 
+let apikey="987f130123d735ba1c13a357f97ac728";
+// let url=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}`;
+
+
+
+//8b4c66a83a280d6ad033bece37fd3a3c
+// or u can use this url // `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}`
+// just fill city and API key
+
+// now we have a functionthat 
+
+
+
+async function getWeather(city){
+try{
+       let rawdata = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}`)
+       console.log(rawdata)
+       if(!rawdata.ok){ // .ok say is the data correct or not throw a error try ke andar error throw karne pe catch karta hai 
+        throw new Error("dont exist")
+       }
+    let result= await rawdata.json();
+    if(result.main.temp<0){
+        console.warn("to cold>>>>>>>>>")
+    }else if(result.main.temp>50){
+        console.warn("to hot")
+    }
+    console.log(result)
+}catch(err){ // catches the error thrown by me as will as fetch 
+    console.log(err.message)
+}
+}
+getWeather("leh");

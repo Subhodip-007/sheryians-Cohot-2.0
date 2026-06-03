@@ -1,7 +1,8 @@
 let board =document.querySelector(".board");
 let columns=Math.floor(board.clientWidth/30);
 let rows=Math.floor(board.clientHeight/30);
-let direction="right";
+let direction="right"; 
+let startButton=document.querySelector(".start-btn");
 
 let arrayBlocks=[]; 
 let food={x:Math.floor(Math.random()*rows),y:Math.floor(Math.random()*columns)}
@@ -61,7 +62,6 @@ let intvid=setInterval(()=>{
        render()
 
 },300)
-console.log(arrayBlocks)
 addEventListener("keydown",function(evt){
     if(evt.key==="ArrowUp"){
         direction="up"
@@ -72,5 +72,5 @@ addEventListener("keydown",function(evt){
     }else if(evt.key==="ArrowRight"){
         direction="right"
     }
- console.log(direction)
+
 })

@@ -1221,7 +1221,119 @@ try{
 throw new Error("wait for a while") // custom error (u can also write new Error)
 
 }
+// task windows feature 
 
+// day63 js 
+// # Day 63 — Project Scenarios
+
+// API example (OpenWeatherMap):
+
+// `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}`
+
+// ---
+
+// ## Scenario 1 — Weather Dashboard with Error Handling
+
+// Build a small weather dashboard that fetches current weather data from a public weather API (e.g., OpenWeatherMap).
+
+// ### Requirements
+
+// - Make the API request asynchronously using `fetch` with `async/await`.
+// - Handle API request failures (for example, invalid city name) using `try/catch`.
+// - Create and throw custom errors based on weather conditions (e.g., extremely high or low temperature) and handle them appropriately.
+
+// ### Suggested tasks
+
+// - Build a simple UI to input a city name and display the result.
+// - Show user-friendly error messages for network errors, invalid input, or API errors.
+// - Demonstrate at least one custom thrown error (e.g., `ExtremeTemperatureError`) and handle it in the UI.
+
+// ---
+
+// ## Scenario 2 — Bulk Email Sending Simulation with Parallel Promises and Error Handling
+
+// Simulate sending bulk emails to 5 users. Treat each email-sending operation as a `Promise` (simulate delays with `setTimeout`).
+
+// ### Requirements
+
+// - Send all emails in parallel using `Promise.all`.
+// - If any email fails (e.g., due to a simulated random failure), catch the error and clearly indicate which specific email failed.
+// - Use a `finally` block to display a message indicating that the "Email process is complete." (regardless of success/failure).
+
+// ### Suggested tasks
+
+// - Create an array of 5 mock email tasks that resolve or reject based on a random condition.
+// - Call `Promise.all` and handle success and failure cases. Show a breakdown of which emails succeeded and which failed.
+// - Ensure the `finally` block runs to update the UI or console indicating completion.
+
+// ---
+
+// Optional: combine both scenarios into a small dashboard that fetches weather and then attempts to send a report-email, demonstrating error handling across both network and simulated async operations.
+
+// what is API ek URL hota hai uspe jane pe data milta hai
+// for example https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
+// url ke hamesha me keep in "",`` my backtick is better for change in data
+
+// so let solve senarion 1
+// for that we need a weather api 
+//https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
+
+let apikey="987f130123d735ba1c13a357f97ac728";
+let url=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}`;
+
+
+
+//8b4c66a83a280d6ad033bece37fd3a3c
+// or u can use this url // `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}`
+// just fill city and API key
+
+// now we have a functionthat 
+function getWeather(city){
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}`)
+    .then(function(rawdata){
+        return rawdata.json()
+    })
+    .then(finaldata =>{
+        console.log(finaldata);         // now this is promises wala code
+    })
+}
+getWeather("kolkata");
+
+// how to write inasync await
+async function getWeather(city){
+try{
+       let rawdata = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}`)
+       console.log(rawdata)
+       if(!rawdata.ok){ // .ok say is the data correct or not throw a error try ke andar error throw karne pe catch karta hai 
+        throw new Error("dont exist")
+       }
+    let result= await rawdata.json();
+    if(result.main.temp<0){
+        console.warn("to cold>>>>>>>>>")
+    }else if(result.main.temp>50){
+        console.warn("to hot")
+    }
+    console.log(result)
+}catch(err){ // catches the error thrown by me as will as fetch 
+    console.log(err.message)
+}
+}
+getWeather("kolkata");
+
+// now to hide this apikey ?
+// senario 2 
+// ek array hoga of user email
+// me have to send bulk email mimic to send email
+// phela function to get all email 
+// second aggar usay ek email daday to wo randow time lake email send karega 
+
+const user=[
+    "tushar@gaymail.com",
+    "priyam@playmail.com",   
+    "dino@trex.com"
+];
+// do function
+// ek function send emails jo ek or uske andar ek or function hoge send email
 
 
 

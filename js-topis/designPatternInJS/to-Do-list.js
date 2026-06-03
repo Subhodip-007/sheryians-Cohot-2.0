@@ -1,10 +1,12 @@
 class TaskStore {
     constructor() {
         this.tasks = [];
+        
     }
 
     addTask(taskName) {
         this.tasks.push(taskName);
+
     }
 
     getTotalTasks() {
@@ -27,7 +29,8 @@ class TaskStore {
             return `there is no task to remove \n TaskCount : ${this.tasks.length}`
 
         }
-        this.tasks.splice(idx+1, 1)[0];
+        if(idx<1 || idx>this.tasks.length)return `invalid task number`
+        this.tasks.splice(idx-1, 1)[0];
     }
 }
 let ts1=new TaskStore;
