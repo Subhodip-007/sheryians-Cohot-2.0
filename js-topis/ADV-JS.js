@@ -1334,6 +1334,79 @@ const user=[
 ];
 // do function
 // ek function send emails jo ek or uske andar ek or function hoge send email
+function sendEmails(email){
+ 
+}
+//////////
+// day64 js
+// debouncing and throttling concept of(backend,react)
+// let assume karo ke user ne algathar kuch krr raha(input click scroll) jasay kuch drr ke liya 
+// ruka for eg 1s ya 2s taab unn asra kaam ke ek request manuga
+
+// for example aap amazon pe kuch search krr rahah aap lagatar type krr rahay ho
+// eg typing B-A-J-A-J aap 1s ke liya ruke taab search hua 
+
+// y needed kyu ki hrr ek request ka ek cost hota hai  
+// timing appke uppar hai ku request kaab lena hai 1s,2s,3s anything
+
+// lets talk real debouncing ka code koi haat se nahi likhta 
+// kyu ki wo static hai
+//eg  GPT js code for applying debouncing to seacch bar to  html id of search
+//<input type="text" id="search" placeholder="Search..." />
+
+function debounce(fn,delay){ //debounce ek function liya jo cahlana hai or kitna delay rukan ke baad cahlana hai 
+    let timer;  // 
+    return function(){
+        clearInterval(timer);
+        timer=setTimeout(fn,delay)
+    }
+}
 
 
+ document.querySelector("#search").addEventListener("input",debounce(function(){ 
+    console.log("chala !")  // debounce ne ek function acept kiya jo chalana hai or kitna delay main chalana hai
+ }),1000)
+
+
+// appne kuch input kiya tou debounce chala
+// debounce chala tou timer bana
+// oor return hua ek naya function
+// // debounce ke jaga ek function aagaaya 
+// usne appka timer ko clear krrdiya 
+// timer me current time sethua fn, delay
+// Without debouncing:
+
+// 5 keystrokes → 5 API calls
+
+// With debouncing:
+
+// 5 keystrokes → 1 API call
+
+// throttling
+//eg
+window.addEventListener("mousemove",throttle(function(){
+    console.log("throttle")
+},2000))
+                // ya spontaniour request perfomance low hata 
+    // to solve this we use throttleing
+    // sara request collect karlat set delay ke baad batiyanca
+    // aap bahr bhar request fako mai tou 2s sec mai he responce dounga
+  
+function throttle(fn,delay){
+    let last=0;
+    return function(){
+        const now=Date.now();
+        if(now-last>=delay){
+            last=now;
+            fn();
+        }
+    }
+}
+
+// JSON parse JOSN ----> obj there is a new tool also
+JSON.parse('{"name":"shub","age":20}');
+// JSON stringify convert obj ---> json
+JSON.stringify({name:"shub",age:20})
+
+// stuby about lazeylaoding intersection observar
 

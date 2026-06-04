@@ -59,3 +59,36 @@ html,body{
     display: flex;
     flex-direction: column;
 }
+#on-click-window-menu{
+ height: 70%;
+ width: 50%;
+ position: absolute;
+    bottom: -100%; //9%
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: .5rem;
+    transition: 0.5s ease ;
+    
+}
+.panel-left{
+    height: 100%;
+    width: 70%;
+    background-color: aqua;
+    border-radius: 1rem;
+}
+.panel-right{
+    height: 100%;
+    width: 30%;
+    background-color: azure;
+    border-radius: 1rem;
+}
+#right-click-window{
+    height: 300px;
+    width: 200px;
+    background-color: rgb(59, 59, 59);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+}

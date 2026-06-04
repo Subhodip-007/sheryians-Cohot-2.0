@@ -1,7 +1,10 @@
-// document.addEventListener("DOMContentLoaded", () => {
-    let bar = document.querySelector("#bottombar");
+// document.addEventListener("DOMContentLoaded", () => 
 
-    bar.addEventListener("mouseover", () => {
+    let bar = document.querySelector("#bottombar");
+    let main=document.querySelector("#mainscreen");
+    let windowsicon=document.querySelector(".ri-microsoft-fill");
+    let windomsmenu=document.querySelector("#on-click-window-menu")
+bar.addEventListener("mouseover", () => {
     bar.style.bottom = "0";
 });
 
@@ -28,3 +31,20 @@ function updateDateTime() {
 
 updateDateTime();
 setInterval(updateDateTime, 1000);
+windowsicon.addEventListener("click",()=>{
+    windomsmenu.style.bottom="9%"
+   
+})
+windomsmenu.addEventListener("click",()=>{
+    windomsmenu.style.bottom="-100%"
+})
+
+let cursor=document.querySelector("#right-click-window")
+main.addEventListener("mousemove",(dets)=>{
+  cursor.style = `top: ${dets.clientY}px; left: ${dets.clientX}px;`;
+  
+})
+main.addEventListener("contextmenu",()=>{
+    cursor.style.position="fixed";
+    cursor.style.display="block";
+})
