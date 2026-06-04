@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Smart Signup Form</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+  <main>
+    <h1>Signup Form</h1>
+    <p class="muted"></p>
+
+    <form id="form" novalidate autocomplete="off">
+      <label for="fullname" class="full">Full name</label>
+      <input id="fullname" class="full" placeholder="Your full name" required>
+      <div id="fullnameMsg" class="muted full"></div>
+
+      <label for="username">Username</label>
+      <input id="username" placeholder="choose-a-username" required>
+      <div id="usernameMsg" class="muted"></div>
+
+      <label for="email">Email</label>
+      <input id="email" type="email" placeholder="you@example.com" required>
+      <div id="emailMsg" class="muted"></div>
+
+      <label for="phone">Phone</label>
+      <input id="phone" type="tel" placeholder="9876543210">
+      <div id="phoneMsg" class="muted"></div>
+
+      <label for="password" class="full">Password</label>
+      <div class="input-wrap full">
+        <input id="password" type="password" placeholder="Choose a strong password" required>
+        <button type="button" id="togglePw" class="toggle-eye" aria-label="Show password">
+          <i class="ri-eye-line"></i>
+        </button>
+      </div>
+      <div class="meter"><div id="pwMeter"></div></div>
+      <div class="meter-feedback">
+        <div id="pwLabel" class="muted">Very weak</div>
+        <div id="pwEntropy" class="muted">0 bits</div>
+      </div>
+      <div id="pwSuggest" class="muted full"></div>
+
+      <label for="confirm">Confirm Password</label>
+      <div class="input-wrap">
+        <input id="confirm" type="password" placeholder="Confirm password">
+        <button type="button" id="toggleConfirm" class="toggle-eye" aria-label="Show confirm password">
+          <i class="ri-eye-line"></i>
+        </button>
+      </div>
+      <div id="confirmMsg" class="muted"></div> 
+
+      <div class="full">
+        <div class="muted">Form completion</div>
+        <div class="progress"><div id="progressBar"></div></div>
+      </div>
+
+      <div class="full button-group">
+        <button type="button" id="genBtn" class="btn-ghost">Generate Password</button>
+        <button type="button" id="suggestBtn" class="btn-ghost">Suggest Username</button>
+      </div>
+
+      <div class="preview" id="previewBox">
+        <strong>Preview:</strong>
+        <div id="previewContent" class="muted">Your info will appear here.</div>
+        <div id="aiFeedback" class="muted"></div>
+      </div>
+
+      <div class="full button-group">
+        <button type="submit" id="submitBtn" class="btn-primary">Submit</button>
+        <button type="button" id="resetBtn" class="btn-ghost">Reset</button>
+      </div>
+    </form>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
+
+</html>

@@ -1,0 +1,98 @@
+body {
+  background: #121212;
+  font-family: Arial, sans-serif;
+}
+
+.form {
+  background: #1e1e1e;
+  width: 300px;
+  padding: 15px;
+  border: 1px solid #2a2a2a;
+  margin: 50px auto;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label {
+  margin-top: 10px;
+  color: #e0e0e0;
+  font-size: 14px;
+}
+
+input {
+  display: block;
+  width: 80%;
+  padding: 6px;
+  margin-top: 4px;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+  border: none;
+  font-size: 14px;
+}
+
+button {
+  margin-top: 15px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4caf50;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #45a049;
+}
+#lower {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.users {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 15px;
+  width: 100%;
+  max-width: 900px;
+}
+
+.user {
+  background: #1e1e1e;
+  border: 1px solid #2a2a2a;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.cont {
+  text-align: center;
+}
+
+.user-pic {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #444;
+  margin-bottom: 10px;
+}
+
+.user-name {
+  color: #fff;
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+.user-email {
+  color: #b0b0b0;
+  font-size: 14px;
+  margin: 5px 0;
+  font-weight: normal;
+}
+
+.user-desc {
+  color: #d0d0d0;
+  font-size: 13px;
+  margin-top: 8px;
+}

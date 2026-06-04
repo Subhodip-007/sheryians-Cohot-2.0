@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System Theme Toggle</title>
+  <style>
+    
+    body {
+      background-color: white;
+      color: black;
+      font-family: Arial, sans-serif;
+      transition: background 0.3s, color 0.3s;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+
+
+    body.dark {
+      background-color: #121212;
+      color: rgb(255, 0, 0);
+    }
+
+   
+    #lettglbtn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      background: orangered;
+      color: white;
+      font-size: 16px;
+      transition: background 0.3s;
+    }
+
+    #lettglbtn:hover {
+      background: #cc0000;
+    }
+  </style>
+</head>
+<body>
+  <h1>System Theme Toggle</h1>
+  <button id="lettglbtn">Toggle Theme</button>
+
+  <script src="script.js"></script>
+</body>
+</html>

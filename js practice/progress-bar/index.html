@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download Progress Bar</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #99999b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #e85c47;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0.7, 0.8);
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+}
+
+h1 {
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+p {
+    color: #000000;
+    margin-bottom: 25px;
+}
+
+#downloadBtn {
+    background-color: #3a3d41;
+    color: rgb(199, 78, 78);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+#downloadBtn:hover {
+    background-color: #ffffff;
+}
+
+.progress-container {
+    width: 100%;
+    background-color: #585858;
+    border-radius: 5px;
+    margin-top: 20px;
+    overflow: hidden; 
+}
+
+.progress-bar {
+    width: 0%; 
+    height: 20px;
+    background-color: #28a745;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 20px;
+    color: rgb(201, 147, 147);
+    transition: width 0.4s ease-in-out; 
+}
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>File Download</h1>
+        <p>Click the button to start the download simulation.</p>
+        
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+            
+        </div>
+        <button id="downloadBtn">Download File</button>
+    </div>
+
+<script src="script.js"></script></body>
+</html>

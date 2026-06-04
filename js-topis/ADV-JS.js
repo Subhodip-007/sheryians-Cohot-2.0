@@ -1334,9 +1334,25 @@ const user=[
 ];
 // do function
 // ek function send emails jo ek or uske andar ek or function hoge send email
-function sendEmails(email){
+
+function sendEmail(email){
  
-}
+}// jo return karta hai ek new promise(r,r){}
+// // kabhi so send hoga tou ek settimeont banadiya jusme ek settimeout hoga
+// aab set timeout andar se do chiz krr sakta hai resolve ya tou reject 
+// set timer out ke ander or ek randow num porbablity 
+// agar propabliya 5se chota aaya tou resolve or else reject 
+//senc emali chalaya 
+// fir kyu kai ek promiss return hua hai to use  then catch handle karna hai
+// 
+
+// aab 
+// ek naya function banao sendemailssss jo ke array lega bulk send karega
+// ek map banao map se ek ek eamil milega oor
+// haaam sendemail function cahla dangay uspay wo email pass karangay 
+// map ek blank arrya banayaga aab arrya ke anday teen promises aaya 
+// await promiss.all(allres) // jo bhai filan hoha 
+
 //////////
 // day64 js
 // debouncing and throttling concept of(backend,react)
@@ -1410,3 +1426,5 @@ JSON.stringify({name:"shub",age:20})
 
 // stuby about lazeylaoding intersection observar
 
+// JS 30
+// sheriya 50 proj

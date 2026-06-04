@@ -1,0 +1,32 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'General Sans';
+    
+}
+html,body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    background:linear-gradient(45deg, rgb(225, 255, 0), rgb(255, 132, 0), rgb(255, 213, 0), rgb(255, 170, 0), rgb(0, 255, 255), rgb(157, 255, 0), rgb(255, 128, 0), rgb(102, 255, 0));
+}
+#main{
+    height: 90%;
+    width: 90%;
+    background-color: rgb(22, 22, 22);
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+h1{
+    color: aliceblue;
+    font-size: 100px;
+    font-weight: 600;
+    opacity: 30%;
+
+    
+}

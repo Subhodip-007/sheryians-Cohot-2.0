@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Validation Practice</title>
+    <style>
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            /* Motion Gradient Background */
+            background: linear-gradient(135deg, #62666e, #0f3872, #3b8d99, #6b7376);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+        }
+
+        #practiceForm {
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            background-color: #1c1e21;
+        }
+
+        h2 {
+            text-align: center;
+            color: #1c1e21;
+            margin-bottom: 1.5rem;
+        }
+
+        .field {
+            margin-bottom: 1.25rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #a0c9ff;
+            font-weight: 600;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #dddfe2;
+            border-radius: 6px;
+            font-size: 1rem;
+            box-sizing: border-box; /
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #1877f2;
+            box-shadow: 0 0 0 2px rgba(24, 119, 242, 0.2);
+        }
+        
+        /* Error Message Styling */
+        .error-message {
+            color: #d93025;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            font-weight: 500;
+            /* Hidden by default! Your JS will make this visible. */
+            display: none; 
+        }
+
+        /* Submit Button */
+        button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #1877f2;
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #166fe5;
+        }
+
+    </style>
+</head>
+<body>
+
+    <form id="practiceForm" novalidate>
+        <h2>Create Account</h2>
+
+        <div class="field">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="e.g., john_doe">
+            <div id="usernameerror" class="error-message"></div>
+        </div>
+
+        <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com">
+            <div id="emailError" class="error-message"></div>
+        </div>
+
+        <div class="field">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Must be at least 8 characters">
+            <div id="passworderror" class="error-message">Error will be shown here</div>
+        </div>
+        
+        <div class="field">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter your password">
+            <div id="confirmPasswordError" class="error-message">Error will be shown here</div>
+        </div>
+
+
+        <button id="btn" type="submit">Sign Up</button>
+    </form>
+    <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+:root {
+  --bg-color: #22272e; /* Dark Gray */
+  --form-bg-color: #2d333b;
+  --text-color: #cdd9e5; /* Light Gray/Off-white */
+  --text-strong-color: #ffffff;
+  --primary-color: #f59e0b; /* Orange */
+  --border-color: #444c56;
+  --input-bg: #22272e;
+  --success-color: #16a34a;
+  --error-color: #dc2626;
+  --pw-weak: #ef4444;   /* Red */
+  --pw-okay: #f59e0b;   /* Orange */
+  --pw-strong: #16a34a; /* Green */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Loading Spinner for AI feedback */
+.loader {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  border-top: 2px solid var(--text-color);
+  border-right: 2px solid transparent;
+  box-sizing: border-box;
+  animation: spin 1s linear infinite;
+  margin-right: 8px;
+  vertical-align: -2px;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  min-height: 100vh;
+  padding: 0.5rem;
+}
+
+main {
+  width: 100%;
+  max-width: 550px;
+  background-color: var(--form-bg-color);
+  padding: 0.7rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2);
+}
+
+h1 {
+  color: var(--text-strong-color);
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.muted {
+  color: #768390;
+  font-size: 0.7rem;
+}
+
+form {
+  margin-top: 0.6rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem 1.2rem;
+}
+
+label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 0.1rem;
+  color: var(--text-color);
+}
+
+.full {
+  grid-column: 1 / -1;
+}
+
+input {
+  width: 100%;
+  padding: 0.35rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  font-size: 0.8rem;
+  margin-bottom: -0.5rem; /* Pulls the message divs up */
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.3);
+}
+
+input:hover {
+  border-color: var(--primary-color);
+}
+
+.input-wrap {
+  position: relative;
+}
+
+.toggle-eye {
+  position: absolute;
+  top: 50%;
+  right: 0.75rem;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #768390;
+  cursor: pointer;
+  font-size: 1.0rem;
+}
+
+.meter {
+  width: 100%;
+  height: 6px;
+  background-color: var(--border-color);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: -0.5rem;
+}
+
+.meter-feedback {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  margin-top: 0.25rem;
+}
+
+#pwMeter {
+  height: 100%;
+  width: 0;
+  border-radius: 3px;
+  transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.progress {
+  width: 100%;
+  height: 8px;
+  background-color: var(--border-color);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+#progressBar {
+  height: 100%;
+  width: 0;
+  background-color: var(--primary-color);
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+.preview {
+  grid-column: 1 / -1;
+  background-color: var(--input-bg);
+  border: 1px solid var(--border-color);
+  padding: 0.4rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+  min-height: 30px;
+  line-height: 1.3;
+}
+
+.btn-primary, .btn-ghost {
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.8rem;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--bg-color);
+  border: 1px solid var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: #d97706; /* Darker orange */
+  border-color: #d97706;
+}
+
+.btn-ghost {
+  background-color: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+}
+
+.btn-ghost:hover {
+  background-color: var(--border-color);
+  color: var(--text-strong-color);
+}
+
+.button-group {
+  display: flex;
+  gap: 6px;
+  margin-top: 1rem;
+}
