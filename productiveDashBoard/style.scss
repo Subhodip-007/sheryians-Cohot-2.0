@@ -1,0 +1,99 @@
+// @font-face {
+//     font-family: light;
+//     src: url(./aonislink);
+// } if you take outside font
+:root {
+    --primary-bgcolor: #111;
+    --secondery-bgcolor: #fff;
+    --palette-pri-color: #111844;
+    --palette-sec-color: #4B5694;
+    --palette-comp1-color: #7288AE;
+    --palette-comp2-color: #EAE0CF;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+main {
+    height: 100%;
+    width: 100%;
+    background-color: var(--palette-pri-color);
+    color: var(--secondery-bgcolor);
+}
+nav{
+    position: fixed;
+    height: 8%;
+    width: 100%;
+    background-color: var(--palette-comp1-color);
+}
+section.allElem{
+    height: 100%;
+    width: 100%;
+    padding: 1rem;
+    padding-top: 5rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 1rem;
+    justify-content: space-around;
+    
+}
+.elem{
+    color: var(--primary-bgcolor);
+    background-color: var(--palette-comp2-color);
+    border-radius: 2rem;
+    height: 400px;
+    width: 250px;
+    overflow: hidden;
+    position: relative;
+    transition: all ease .5s;
+}
+    .elem img{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+    .elem h2{
+        position: absolute;
+        color: var(--palette-comp2-color);
+        bottom: 5%;
+        right: 5%;
+        font-weight: 500;
+    }
+    .elem:active{
+        scale: (.75);
+    }
+    .full-page-elem{
+        height: 100%;
+        width: 100%;
+        background-color: #4B5694;
+        padding: 1rem;
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .back-btn .ri-close-large-fill{
+        color: #111;
+        font-size: 2rem;
+        position: absolute;
+        right: 5%;
+        font-weight: 900;
+        transition: all ease 1s;
+
+    }
+    .back-btn:active{
+        color: #EAE0CF;
+
+    }
