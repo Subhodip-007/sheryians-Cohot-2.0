@@ -602,22 +602,38 @@ let apikey="987f130123d735ba1c13a357f97ac728";
 
 
 
-async function getWeather(city){
-try{
-       let rawdata = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}`)
-       console.log(rawdata)
-       if(!rawdata.ok){ // .ok say is the data correct or not throw a error try ke andar error throw karne pe catch karta hai 
-        throw new Error("dont exist")
-       }
-    let result= await rawdata.json();
-    if(result.main.temp<0){
-        console.warn("to cold>>>>>>>>>")
-    }else if(result.main.temp>50){
-        console.warn("to hot")
-    }
-    console.log(result)
-}catch(err){ // catches the error thrown by me as will as fetch 
-    console.log(err.message)
+// async function getWeather(city){
+// try{
+//        let rawdata = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}`)
+//        console.log(rawdata)
+//        if(!rawdata.ok){ // .ok say is the data correct or not throw a error try ke andar error throw karne pe catch karta hai 
+//         throw new Error("dont exist")
+//        }
+//     let result= await rawdata.json();
+//     if(result.main.temp<0){
+//         console.warn("to cold>>>>>>>>>")
+//     }else if(result.main.temp>50){
+//         console.warn("to hot")
+//     }
+//     console.log(result)
+// }catch(err){ // catches the error thrown by me as will as fetch 
+//     console.log(err.message)
+// }
+// }
+// getWeather("leh");
+function sendEmail(email){
+      let rn=Math.floor(Math.random()*10)
+    return new Promise((resolve,reject)=>{
+      setTimeout(()=>{},rn*1000)
+            let probablity=Math.floor(Math.random()*10)
+            if(probablity>=5)resolve(`email send successfull ON:${email}`);
+            else reject(`email not send ON:${email}`)
+        })
 }
-}
-getWeather("leh");
+sendEmail("subh@femail.com")
+.then(function(res){
+ console.log(res);
+})
+.catch(function(err){
+    console.log(err);
+})

@@ -1,0 +1,62 @@
+/* Vintage CRT Phosphor Monitor Overlay Aesthetics */
+#radarScreen {
+  /* Subtle scanlines and ambient lighting drop filters */
+  background: radial-gradient(circle at 35% 50%, rgba(0, 40, 0, 0.2) 0%, rgba(0, 0, 0, 0) 75%), linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.3) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.04), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.04));
+  background-size: 100% 100%, 100% 4px, 6px 100%;
+}
+
+/* Custom Tactical Scrollbars matching radar theme */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #020502;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #004400;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #007700;
+}
+
+/* Range input overrides */
+input[type=range] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+  height: 4px;
+  background: #001a00;
+  border: 1px solid #003300;
+  outline: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 14px;
+  background: #00ff00;
+  border-radius: 1px;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(0, 255, 0, 0.8);
+}
+
+/* Animation utilities */
+.animate-fade-in {
+  animation: fadeIn 0.15s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}/*# sourceMappingURL=style.css.map */

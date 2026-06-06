@@ -1333,18 +1333,25 @@ const user=[
     "dino@trex.com"
 ];
 // do function
-// ek function send emails jo ek or uske andar ek or function hoge send email
-
-function sendEmail(email){
- 
-}// jo return karta hai ek new promise(r,r){}
+// ek function hoge send email
+// jo return karta hai ek new promise(r,r){}
 // // kabhi so send hoga tou ek settimeont banadiya jusme ek settimeout hoga
 // aab set timeout andar se do chiz krr sakta hai resolve ya tou reject 
 // set timer out ke ander or ek randow num porbablity 
 // agar propabliya 5se chota aaya tou resolve or else reject 
 //senc emali chalaya 
 // fir kyu kai ek promiss return hua hai to use  then catch handle karna hai
-// 
+//
+function sendEmail(){
+      let rn=Math.floor(Math.random()*10)
+    return new promise((resolve,reject)=>{
+      setTimeout(()=>{},rn*1000)
+            let probablity=Math.floor(Math.random()*10)
+            if(probablity>=5)resolve("email send successfull");
+            else reject("email not send")
+        })
+}
+
 
 // aab 
 // ek naya function banao sendemailssss jo ke array lega bulk send karega

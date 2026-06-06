@@ -1,4 +1,5 @@
-let allElem = document.querySelectorAll(".elem");
+function openPageOfCards(){
+    let allElem = document.querySelectorAll(".elem");
 let allpage=document.querySelectorAll(".full-page-elem")
 let allBackbutton=document.querySelectorAll(".back-btn")
 allElem.forEach(elem => {
@@ -8,3 +9,5 @@ allElem.forEach(elem => {
     })
 });
 allBackbutton.forEach((btn)=>btn.addEventListener("click",()=>allpage[btn.id].style.display="none"))
+}
+openPageOfCards()
