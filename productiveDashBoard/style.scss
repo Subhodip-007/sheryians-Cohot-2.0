@@ -210,9 +210,10 @@ button::placeholder {
  display: flex;
  padding: 1rem .5rem;
  border-radius: 1rem;
- gap: 1rem;
+ justify-content: space-around;
  align-items: center;
  text-transform: capitalize;
+
 
 button{
     padding: 1rem;
@@ -225,4 +226,7 @@ button{
     
 }
 
+}
+.task-text{
+    width: 50%;
 }

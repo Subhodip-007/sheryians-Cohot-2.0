@@ -222,7 +222,7 @@ button::placeholder {
   display: flex;
   padding: 1rem 0.5rem;
   border-radius: 1rem;
-  gap: 1rem;
+  justify-content: space-around;
   align-items: center;
   text-transform: capitalize;
 }
@@ -234,4 +234,8 @@ button::placeholder {
   color: var(--palette-comp2-color);
   background-color: var(--palette-pri-color);
   border: 1px solid #EAE0CF;
+}
+
+.task-text {
+  width: 50%;
 }/*# sourceMappingURL=style.css.map */
