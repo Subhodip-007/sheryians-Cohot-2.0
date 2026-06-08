@@ -14,16 +14,16 @@
         <nav></nav>
         <section class="allElem">
             <div class="elem" class="To-Do" id="0">
-                <h2>demo</h2> <img src="https://i.pinimg.com/originals/99/4c/f8/994cf894ea11bacd972d08dfa0dea5cc.gif"
-                    alt="">
+                <h2>To-do-list</h2> <img
+                    src="https://i.pinimg.com/originals/99/4c/f8/994cf894ea11bacd972d08dfa0dea5cc.gif" alt="">
             </div>
             <div class="elem" class="daily-planner" id="1">
-                <h2>demo</h2> <img src="https://i.pinimg.com/originals/99/4c/f8/994cf894ea11bacd972d08dfa0dea5cc.gif"
-                    alt="">
+                <h2>daily-planner</h2> <img
+                    src="https://i.pinimg.com/originals/99/4c/f8/994cf894ea11bacd972d08dfa0dea5cc.gif" alt="">
             </div>
             <div class="elem" class="motivation" id="2">
-                <h2>demo</h2> <img src="https://i.pinimg.com/originals/99/4c/f8/994cf894ea11bacd972d08dfa0dea5cc.gif"
-                    alt="">
+                <h2>fire up your self</h2> <img
+                    src="https://i.pinimg.com/originals/99/4c/f8/994cf894ea11bacd972d08dfa0dea5cc.gif" alt="">
             </div>
             <div class="elem" class="pomodoro-timer" id="3">
                 <h2>demo</h2> <img src="https://i.pinimg.com/originals/99/4c/f8/994cf894ea11bacd972d08dfa0dea5cc.gif"
@@ -36,60 +36,96 @@
         </section>
 
         <section class="full-page-elem Todo-list-full-page">
-    <div class="page-header">
-        <h2>Todo-list</h2>
-        <button class="back-btn" id="0">
-            <i class="ri-close-large-fill"></i>
-        </button>
-    </div>
+            <div class="page-header">
+                <h2>Todo-list</h2>
+                <button class="back-btn" id="0">
+                    <i class="ri-close-large-fill"></i>
+                </button>
+            </div>
 
-    <div class="to-do-cont">
-        <div class="addtask">
+            <div class="to-do-cont">
+                <div class="addtask">
+                    <form action="">
+                        <input type="text" placeholder="enter your task here..">
+                        <textarea name="description" id="task-description"
+                            placeholder="description of the task"></textarea>
+                        <button id="add task" class="btn"> add task</button>
+                    </form>
+                </div>
+                <div class="show-added-task">
+                </div>
+            </div>
+        </section>
+
+        <div class="add-plans-form-page">
+            <button class="plan-back-btn" id="1">
+                <i class="ri-close-large-fill"></i>
+            </button>
             <form action="">
-                <input type="text" placeholder="enter your task here..">
-                <textarea name="description" id="task-description" placeholder="description of the task"></textarea>
-                 <button id="add task" class="btn"> add task</button>
+                <div class="input time">
+                    <label for="plan-time">Time :</label>
+                    <input type="text" placeholder="how much time ?(eg-> 13:00-17:00)" name="plan-time">
+                </div>
+                <div class="input name">
+                    <label for="plan-name">name :</label>
+                    <input type="text" placeholder="what are you planning for.." name="plan-name">
+
+                </div>
+                <button id="add-plan-form-submit-btn"> add</button>
             </form>
         </div>
-        <div class="show-added-task">
-        </div>
-    </div>
-</section>
+        <section class="full-page-elem daily-planner-full-page">
 
-<section class="full-page-elem daily-planner-full-page">
-    <div class="page-header">
-        <button class="back-btn" id="1">
-            <i class="ri-close-large-fill"></i>
-        </button>
-    </div>
-</section>
+            <div class="page-header">
+                <h2>planner</h2>
 
-<section class="full-page-elem motivation-full-page">
-    <div class="page-header">
-        page2
-        <button class="back-btn" id="2">
-            <i class="ri-close-large-fill"></i>
-        </button>
-    </div>
-</section>
+                <div class="btn-grp">
+                    <button class="add-plan-btn"> Add-Plan</button>
+                    <button class="back-btn" id="1">
+                        <i class="ri-close-large-fill"></i>
+                    </button>
+                </div>
 
-<section class="full-page-elem pomodoro-full-page">
-    <div class="page-header">
-        page3
-        <button class="back-btn" id="3">
-            <i class="ri-close-large-fill"></i>
-        </button>
-    </div>
-</section>
 
-<section class="full-page-elem daily-goals-full-page">
-    <div class="page-header">
-        page4
-        <button class="back-btn" id="4">
-            <i class="ri-close-large-fill"></i>
-        </button>
-    </div>
-</section>
+            </div>
+            <div class="planner-cont">
+
+
+
+            </div>
+
+        </section>
+
+        <section class="full-page-elem motivation-full-page">
+            <div class="page-header">
+
+                <button class="back-btn" id="2">
+                    <i class="ri-close-large-fill"></i>
+                </button>
+            </div>
+            <video id="bgVideo" autoplay loop muted>
+            </video>
+
+            <h1 id="quote"></h1>
+        </section>
+
+        <section class="full-page-elem pomodoro-full-page">
+            <div class="page-header">
+                page3
+                <button class="back-btn" id="3">
+                    <i class="ri-close-large-fill"></i>
+                </button>
+            </div>
+        </section>
+
+        <section class="full-page-elem daily-goals-full-page">
+            <div class="page-header">
+                page4
+                <button class="back-btn" id="4">
+                    <i class="ri-close-large-fill"></i>
+                </button>
+            </div>
+        </section>
     </main>
     <script src="script.js"></script>
 </body>

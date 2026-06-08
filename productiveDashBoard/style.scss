@@ -65,12 +65,14 @@ section.allElem{
         width: 100%;
         object-fit: cover;
     }
+    
     .elem h2{
         position: absolute;
         color: var(--palette-comp2-color);
         bottom: 5%;
         right: 5%;
         font-weight: 500;
+        z-index: 1;
     }
     .elem:active{
         scale: (.75);
@@ -84,6 +86,7 @@ section.allElem{
         position: absolute;
         top: 0;
         left: 0;
+        z-index: 2;
     }
     .page-header{
         width: 100%;
@@ -104,9 +107,7 @@ section.allElem{
         color: #EAE0CF;
 
     }
-.Todo-list-full-page{
-    display: block;
-}
+
 .to-do-cont{
     margin-top: 1rem;
     height: 90%;
@@ -151,7 +152,7 @@ section.allElem{
     text-transform: capitalize;
 
 }
-    input::placeholder {
+   .addtask input::placeholder {
   color: var(--palette-comp2-color);
 }
 textarea::placeholder {
@@ -229,4 +230,127 @@ button{
 }
 .task-text{
     width: 50%;
+}
+
+
+.planner-cont{
+    margin-top: 1rem;
+    height: 90%;
+    width: 100%;
+    background-color: var(--palette-pri-color);
+    border-radius: 1rem;
+    padding: 2rem;
+    justify-content: space-around;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: auto;
+
+}
+
+.plan-cont{
+    font-size: .5rem;
+    padding: 0rem 1rem;
+    height: 10%;
+    width: 45%;
+    border: 2px solid var(--palette-comp2-color);
+    border-radius: 1rem;
+
+        margin: .5rem;
+    
+}
+
+   .plan-cont input::placeholder {
+  color: var(--palette-comp1-color);
+
+   }
+.add-plan-btn{
+    padding: 1rem;
+    background-color: #111844;
+    border: none;
+    border-radius: 1rem;
+    color: #EAE0CF;
+    font-weight: 500;
+}
+.btn-grp{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    
+}
+.add-plans-form-page{
+    
+    height: 30%;
+    width: 30%;
+    background-color: rgba(255, 255, 255, 0.2);
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border: 1px solid var(--palette-comp2-color);
+    border-radius: 1rem;
+    padding: .5rem;
+    display: none;
+    gap: 1rem;
+    z-index: 1000;
+    
+}
+    .plan-back-btn {
+        background-color: #11111100;
+        border: none;
+        color: #111;
+        font-size: 1.5rem;
+        font-weight: 900;
+        display: flex;
+        justify-self: flex-end;
+        
+    }
+    .add-plans-form-page form{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: .2rem;
+
+    }
+    
+            .input input{
+            width: 100%;
+            padding: 1rem;
+            border-radius: 1rem;
+            font-size: 1;
+            border: none;
+        
+        }
+        .add-plans-form-page label{
+            color: #111;
+            font-weight: 500;
+        }
+        #add-plan-form-submit-btn{
+            padding: .2rem 1rem;
+            align-self: flex-end;
+            margin: .5rem ;
+            border: none;
+            border-radius: 1rem;
+        }
+.plan-cont p{
+    margin-top: .2rem;
+    font-size: 1rem;
+    background-color: #4B5694;
+    padding: .2rem;
+    border-radius: 1rem;
+    text-align: center;
+}
+
+.motivation-full-page video {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+ padding: .1rem;
+    object-fit: cover;
+    z-index: -1;
+    border-radius: 1rem;
+    
 }
