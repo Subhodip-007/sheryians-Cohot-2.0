@@ -621,19 +621,70 @@ let apikey="987f130123d735ba1c13a357f97ac728";
 // }
 // }
 // getWeather("leh");
-function sendEmail(email){
-      let rn=Math.floor(Math.random()*10)
-    return new Promise((resolve,reject)=>{
-      setTimeout(()=>{},rn*1000)
-            let probablity=Math.floor(Math.random()*10)
-            if(probablity>=5)resolve(`email send successfull ON:${email}`);
-            else reject(`email not send ON:${email}`)
-        })
-}
-sendEmail("subh@femail.com")
-.then(function(res){
- console.log(res);
+// function sendEmail(email){
+//       let rn=Math.floor(Math.random()*10)
+//     return new Promise((resolve,reject)=>{
+//       setTimeout(()=>{},rn*1000)
+//             let probablity=Math.floor(Math.random()*10)
+//             if(probablity>=5)resolve(`email send successfull ON:${email}`);
+//             else reject(`email not send ON:${email}`)
+//         })
+// }
+// sendEmail("subh@femail.com")
+// .then(function(res){
+//  console.log(res);
+// })
+// .catch(function(err){
+//     console.log(err);
+// })
+const names = ["john", "alice", "bob"];
+const newarr=names.map((elem)=>{
+  return elem.toLocaleUpperCase();
 })
-.catch(function(err){
-    console.log(err);
+console.log(newarr)
+const users = [
+  {
+    id: 1,
+    firstName: "John",
+    lastName: "Doe",
+    age: 25
+  },
+  {
+    id: 2,
+    firstName: "Alice",
+    lastName: "Smith",
+    age: 30
+  }
+];
+let customoutput=users.map((elem)=>{
+  return {id:elem.id,fullName:`${elem.firstName} ${elem.lastName}`}
 })
+console.log(customoutput);
+const products = [
+  { name: "Laptop", price: 1000 },
+  { name: "Phone", price: 500 }
+];
+let taxadded=products.map((elem)=>{
+ return {name: elem.name, price: (elem.price+(elem.price * 10 / 100))}
+})
+console.log(taxadded);
+let toBeFilteredArray=[1,2,3,4,5,6,7,8];
+let filter=toBeFilteredArray.filter((elem)=>{
+  if(elem%2===0){
+    return elem
+  }
+})
+console.log(filter);
+
+let sum=toBeFilteredArray.reduce((element,sum)=>{
+  return sum+=element
+},0)
+console.log(sum);
+
+let elem1000=products.filter((element)=>{
+  if(element.price>=1000){
+    return element
+  }
+})
+console.log(elem1000);
+

@@ -6,9 +6,14 @@ allElem.forEach(elem => {
     elem.addEventListener("click",()=>{
     //    console.log(allpage[elem.id])
     allpage[elem.id].style.display="block"
+    fetchQuote();
+    
     })
 });
-allBackbutton.forEach((btn)=>btn.addEventListener("click",()=>allpage[btn.id].style.display="none"))
+allBackbutton.forEach((btn)=>btn.addEventListener("click",()=>{
+    allpage[btn.id].style.display="none"
+    location.reload();
+} ))
 }
 openPageOfCards()
 let taskcont=document.querySelector(".show-added-task")
@@ -195,3 +200,15 @@ fetch("./data.json")
 
     document.getElementById("bgVideo").src = item.video;
       });
+      let quotetext=document.querySelector(".quote-text")
+async function fetchQuote() {
+    try {
+        let response = await fetch("https://corsproxy.io/?https://type.fit/api/quotes");
+        let data = await response.json();
+        quotetext.innerHTML=data[Math.floor(Math.random() * data.length)].text;
+
+    } catch (err) {
+        console.log(err);
+    }
+}
+

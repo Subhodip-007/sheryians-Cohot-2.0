@@ -183,6 +183,8 @@ button::placeholder {
   color: var(--palette-comp2-color);
   font-size: 1.2rem;
   text-transform: capitalize;
+  max-width: 100%;
+  max-height: 300px;
 }
 
 .addtask button {
@@ -359,4 +361,54 @@ button::placeholder {
      object-fit: cover;
   z-index: -1;
   border-radius: 1rem;
+}
+
+.motivation-full-page .back-btn {
+  z-index: 99;
+  color: #4B5694;
+}
+
+.quote-cont {
+  position: relative;
+  height: 50%;
+  width: 50%;
+  background-color: rgba(76, 76, 76, 0.5137254902);
+  backdrop-filter: blur(10px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  padding: 2rem;
+  font-size: 5rem;
+  font-weight: 700;
+}
+
+.icon-top {
+  position: relative;
+  width: 100%;
+}
+
+.ri-double-quotes-l {
+  position: absolute;
+  left: 0;
+}
+
+.icon-bottow {
+  width: 100%;
+  position: relative;
+}
+
+.ri-double-quotes-r {
+  position: absolute;
+  right: 40px;
+  bottom: 40px;
+}
+
+.quote-text {
+  font-size: 3rem;
 }/*# sourceMappingURL=style.css.map */
