@@ -1,4 +1,5 @@
 
+// day 66 intro to react 
 // # Basics of JS Concepts You Need To Know Before Starting React
 
 // ## Basics of JS
@@ -394,11 +395,30 @@
 // - Arrow functions
 // - Async / await
 // - import / export
+// destructuring 
+// shallow copy 
+let arr1=[1,2,3,4,5,6];
+
+let arr2=arr1;
+arr2.push(99); //both arr1 & arr2 will have 99 
+// to make a proper copy 
+let copyarr=[arr1[0],arr1[1],arr1[2],arr1[3],arr1[4]]; // best method
+// for shortcur spread operater is used
+copyarr=[...arr1];
+let[a,b,c]=[...arr1]
+let[e,d,...f]=[...arr1]
+// try with obj
+// concept oj import export 
+// type module 
+
+
+
+
 let h1=document.createElement("h1");
 h1.innerHTML="heool form js";
 document.body.appendChild(h1);
 
-
+// youtube react 
 // theory...............
 // now lets built this with react
 // library - GSAP , lenis , reactJS -is use to implement any perticule featuer vs framework -nextJS , anguler -- acts like templater u get everything built in but limit to custom every thing together
