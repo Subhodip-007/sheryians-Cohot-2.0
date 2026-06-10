@@ -212,3 +212,110 @@ async function fetchQuote() {
     }
 }
 
+// timer logic
+let timerText=document.querySelector(".timer-cont h1");
+let timercont=document.querySelector(".timer-cont");
+let pomoTimerStartBtn=document.querySelector("#start")
+let pomoPauseBtn=document.querySelector("#pause")
+let pomoResetBtn=document.querySelector("#reset")
+let totalTime=25*60;
+let  pomoTimerInterval=null;
+let minutes=Math.floor(totalTime/60);
+let seconds=Math.floor(totalTime%60); // we will use padstart injs
+
+function startTimer(){
+    clearInterval(pomoTimerInterval)
+    pomoTimerInterval = setInterval(()=>{
+    if(totalTime==0){
+        const previousColor = timercont.style.backgroundColor ;
+        timercont.style.backgroundColor ="red"
+        setTimeout(()=>{
+            timercont.style.backgroundColor =previousColor;
+           resetTimer()
+
+        },2000)
+
+        clearInterval(pomoTimerInterval)
+        
+        
+    }
+     minutes=Math.floor(totalTime/60);
+     seconds=Math.floor(totalTime%60);
+    totalTime--;
+
+   timerText.innerHTML=`${minutes.toString().padStart(2, '0')} : ${seconds.toString().padStart(2, '0')}`;
+},1000)
+}
+function pauseTimer(){
+    clearInterval(pomoTimerInterval);
+}
+function resetTimer(){
+          totalTime=25*60;
+   minutes=Math.floor(totalTime/60);
+   seconds=Math.floor(totalTime%60);
+   timerText.innerHTML=`${minutes} : ${seconds.toString().padStart(2, '0')}`
+}
+
+pomoTimerStartBtn.addEventListener("click",function(){
+    
+    startTimer()
+})
+pomoPauseBtn.addEventListener("click",()=>{
+  
+    pauseTimer();
+})
+pomoResetBtn.addEventListener("click",()=>{
+     clearInterval(pomoTimerInterval)
+        resetTimer()
+})
+
+const upArrows = document.querySelectorAll(".grp-arrowup i");
+const downArrows = document.querySelectorAll(".grp-arrowdown i");
+function updateDisplay() {
+    minutes = Math.floor(totalTime / 60);
+    seconds = totalTime % 60;
+
+    timerText.textContent =
+        `${minutes.toString().padStart(2, "0")} : ${seconds.toString().padStart(2, "0")}`;
+}
+upArrows[0].addEventListener("click", () => {
+    if(totalTime>5000){
+        totalTime=5390;
+    }
+    totalTime += 600;
+    updateDisplay();
+});
+
+upArrows[1].addEventListener("click", () => {
+    totalTime += 60; 
+    updateDisplay();
+});
+
+upArrows[2].addEventListener("click", () => {
+    totalTime += 10; 
+    updateDisplay();
+});
+
+upArrows[3].addEventListener("click", () => {
+    totalTime += 1; 
+    updateDisplay();
+});
+downArrows[0].addEventListener("click", () => {
+    totalTime = Math.max(0, totalTime - 600);
+    updateDisplay();
+});
+
+downArrows[1].addEventListener("click", () => {
+    totalTime = Math.max(0, totalTime - 60);
+    updateDisplay();
+});
+
+downArrows[2].addEventListener("click", () => {
+    totalTime = Math.max(0, totalTime - 10);
+    updateDisplay();
+});
+
+downArrows[3].addEventListener("click", () => {
+    totalTime = Math.max(0, totalTime - 1);
+    updateDisplay();
+});

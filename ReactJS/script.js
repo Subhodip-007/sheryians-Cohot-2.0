@@ -507,3 +507,20 @@ console.log(array)
  // index.html grand father 
  // package.json all configuration like version dependencies
  // readme.md is readme file 
+
+ //COMPONENTS 
+ // component based structure.
+ //app.js->rafc -><div>create a card </div> now built more 10 cards 
+ // wait it will messy and thats y me keep const App = () => { empty
+// so we make component based architecture (makeing multiple functions and use them)
+// now inside sec create a folder name component 
+// components - is a small piece of code that helps like i have a nav component and inside i have icon-component 
+// so everything is component (components re-endar not while page)
+// inside component create card.jsx
+// for nav bar nav-bar.jsx 
+// using import and export use
+// now u want ke i want to show cards but contern of two cards should be difernet like insta post
+// we can do this with the help of props drilling
+
+
+
