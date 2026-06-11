@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  background-color: #111;
+  position: relative;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+  background-color: #111;
+  background-image: url("https://i.pinimg.com/736x/f2/ed/da/f2edda92eec0e913457aaaa9196e298e.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+h1 {
+  color: rgb(13, 13, 13);
+}
+
+.nav {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 8vh;
+  width: 90%;
+  border-radius: 1rem;
+  background-color: aliceblue;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  font-size: 0.5rem;
+  z-index: 100;
+}
+
+.naviconGrpright {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+img {
+  height: 50px;
+  width: 50px;
+  border-radius: 1rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.cont-text {
+  position: absolute;
+  top: 20%;
+  left: 5%;
+  width: 80%;
+  min-height: 50%;
+  font-size: 3rem;
+}
+
+.cont-text h1 {
+  color: aliceblue;
+  mix-blend-mode: difference;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.herotext2 {
+  color: red;
+}
+
+.footernav {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  min-height: 80px;
+  border-radius: 1rem;
+  background-color: aliceblue;
+  padding: 2rem;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}/*# sourceMappingURL=style.css.map */

@@ -456,10 +456,38 @@ rootelem.render(h2());
 // task 
 //https://in.pinterest.com/pin/183943966026154260/
 
+// DAY 68
+// JS -- javascript
+// JSX-- javascript + HTML
+// lets revise
+//--> main.js --> app.js --> components(nav.js);
+//main.js
+// import app from './app.js'
+// root in html select it ReactDOM.createRoot();
+// root.rendar();
+// app.js
+// function app(){
+//return()
+//}
+// expore default app;
 
+// now this is too heavy to make all files everytime so we use bundler
+// to  
+// now create a react folder using vite 
+// in js React.createElement('h1',{className:'icon2'},"Blog")
+// injsx lethi = <h1>Blog</h1>;
+// now we use a shortcut rafce react-arrow-function-component-export
+// import React from 'react'
 
+// const script = () => {
+//   return (
+//     <div>script</div>
+//   )
+// }
 
-
+// export default script
+// now normally me call function like fun()
+// but in jsx we can call by both <fun /> or fun() 
 
 
 let h1=document.createElement("h1");
