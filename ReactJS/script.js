@@ -411,6 +411,54 @@ let[e,d,...f]=[...arr1]
 // concept oj import export 
 // type module 
 
+// DAY-67 bascis of react
+// Simple analogy
+// npm installation
+// You buy a book and keep it on your bookshelf.
+// You can read it anytime.
+// CDN
+// You borrow the book from a library whenever you need it.
+// little bit of GSAP
+//  using GSAP CDN 
+// we always put CDN above the script tag of js so that js can read it 
+// gsap.to(".box", {
+//   x: 50,
+//   duration: 2,
+//   delay: 1
+// });
+// same want when take react CDN
+{/* <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script> */}      
+// now if u see there are two script file one is of react library (makes the UI) and one is reactDOM (helps react integrating with DOM)
+// react<-------connection btw(reactDOM)---->DOM
+
+ // now console.log(react//reactDOM);
+// create ealment h1 using js 
+// ceate element h1 using react 
+// kya banana hai ,attributes(src,class,id), content
+let h1elem=React.createElement('h1',null,'hello form react');
+let h2elem=React.createElement('h2',null,'hello form react2');
+let div=React.createElement("div",{id:"parent",class:"elem"},[h1elem,h2elem],'child');
+
+// now reactODM will intregrate this 
+// forn that we in react DOM we will create a root
+let root=document.querySelector("#root");
+ let rootelem=ReactDOM.createRoot(root) // body should not be the root so better create a div with id root
+ //<div id="root"></div>
+rootelem.render(div)
+// now another way 
+function h1(){
+    return React.createElement('h1',null,'hello form function');
+}
+const h2=()=>React.createElement('h2',null,'hello form react2');
+rootelem.render(h1());
+rootelem.render(h2());
+// task 
+//https://in.pinterest.com/pin/183943966026154260/
+
+
+
+
 
 
 
