@@ -598,5 +598,12 @@ console.log(array)
 // now u want ke i want to show cards but contern of two cards should be difernet like insta post
 // we can do this with the help of props drilling
 
+// YT task1 complete 
+
+// css 
+// for now we r using golbal css which one css file for every component 
+// now problem - if if have a same class btn but in diff component and u awnt to style differently 
+// for more better me use name.module.css 
+// best is to use tailwind or and library
 
 

@@ -1,0 +1,15 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.btn{
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: #007bff;
+    color: aliceblue;
+    width: fit-content;
+}
+
