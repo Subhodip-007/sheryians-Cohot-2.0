@@ -488,6 +488,17 @@ rootelem.render(h2());
 // export default script
 // now normally me call function like fun()
 // but in jsx we can call by both <fun /> or fun() 
+// DAY-69
+// concept of dom and virtual DOM
+// pahale we use to directly interact with DOM 
+// now user -------> react------>DOM ------>react--->user
+// at first we use to say react.createElememt('h1',null(class,id,src),"content(hello)")
+// but now direct <h1>hello</h1>
+// becaue aggar ham khudse <STATE-MANAGEMENT>(UI management,data-management) karangay to its hard;
+//folder structure
+// STATE-management : 
+// deal with COMPONENTS - rules component ka first letter capltal
+
 
 
 let h1=document.createElement("h1");
@@ -578,7 +589,7 @@ console.log(array)
  // app.css i no use now 
  // assets i used to keep importent things eg: svg icons
  // in public me keep static things like font fonts img vido
- // now file eslintrc.cjs is used to make custom rules for your coding in colaboration or any 
+ // now file eslintrc.cjs play a importent role in making rules,for production ready app  is used to make custom rules for your coding in colaboration or any(merge-conflict);
  // git ignore my keep this this things that me dont want to uplaod github .env, node module 
  // index.html grand father 
  // package.json all configuration like version dependencies
@@ -606,4 +617,24 @@ console.log(array)
 // for more better me use name.module.css 
 // best is to use tailwind or and library
 
+// what is feature based and atomic design structure
+// now when we a building a website you can built it..
+// - feature based
+// nav---component
+// cards -- component
+// text-container-- component
+// in simple way breaking into feature
 
+
+// -atomic
+// for example 
+// make a button component and us it in different places 
+// make a heading and use it for different 
+
+// we combine and use both 
+
+// todo 
+// DAY 69 task 
+
+// YT UI task 
+// productive dashboard

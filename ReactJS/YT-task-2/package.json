@@ -1,5 +1,5 @@
 {
-  "name": "06-tailwind-setup",
+  "name": "yt-task-2",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,10 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.3.1",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
-    "tailwindcss": "^4.3.1"
+    "remixicon": "^4.9.1",
+    "sheryjs": "^1.0.0-beta.0.1.8"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
