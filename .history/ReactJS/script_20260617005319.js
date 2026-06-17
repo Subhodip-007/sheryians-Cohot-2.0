@@ -512,13 +512,9 @@ rootelem.render(h2());
 //})}
 // map - transform
 // filter - for filter value
-// calling a jsx file and passing value
-// create a simple div card with h1 and use props to set value 
-// props drilling
-// <nav logo="faont  src="sandlknaas" "/>
+// calling a jsx file
 
-// DAY 72
-// USE-STATE in react
+
 
 let h1=document.createElement("h1");
 h1.innerHTML="heool form js";
@@ -652,86 +648,6 @@ console.log(array)
 
 // we combine and use both 
 
-// functions in react 
-//  it acts like addeventlintner 
-// function App() {
-//   const handleClick = () => {
-//     alert("Button Clicked!");
-//   };
-
-//   return (
-//     <button onClick={handleClick}>
-//       Click Me
-//     </button>
-//   );
-// }
-// function App() {
-//   const handleChange = (e) => {
-//     console.log(e.target.value);
-//   };
-
-//   return (
-//     <input
-//       type="text"
-//       onChange={handleChange}
-//       placeholder="Type here"
-//     />
-//   );
-// }
-// function App() {
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     console.log("Form Submitted");
-//   };
-
-//   return (
-//     <form onSubmit={handleSubmit}>
-//       <button type="submit">Submit</button>
-//     </form>
-//   );
-// }
-// Event	Handler
-// Click	onClick
-// Input Change	onChange
-// Form Submit	onSubmit
-// Mouse Enter	onMouseEnter
-// Mouse Leave	onMouseLeave
-// Key Press	onKeyDown
-// Focus	onFocus
-// Blur	onBlur
-
-// HOOKs
-// now normally we use functional components 
-// for making UI but functional components (class components)didnt work well 
-// for implemention featuer , core of react , statechange, context manage  issu e
-// to slove this we use hooks (special functions) which have different task
-// USESTATE- manage state(what is state )
-// for example u have a h1 - shub it is a state and now u have a button that onclick changes to shartak so this is a difference state 
-// USE-EFFECT manages side stack 
-// now what exacly side stack is - your react main function is work and meanwhile u want to call a API 
-// and fetch data to we use use effect to put it in side stack to work without disturbing the main function 
-// like a truck on road and u on cycle path
-//USE-Ref
-// like in js doc.qs 
-// this also selescts DOM element but using react
-// you (usestate)-->want to change h1 on btn click---->react---->useeffect----->h1changed--> usestate  
-// USE_CONTEXT
-// helps in managing golbal context 
-// like at first we have to sent data from app->sec1->nav
-// but now we keep data globaly using context API
-// so everyone can directly access common to everyone
-//USE_REDUCER
-// manages complex things 
-// but usecontext manages simple thing
-// basic state manage usestate--->simple global management usecontext----->complex usereducer
-
-// USECALLBACK // USE_MEMO
-// optimization
-
-
-
-
-
 // todo 
 // two img one pintrest link 
 // ts 
@@ -746,6 +662,6 @@ console.log(array)
 // 4. https://in.pinterest.com/pin/88664686405701622/
 
 // 5. https://in.pinterest.com/pin/211174978568067/
-// making user carrd UI
+
  
 // // productive dashboard

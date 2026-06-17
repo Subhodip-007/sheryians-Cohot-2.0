@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from './button';
 
 const Navbar = () => {
   return (
@@ -14,10 +15,8 @@ const Navbar = () => {
     <a  className="px-4 py-2 rounded-full border border-transparent hover:border-gray-700 transition-all duration-300" href="">Events</a>
     <a  className="px-4 py-2 rounded-full border border-transparent hover:border-gray-700 transition-all duration-300" href="">Contacts</a>
   </div>
+    <Button name='Book Now'/>
 
-  <button className=" px-4 py-2 rounded-full bg-gray-800 text-amber-50 ">
-    Book Now
-  </button>
 </div>
   )
 }
