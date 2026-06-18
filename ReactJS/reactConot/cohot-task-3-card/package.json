@@ -1,5 +1,5 @@
 {
-  "name": "cohot-task-2",
+  "name": "cohot-task-3-card",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -13,7 +13,6 @@
     "@tailwindcss/vite": "^4.3.1",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
-    "remixicon": "^4.9.1",
     "tailwindcss": "^4.3.1"
   },
   "devDependencies": {

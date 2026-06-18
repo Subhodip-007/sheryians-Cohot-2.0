@@ -3,7 +3,7 @@ import Button from './button';
 
 const Navbar = () => {
   return (
-<div className="w-full bg-red-50 flex justify-between items-center px-8 py-4">
+<div className="w-[90%] bg-amber-50 flex justify-between items-center px-8 py-4 fixed top-4 left-1/2 -translate-x-1/2 rounded-4xl shadow-lg z-50">
   <h1 className=" text-gray-900 text-2xl font-bold">
     Horizon Counts
   </h1>

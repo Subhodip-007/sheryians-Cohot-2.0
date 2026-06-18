@@ -727,13 +727,14 @@ console.log(array)
 
 // USECALLBACK // USE_MEMO
 // optimization
+// condestion rendring
 
 
 
 
 
 // todo 
-// two img one pintrest link 
+// 0ne img one pintrest link 
 // ts 
 // //# Design Inspirations for Next Task day71
 
