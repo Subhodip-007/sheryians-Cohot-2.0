@@ -519,7 +519,14 @@ rootelem.render(h2());
 
 // DAY 72
 // USE-STATE in react
-
+// about functions in react
+// DAY 73 
+// USE-STATE
+// HOOKS- functional components to manage task easily
+//state management 
+// inside react where u can manage state of an element (prev,current,next)
+//  for normal understanding lets create a counter
+// if u normally create a counter it will not update on screen 
 let h1=document.createElement("h1");
 h1.innerHTML="heool form js";
 document.body.appendChild(h1);
@@ -729,6 +736,20 @@ console.log(array)
 // optimization
 // condestion rendring
 
+// now we r understanding USE-STATE with example 
+// like  a counter 
+// marks increament 
+// now suppose u have created a usestate value nums initially 10 and u console.log(nums) before setnums(20) after u will get same value
+// because setnum  is a async function 
+// case : if u set value of num to set nums react understand it a will not rerendar
+// now dealing with objects/ array in usestate the we can use th concept of destructure[...arr],{...obj}
+// form handleing in react
+ // normally we handle form using prevent default 
+ // same in react me use preventdefault onsubmit and when ever we type something on input we r directly interaction with DOM
+ // instead we will use a concept that is two-way binding
+ // now what happnes in two way binding
+ // now in js when we type something in in a text field we interact with DOM directly 
+ // now in react we cant interact directley so we use a usestare value the sets value of form 
 
 
 
