@@ -750,7 +750,38 @@ console.log(array)
  // now what happnes in two way binding
  // now in js when we type something in in a text field we interact with DOM directly 
  // now in react we cant interact directley so we use a usestare value the sets value of form 
-
+//                  useState("")
+//                       │
+//         ┌─────────────┴─────────────┐
+//         │                           │
+//       title                    setTitle
+//         │
+//         │ (value={title})
+//         ▼
+//    ┌───────────┐
+//    │  <input>  │◄─────────────────────────┐
+//    └─────┬─────┘                          │
+//          │                                │
+//          │ User types "H"                 │
+//          ▼                                │
+//     onChange Event                        │
+//          │                                │
+//          ▼                                │
+//   e.target.value = "H"                    │
+//          │                                │
+//          ▼                                │
+//   setTitle("H")                           │
+//          │                                │
+//          ▼                                │
+//    React updates state                    │
+//          │                                │
+//          ▼                                │
+//       title = "H"                         │
+//          │                                │
+//          └──────── value={title} ─────────┘
+//                       │
+//                       ▼
+//           Input now displays "H"
 
 
 
@@ -771,3 +802,5 @@ console.log(array)
 // making user carrd UI
  
 // // productive dashboard
+
+// 73 - marks, washroom task
