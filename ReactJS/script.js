@@ -527,6 +527,12 @@ rootelem.render(h2());
 // inside react where u can manage state of an element (prev,current,next)
 //  for normal understanding lets create a counter
 // if u normally create a counter it will not update on screen 
+//74 input handle / two way binding
+
+// basic todo
+// understand multiple components 
+//localstorage
+//
 let h1=document.createElement("h1");
 h1.innerHTML="heool form js";
 document.body.appendChild(h1);
