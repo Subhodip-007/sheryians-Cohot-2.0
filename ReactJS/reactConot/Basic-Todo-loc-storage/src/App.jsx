@@ -6,12 +6,21 @@ const App = () => {
   const [UserDescp, setUserDescp] = useState("");
   const [Imgurl, setImgurl] = useState("");
   const [UserRole, setUserRole] = useState("");
-  const [allUsers, setallUsers] = useState([]);
+    const localdata=JSON.parse(localStorage.getItem('all-users')) || []
+  const [allUsers, setallUsers] = useState(localdata);
+
+
+
+
  const handledelete=(idx)=>{
   console.log("delete")
   let copyUser=[...allUsers]
   copyUser.splice(idx,1)
   setallUsers(copyUser);
+    localStorage.setItem(
+    'all-users',
+    JSON.stringify(copyUser)
+  );
  }
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,8 +32,9 @@ const App = () => {
       Role: UserRole,
     };
 
-    setallUsers([...allUsers, newUser]);
-
+    let updateduser= [...allUsers, newUser];
+    setallUsers(updateduser)
+    localStorage.setItem('all-users',JSON.stringify(updateduser))
     setName("");
     setUserDescp("");
     setImgurl("");
