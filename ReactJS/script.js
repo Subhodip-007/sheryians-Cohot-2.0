@@ -810,3 +810,25 @@ console.log(array)
 // // productive dashboard
 
 // 73 - marks, washroom task
+// me are talking about inspect-> application -> localstorage browser having a lil storage
+// // browser having a very lil memory where i can store something
+// // and session storage while the browser is open approx 5-10 mb-
+// // localstorage.clear();
+// // localstorage.setitem('key','shartak'); this can overwrite also
+// // let user=localstorage.getitem('key')
+// //log user
+// //localstorage.removeitem(key)
+
+// there is a problem to store obj//arr
+// // in local storage we store data in form of string
+// let obj={name:'shub'};
+// let new = Json.stringify(obj);
+// json.parse()
+// // now fragments <></> if u dont want to make div and props drilling in react 
+// what is API 
+// frontend request to backend and server generates a responce using API
+// whole data comes from backend 
+// // if full html comes SSR server side rendering
+// // if it come in json format  CSR client side rendering
+// // first we have to instral axios npm i axios is a external tool
+// // to built we will use fake api like jsonplaceholder / lorempicsum / fake  store 
