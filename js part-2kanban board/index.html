@@ -1,99 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet" />
     <title>Document</title>
-    <style>
-        .hide-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-
-        .hide-scrollbar {
-            -ms-overflow-style: none;
-            /* IE and Edge */
-            scrollbar-width: none;
-            /* Firefox */
-        }
-    </style>
-
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-
 <body>
-    <main class="h-screen w-full bg-gray-950 flex flex-col relative ">
-        <div
-            class="hidden addTaskModem h-75 w-100 bg-amber-300 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  rounded-2xl p-4  ">
-            <div class="flex flex-col h-10">
-                <i class="ri-close-large-line self-end text-2xl"></i>
-            </div>
-            <form action="" class=" flex flex-col gap-4">
-                <input class="inputTask p-4 border rounded-2xl" type="text" placeholder="Enter Task Title">
-                <textarea class="inputTextArea p-4 border rounded-2xl max-h-[150px]" placeholder="Enter details"></textarea>
-                <button class="p-4 border rounded-2xl cursor-pointer " type="submit">Create</button>
-            </form>
+   <main class="h-screen w-full bg-black">
+    <nav class="h-10 w-full ">
+        <div class="left">KanBan</div>
+        <div class="right">
+            <button>Add-Task</button>
         </div>
-        <nav class="h-[100px] w-full bg-gray-700 flex justify-between p-8 items-center">
-            <div class="left text-gray-50">Kanban</div>
-
-            <div class="right text-gray-50">
-                <button class="addtask px-4 py-4 rounded-2xl bg-gray-900 border cursor-pointer text-red-600 font-mono">
-                    Add Task
-                </button>
-            </div>
-        </nav>
-
-        <section class="board flex flex-1 bg-black-500 gap-5 p-8 ">
-            <!-- todosec -->
-            <div id="Todo"
-                class="task-cont  max-h-[70vh] w-full  bg-gray-900 rounded-2xl p-4 font-mono overflow-hidden  ">
-                <div class="heading flex justify-between  ">
-                    <div class="left">ToDo</div>
-                    <div class="right">count</div>
-                </div>
-
-                <div class="taskscroller max-h-[90vh] overflow-y-auto  hide-scrollbar ">
-                
-
-                </div>
-            </div>
-
-            <!-- in-progresssec -->
-            <div id="Inprogress" class="task-cont  max-h-[70vh] w-full  bg-gray-900 rounded-2xl p-4 font-mono overflow-hidden 
-            ">
-                <div class="heading flex justify-between  ">
-                    <div class="left">In-Progress</div>
-                    <div class="right">count</div>
-                </div>
-
-                <div class="max-h-[90vh] overflow-y-auto  hide-scrollbar ">
-                
-
-                </div>
-
-            </div>
-
-            <!-- completed -->
-            <div id="Completed"
-                class="task-cont  max-h-[70vh] w-full  bg-gray-900 rounded-2xl p-4 font-mono overflow-hidden  ">
-                <div class="heading flex justify-between  ">
-                    <div class="left">Completed</div>
-                    <div class="right">count</div>
-                </div>
-
-                <div class="max-h-[90vh] overflow-y-auto  hide-scrollbar ">
-
-
-                </div>
-
-            </div>
-
-        </section>
-    </main>
-
-    <script src="script.js"></script>
+    </nav>
+    <section></section>
+   </main>
 </body>
-
 </html>
