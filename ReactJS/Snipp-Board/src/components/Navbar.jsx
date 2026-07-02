@@ -6,7 +6,7 @@ const Navbar = ({clickFormbtn}) => {
   return (
       <nav className=" z-[999] h-14 w-[80%] fixed top-4 left-1/2 -translate-x-1/2 pr-4 flex items-center justify-between rounded-2xl bg-zinc-900/30 backdrop-blur-xl border border-white/10 shadow-xl">
         <div>
-            <img src="Logo.jpg" alt="" className='h-[150px] w-[150px]' />
+            <img src="Logo.jpg" alt="" className='h-[100px] w-[100px] scale-125' />
         </div>
 <div className='flex gap-3'>
             <select
