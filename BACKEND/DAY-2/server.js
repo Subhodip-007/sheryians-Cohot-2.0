@@ -13,6 +13,10 @@ app.get('/product',function(req,res){
     res.send("this is product page ")
 })
 
+app.get('/contact',function(req,res){
+    res.send("this is contact page ")
+})
+
 app.listen(3000) // server start
 // now what is this number(port)
 // a os give a port to every application/process 
