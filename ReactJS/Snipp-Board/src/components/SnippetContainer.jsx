@@ -1,12 +1,12 @@
 import React from 'react'
 import SnippetCard from './SnippetCard';
 
-const SnippetContainer = ({alldata}) => {
+const SnippetContainer = ({alldata, deleteSnippet}) => {
   return (
-    <div className='mt-15 z-[3] h-full w-full fixed flex flex-wrap p-5 gap-4  '>
+    <div className='mt-20 z-[3] h-full w-full fixed flex flex-wrap p-5 gap-4  '>
       {alldata.map((elem,idx)=>{
         return(
-          <SnippetCard key={idx} data={elem} />
+          <SnippetCard key={idx} data={elem} deleteSnippet={deleteSnippet} />
         )
       })}
       

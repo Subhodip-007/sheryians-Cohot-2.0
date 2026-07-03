@@ -7,7 +7,7 @@ const SnippetForm = ({ clickFormbtn, addSnippet }) => {
         title: "",
         language: "",
         code: "",
-        favorite: false,
+        favorite: '',
         tags: ""
     });
 
@@ -46,7 +46,7 @@ const SnippetForm = ({ clickFormbtn, addSnippet }) => {
                             ))}
                         </select>
                         <input
-                        className='p-4 rounded-2xl border ' 
+                            className='p-4 rounded-2xl border '
                             type="text"
                             placeholder="React, Hooks, useEffect"
                             value={FormData.tags}
@@ -57,6 +57,17 @@ const SnippetForm = ({ clickFormbtn, addSnippet }) => {
                                 })
                             }
                         />
+                        <div className='flex gap-1 items-center border rounded-2xl p-2'>   <label>Mark as Favorite</label>
+                            <input
+                             onChange={(e) =>
+                                setFormData({
+                                    ...FormData,
+                                    favorite: e.target.checked,
+                                })
+                            }
+                                type="checkbox"
+                                className="h-5 w-5 bg-zinc-700 accent-amber-300"
+                            /> </div>
                     </div>
                     <textarea
                         value={FormData.code}
@@ -70,6 +81,7 @@ const SnippetForm = ({ clickFormbtn, addSnippet }) => {
                         placeholder="Paste your code here..."
                         className=" max-h-60 w-1/2 rounded-lg border border-zinc-700 bg-zinc-900 p-3 font-mono resize-none outline-none text-amber-50"
                     />
+
                 </div>
                 <button
                     className="rounded-2xl bg-zinc-800 p-3 font-semibold hover:bg-zinc-600 active:scale-95 transition text-amber-50"

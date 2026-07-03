@@ -1,12 +1,34 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar';
 import BackGroundCont from '../components/BackGroundCont';
 import SnippetContainer from '../components/SnippetContainer';
 import SnippetForm from '../components/SnippetForm';
 
 const Dashboard = () => {
+    
+    const [searchText, setSearchText] = useState("");
     const [ViewForm, setViewForm] = useState(false)
-      const [AllsnippetData, setAllsnippetData ] = useState([])
+const [AllsnippetData, setAllsnippetData] = useState(() => {
+  const savedSnippets = localStorage.getItem("snippets");
+
+  return savedSnippets ? JSON.parse(savedSnippets) : [];
+});
+  useEffect(() => {
+    localStorage.setItem(
+      "snippets",
+      JSON.stringify(AllsnippetData)
+    );
+  }, [AllsnippetData]);
+        const filteredSearchData = AllsnippetData.filter((snippet) => {
+  return (
+    snippet.title.toLowerCase().includes(searchText.toLowerCase()) ||
+    snippet.language.toLowerCase().includes(searchText.toLowerCase()) ||
+    snippet.code.toLowerCase().includes(searchText.toLowerCase()) ||
+    snippet.tags.some((tag) =>
+      tag.toLowerCase().includes(searchText.toLowerCase())
+    )
+  );
+});
     const addSnippet=(data)=>{
        
         let dataObj={
@@ -14,7 +36,7 @@ const Dashboard = () => {
                   title: data.title,
         language: data.language,
         code: data.code,
-        favorite: false,
+        favorite: data.favorite,
             tags: data.tags
         .split(",")
         .map(tag => tag.trim())
@@ -27,6 +49,17 @@ const Dashboard = () => {
         
         setAllsnippetData(UpdatedData);
     }
+//    const deleteSnippet = (idx) => {
+//     const updatedData = [...AllsnippetData];
+//     updatedData.splice(idx, 1);
+//     setAllsnippetData(updatedData);
+// };
+const deleteSnippet = (id) => {
+    setAllsnippetData(prev =>
+        prev.filter(snippet => snippet.id !== id)
+    );
+};
+
 
     const clickForm = () => {
         if (ViewForm == true) {
@@ -39,9 +72,9 @@ const Dashboard = () => {
     }
     return (
         <div className='h-screen w-full bg-zinc-800 relative'>
-            <Navbar clickFormbtn={clickForm} />
+            <Navbar clickFormbtn={clickForm} setSearchText={setSearchText} />
             <BackGroundCont />
-            <SnippetContainer alldata={AllsnippetData} />
+            <SnippetContainer alldata={filteredSearchData} deleteSnippet={deleteSnippet} />
             {ViewForm ? <SnippetForm clickFormbtn={clickForm} addSnippet={addSnippet} /> : null}
 
         </div>

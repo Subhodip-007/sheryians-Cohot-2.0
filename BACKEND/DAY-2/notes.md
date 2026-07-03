@@ -14,4 +14,6 @@
 --  login vscode through github
 now remember in github node module and .env folder dont go 
 to do this me use a file git ignore
+ -- now gooo to redar.com and deploy 
+ 
 
