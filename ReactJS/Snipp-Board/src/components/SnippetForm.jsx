@@ -86,7 +86,7 @@ const SnippetForm = ({ clickFormbtn, addSnippet }) => {
                 <button
                     className="rounded-2xl bg-zinc-800 p-3 font-semibold hover:bg-zinc-600 active:scale-95 transition text-amber-50"
                 >
-                    Add Snippet
+                    Save
                 </button>
             </form>
         </div>

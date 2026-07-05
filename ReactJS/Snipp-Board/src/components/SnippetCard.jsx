@@ -1,16 +1,27 @@
 import React, { useState } from 'react'
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { oneDark } from "react-syntax-highlighter/dist/esm/styles/prism";
-const SnippetCard = ({key, data ,deleteSnippet }) => {
+const SnippetCard = ({key, data ,deleteSnippet,copySnippet,editSnippet }) => {
   const [copy, setCopy] = useState(false)
 
-const handleCopy =async () => {
-   await navigator.clipboard.writeText(data.code);
+// const handleCopy =async () => {
+//    await navigator.clipboard.writeText(data.code);
+
+//   setCopy(true);
+
+//   setTimeout(() => {
+ 
+//     setCopy(false);
+//   }, 2000);
+// };
+const handleCopy = async () => {
+  await navigator.clipboard.writeText(data.code);
 
   setCopy(true);
 
+  copySnippet(); // Toast
+
   setTimeout(() => {
- 
     setCopy(false);
   }, 2000);
 };
@@ -34,7 +45,7 @@ const handleCopy =async () => {
             </span>
 
             <button  onClick={handleCopy}>
-  {copy ? "Copied" : <i className="ri-file-copy-line text-lg"></i>}
+  {copy ? <i className="ri-check-double-line"></i> : <i className="ri-file-copy-line text-lg"></i>}
   
 </button>
           </div>
@@ -82,7 +93,7 @@ const handleCopy =async () => {
         </div>
 
       </div>
-            <div className=' px-5 w-full flex justify-center-safe'><i onClick={() => deleteSnippet(data.id)}  className="ri-delete-bin-7-line"></i></div>
+            <div className=' px-5 w-full flex justify-center-safe gap-4'><i onClick={() => deleteSnippet(data.id)}  className="ri-delete-bin-7-line"></i> <i onClick={() => editSnippet(data)} class="ri-pencil-fill"></i></div>
     </div>
     // motion.div
   )
