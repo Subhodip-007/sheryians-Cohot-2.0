@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="sytle.css">
+    <link
+  href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css"
+  rel="stylesheet"
+/>
+    <title>Document</title>
+</head>
+<body>
+    <main class="Dark">
+        <nav class="Navbar">
+            <button class="add-rectangle-btn"><i class="ri-add-line"></i><i class="ri-rectangle-line"></i></button>
+            <button class="add-text-btn"><i class="ri-add-line"></i> Text</button>
+             <button class="export-btn">Export</button>
+            <button class="themebtn">change theme</button>
+           <button class="import-btn">Import</button>
+        </nav>
+        <section class="main-board">
+  <div class="cont" id="layer">
+    <div class="layer-header">
+        <h2>Layers</h2>
+    </div>
+
+    <form class="layer-search">
+        <input type="text" placeholder="Search layers...">
+    </form>
+
+    <button class="add-layer-btn">
+        <i class="ri-add-line"></i>
+        Add Layer
+    </button>
+
+    <div class="layer-list">
+        <div class="layer-item active">
+            <i class="ri-layout-4-line"></i>
+            <span>Rectangle 1</span>
+        </div>
+
+        <div class="layer-item">
+            <i class="ri-text"></i>
+            <span>Text 1</span>
+        </div>
+
+        <div class="layer-item">
+            <i class="ri-image-line"></i>
+            <span>Image 1</span>
+        </div>
+    </div>
+</div>
+         <div class="cont" id="canvas">
+
+    <div class="canvas-toolbar">
+        <button><i class="ri-cursor-line"></i></button>
+        <button><i class="ri-text"></i></button>
+        <button><i class="ri-shape-line"></i></button>
+        <button><i class="ri-image-line"></i></button>
+    </div>
+
+    <div class="canvas-wrapper">
+        <div class="canvas-page">
+
+            <!-- Everything you add goes here -->
+
+        </div>
+    </div>
+
+</div>
+           <div class="cont" id="properties">
+
+    <div class="properties-header">
+        <h2>Properties</h2>
+    </div>
+
+    <div class="property-group">
+        <h3>Position</h3>
+
+        <label>X</label>
+        <input type="number" placeholder="0">
+
+        <label>Y</label>
+        <input type="number" placeholder="0">
+    </div>
+
+    <div class="property-group">
+        <h3>Size</h3>
+
+        <label>Width</label>
+        <input type="number" placeholder="100">
+
+        <label>Height</label>
+        <input type="number" placeholder="100">
+    </div>
+
+    <div class="property-group">
+        <h3>Appearance</h3>
+
+        <label>Fill Color</label>
+        <input type="color">
+
+        <label>Opacity</label>
+        <input type="range" min="0" max="100" value="100">
+    </div>
+
+    <button class="delete-btn">
+        Delete Element
+    </button>
+
+</div>
+        </section>
+        
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>

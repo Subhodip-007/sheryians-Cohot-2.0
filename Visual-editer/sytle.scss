@@ -1,0 +1,471 @@
+/* ==========================
+   RESET
+========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    font-family:monospace;
+    overflow:hidden;
+}
+
+/* ==========================
+   COLORS
+========================== */
+
+:root{
+    --bg:#111111;
+    --panel:#1F1F1F;
+    --panel-light:#2B2B2B;
+    --border:#343434;
+    --text:#ffffff;
+    --secondary:#9CA3AF;
+    --accent:#4F8EF7;
+    --danger:#E53935;
+}
+
+/* ==========================
+   MAIN
+========================== */
+
+main{
+    width:100%;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    background:var(--bg);
+    color:white;
+}
+
+/* ==========================
+   NAVBAR
+========================== */
+
+nav{
+    height:70px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 20px;
+
+    background:#181818;
+
+    border-bottom:1px solid var(--border);
+
+    flex-shrink:0;
+}
+
+nav button{
+    padding:10px 16px;
+
+    border:none;
+    border-radius:8px;
+
+    cursor:pointer;
+
+    background:#2B2B2B;
+    color:white;
+
+    transition:.2s;
+}
+
+nav button:hover{
+    background:#3A3A3A;
+}
+
+/* ==========================
+   MAIN BOARD
+========================== */
+
+.main-board{
+    flex:1;
+
+    display:flex;
+
+    overflow:hidden;
+}
+
+/* ==========================
+   LAYER PANEL
+========================== */
+
+#layer{
+    width:260px;
+
+    background:var(--panel);
+
+    display:flex;
+    flex-direction:column;
+
+    gap:18px;
+
+    padding:20px;
+
+    border-right:1px solid var(--border);
+
+    flex-shrink:0;
+}
+
+.layer-header h2{
+    font-size:24px;
+}
+
+.layer-search input{
+
+    width:100%;
+
+    padding:12px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:8px;
+
+    background:var(--panel-light);
+
+    color:white;
+}
+
+.layer-search input::placeholder{
+    color:#888;
+}
+
+.add-layer-btn{
+
+    border:none;
+
+    padding:12px;
+
+    border-radius:8px;
+
+    background:var(--accent);
+
+    color:white;
+
+    cursor:pointer;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:8px;
+}
+
+.layer-list{
+
+    flex:1;
+
+    overflow:auto;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+}
+
+.layer-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:12px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.layer-item:hover{
+
+    background:#303030;
+}
+
+.layer-item.active{
+
+    background:var(--accent);
+}
+
+/* ==========================
+   CANVAS
+========================== */
+
+#canvas{
+
+    flex:1;
+
+    position:relative;
+
+    background:#2C2C2C;
+
+    overflow:hidden;
+
+    min-width:0;
+}
+
+/* ==========================
+   TOOLBAR
+========================== */
+
+.canvas-toolbar{
+
+    position:absolute;
+
+    top:20px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    z-index:1000;
+
+    width:700px;
+
+    height:60px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:15px;
+
+    padding:0 20px;
+
+    background:#1F1F1F;
+
+    border-radius:12px;
+
+    box-shadow:0 15px 30px rgba(0,0,0,.4);
+}
+
+.canvas-toolbar button{
+
+    width:40px;
+
+    height:40px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#333;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    transition:.2s;
+}
+
+.canvas-toolbar button:hover{
+
+    background:var(--accent);
+}
+
+/* ==========================
+   CANVAS WRAPPER
+========================== */
+
+.canvas-wrapper{
+
+    width:100%;
+
+    height:100%;
+
+    overflow:scroll;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    padding:10px 10px 10px;
+}
+
+/* ==========================
+   PAGE
+========================== */
+
+// .canvas-page{
+
+//     width:1600px;
+
+//     min-height:2200px;
+
+//     background:white;
+
+//     border-radius:12px;
+
+//     position:relative;
+
+//     box-shadow:0 20px 60px rgba(0,0,0,.4);
+// }
+.canvas-page{
+    position:relative;
+
+    width:10000px;
+    height:10000px;
+
+    background:#2c2c2c;
+
+    background-image:
+        linear-gradient(#3a3a3a 1px, transparent 1px),
+        linear-gradient(90deg,#3a3a3a 1px, transparent 1px);
+
+    background-size:40px 40px;
+}
+
+/* ==========================
+   PROPERTIES
+========================== */
+
+#properties{
+
+    width:300px;
+
+    background:var(--panel);
+
+    padding:20px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:22px;
+
+    border-left:1px solid var(--border);
+
+    overflow:auto;
+
+    flex-shrink:0;
+}
+
+.properties-header h2{
+
+    font-size:24px;
+}
+
+.property-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+}
+
+.property-group h3{
+
+    color:var(--secondary);
+
+    margin-bottom:6px;
+}
+
+.property-group label{
+
+    font-size:14px;
+}
+
+.property-group input[type="number"]{
+
+    width:100%;
+
+    padding:10px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:8px;
+
+    background:var(--panel-light);
+
+    color:white;
+}
+
+.property-group input[type="color"]{
+
+    width:100%;
+
+    height:45px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:transparent;
+
+    cursor:pointer;
+}
+
+.property-group input[type="range"]{
+
+    width:100%;
+}
+
+.delete-btn{
+
+    margin-top:auto;
+
+    border:none;
+
+    padding:14px;
+
+    border-radius:8px;
+
+    background:var(--danger);
+
+    color:white;
+
+    cursor:pointer;
+
+    transition:.2s;
+}
+
+.delete-btn:hover{
+
+    background:#C62828;
+}
+
+/* ==========================
+   SCROLLBAR
+========================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#555;
+
+    border-radius:20px;
+}
+
+::-webkit-scrollbar-track{
+
+    background:#222;
+}
