@@ -12,3 +12,50 @@
 // but there is a proble note by default out browesr dont allow to drop any element to other cont
 // now to prevent this we add a event dragover- preventdefault 
 // now store deaged elem create a val 
+let TodoSection=document.querySelector('.tododrop');
+let InprogSection=document.querySelector('.inprogdrop');
+let completedSection=document.querySelector(' .completedrop');
+let taskCard=document.querySelectorAll('.task')
+let draggedItem=null
+taskCard.forEach(task => {
+    task.addEventListener('drastart',()=>{
+        draggedItem=task
+        
+        
+    })
+});
+function Ondragfeature(section){
+    section.addEventListener("dragenter",(e)=>{
+    section.classList.add(
+    "border-2",
+    "border-dashed",
+    "border-white",
+    "scale-105",
+    "transition-all",
+    "duration-200"
+);
+    console.log(draggedItem,InprogSection);
+    
+})
+
+section.addEventListener("dragleave",(e)=>{
+    section.classList.remove(
+    "border-2",
+    "border-dashed",
+    "border-white",
+    "scale-105",
+    "transition-all",
+    "duration-200"
+);
+    
+    
+})
+
+}
+Ondragfeature(TodoSection);
+Ondragfeature(InprogSection);
+Ondragfeature(completedSection);
+
+
+
+console.log(TodoSection,InprogSection,completedSection);
