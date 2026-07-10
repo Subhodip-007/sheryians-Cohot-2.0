@@ -1,43 +1,105 @@
-// lets learn drag and drop functionality 
-// in js
-// for that mainly me use 
-// first select the cont by id
-// now add foreache on task on each task add a eventlistner-drag- oinsole and check
-// now u can get drag dets on your task 
-// now for testion a event on id processcont dreagenter(e)and console
-// add cALSSLIST.ADD FOR HOVER
-// now do it for all and also add event dregleave for better create a function
+const inputForm = document.querySelector(".inputForm");
+const inputTitle = document.querySelector(".inputTitle");
+const inputdescp = document.querySelector(".inputdescp");
+const addtaskPage = document.querySelector(".addTaskModule");
+const addtaskBtn = document.querySelector(".addTaskBtn");
 
-// noe inside function add a event drop that will give elem droped and where 
-// but there is a proble note by default out browesr dont allow to drop any element to other cont
-// now to prevent this we add a event dragover- preventdefault 
-// now store deaged elem create a val 
-let formaddbtn=document.querySelector('.formaddBtn');
-let inputForm=document.querySelector('.inputForm');
-let inputTitle=document.querySelector(".inputTitle");
-let inputdescp=document.querySelector(".inputdescp");
-let addtaskPage=document.querySelector('.addTaskModule');
-let addtaskBtn=document.querySelector('.addTaskBtn');
-let TodoSection=document.querySelector('.tododrop');
-let InprogSection=document.querySelector('.inprogdrop');
-let completedSection=document.querySelector(' .completedrop');
-let taskCard=document.querySelectorAll('.task')
-let draggedItem=null
-taskCard.forEach(task => {
-    task.addEventListener('dragstart',()=>{
-        draggedItem=task
-        
-        
-        
-    })
-});
-function Ondragfeature(section) {
+const TodoSection = document.querySelector(".tododrop");
+const InprogSection = document.querySelector(".inprogdrop");
+const completedSection = document.querySelector(".completedrop");
 
-    section.addEventListener("dragover", (e) => {
+const allSections = [
+    TodoSection,
+    InprogSection,
+    completedSection
+];
+
+let draggedItem = null;
+let taskdata = {};
+
+function makeTaskDraggable(task) {
+    task.addEventListener("dragstart", () => {
+        draggedItem = task;
+    });
+}
+
+function createTask(title, desc) {
+    const task = document.createElement("div");
+
+    task.className =
+        "task bg-blue-400 rounded-2xl p-4 flex justify-between gap-4 cursor-grab shrink-0";
+
+    task.draggable = true;
+
+    task.innerHTML = `
+        <div>
+            <h2 class="font-bold text-xl">${title}</h2>
+            <p class="mt-2">${desc}</p>
+        </div>
+
+        <div class="flex items-end">
+            <button class="bg-red-500 px-4 py-2 rounded-xl text-white deleteBtn">
+                Delete
+            </button>
+        </div>
+    `;
+
+    makeTaskDraggable(task);
+
+    task.querySelector(".deleteBtn").addEventListener("click", () => {
+        task.remove();
+        updateCount();
+        saveTask();
+    });
+
+    return task;
+}
+
+function updateCount() {
+    allSections.forEach(section => {
+        const count = section.parentElement.querySelector(".count");
+        count.textContent = section.querySelectorAll(".task").length;
+    });
+}
+
+function saveTask() {
+    taskdata = {};
+
+    allSections.forEach(section => {
+        taskdata[section.classList[0]] = Array.from(
+            section.querySelectorAll(".task")
+        ).map(task => ({
+            title: task.querySelector("h2").textContent,
+            desc: task.querySelector("p").textContent
+        }));
+    });
+
+    localStorage.setItem("taskdata", JSON.stringify(taskdata));
+}
+
+function loadTask() {
+    const data = JSON.parse(localStorage.getItem("taskdata"));
+
+    if (!data) return;
+
+    for (const sectionName in data) {
+        const section = document.querySelector(`.${sectionName}`);
+
+        data[sectionName].forEach(taskData => {
+            const task = createTask(taskData.title, taskData.desc);
+            section.appendChild(task);
+        });
+    }
+
+    updateCount();
+}
+
+function onDragFeature(section) {
+    section.addEventListener("dragover", e => {
         e.preventDefault();
     });
 
-    section.addEventListener("dragenter", (e) => {
+    section.addEventListener("dragenter", e => {
         e.preventDefault();
 
         section.classList.add(
@@ -61,7 +123,7 @@ function Ondragfeature(section) {
         );
     });
 
-    section.addEventListener("drop", (e) => {
+    section.addEventListener("drop", e => {
         e.preventDefault();
 
         section.appendChild(draggedItem);
@@ -74,53 +136,41 @@ function Ondragfeature(section) {
             "transition-all",
             "duration-200"
         );
+
+        updateCount();
+        saveTask();
+    });
+}
+
+function formInputFeature() {
+    addtaskBtn.addEventListener("click", () => {
+        addtaskPage.style.display = "block";
     });
 
+    inputForm.addEventListener("submit", e => {
+        e.preventDefault();
+
+        const title = inputTitle.value.trim();
+        const desc = inputdescp.value.trim();
+
+        if (!title || !desc) return;
+
+        const task = createTask(title, desc);
+
+        TodoSection.appendChild(task);
+
+        updateCount();
+        saveTask();
+
+        inputForm.reset();
+        addtaskPage.style.display = "none";
+    });
 }
-addtaskBtn.addEventListener('click',()=>{
-    addtaskPage.style.display="block";
-})
-inputForm.addEventListener("submit",(e)=>{
-    e.preventDefault()
-    console.log(inputTitle.value);
-    const task = document.createElement("div");
 
-task.className =
-    "task bg-blue-400 rounded-2xl p-4 flex justify-between gap-4 cursor-grab shrink-0";
+allSections.forEach(onDragFeature);
 
-task.draggable = true;
+formInputFeature();
 
-task.innerHTML = `
-    <div>
-        <h2 class="font-bold text-xl">${inputTitle.value}</h2>
+loadTask();
 
-        <p class="mt-2">
-            ${inputdescp.value}
-        </p>
-    </div>
-
-    <div class="flex items-end">
-        <button class="bg-red-500 px-4 py-2 rounded-xl text-white">
-            Delete
-        </button>
-    </div>
-`;
-
-// Append to a section
-TodoSection.appendChild(task);
-addtaskPage.style.display="none";
-        task.addEventListener('dragstart',()=>{
-        draggedItem=task
-        
-        
-        
-    })
-
-})
-Ondragfeature(TodoSection);
-Ondragfeature(InprogSection);
-Ondragfeature(completedSection);
-
-
-
-
+updateCount();
