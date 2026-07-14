@@ -13,3 +13,63 @@ app.use("*name",(req,res)=>{
 
 to opt this we use const path = require('path')
 y path till index.html 
+
+
+
+  User opens website
+                     │
+                     ▼
+          Request reaches Express
+                     │
+                     ▼
+       Is it a static file request?
+         (JS, CSS, image, font...)
+               /            \
+             Yes             No
+              │               │
+              ▼               ▼
+express.static()      Send index.html
+ serves the file             │
+                              ▼
+                    Browser loads React
+                              │
+                              ▼
+                    React Router checks URL
+                              │
+                              ▼
+                 Shows correct React page
+
+
+
+
+
+React Source Code
+(App.jsx, Components, CSS, etc.)
+            │
+            │ npm run build                                                                     
+            ▼
+      dist/
+      ├── index.html
+      ├── assets/
+      │   ├── index-abc123.js
+      │   ├── index-xyz456.css
+      │   └── images...
+      └── favicon.ico
+            │
+            ▼
+Copy dist into backend/public
+(or wherever Express serves static files)
+            │
+            ▼
+Deploy Backend to Render
+            │
+            ▼
+Users visit your Render URL
+            │
+            ▼
+Express serves:
+- index.html
+- CSS
+- JavaScript
+- Images
+- API routes
