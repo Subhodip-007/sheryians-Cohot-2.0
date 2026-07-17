@@ -1,0 +1,62 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  background-color: #111;
+}
+
+main {
+  height: 100%;
+  width: 100%;
+  background-color: #111;
+}
+
+.Navbar {
+  height: 10%;
+  width: 80%;
+  border-radius: 2rem;
+  background-color: aliceblue;
+  position: fixed;
+  top: 3%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99;
+}
+
+.Add-Rectangle {
+  padding: 1rem;
+  border-radius: 1rem;
+  font-family: monospace;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.Add-Rectangle:active {
+  scale: 90%;
+  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.canvas {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border: 2px solid white;
+}
+
+.shape {
+  background: skyblue;
+  position: absolute;
+}
+
+.selected {
+  outline: 3px solid dodgerblue;
+}/*# sourceMappingURL=style.css.map */
