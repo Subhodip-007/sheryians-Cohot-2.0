@@ -49,6 +49,19 @@ app.delete('/api/home/:id',async(req,res)=>{
         });
     }
 })
+app.patch('/api/home/:id',async (req,res)=>{
+    try{
+        const id= req.params.id;
+        await dataModel.findByIdAndUpdate(id,
+            req.body
+        )
+    }catch(err){
+        res.status(500).json({
+            message:"cant be updated",
+            id
+        })
+    }
+})
 app.use("*name", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "public", "dist", "index.html"));
 });
