@@ -59,4 +59,18 @@ main {
 
 .selected {
   outline: 3px solid dodgerblue;
+}
+
+.handle {
+  width: 10px;
+  height: 10px;
+  background: white;
+  border: 2px solid blue;
+  position: absolute;
+}
+
+.se {
+  right: -5px;
+  bottom: -5px;
+  cursor: nwse-resize;
 }/*# sourceMappingURL=style.css.map */

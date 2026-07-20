@@ -8,11 +8,19 @@ const rectanglesarr = [];
 let isDragging = false;
 let offsetX = 0;
 let offsetY = 0;
+function getRectangleById(id){
+     return rectanglesarr.find(
+                item => item.id === Number(id)
+            )
+}
 
 addRectangle.addEventListener("click", () => {
 
     let rectangle = document.createElement("div");
     rectangle.classList.add("shape");
+   
+    
+
 
     let width = Math.floor(Math.random() * 100) + 50;
     let height = Math.floor(Math.random() * 100) + 50;
@@ -53,6 +61,8 @@ addRectangle.addEventListener("click", () => {
         // Select current rectangle
         selectedRectangle = rectangle;
         selectedRectangle.classList.add("selected");
+         rectangle.classList.add("handle");
+    rectangle.classList.add("se");
 
         // Start dragging
         isDragging = true;
@@ -62,28 +72,12 @@ addRectangle.addEventListener("click", () => {
         offsetY = e.offsetY;
 
         console.log(
-            rectanglesarr.find(
-                item => item.id === Number(selectedRectangle.dataset.id)
-            )
+            getRectangleById(selectedRectangle.dataset.id)
         );
+        
 
     });
 
-});
-document.addEventListener("mousemove", (e) => {
-    if (!isDragging || !selectedRectangle) return;
-
-    const canvasRect = canvas.getBoundingClientRect();
-
-    let left = e.clientX - canvasRect.left;
-    let top = e.clientY - canvasRect.top;
-
-    selectedRectangle.style.left = `${left}px`;
-    selectedRectangle.style.top = `${top}px`;
-});
-
-document.addEventListener("mouseup", () => {
-    isDragging = false;
 });
 
 document.addEventListener("mousemove", (e) => {
@@ -111,9 +105,7 @@ document.addEventListener("mousemove", (e) => {
     selectedRectangle.style.top = `${top}px`;
 
     // Update object
-    const shape = rectanglesarr.find(
-        item => item.id === Number(selectedRectangle.dataset.id)
-    );
+    const shape = getRectangleById(selectedRectangle.dataset.id);
 
     if (shape) {
         shape.x = left;

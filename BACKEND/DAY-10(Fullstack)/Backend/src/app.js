@@ -49,12 +49,16 @@ app.delete('/api/home/:id',async(req,res)=>{
         });
     }
 })
-app.patch('/api/home/:id',async (req,res)=>{
+app.patch('/api/home/update/:id',async (req,res)=>{
     try{
         const id= req.params.id;
-        await dataModel.findByIdAndUpdate(id,
+        const updateddata = await dataModel.findByIdAndUpdate(id,
             req.body
         )
+        res.status(200).json({
+            message: `updated successful. ID: ${id}`,
+            updateddata
+        });
     }catch(err){
         res.status(500).json({
             message:"cant be updated",

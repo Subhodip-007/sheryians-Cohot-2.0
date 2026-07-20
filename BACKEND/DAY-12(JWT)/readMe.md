@@ -15,6 +15,17 @@ we introduce two new file
 now u just did authentication and stored data in DB
 now add token in data using package npm i jsonwebtoken
 
+// now this tocken have all data, to check gon\ to website jwtdecode
+// while registering user has send regester info + token is creathe and signed and send back to user
+// now token have its user data  decode -> get data IAT is when was token creted in webpage jwtdebuger.io 
+// now after this of every request of a user will have it token and now for that we use storages in browser 
+// browse have many type of storage session local storetge extension storage , indexedDB ,cookies , cache storage , storage bucket 
+// now mainly we will study now cookie storage (client side) special storage now gives direct access to server
+
+now when ever token is created we will set it is cooki npm i cookie-parser
+requir in app.js and app.use cookie parcer
+
+
 - controller = 
 
 
