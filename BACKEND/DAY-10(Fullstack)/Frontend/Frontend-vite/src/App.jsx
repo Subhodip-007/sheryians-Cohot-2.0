@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 const App = () => {
   const [data, setdata] = useState([])
  async function getData(){
-    const response = await axios.get("http://localhost:3000/api/home")
+    const response = await axios.get("http://localhost:3000/api/home/task/fetch")
     console.log(response);
     setdata(response.data.fetcheddata)
     
@@ -12,7 +12,7 @@ const App = () => {
   function submitHandle(e){
     e.preventDefault();
     let {title,desc} = e.target.elements;
-    axios.post("http://localhost:3000/api/home",{
+    axios.post("http://localhost:3000/api/home/task/create",{
       Title : title.value,
       Description : desc.value
     })
@@ -25,7 +25,7 @@ const App = () => {
  
   }
   function deleteHandle(Id){
-    axios.delete('http://localhost:3000/api/home/' + Id)
+    axios.delete('http://localhost:3000/api/home/task/delete/' + Id)
     .then((res)=>{
       console.log(res.data);
       getData()

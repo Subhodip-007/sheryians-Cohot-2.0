@@ -7,7 +7,7 @@ app.use(express.json())
 app.use(express.static(path.join(__dirname, "..", "public", "dist")));
 app.use(cors());
 // POST
-app.post("/api/home",async (req,res)=>{
+app.post("/api/home/task/create",async (req,res)=>{
     let {Title,Description}=req.body;
    let data = await dataModel.create({
         Title ,Description
@@ -19,7 +19,7 @@ app.post("/api/home",async (req,res)=>{
     
 })
 // GET
-app.get('/api/home',async (req,res)=>{
+app.get('/api/home/task/fetch',async (req,res)=>{
     let fetcheddata = await dataModel.find()
     res.status(200).json({
         message:"data successful fetched",
@@ -27,7 +27,7 @@ app.get('/api/home',async (req,res)=>{
     })
 })
 // delete 
-app.delete('/api/home/:id',async(req,res)=>{
+app.delete('/api/home/task/delete/:id',async(req,res)=>{
     try{
     const id = req.params.id;
    const deletedData = await dataModel.findByIdAndDelete(id);
@@ -49,7 +49,7 @@ app.delete('/api/home/:id',async(req,res)=>{
         });
     }
 })
-app.patch('/api/home/update/:id',async (req,res)=>{
+app.patch('/api/home/task/update/:id',async (req,res)=>{
     try{
         const id= req.params.id;
         const updateddata = await dataModel.findByIdAndUpdate(id,
@@ -66,6 +66,11 @@ app.patch('/api/home/update/:id',async (req,res)=>{
         })
     }
 })
+app.use("/api", (req, res) => {
+    res.status(404).json({
+        message: "API route not found"
+    });
+});
 app.use("*name", (req, res) => {
   res.sendFile(path.join(__dirname, "..", "public", "dist", "index.html"));
 });

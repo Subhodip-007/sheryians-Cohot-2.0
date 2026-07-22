@@ -1,9 +1,9 @@
-const express = require('express');
+const express = require('express'); // now here we r creating out auth related api or resister api and use it in app.js
 const userModel = require("../models/user.model");
 const jwt = require('jsonwebtoken'); // now we have to generate JWT_SECRET we have a web site
 
 const app = require('../../../DAY-8-9/Backend/src/app');
-const authrouter = express.Router() // this allowes u to use api in any file 
+const authrouter = express.Router() // now if u want to create route in any other file except app.js
 // key jitna bada utna secure and processing power generally generate 256bit
 //now save it in .env folder 
 // to generate token we need user data + JWT_SECRET;
