@@ -3,5 +3,16 @@
     "editor.inlineSuggest.suppressInSnippetMode": false,
     "editor.inlineSuggest.syntaxHighlightingEnabled": false,
     "editor.suggest.showInlineDetails": false,
-    "folder-color.pathColors": []
+    "folder-color.pathColors": [
+        {
+            "folderPath": "sheriyan-cohot-2.0\\Resume +LinkedIn\\",
+            "isFolderOnly": true,
+            "color": "foldercolorizer.color_008000"
+        },
+        {
+            "folderPath": "sheriyan-cohot-2.0\\BACKEND\\",
+            "color": "foldercolorizer.color_afaf00",
+            "isFolderOnly": true
+        }
+    ]
 }

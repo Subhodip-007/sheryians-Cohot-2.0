@@ -20,7 +20,7 @@ authRoute.post("/register",async (req,res)=>{
    })
    const token = jwt.sign({
     id: user._id
-   },process.env.JWT_SECRET)
+   },process.env.JWT_SECRET , {expiresIn: "5h"})
    res.cookie("jwt_token",token)
    res.status(201).json({
     message:"regestration is suckassfull",
@@ -34,11 +34,22 @@ authRoute.post("/register",async (req,res)=>{
    }
 
 })
-authRoute.get("/protected",(req,res)=>{
-    
-    res.status(200).json({
-    cookies: req.cookies
+authRoute.get("/protected",async (req,res)=>{
+    try{
+        const token = req.cookies.jwt_token;
+        const decode = jwt.verify(token,process.env.JWT_SECRET);
+        const user = await userDataModel.findById(decode.id)
+          res.status(200).json({
+            user:user
     })
+    }catch(err){
+        res.status(409).json(
+            {
+                message:err
+            }
+        )
+    }
+  
     
 })
  authRoute.post("/Login",async (req,res)=>{ // now the is also konwns a function fatarrow function callback
@@ -57,7 +68,7 @@ authRoute.get("/protected",(req,res)=>{
     }
     const token = jwt.sign({  // if correct genetate token 
        id:user._id
-    },process.env.JWT_SECRET)
+    },process.env.JWT_SECRET , {expiresIn: "5h"})
     res.cookie('jwt_token',token);
     res.status(200).json({
         message:"user logged in",
