@@ -1,6 +1,7 @@
 const userModel = require("../model/user.model");
 const crypto = require("crypto");
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs")
 const registerController = async(req,res)=>{
     const {Username , Email , Password , Bio , ProfileImage} = req.body;
     // const isEmailExist = await userModel.findOne({Email});
@@ -26,7 +27,8 @@ const registerController = async(req,res)=>{
             message:`user already exist `+ (isUserExist.Email === Email ? "with this Email" : "with this Username")
         })
     }
-    const hashPassword = crypto.createHash('sha256').update(Password).digest('hex');
+    // const hashPassword = crypto.createHash('sha256').update(Password).digest('hex');
+    const hashPassword = await bcrypt.hash(Password,10) //(pasword , salt)
     const user = await userModel.create({
         Username,
         Email,
@@ -64,11 +66,12 @@ const loginController = async (req,res)=>{
     })
     if(!user){
         return res.status(409).json({
-            message: "user not found "+(Username !== Username ? "with this username" : "with this email")  
+            message: "user not found "+(Username ? "with this username" : "with this email")  
         })
     }
-    const hashPassword = crypto.createHash('sha256').update(Password).digest('hex');
-    const ispaswordMatch = hashPassword === user.Password
+    // const hashPassword = crypto.createHash('sha256').update(Password).digest('hex');
+    // const ispaswordMatch = hashPassword === user.Password
+    const ispaswordMatch = await bcrypt.compare(Password,user.Password)
     if(!ispaswordMatch){
         return res.status(401).json({
             message: "password is invalid"

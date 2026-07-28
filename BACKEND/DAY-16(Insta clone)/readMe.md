@@ -122,6 +122,59 @@ Best for:
 Large applications
 Teams
 Microservices
+
+
+## day - 17 post creation
+till now me have created only one model and operated with it now we have to create another model and work with it together which is of post 
+
+now starting with last day what we did we created two apis register and login and in register 
+we stored password like a hash using crypto but its not that good so we will user 
+bcrypt 
+- Auntentication register login (done)
+ logout-(in logout we will study token black listing) we will do this later
+-  {OTP BASED REGESTRATION (challange)}
+
+==> post 
+- user create 
+- can see feed 
+- like post (2 topic collection type of DB)
+- save post 
+
+==> user 
+-  following follower 
+
+for now we will do postcreation 
+so out post model will look like 
+caption,imgsrc,user-ID,like comment will not come under this (reason in next class) , createdat 
+
+- let create a model of it 
+- after model post route is created
+- for the following route we will create a controller for postcreation route   
+- now after this we know that backend dont understand req.body - data for that we user a middleware not for normaly if we sent something in json form it is in raw form but in postcreation we will send some files from frontend/ postman to server  console.log(req.body); // first post file will come to server and then to imagekit(what is the role of img kit)
+ // now when u sent through postman express cant read req.body by default
+ // we need another middleware like express.json for this we user a package name npm i multer
+now 
+// now start reading documentation 
+multer use two storege disk storage and ram storege(for temp) now we will use memory storae bcz we dont store file in server (excali draw)
+ and for now we requir multer in post,route 
+ let assume user post a img and we store it in server 
+ and the user have 2000 follwoer now the server has to server the post to 2000 user
+ now data use means bandwidth use
+or server will take 200mb to transfer or serve
+we have to pay simply 
+more bandwidth
+more pay in server bandwidth
+ as compare to cloud storage provider
+now cloud storage provider helps in providing storage in less price
+compare to server storage 
+
+so steps 
+- using multer take file from frontend/postman to server 
+-  now server store the file in temp memory(not in disk) untill is  sends the file to cloud storage and server remove it from memory 
+now we user a middleware mulet and using postman we sent caption and img and test it using console.log(req.file,req.body)
+ today we have to read two doc one of imgkit.io and multer
+
+ for now we need installation and file uploading 
 ## extrass 
 (extra knowlage in real development we dont user log insted user npm install pino-pretty)
 Problems:
