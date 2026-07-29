@@ -181,6 +181,9 @@ now we user a middleware mulet and using postman we sent caption and img and tes
 
  now how will th eserver know which user has created the post so for that we will user toker how when ever user login user gets a token and whaen ever user send a req it send the token also 
  so server verifies toke and then upload data to cloud provider 
+  ## DAY - 19 
+  now today we will crete a api with method get that will give a postof the user  user who has requested 
+  how to recognize (uning token)  
 ## extrass 
 (extra knowlage in real development we dont user log insted user npm install pino-pretty)
 Problems:
