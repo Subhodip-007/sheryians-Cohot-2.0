@@ -1,6 +1,8 @@
 const ImageKit = require("@imagekit/nodejs");
 const { toFile } = require("@imagekit/nodejs");
-const client = new ImageKit({
+const jwt = require("jsonwebtoken");
+const postModel = require("../model/post.model");
+const imgkit = new ImageKit({
   privateKey: process.env['IMAGEKIT_PRIVATE_KEY'], // This is the default and can be omitted
 });
 const postController = async (req,res)=>{
@@ -12,24 +14,42 @@ const postController = async (req,res)=>{
 //   fileName: 'img',
 // });
  try {
-    console.log(req.body, req.file);
+    // console.log(req.body, req.file);
+    const token = req.cookies.token
+    if (!token){
+      return res.status(401).json({
+        message:"unauthorized access"
+      })
+    }
+    let decode;
+    try{
+           decode = jwt.verify(token,process.env.JWT_SECRET)
+    console.log(decode);
+    }catch(err){
+     return res.status(401).json({
+        message:"unauthorized access",
 
-    const response = await client.files.upload({
-      file: await toFile(req.file.buffer, req.file.originalname),
-      fileName: req.file.originalname,
+      })
+    }
+    const file = await imgkit.files.upload({
+      file: await toFile(Buffer.from(req.file.buffer),"file"),
+      fileName: "test",
+      folder:"insta-user-post"
     });
+    const post = await postModel.create({
+      caption:req.body.caption,
+       img_url:file.url,
+       user: decode.id,
+    })
+    res.status(201).json({
+      message:"post created !",
+      post
+    })
 
-    console.log(response);
-
-    res.status(200).json({
-      message: "File uploaded successfully",
-      data: response,
-    });
+    
   } catch (err) {
-    console.error(err);
-    res.status(500).json({
-      message: "Upload failed",
-      error: err.message,
+   res.status(500).json({
+        message: err.message,
     });
   }
 }

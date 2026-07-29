@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
- new mongoose.Schema({
+ const postSchema = new mongoose.Schema({
     caption:{
         type:String,
         default:"",
@@ -9,7 +9,7 @@ const mongoose = require("mongoose");
         required:[true,"image URL is required for post creation"],
 
     },
-       User: {
+       user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "users", // Must match mongoose.model("users", userSchema)
         required: [true, "User ID is required for creating a post"]
@@ -20,3 +20,6 @@ const mongoose = require("mongoose");
         default: Date.now
     }
  })
+ const postModel = mongoose.model("instaPOSTcreation",postSchema);
+
+ module.exports = postModel;

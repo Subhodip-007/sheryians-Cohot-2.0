@@ -175,6 +175,12 @@ now we user a middleware mulet and using postman we sent caption and img and tes
  today we have to read two doc one of imgkit.io and multer
 
  for now we need installation and file uploading 
+ ## day-18 post creation
+ now last time we have set our post creation route with multer that it will accept a file name img 
+ and i controller we write the logic that to accept the buffer because out buffer contain the original data 
+
+ now how will th eserver know which user has created the post so for that we will user toker how when ever user login user gets a token and whaen ever user send a req it send the token also 
+ so server verifies toke and then upload data to cloud provider 
 ## extrass 
 (extra knowlage in real development we dont user log insted user npm install pino-pretty)
 Problems:
