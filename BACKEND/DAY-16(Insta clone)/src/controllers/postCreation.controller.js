@@ -2,6 +2,8 @@ const ImageKit = require("@imagekit/nodejs");
 const { toFile } = require("@imagekit/nodejs");
 const jwt = require("jsonwebtoken");
 const postModel = require("../model/post.model");
+const likeModel = require("../model/likes.model");
+
 const imgkit = new ImageKit({
   privateKey: process.env['IMAGEKIT_PRIVATE_KEY'], // This is the default and can be omitted
 });
@@ -15,22 +17,23 @@ const createPostController = async (req, res) => {
   // });
   try {
     // console.log(req.body, req.file);
-    const token = req.cookies.token
-    if (!token) {
-      return res.status(401).json({
-        message: "unauthorized access"
-      })
-    }
-    let decode;
-    try {
-      decode = jwt.verify(token, process.env.JWT_SECRET)
-      console.log(decode);
-    } catch (err) {
-      return res.status(401).json({
-        message: "unauthorized access",
+    // const token = req.cookies.token
+    // if (!token) {
+    //   return res.status(401).json({
+    //     message: "unauthorized access"
+    //   })
+    // }
+    // let decode;
+    // try {
+    //   decode = jwt.verify(token, process.env.JWT_SECRET)
+    //   console.log(decode);
+    // } catch (err) {
+    //   return res.status(401).json({
+    //     message: "unauthorized access",
 
-      })
-    }
+    //   })
+    // }  this code is shifted to middleware -> auth.mw.js
+
     const file = await imgkit.files.upload({
       file: await toFile(Buffer.from(req.file.buffer), "file"),
       fileName: "test",
@@ -39,7 +42,7 @@ const createPostController = async (req, res) => {
     const post = await postModel.create({
       caption: req.body.caption,
       img_url: file.url,
-      user: decode.id,
+      user: req.verifiedUser.id,
     })
     res.status(201).json({
       message: "post created !",
@@ -56,23 +59,10 @@ const createPostController = async (req, res) => {
 
 const GetPostController = async (req, res) => {
   try {
-    const token = req.cookies.token;
-    if (!token) {
-      return res.status(401).json({
-        message: "unauthorizer access"
-      })
-    }
-    let decode;
-    try {
-      decode = jwt.verify(token, process.env.JWT_SECRET)
-      console.log(decode);
-    } catch (err) {
-      return res.status(401).json({
-        message: "unauthorized access",
-
-      })
-    }
-    let userId = decode.id;
+   
+    let userId = req.verifiedUser.id
+    console.log(userId);
+    
     let allPosts = await postModel.find({
       user: userId
     })
@@ -91,22 +81,22 @@ const GetPostDetailsController = async (req, res) => {
   try {
     // console.log(req.params.id);
     const postId = req.params.id;
-    const token = req.cookies.token;
-    if (!token) {
-      return res.status(401).json({
-        message: "unauthorized access"
-      })
+    // const token = req.cookies.token;
+    // if (!token) {
+    //   return res.status(401).json({
+    //     message: "unauthorized access"
+    //   })
 
-    }
-     let decode;
-      try{
-        decode = jwt.verify(token,process.env.JWT_SECRET)
-      }catch(err){
-        res.status(401).json({
-          message:"unautharized access TOKEN NOT FOUND"
-        })
-      }
-      let userId = decode.id; 
+    // }
+    //  let decode;
+    //   try{
+    //     decode = jwt.verify(token,process.env.JWT_SECRET)
+    //   }catch(err){
+    //     res.status(401).json({
+    //       message:"unautharized access TOKEN NOT FOUND"
+    //     })
+    //   }
+      let userId = req.verifiedUser.id; 
       const fetchPostById = await postModel.findById(postId);
       let isVerifiedPost = userId.toString() === fetchPostById.user.toString(); 
       if(!isVerifiedPost){
@@ -127,9 +117,30 @@ const GetPostDetailsController = async (req, res) => {
     });
   }
 }
+const likeController = async(req,res)=>{
+  const username = req.verifiedUser.username;
+  const postID = req.params.postID;
+  const post = await postModel.findById(postID);
+  if(!post){
+    return res.status(404).json({
+      message:"post not found"
+    })
+  }
+  const like = await likeModel.create({
+    post:postID,
+    username:username,
+    userID:req.verifiedUser.id,
+
+  })
+  res.status(200).json({
+    message:"like successfull",
+    like
+  })
+} 
 module.exports = {
   createPostController,
   GetPostController,
   GetPostDetailsController,
+  likeController
 }
 // NOW U SEE A COMMON CODE IN THREE ENDPOINTS --  THAT IS WHERE MIDDLEWEAR COMES IN ROLE  

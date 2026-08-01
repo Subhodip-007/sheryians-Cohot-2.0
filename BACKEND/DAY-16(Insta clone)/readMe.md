@@ -184,6 +184,95 @@ now we user a middleware mulet and using postman we sent caption and img and tes
   ## DAY - 19 
   now today we will crete a api with method get that will give a postof the user  user who has requested 
   how to recognize (uning token)  
+  # DAY -20 
+  task - to notes reading git hub codot2.0 ankur.io noter edge collection , indexing in mongoDB 
+
+  now if u observe we have made three controllers and and if u observe 
+
+  all the controllers have same flow
+  check token--->identify user--> provide data 
+  now user identify is the common work we r doing for that
+  now to reduce this repetative task  we will user middleware
+  creathe a folder src - > middlewares -> auth.middleware.js
+  
+
+  follower/following feature
+  - approach 1.
+  normal in user.model create document of 
+      following:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"users"
+    
+    }],
+     followers:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"users"
+    
+    }],
+      // this is the normal or the most basic way 
+    // let suppose u have 242 million followres
+    //  and 1 userid = 12bytes
+    //  so 242 million userid = 3.3gb 
+    //  now max document size in mongoDB is 16MB
+    // one object is knows as document 
+    /**
+     * SQL	    MongoDB
+    Database	Database
+    Table	   Collection
+    Row	       Document
+    Column	   Field
+     */
+    // now insted of the we will use the concept of edge collection
+    # day -21
+    // which says relation btw document (excalidraw)
+    today we will develop feature where one user can follow/unfollow different user
+    first we will create a route user.routes.js 
+    second controller for it user.controller
+    now in controller 
+    - take out followe username
+    - take out token or users username
+    -  create a follow record 
+    passing followe and follower 
+    and send json res 
+    now we need to add validation bcz client is dumb
+    he has the superpower to break your application
+    - like check following himself 
+    - check is followee exist or not 
+    - check for double follow 
+    FollowSchema.index(
+  { follower: 1, followee: 1 },
+  { unique: true }
+);
+     now validation r acctually of four layers 
+     first layer  - frontend - an many layer want to 
+     backend mainly has three layer 
+     express valodator - first later of backend 
+     second - controller and secvices 
+     third in - schema level 
+now same way we have implemented unfollew feature 
+
+
+// now likes feature
+same approch 
+first a array of users who liked 
+but what if it 200M likes 
+1 objID size of a document 12bytes
+document issue
+
+so we will create a edge collection of like
+- now we will create like model 
+- in post route we will cretae a api 
+
+## task
+in follow model add aproperty name status:{
+  type;string 
+  dafaulta:"pending,
+  enums:{
+    values:["pending","accepted","rejhected"],
+    message:"status can only be pending accepted or rejected"
+  }
+}
+
 ## extrass 
 (extra knowlage in real development we dont user log insted user npm install pino-pretty)
 Problems:
