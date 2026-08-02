@@ -272,7 +272,255 @@ in follow model add aproperty name status:{
     message:"status can only be pending accepted or rejected"
   }
 }
+Step 1: Update your Follow Schema
 
+Your schema has a few syntax mistakes. It should be:
+
+const followSchema = new mongoose.Schema({
+    follower: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true
+    },
+    followee: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true
+    },
+    status: {
+        type: String,
+        default: "pending",
+        enum: {
+            values: ["pending", "accepted", "rejected"],
+            message: "Status can only be pending, accepted, or rejected."
+        }
+    }
+}, {
+    timestamps: true
+});
+Step 2: POST /follow/:username
+
+When someone sends a follow request:
+
+POST /follow/shub
+
+Instead of
+
+A ---------> B
+
+being immediately accepted,
+
+store
+
+Follower : A
+Followee : B
+Status   : pending
+Logic
+Find followee using username
+
+↓
+
+Check followee exists
+
+↓
+
+Prevent following yourself
+
+↓
+
+Check if request already exists
+
+↓
+
+Create Follow document
+
+↓
+
+status = pending
+await followModel.create({
+    follower: follower._id,
+    followee: followee._id
+    // status automatically becomes "pending"
+});
+                         FOLLOW REQUEST SYSTEM
+
+┌─────────────────────────────────────────────────────────────────────┐
+│                          USER A (Follower)                          │
+└─────────────────────────────────────────────────────────────────────┘
+                     │
+                     │
+                     │ POST /follow/:username
+                     ▼
+          Find followee by username
+                     │
+                     ▼
+          Does followee exist?
+             │              │
+            No             Yes
+             │              │
+             ▼              ▼
+        404 User      Is user following
+       not found      themselves?
+                           │
+                    ┌──────┴──────┐
+                   Yes            No
+                    │              │
+                    ▼              ▼
+              409 Can't      Check if follow
+             follow yourself request already exists
+                                  │
+                           ┌──────┴──────┐
+                          Yes            No
+                           │              │
+                           ▼              ▼
+                409 Already exists   Create Follow Record
+                                         │
+                                         ▼
+                        follower  = User A
+                        followee  = User B
+                        status    = pending
+                                         │
+                                         ▼
+                          201 Follow request sent
+
+
+======================================================================
+
+
+                     FOLLOW COLLECTION (MongoDB)
+
+┌───────────────────────────────────────────────────────────────┐
+│ follower : Rahul (_id)                                        │
+│ followee : Shub (_id)                                         │
+│ status   : pending                                             │
+│ createdAt                                                   │
+└───────────────────────────────────────────────────────────────┘
+
+
+======================================================================
+
+
+┌─────────────────────────────────────────────────────────────────────┐
+│                         USER B (Followee)                          │
+└─────────────────────────────────────────────────────────────────────┘
+                     │
+                     │
+                     │ GET /follow/requests
+                     ▼
+      Find all documents where
+
+      followee = Logged-in User
+      status   = pending
+                     │
+                     ▼
+          Populate follower details
+        (Username, ProfileImage)
+                     │
+             ┌───────┴────────┐
+            None             Found
+             │                │
+             ▼                ▼
+      "No pending"      Return request list
+
+
+======================================================================
+
+
+                USER B CHOOSES ONE REQUEST
+
+                     │
+          PATCH /follow/accept/:requestId
+                     │
+                     ▼
+          Find request by requestId
+                     │
+             ┌───────┴────────┐
+            Not Found       Found
+               │              │
+               ▼              ▼
+             404        Is logged-in user
+                        the followee?
+                           │
+                    ┌──────┴──────┐
+                   No             Yes
+                    │              │
+                    ▼              ▼
+             403 Forbidden   Is status pending?
+                                   │
+                           ┌───────┴────────┐
+                          No               Yes
+                           │                │
+                           ▼                ▼
+                  Already accepted     status = accepted
+                   or rejected               │
+                                             ▼
+                                      Save document
+                                             │
+                                             ▼
+                                     200 Request accepted
+
+
+======================================================================
+
+
+             USER B CHOOSES REJECT INSTEAD
+
+                     │
+      PATCH /follow/reject/:requestId
+                     │
+                     ▼
+      Same validations as Accept
+                     │
+                     ▼
+            status = rejected
+                     │
+                     ▼
+               Save document
+                     │
+                     ▼
+            200 Request rejected
+
+
+======================================================================
+
+
+                  FINAL STATES
+
+Pending
+────────
+Rahul ─────► Shub
+Status = pending
+
+
+Accepted
+─────────
+Rahul ─────► Shub
+Status = accepted
+
+
+Rejected
+─────────
+Rahul ─────► Shub
+Status = rejected
+
+POST   /follow/:username
+│
+└── Send follow request
+
+
+GET    /follow/requests
+│
+└── View all pending requests for the logged-in user
+
+
+PATCH  /follow/accept/:requestId
+│
+└── Accept a follow request
+
+
+PATCH  /follow/reject/:requestId
+│
+└── Reject a follow request
 ## extrass 
 (extra knowlage in real development we dont user log insted user npm install pino-pretty)
 Problems:

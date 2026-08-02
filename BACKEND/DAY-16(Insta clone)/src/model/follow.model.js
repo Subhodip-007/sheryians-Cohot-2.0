@@ -16,6 +16,14 @@ const followRecordsSchema = new mongoose.Schema({
         type:String,
         require:true,
     },
+    status:{
+        type:String,
+        default:"Pending",
+        enum:{
+            values:["accepted","pending","rejected"],
+             message: "Status can only be pending, accepted, or rejected."
+        }
+    }
 
 },{
     timestamps:true  // last time update
