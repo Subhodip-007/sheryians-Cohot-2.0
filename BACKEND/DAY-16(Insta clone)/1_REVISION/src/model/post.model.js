@@ -14,7 +14,6 @@ const postCreateSchema = new Mongoose.Schema({
         ref:"REV_Insta_clone_users",
         requrired:[true,"userID is required for post creation"]
     },
-     
        CreatedAt: {
         type: Date,
         default: Date.now

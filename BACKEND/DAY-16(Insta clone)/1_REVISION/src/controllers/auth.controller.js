@@ -25,7 +25,8 @@ const registerAuthController = async (req, res) => {
             ProfileImage,
         })
         const token = jwt.sign({
-            id:registeredUser._id
+            id:registeredUser._id,
+            username:registeredUser.Username
         },process.env.JWT_SECRET)
         res.cookie("token", token);
         res.status(201).json({
@@ -64,6 +65,7 @@ const LoginAuthController = async (req,res)=>{
         }
         const token = jwt.sign({
             id:isuserexist._id,
+            username:isuserexist.Username
         },process.env.JWT_SECRET)
         res.cookie("token",token)
         res.status(200).json({
