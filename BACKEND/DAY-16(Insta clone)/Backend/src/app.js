@@ -3,10 +3,15 @@ const cookieparser= require("cookie-parser");
 const authRoute = require("./routes/auth.routes");
 const postRouter = require("./routes/post.routes");
 const userRoute = require("./routes/user.routes");
-
+const cors = require("cors")
 const app = express();
 app.use(cookieparser())
 app.use(express.json()); // for raw format 
+app.use(cors({
+    credentials:true,
+    origin:"http://localhost:5173"
+
+}))
 
 app.use("/api/user/auth",authRoute);
 app.use("/api/user",postRouter)
