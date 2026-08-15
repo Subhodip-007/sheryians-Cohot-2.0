@@ -66,7 +66,7 @@ const loginController = async (req,res)=>{
         ]
     })
     if(!user){
-        return res.status(409).json({
+        return res.status(404).json({
             message: "user not found "+(Username ? "with this username" : "with this email")  
         })
     }
@@ -88,9 +88,29 @@ const loginController = async (req,res)=>{
         username:user.Username
     })
 }
+const GetprofileController = async (req,res)=>{
+    try{
+        if(!req.verifiedUser){
+            return res.status(401).json({
+                message:"unauthorized access"
+            })
+        }
+        const userinfo = await userModel.findById(req.verifiedUser.id)
+        res.status(200).json({
+            message:"user profile fetched successfull",
+            username:userinfo.Username,
+            email:userinfo.Email
+        })
 
+    }catch(err){
+        return res.status(500).json({
+            message:err.message
+        })
+    }
+}
 
 module.exports = {
     registerController,
-    loginController
+    loginController,
+    GetprofileController
 }
