@@ -1,17 +1,20 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@import "tailwindcss";
+.feed-cont::-webkit-scrollbar {
+  width: 4px;
 }
 
-html, body,
-#root {
-  height: 100%;
-  width: 100%;
-  background-color: #111;
-  font-family: monospace;
-  color: antiquewhite;
-  padding: 1rem;
-  display: flex;
-  justify-content: center;
-}/*# sourceMappingURL=style.css.map */
+.feed-cont::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.feed-cont::-webkit-scrollbar-thumb {
+  background: #52525b;
+  border-radius: 999px;
+}
+
+.feed-cont::-webkit-scrollbar-thumb:hover {
+  background: #71717a;
+}
+.feed-cont::-webkit-scrollbar {
+  width: 2px;
+}

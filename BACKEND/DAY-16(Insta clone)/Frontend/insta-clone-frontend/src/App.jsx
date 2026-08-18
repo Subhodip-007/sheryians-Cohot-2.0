@@ -1,12 +1,19 @@
 import React from 'react'
 import { BrowserRouter, Route, RouterProvider, useRoutes } from 'react-router';
 import { Routes } from 'react-router';
-import AppRoutes from './appRoutes.jsx';
-import "./style.scss"
+import AppRoutes from './AppRoutes.jsx';
+import "./style.css"
+import { AuthProvider } from './feature/auth/auth.context.jsx';
+import { PostContext } from './feature/post/post.context.jsx';
 
 const App = () => {
   return (
-    <AppRoutes/>
+    <AuthProvider>
+      
+      <AppRoutes/>
+      
+    </AuthProvider>
+    
   )
 }
 
