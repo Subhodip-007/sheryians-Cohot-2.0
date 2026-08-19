@@ -46,9 +46,9 @@ const Post = ({ user, post }) => {
             {/* Actions */}
             <div className="flex items-center justify-between mt-4 px-2">
 
-                <button className="text-zinc-400 hover:text-white">
-                    {post.isliked ? "unlike": "like"}
-                </button>
+               <button className="text-zinc-400 hover:text-white">
+  {post.isLike ? "unlike" : "like"}
+</button>
 
                 <button className="text-zinc-400 hover:text-white">
                     Comment

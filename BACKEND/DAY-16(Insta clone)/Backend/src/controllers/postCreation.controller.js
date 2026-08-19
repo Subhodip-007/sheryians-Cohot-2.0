@@ -137,10 +137,47 @@ const likeController = async(req,res)=>{
     like
   })
 } 
+const feedController = async(req,res)=>{
+  try{
+    if(!req.verifiedUser){
+       return res.status(401).json({
+        message: "Unauthorized"
+    });
+    }
+const posts = await postModel
+  .find()
+  .populate("user")
+  .lean();
+
+const feed = await Promise.all(
+  posts.map(async (post) => {
+    const isLike = await likeModel.findOne({
+      userID:req.verifiedUser.id,
+      post: post._id
+    });
+
+    post.isLike = Boolean(isLike);
+
+    console.log("Like found:", isLike);
+    return post;
+  })
+);
+    res.status(200).json({
+      message:"all post fetched successfully..",
+      feed
+    })
+
+  }catch(err){
+    res.status(500).json({
+      message:err.message
+    })
+  }
+}
 module.exports = {
   createPostController,
   GetPostController,
   GetPostDetailsController,
-  likeController
+  likeController,
+  feedController
 }
 // NOW U SEE A COMMON CODE IN THREE ENDPOINTS --  THAT IS WHERE MIDDLEWEAR COMES IN ROLE  

@@ -64,7 +64,7 @@ const loginController = async (req,res)=>{
                 Email:Email
             }
         ]
-    })
+    }).select("+Password")
     if(!user){
         return res.status(404).json({
             message: "user not found "+(Username ? "with this username" : "with this email")  
