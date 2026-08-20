@@ -3,7 +3,7 @@
 // now here req.body = {caption,img-file};
 // now this api will be protected and the user that will have token will be able to access this token 
 const express = require("express");
-const { createPostController, GetPostController, GetPostDetailsController, likeController, feedController} = require("../controllers/postCreation.controller");
+const { createPostController, GetPostController, GetPostDetailsController, likeController, feedController,unlikeController} = require("../controllers/postCreation.controller");
 const postRouter = express.Router();
 const multer = require('multer') // now start reading documentation multer use two storege disk storage and ram storege(for temp) now we will use memory storae bcz we dont store file in server
 const upload = multer({ storage: multer.memoryStorage() }) // here we have conffig multer that which storage to use 
@@ -27,8 +27,7 @@ const identifyUser = require("../middlewares/auth.middlewares");
  * POST - /api/user/post/like/:postid
  */
 postRouter.post("/post/like/:postID",identifyUser,likeController)
-module.exports = postRouter;
-
+postRouter.post("/post/unlike/:postID",identifyUser,unlikeController)
 /**
  * @method - POST 
  * @route - /api/post/feed
@@ -36,3 +35,4 @@ module.exports = postRouter;
  * @access - privet 
  */
 postRouter.get("/post/feed",identifyUser,feedController)
+module.exports = postRouter;

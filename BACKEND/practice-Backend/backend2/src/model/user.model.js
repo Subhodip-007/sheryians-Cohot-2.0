@@ -13,7 +13,8 @@ const userSchema =new Schema({
     },
     Password:{
         type:String,
-        required:[true,"Password is required !"]
+        required:[true,"Password is required !"],
+        select:false
     }
 })
 const userModel = model("user-data-collection",userSchema)

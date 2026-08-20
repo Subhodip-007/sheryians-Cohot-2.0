@@ -1,7 +1,8 @@
 import React from "react";
-
-const Post = ({ user, post }) => {
-    console.log(`posttttt ${user,post}`);
+import { UsePost } from "../hooks/UsePost";
+const Post = ({loading,handlelike,handleunlike, user, post }) => {
+   
+  
     
     return (
         <div className="w-full border-b border-zinc-800 p-4">
@@ -46,8 +47,15 @@ const Post = ({ user, post }) => {
             {/* Actions */}
             <div className="flex items-center justify-between mt-4 px-2">
 
-               <button className="text-zinc-400 hover:text-white">
-  {post.isLike ? "unlike" : "like"}
+               <button
+  onClick={() =>
+    post.isLike
+      ? handleunlike(post._id)
+      : handlelike(post._id)
+  }
+  className="text-zinc-400 hover:text-white"
+>
+  {post.isLike ? "Unlike" : "Like"}
 </button>
 
                 <button className="text-zinc-400 hover:text-white">

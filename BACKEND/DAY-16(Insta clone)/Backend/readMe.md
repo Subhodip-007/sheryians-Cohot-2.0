@@ -1178,3 +1178,14 @@ fro that con to getallpost controller and
 
   DAY_111
     in frontend user can create a post
+    for that we will create a nav bar and a button 
+    now when i click in post button user will get a form  
+    and will upload
+    a img caption and submit ---> will call backent api -- crete new post redirect to feed 
+
+    task 
+    - save featuer 
+    - follow and unfollow 
+    left side folloeing - list 
+    down follower 
+    other useres 

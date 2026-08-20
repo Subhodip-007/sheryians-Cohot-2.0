@@ -44,9 +44,10 @@ const createPostController = async (req, res) => {
       img_url: file.url,
       user: req.verifiedUser.id,
     })
+    await post.populate("user");
     res.status(201).json({
       message: "post created !",
-      post
+      post,
     })
 
 
@@ -59,10 +60,10 @@ const createPostController = async (req, res) => {
 
 const GetPostController = async (req, res) => {
   try {
-   
+
     let userId = req.verifiedUser.id
     console.log(userId);
-    
+
     let allPosts = await postModel.find({
       user: userId
     })
@@ -96,19 +97,19 @@ const GetPostDetailsController = async (req, res) => {
     //       message:"unautharized access TOKEN NOT FOUND"
     //     })
     //   }
-      let userId = req.verifiedUser.id; 
-      const fetchPostById = await postModel.findById(postId);
-      let isVerifiedPost = userId.toString() === fetchPostById.user.toString(); 
-      if(!isVerifiedPost){
-        return res.status(404).json({
-          message:"post not found !"
-        })
-      }
-      res.status(200).json({
-        message:"post fetched !",
-        fetchPostById
-        
+    let userId = req.verifiedUser.id;
+    const fetchPostById = await postModel.findById(postId);
+    let isVerifiedPost = userId.toString() === fetchPostById.user.toString();
+    if (!isVerifiedPost) {
+      return res.status(404).json({
+        message: "post not found !"
       })
+    }
+    res.status(200).json({
+      message: "post fetched !",
+      fetchPostById
+
+    })
 
 
   } catch (err) {
@@ -117,59 +118,90 @@ const GetPostDetailsController = async (req, res) => {
     });
   }
 }
-const likeController = async(req,res)=>{
+const likeController = async (req, res) => {
   const username = req.verifiedUser.username;
   const postID = req.params.postID;
   const post = await postModel.findById(postID);
-  if(!post){
+  if (!post) {
     return res.status(404).json({
-      message:"post not found"
+      message: "post not found"
     })
   }
   const like = await likeModel.create({
-    post:postID,
-    username:username,
-    userID:req.verifiedUser.id,
+    post: postID,
+    username: username,
+    userID: req.verifiedUser.id,
 
   })
   res.status(200).json({
-    message:"like successfull",
+    message: "like successfull",
     like
   })
-} 
-const feedController = async(req,res)=>{
-  try{
-    if(!req.verifiedUser){
-       return res.status(401).json({
-        message: "Unauthorized"
+}
+const unlikeController = async (req, res) => {
+  try {
+    const username = req.verifiedUser.username;
+    const postID = req.params.postID;
+
+    const deletedLike = await likeModel.findOneAndDelete({
+      post: postID,
+      username: username,
+      userID: req.verifiedUser.id,
     });
+
+    if (!deletedLike) {
+      return res.status(400).json({
+        message: "You have not liked this post",
+      });
     }
-const posts = await postModel
-  .find()
-  .populate("user")
-  .lean();
 
-const feed = await Promise.all(
-  posts.map(async (post) => {
-    const isLike = await likeModel.findOne({
-      userID:req.verifiedUser.id,
-      post: post._id
+    return res.status(200).json({
+      message: "Unlike successful",
+      deletedLike,
     });
 
-    post.isLike = Boolean(isLike);
+  } catch (err) {
+    console.error("UNLIKE ERROR:", err);
 
-    console.log("Like found:", isLike);
-    return post;
-  })
-);
+    return res.status(500).json({
+      message: err.message,
+    });
+  }
+};
+const feedController = async (req, res) => {
+  try {
+    if (!req.verifiedUser) {
+      return res.status(401).json({
+        message: "Unauthorized"
+      });
+    }
+    const posts = await postModel
+      .find()
+      .populate("user")
+      .sort({ _id: -1 }) // createdat or objid read about objid 
+      .lean();
+
+    const feed = await Promise.all(
+      posts.map(async (post) => {
+        const isLike = await likeModel.findOne({
+          userID: req.verifiedUser.id,
+          post: post._id
+        });
+
+        post.isLike = Boolean(isLike);
+
+        console.log("Like found:", isLike);
+        return post;
+      })
+    );
     res.status(200).json({
-      message:"all post fetched successfully..",
+      message: "all post fetched successfully..",
       feed
     })
 
-  }catch(err){
+  } catch (err) {
     res.status(500).json({
-      message:err.message
+      message: err.message
     })
   }
 }
@@ -178,6 +210,7 @@ module.exports = {
   GetPostController,
   GetPostDetailsController,
   likeController,
-  feedController
+  feedController,
+  unlikeController
 }
 // NOW U SEE A COMMON CODE IN THREE ENDPOINTS --  THAT IS WHERE MIDDLEWEAR COMES IN ROLE  
