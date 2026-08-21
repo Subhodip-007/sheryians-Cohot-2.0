@@ -16,6 +16,8 @@ const notesSchema = new Schema({
     },
 
 
+},{timestamps:true
+    
 })
 const notesModel = model("notes-collection",notesSchema);
 module.exports = notesModel;

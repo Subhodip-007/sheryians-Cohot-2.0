@@ -17,7 +17,10 @@ app.get('/contact',function(req,res){
     res.send("this is contact page ")
 })
 
-app.listen(3000) // server start
+app.listen(3000,()=>{
+console.log("server is running");
+
+}) // server start
 // now what is this number(port)
 // a os give a port to every application/process 
 //  so when to run node server.js your so allorts a port to server 
