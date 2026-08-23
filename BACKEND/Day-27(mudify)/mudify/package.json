@@ -1,5 +1,5 @@
 {
-  "name": "context-project-part-1",
+  "name": "mudify",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,16 +10,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.3.2",
-    "framer-motion": "^13.1.1",
-    "lucide-react": "^1.33.0",
-    "nanoid": "^6.0.1",
+    "@mediapipe/tasks-vision": "^1.0.1",
     "react": "^19.2.6",
-    "react-dom": "^19.2.6",
-    "react-hook-form": "^7.86.0",
-    "react-router-dom": "^7.18.2",
-    "react-toastify": "^11.1.0",
-    "tailwindcss": "^4.3.2"
+    "react-dom": "^19.2.6"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

@@ -8,3 +8,16 @@ how to built
 now the first thing is to check is how can we regognize the face 
 how to get the face expression
 so the wost common thing is to search in google now something that u dont know about project is to be searched 
+so we will user google mediapipe landmarker
+ try reading doc or gpt 
+ create react folder
+ and feature  auth and -- > expression folder --> and follow four layer architecture pages compo ,hooks , servises
+ 
+for now we have a component of expression
+
+there is a term called blackbox programing
+U DONT HAVE TO KNOW EVERYTHING(exacly !!!) OF IT WORKING JUSH HOW AND WHAT  U KNOW 
+WHAT THIS FUNCTION IS DOING BUT EXACLY HOW NOT
+in developMent -> blackbox 
+in optamize - > doc research req 
+task use tensor flow .js for proj 
