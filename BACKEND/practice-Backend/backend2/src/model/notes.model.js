@@ -10,14 +10,10 @@ const notesSchema = new Schema({
         required:[true,"title is required for notes creation.."]
         
     },
-    createAt:{
-        time:Date.now()
-
-    },
-
-
-},{timestamps:true
     
-})
+}, {
+        timestamps: true
+    }
+)
 const notesModel = model("notes-collection",notesSchema);
 module.exports = notesModel;

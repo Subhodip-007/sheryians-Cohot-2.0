@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
 
-const userSchema =new Schema({
+const userSchema = new Schema({
     Username:{
         type:String,
         unique:[true,"username should be unique !"],
