@@ -2,24 +2,13 @@ const jwt = require("jsonwebtoken");
 const notesModel = require("../model/notes.model");
 const notesCreationController = async (req, res) => {
     try {
-        let token = req.cookies.token;
-        if (!token) {
+        if (!req.verifyToken) {
             return res.status(401).json({
-                message: "token not found !"
-            })
+                message: "unauthorized access: incorrect or expired token"
+            });
         }
-        try {
-            let veriftToken = jwt.verify(
-                token,
-                process.env.JWT_SECRET
-            )
+        const userID = req.verifyToken._id;
 
-        } catch (err) {
-            return res.status(401).json({
-                message: "unauthorized access : incorrect token " + err
-            })
-
-        }
         let { title, description } = req.body;
         if (!title || title.trim() === "") {
 
@@ -29,6 +18,7 @@ const notesCreationController = async (req, res) => {
 
         }
         let note = await notesModel.create({
+            userID,
             title,
             description
         })
@@ -46,6 +36,89 @@ const notesCreationController = async (req, res) => {
     }
 
 }
+const notesDeleteController = async (req, res) => {
+    try {
+        if (!req.verifyToken) {
+            return res.status(401).json({
+                message: "unauthorized access: incorrect or expired token"
+            });
+        }
+        const noteID = req.params.id;
+
+        const note = await notesModel.findById(noteID);
+
+        if (!note) {
+            return res.status(404).json({
+                message: "note not found",
+
+            })
+        }
+        const noteUserID = note.userID
+        if (noteUserID === req.verifyToken._id) {
+            return res.status(401).json({
+                message: "unauthorized access"
+            })
+        }
+        await note.deleteOne();
+        return res.status(200).json({
+            message: "note deleted successfully",
+            note
+        });
+    } catch (err) {
+        return res.status(500).json({
+            message: err,
+
+        })
+
+    }
+}
+const notesEditController = async (req, res) => {
+    try {
+        const { title, description } = req.body
+        if (!req.verifyToken) {
+            return res.status(401).json({
+                message: "unauthorized access: incorrect or expired token"
+            });
+        }
+        const noteID = req.params.id;
+        const note = await notesModel.findById(noteID);
+
+        if (!note) {
+            return res.status(404).json({
+                message: "note not found",
+
+            })
+
+        }
+        const noteUserID = note.userID
+        if (noteUserID.toString() !== req.verifyToken._id.toString()) {
+            return res.status(403).json({
+                message: "unauthorized access"
+            })
+        }
+        if (title !== undefined) {
+            note.title = title;
+        }
+
+        if (description !== undefined) {
+            note.description = description;
+        }
+        await note.save()
+        return res.status(200).json({
+            message: "note edit successful",
+            note
+        })
+
+
+    } catch (err) {
+        return res.status(500).json({
+            message: err.message
+        })
+
+    }
+}
 module.exports = {
     notesCreationController,
+    notesDeleteController,
+    notesEditController
 }
