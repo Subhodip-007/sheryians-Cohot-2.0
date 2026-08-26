@@ -1,5 +1,5 @@
 const express = require("express");
-const { notesCreationController,notesDeleteController,notesEditController} = require("../controller/notes.controller");
+const { notesCreationController,notesDeleteController,notesEditController,GetAllPostController} = require("../controller/notes.controller");
 const TokenVerify = require("../middleware/auth.Verify");
 const noteRoute = express.Router()
 /**
@@ -20,6 +20,11 @@ const noteRoute = express.Router()
   * @description - 
   */
 noteRoute.patch("/replace/:id",TokenVerify,notesEditController) ///continue withe controiller // case add userid with notes 
-
+ /**
+  * @method - 
+  * @route - 
+  * @description - 
+  */
+ noteRoute.get("/GetallNotes",TokenVerify,GetAllPostController)
 
   module.exports = noteRoute

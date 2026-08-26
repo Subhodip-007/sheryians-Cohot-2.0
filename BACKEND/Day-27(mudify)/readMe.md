@@ -21,3 +21,13 @@ WHAT THIS FUNCTION IS DOING BUT EXACLY HOW NOT
 in developMent -> blackbox 
 in optamize - > doc research req 
 task use tensor flow .js for proj 
+
+day - 28  today we will arrange code first 
+in expression.jsx -- u have function writter as will as UI 
+but jsx -- is used only for  UI level so we will move init  / detect on other file 
+create a folder  ---> utils -- >  utils.js 
+we dont write logic in UI layer logic 
+
+now we will built the AUTH feature or part 
+and understand a topic token black listing
+we will have lil folder structuer 

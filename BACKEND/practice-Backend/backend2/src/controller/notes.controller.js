@@ -82,6 +82,8 @@ const notesEditController = async (req, res) => {
         }
         const noteID = req.params.id;
         const note = await notesModel.findById(noteID);
+        console.log("Request params:", req.params);
+        console.log("Note ID:", noteID);
 
         if (!note) {
             return res.status(404).json({
@@ -117,8 +119,33 @@ const notesEditController = async (req, res) => {
 
     }
 }
+const GetAllPostController = async (req,res) =>{
+    try{
+            if (!req.verifyToken) {
+            return res.status(401).json({
+                message: "unauthorized access: incorrect or expired token"
+            });
+            }
+            const allnotes = await notesModel.find({
+                userID:req.verifyToken._id
+            })
+            res.status(200).json({
+                message:"All notes fetched !",
+                allnotes
+            })
+
+
+
+
+    }catch(err){
+         return res.status(500).json({
+            message: err.message
+        })
+    }
+}
 module.exports = {
     notesCreationController,
     notesDeleteController,
-    notesEditController
+    notesEditController,
+    GetAllPostController
 }
