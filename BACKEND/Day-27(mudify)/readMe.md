@@ -31,3 +31,30 @@ we dont write logic in UI layer logic
 now we will built the AUTH feature or part 
 and understand a topic token black listing
 we will have lil folder structuer 
+task  si study about user schema.pre / post 
+normal auth register setup 
+login setup 
+task y do we use invalied credentials
+ now test it using postman 
+ and after that we will create a logout api 
+ we will also seee why dont we use mongoDB for blacklisting 
+ and use redis 
+ day - 29 
+ we will do a simple thing 
+ GEt getme
+ // also implemented select 
+now we will implement 
+logout api 
+we will use clear cookie req.clear.cookie()
+creste a model for blacklist token
+schema -- token strinmg required unique true timestamp
+in middle mwere check blacklita using model
+
+what is throughPUT in DB 
+how many req a DB can handel in a given amount of time 
+req per sec rps
+transaction per sec timestamp
+queries per sec qps (operation) 
+compaier avg throwput of mongoDB and redis
+study about user agent 
+youtube bank and genAI video 
