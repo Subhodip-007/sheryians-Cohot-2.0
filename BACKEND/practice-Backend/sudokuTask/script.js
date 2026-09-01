@@ -14,6 +14,10 @@ const sudoku = [
 let selectedCell = null;
 let selectedRow = null;
 let selectedCol = null;
+const board = document.querySelector(".board");
+const error  =  document.querySelector(".error");
+const errorvalue = document.querySelector(".incorrect-move");
+const timer = document.querySelector(".timer");
 function checkWin() {
 
     for (let row = 0; row < 9; row++) {
@@ -73,7 +77,13 @@ function checkBox(Row,col,num){
     return true;
 
 }
-const board = document.querySelector(".board");
+const timervalue  = 60*20
+let min = null
+let sec = null 
+
+
+
+let invalidCounter = 0;
 
 for (let row = 0; row < 9; row++) {
     for (let col = 0; col < 9; col++) {
@@ -132,6 +142,13 @@ document.addEventListener("keydown", (e) => {
     }else{
 
         console.log("Invalid move");
+        invalidCounter++;
+        errorvalue.style.color = 'red'
+        errorvalue.textContent = `Error  ${invalidCounter}`
+        error.style.display = "flex"
+        setTimeout(()=>{
+            error.style.display = "none"
+        },1000)
 
     }
 }else{

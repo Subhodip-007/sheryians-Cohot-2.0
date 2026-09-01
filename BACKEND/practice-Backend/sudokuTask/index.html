@@ -11,18 +11,31 @@
         <div class="main-board">
             <div class="top-panel">
             <div class="timer">
-                <span>00:00</span>
+                <button class="arrow-up"><</button>
+                 <div class="timer-mid-sec">
+                    <span>00:00</span>
+                <div class="button-grp">
+                <button id="start">start</button>
+                <button id="pause">pause</button>
+                <button id="reset">reset</button>
+                </div>
+                 </div>
+                <button class="arrow-down">></button>
             </div>
             <select name="level" id="level">
                 <option value="easy">just ok</option>
                 <option value="mid">ummm good!</option>
                 <option value="hard">i question we decision</option>
             </select>
+            <div class="incorrect-move">Error  0</div>
 
         </div>
         <div class="board">
             
 
+        </div>
+        <div class="error">
+            <p>Invalid move !</p>
         </div>
         </div>
 

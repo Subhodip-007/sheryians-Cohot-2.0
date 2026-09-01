@@ -1,8 +1,11 @@
  
 
 import JWT from "jsonwebtoken";
+import redis from "../config/cache.js";
 
-const TokenVerify = (req, res, next) => {
+
+
+const TokenVerify =async (req, res, next) => {
   const token = req.cookies.token;
 
   // Check if token exists
@@ -10,6 +13,12 @@ const TokenVerify = (req, res, next) => {
     return res.status(401).json({
       message: "Unauthorized access"
     });
+  }
+  const isTokenBlacklist = await redis.get(token);
+  if(isTokenBlacklist){
+    return res.status(401).json({
+      message:"invalid token"
+    })
   }
 
   try {

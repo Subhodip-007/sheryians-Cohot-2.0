@@ -58,3 +58,30 @@ queries per sec qps (operation)
 compaier avg throwput of mongoDB and redis
 study about user agent 
 youtube bank and genAI video 
+now we will implement redis
+go to browser 
+redis.io create free DB 30mb 
+copy public endpoint in this you will get host port click on connect u will get password
+now in .env 
+create 
+REDIS_HOST 
+REDIS_port
+REDIS_PASSWORD
+now to connect redis to our server we will instrall a package npm i ioredis
+in config --> cache.js
+bcz out redis is not localy running so codel is lil different 
+requir ioredis.default(for redis suggesstions) if import then not 
+new redis({
+    host:
+    port:
+    password:
+})
+
+redis.on("connect/erroe/message",()=>{
+    log( server connected to redis)
+})
+module.exports =redis
+now use in middleware
+requier
+till now we have only connected out server with backend
+ same as postmat or compas we have redis insider

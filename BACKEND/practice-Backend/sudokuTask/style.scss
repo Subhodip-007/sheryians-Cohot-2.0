@@ -32,11 +32,38 @@ main{
     gap: 1rem;
 }
 .top-panel{
+    width: 100%;
     display: flex;
-    padding: 1rem;
+    padding: 2rem;
     border:1px solid whitesmoke;
     border-radius: 4px;
+    align-items:center;
+    justify-content: center;
+    gap: 3.5rem;
 
+
+}
+.timer{
+    display: flex;
+    gap: 1rem;
+    font-size: 1.5rem;
+    
+}
+.timer button{
+    padding: .3rem;
+    background-color: #111;
+    color:whitesmoke;
+}
+.button-grp{
+    display: flex;
+    gap: 1rem;
+}
+.timer-mid-sec{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.3rem;
+    align-items:center;
 }
 .board {
   display: grid; 
@@ -72,4 +99,31 @@ main{
     color: #111;
     opacity: 0.6;
     cursor: not-allowed;
+}
+.error{
+    height: 10px;
+    width: 100%;
+    padding: 1rem;
+    display:none;
+    align-items:center;
+    justify-content: center;
+    color:red;
+    // display: none;
+}
+.incorrect-move{
+    padding: 1rem;
+    color:rgb(209, 208, 208);
+    height: 30px;
+    width: 100px;
+    text-align: center;
+    font-size: 1rem;
+    display: flex;
+    align-items:center;
+    justify-content: center;
+}
+select{
+    background-color:#111;
+    color: rgb(175, 175, 175);
+    padding: .5rem;
+    
 }
