@@ -1,8 +1,5 @@
-let a =10;
-try{
-    let ex= a/0;
-}catch(err){
-    console.log(err);
-    
-
-}
+const app = require("./src/app");
+const PORT  = 3000;
+app.listen(3000,()=>{
+    console.log("server is running......");
+})

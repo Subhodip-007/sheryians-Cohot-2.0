@@ -85,3 +85,16 @@ now use in middleware
 requier
 till now we have only connected out server with backend
  same as postmat or compas we have redis insider
+
+ DAY  -
+ todays class we will develop api 
+ now we will see song upload 
+now we will create a model for song 
+
+// now api forn now a simple api to upload songs not auth 
+// like only logged in user can only try 
+
+// now we have set routes and controller 
+// question is waht is the package the is used to send
+// files from frontend to backend bcz normaly our server 
+cant read any file 
