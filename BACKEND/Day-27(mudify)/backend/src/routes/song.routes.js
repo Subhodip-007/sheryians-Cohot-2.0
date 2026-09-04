@@ -1,7 +1,7 @@
 const express = require("express");
 
 const upload = require("../middlewares/upload.middleware");
-const { songUploadController } = require("../controller/song.controller");
+const { songUploadController, getSongController } = require("../controller/song.controller");
  const songRouter = express.Router()
  /**
   * @method - POST
@@ -13,4 +13,5 @@ const { songUploadController } = require("../controller/song.controller");
  // poster tilte artist albam time 
  // this can be read directly 
  // to read we have a package name node-id3 this will help to rad everything
+ songRouter.get('/get',getSongController)
  module.exports = songRouter

@@ -44,73 +44,159 @@
     }
   };
 
-  export const detect = ({landmarkerRef,videoRef,setExpression}) => {
+  // export const detect = ({landmarkerRef,videoRef,setExpression}) => {
+  //   if (
+  //     !landmarkerRef.current ||
+  //     !videoRef.current ||
+  //     videoRef.current.readyState < 2
+  //   ) {
+  //     setExpression("Camera is not ready");
+  //     return;
+  //   }
+
+  //   const results =
+  //     landmarkerRef.current.detectForVideo(
+  //       videoRef.current,
+  //       performance.now()
+  //     );
+
+  //   if (results.faceBlendshapes?.length > 0) {
+  //     const blendshapes =
+  //       results.faceBlendshapes[0].categories;
+
+  //     const getScore = (name) => {
+  //       return (
+  //         blendshapes.find(
+  //           (b) => b.categoryName === name
+  //         )?.score || 0
+  //       );
+  //     };
+
+  //     const smileLeft =
+  //       getScore("mouthSmileLeft");
+
+  //     const smileRight =
+  //       getScore("mouthSmileRight");
+
+  //     const jawOpen =
+  //       getScore("jawOpen");
+
+  //     const browUp =
+  //       getScore("browInnerUp");
+
+  //     const frownLeft =
+  //       getScore("mouthFrownLeft");
+
+  //     const frownRight =
+  //       getScore("mouthFrownRight");
+
+  //     let currentExpression = "Neutral 😐";
+
+  //     if (
+  //       smileLeft > 0.5 &&
+  //       smileRight > 0.5
+  //     ) {
+  //       currentExpression = "Happy 😄";
+  //     } else if (
+  //       jawOpen > 0.35 &&
+  //       browUp > 0.2
+  //     ) {
+  //       currentExpression = "Surprised 😲";
+  //     } else if (
+  //       frownLeft > 0.05 &&
+  //       frownRight > 0.05
+  //     ) {
+  //       currentExpression = "Sad 😢";
+  //     }
+
+  //     setExpression(currentExpression);
+  //   } else {
+  //     setExpression("No face detected");
+  //   }
+  // };
+  export const detect = ({
+    landmarkerRef,
+    videoRef,
+    setExpression
+}) => {
+
     if (
-      !landmarkerRef.current ||
-      !videoRef.current ||
-      videoRef.current.readyState < 2
+        !landmarkerRef.current ||
+        !videoRef.current ||
+        videoRef.current.readyState < 2
     ) {
-      setExpression("Camera is not ready");
-      return;
+        setExpression("Camera is not ready");
+        return null;
     }
 
-    const results =
-      landmarkerRef.current.detectForVideo(
+    const results = landmarkerRef.current.detectForVideo(
         videoRef.current,
         performance.now()
-      );
+    );
 
     if (results.faceBlendshapes?.length > 0) {
-      const blendshapes =
-        results.faceBlendshapes[0].categories;
 
-      const getScore = (name) => {
-        return (
-          blendshapes.find(
-            (b) => b.categoryName === name
-          )?.score || 0
-        );
-      };
+        const blendshapes =
+            results.faceBlendshapes[0].categories;
 
-      const smileLeft =
-        getScore("mouthSmileLeft");
+        const getScore = (name) => {
+            return (
+                blendshapes.find(
+                    (b) => b.categoryName === name
+                )?.score || 0
+            );
+        };
 
-      const smileRight =
-        getScore("mouthSmileRight");
+        const smileLeft = getScore("mouthSmileLeft");
+        const smileRight = getScore("mouthSmileRight");
 
-      const jawOpen =
-        getScore("jawOpen");
+        const jawOpen = getScore("jawOpen");
 
-      const browUp =
-        getScore("browInnerUp");
+        const browUp = getScore("browInnerUp");
 
-      const frownLeft =
-        getScore("mouthFrownLeft");
+        const frownLeft = getScore("mouthFrownLeft");
+        const frownRight = getScore("mouthFrownRight");
 
-      const frownRight =
-        getScore("mouthFrownRight");
 
-      let currentExpression = "Neutral 😐";
+        let mood = "neutral";
+        let currentExpression = "Neutral 😐";
 
-      if (
-        smileLeft > 0.5 &&
-        smileRight > 0.5
-      ) {
-        currentExpression = "Happy 😄";
-      } else if (
-        jawOpen > 0.35 &&
-        browUp > 0.2
-      ) {
-        currentExpression = "Surprised 😲";
-      } else if (
-        frownLeft > 0.05 &&
-        frownRight > 0.05
-      ) {
-        currentExpression = "Sad 😢";
-      }
 
-      setExpression(currentExpression);
+        if (
+            smileLeft > 0.5 &&
+            smileRight > 0.5
+        ) {
+
+            mood = "happy";
+            currentExpression = "Happy 😄";
+
+        } else if (
+            jawOpen > 0.35 &&
+            browUp > 0.2
+        ) {
+
+            mood = "surprised";
+            currentExpression = "Surprised 😲";
+
+        } else if (
+            frownLeft > 0.05 &&
+            frownRight > 0.05
+        ) {
+
+            mood = "sad";
+            currentExpression = "Sad 😢";
+
+        }
+
+
+        setExpression(currentExpression);
+
+        return mood;
+
     } else {
-      setExpression("No face detected");
+
+        setExpression("No face detected");
+
+        return null;
     }
-  };
+};

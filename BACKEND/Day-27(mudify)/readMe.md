@@ -98,3 +98,9 @@ now we will create a model for song
 // question is waht is the package the is used to send
 // files from frontend to backend bcz normaly our server 
 cant read any file 
+
+now we have made two routes and controller and two routes 
+upload and get and also we have add mood in model 
+
+now lets handle frontend section
+home ---> pages --> complnents ---home.jsx

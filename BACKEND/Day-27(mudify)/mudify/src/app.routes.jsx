@@ -5,10 +5,11 @@ import Login from "./feature/auth/pages/Login";
 import Register from "./feature/auth/pages/Register";
 
 import { createBrowserRouter } from"react-router";
+import Home from "./feature/Home/pages/Home";
 export const router = createBrowserRouter([
     {
         path:"/",
-        element:<Protect><h1>Home</h1></Protect>
+        element:<Protect><Home/></Protect>
     },
     {
         path:"/register",
