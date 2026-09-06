@@ -1,0 +1,1125 @@
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   FONTS
+========================================================= */
+
+.palette-mosaic-regular {
+  font-family: "Palette Mosaic", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.great-vibes-regular {
+  font-family: "Great Vibes", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.yuyu-regular {
+  font-family: "SN Pro", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+/* =========================================================
+   HTML / BODY
+========================================================= */
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+#main {
+  position: relative;
+
+  width: 100vw;
+  height: 100vh;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   FIXED BACKGROUND VIEWPORT
+========================================================= */
+
+#bg-view-port {
+  position: fixed;
+
+  inset: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  overflow: hidden;
+
+  z-index: 0;
+
+  background: #ffffff;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   GRID LAYERS
+========================================================= */
+
+.grid-layer {
+  position: absolute;
+
+  top: -20%;
+  left: -20%;
+
+  width: 140%;
+  height: 140%;
+
+  background-image:
+    url("./assets/bg-view-port.png");
+
+  background-repeat: repeat;
+
+  background-position: center;
+
+  background-size: 1024px auto;
+
+  will-change:
+    transform,
+    opacity,
+    filter;
+
+  transform-origin: center center;
+}
+
+
+/* =========================================================
+   NORMAL GRID
+========================================================= */
+
+.grid-light {
+
+  opacity: 1;
+
+  filter:
+    brightness(1)
+    invert(0);
+
+  transform:
+    scale(1);
+
+}
+
+
+/* =========================================================
+   INVERTED GRID
+========================================================= */
+
+.grid-dark {
+
+  opacity: 0;
+
+  filter:
+    brightness(1)
+    invert(1);
+
+  transform:
+    scale(1.02);
+
+}
+
+
+/* =========================================================
+   WORMHOLE
+========================================================= */
+
+.wormhole-effect {
+
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  width: 20px;
+  height: 20px;
+
+  border-radius: 50%;
+
+  transform:
+    translate(-50%, -50%)
+    scale(0);
+
+  opacity: 0;
+
+  z-index: 10;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle,
+
+      #000000 0%,
+      #000000 25%,
+
+      rgba(0, 0, 0, 0.95) 40%,
+
+      rgba(0, 0, 0, 0.45) 60%,
+
+      rgba(0, 0, 0, 0) 76%
+    );
+
+  will-change:
+    transform,
+    opacity;
+}
+
+
+/* =========================================================
+   WORMHOLE RINGS
+========================================================= */
+
+.wormhole-effect::before,
+.wormhole-effect::after {
+
+  content: "";
+
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  border-radius: 50%;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.35);
+
+  pointer-events: none;
+
+  transform:
+    translate(-50%, -50%);
+}
+
+
+/* First ring */
+
+.wormhole-effect::before {
+
+  width: 140%;
+  height: 140%;
+
+  opacity:
+    var(--ring-opacity, 0);
+}
+
+
+/* Second ring */
+
+.wormhole-effect::after {
+
+  width: 190%;
+  height: 190%;
+
+  opacity:
+    var(--ring-opacity, 0);
+}
+
+
+/* =========================================================
+   TOP NAVIGATION
+========================================================= */
+
+#top-nav {
+
+  position: fixed;
+
+  top: 0;
+  right: 0;
+
+  width: 100%;
+
+  height: 90px;
+
+  padding:
+    0 35px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: flex-end;
+
+  z-index: 2000;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   NAV TOGGLE
+========================================================= */
+
+#nav-toggle {
+
+  position: relative;
+
+  width: 102px;
+  height: 102px;
+
+  border: none;
+
+  background: transparent;
+
+  color: #101010;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  pointer-events: auto;
+
+  z-index: 2100;
+}
+
+
+/* =========================================================
+   OPEN ICON
+========================================================= */
+
+.nav-open-icon {
+
+  position: absolute;
+
+  font-size: 35px;
+
+  opacity: 1;
+
+  transform:
+    scale(1)
+    rotate(0deg);
+
+  transition:
+    opacity 0.25s ease,
+
+    transform 0.45s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    );
+}
+
+
+/* =========================================================
+   CLOSE ICON
+========================================================= */
+
+.nav-close-icon {
+
+  position: absolute;
+
+  width: 27px;
+  height: 27px;
+
+  opacity: 0;
+
+  transform:
+    rotate(-45deg)
+    scale(0.5);
+
+  transition:
+    opacity 0.25s ease,
+
+    transform 0.5s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    );
+}
+
+
+.nav-close-icon span {
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  width: 27px;
+  height: 1.5px;
+
+  background: #f2f1ed;
+
+  transform-origin: center;
+}
+
+
+.nav-close-icon span:first-child {
+
+  transform:
+    translate(-50%, -50%)
+    rotate(45deg);
+
+}
+
+
+.nav-close-icon span:last-child {
+
+  transform:
+    translate(-50%, -50%)
+    rotate(-45deg);
+
+}
+
+
+/* =========================================================
+   NAV ACTIVE STATE
+========================================================= */
+
+#nav-toggle.active
+.nav-open-icon {
+
+  opacity: 0;
+
+  transform:
+    rotate(90deg)
+    scale(0.5);
+
+}
+
+
+#nav-toggle.active
+.nav-close-icon {
+
+  opacity: 1;
+
+  transform:
+    rotate(0deg)
+    scale(1);
+
+}
+
+
+/* =========================================================
+   MENU PANEL
+========================================================= */
+
+#menu-panel {
+
+  position: fixed;
+
+  top: 0;
+  right: 0;
+
+  width: min(100vw, 650px);
+  height: 100vh;
+
+  background: #1d1d1d;
+
+  color: #f1f0ec;
+
+  z-index: 1900;
+
+  transform:
+    translateX(105%);
+
+  transition:
+    transform 0.9s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    );
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   MENU OPEN
+========================================================= */
+
+#menu-panel.open {
+
+  transform:
+    translateX(0);
+
+}
+
+
+/* =========================================================
+   MENU HEADER
+========================================================= */
+
+.menu-header {
+
+  height: 122px;
+
+  padding:
+    0 28px 17px;
+
+  display: flex;
+
+  align-items: flex-end;
+
+  gap: 20px;
+
+  border-bottom:
+    1px solid
+    rgba(241, 240, 236, 0.7);
+}
+
+
+.menu-header > span:first-child {
+
+  font-family:
+    Impact,
+    Haettenschweiler,
+    "Arial Narrow Bold",
+    sans-serif;
+
+  font-size:
+    clamp(40px, 6vw, 64px);
+
+  font-weight: 900;
+
+  line-height: 0.8;
+
+  letter-spacing: -0.03em;
+}
+
+
+/* =========================================================
+   MENU LINKS
+========================================================= */
+
+.menu-links {
+  width: 100%;
+}
+
+
+/* =========================================================
+   MENU ITEM
+========================================================= */
+
+.menu-item {
+
+  position: relative;
+
+  display: flex;
+
+  align-items: flex-start;
+
+  width: 100%;
+
+  min-height: 145px;
+
+  padding:
+    14px 26px 18px;
+
+  text-decoration: none;
+
+  color: #f1f0ec;
+
+  border-bottom:
+    1px solid
+    rgba(241, 240, 236, 0.7);
+
+  overflow: hidden;
+
+  transition:
+    background 0.35s ease;
+}
+
+
+/* =========================================================
+   MENU TITLE
+========================================================= */
+
+.menu-title {
+
+  font-family:
+    Impact,
+    Haettenschweiler,
+    "Arial Narrow Bold",
+    sans-serif;
+
+  font-size:
+    clamp(70px, 11vw, 128px);
+
+  font-weight: 900;
+
+  line-height: 0.78;
+
+  letter-spacing: -0.035em;
+
+  white-space: nowrap;
+
+  transform:
+    translateX(-12px);
+
+  transition:
+    transform 0.45s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    );
+}
+
+
+/* =========================================================
+   MENU NUMBER
+========================================================= */
+
+.menu-number {
+
+  position: relative;
+
+  top: 7px;
+
+  margin-left: 10px;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  font-size: 22px;
+
+  font-weight: 400;
+
+  line-height: 1;
+
+  letter-spacing: -0.02em;
+
+  z-index: 2;
+}
+
+
+/* =========================================================
+   NUMBER COLORS
+========================================================= */
+
+.number-orange {
+  color: #ef7628;
+}
+
+.number-blue {
+  color: #299ad6;
+}
+
+.number-green {
+  color: #8abf45;
+}
+
+.number-white {
+  color: #d9d9d9;
+}
+
+
+/* =========================================================
+   HOVER EFFECT
+========================================================= */
+
+.menu-item::after {
+
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: 0%;
+
+  background: #f1f0ec;
+
+  z-index: -1;
+
+  transition:
+    height 0.45s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    );
+}
+
+
+.menu-item:hover::after {
+  height: 100%;
+}
+
+
+.menu-item:hover {
+  color: #1d1d1d;
+}
+
+
+.menu-item:hover .menu-title {
+
+  transform:
+    translateX(0)
+    skewX(-2deg);
+
+}
+
+
+/* =========================================================
+   MENU ENTRY ANIMATION
+========================================================= */
+
+.menu-item {
+
+  opacity: 0;
+
+  transform:
+    translateX(80px);
+}
+
+
+#menu-panel.open
+.menu-item {
+
+  animation:
+    menu-item-enter
+    0.7s
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    )
+    forwards;
+}
+
+
+#menu-panel.open
+.menu-item:nth-child(1) {
+
+  animation-delay: 0.25s;
+
+}
+
+
+#menu-panel.open
+.menu-item:nth-child(2) {
+
+  animation-delay: 0.35s;
+
+}
+
+
+#menu-panel.open
+.menu-item:nth-child(3) {
+
+  animation-delay: 0.45s;
+
+}
+
+
+#menu-panel.open
+.menu-item:nth-child(4) {
+
+  animation-delay: 0.55s;
+
+}
+
+
+@keyframes menu-item-enter {
+
+  0% {
+
+    opacity: 0;
+
+    transform:
+      translateX(100px);
+
+  }
+
+  100% {
+
+    opacity: 1;
+
+    transform:
+      translateX(0);
+
+  }
+
+}
+
+
+/* =========================================================
+   SCROLLING CONTENT
+========================================================= */
+
+#page-scroll {
+
+  position: relative;
+
+  width: 100%;
+
+  height: 100vh;
+
+  z-index: 1;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  scroll-behavior: smooth;
+}
+
+
+/* =========================================================
+   PAGE 1
+========================================================= */
+
+#page-1 {
+
+  position: relative;
+
+  width: 100%;
+
+  height: 100vh;
+
+  min-height: 100vh;
+}
+
+
+/* =========================================================
+   HERO SECTION
+========================================================= */
+
+.hero-section {
+
+  width: 100%;
+
+  height: 100vh;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  justify-content: center;
+
+  padding-left: 8rem;
+}
+
+
+/* =========================================================
+   HERO TITLE
+========================================================= */
+
+.hero-section h1 {
+
+  font-size: 82px;
+
+  line-height: 1;
+}
+
+
+/* =========================================================
+   HIGHLIGHT
+========================================================= */
+
+.highlight {
+
+  font-family: monospace;
+
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   HERO PARAGRAPH
+========================================================= */
+
+.hero-section .para {
+
+  width: 50%;
+
+  font-family: monospace;
+
+  line-height: 1.5rem;
+
+  font-size: 18px;
+
+  margin-top: 20px;
+}
+
+
+/* =========================================================
+   EXPLORE BUTTON
+========================================================= */
+
+#explore-wrap {
+
+  width: 220px;
+
+  height: 80px;
+
+  position: relative;
+
+  margin-top: 28px;
+
+  cursor: pointer;
+
+  will-change: transform;
+}
+
+
+#explore-btn {
+
+  width: 100%;
+
+  height: 100%;
+
+  overflow: visible;
+}
+
+
+#button-shape {
+
+  fill: #111;
+
+  stroke: #111;
+
+  stroke-width: 2;
+
+}
+
+
+/* =========================================================
+   EXPLORE TEXT
+========================================================= */
+
+#explore-btn text {
+
+  font-family:
+    "Arial Narrow",
+    "Arial Narrow Bold",
+    Arial,
+    sans-serif;
+
+  font-weight: 700;
+
+  font-size: 16px;
+
+  fill: white;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   BUTTON STATEMENT
+========================================================= */
+
+.btn-statemant {
+
+  margin-top: 8px;
+
+  font-family: monospace;
+
+  font-size: 12px;
+
+  opacity: 0.65;
+}
+
+
+/* =========================================================
+   PAGE 2+
+========================================================= */
+
+.page-2 {
+
+  position: relative;
+
+  width: 100%;
+
+  height: 100vh;
+
+  min-height: 100vh;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+
+.page-2 h2 {
+
+  font-family:
+    "Arial Narrow",
+    Arial,
+    sans-serif;
+
+  font-size: 70px;
+
+  font-weight: 700;
+
+  letter-spacing: -0.04em;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+
+  /* NAV */
+
+  #top-nav {
+
+    height: 75px;
+
+    padding:
+      0 18px;
+
+  }
+
+
+  #nav-toggle {
+
+    width: 60px;
+
+    height: 60px;
+
+  }
+
+
+  .nav-open-icon {
+
+    font-size: 27px;
+
+  }
+
+
+  /* PANEL */
+
+  #menu-panel {
+
+    width: 100vw;
+
+  }
+
+
+  .menu-header {
+
+    height: 120px;
+
+    padding-left: 22px;
+
+    padding-right: 22px;
+
+  }
+
+
+  .menu-item {
+
+    min-height: 125px;
+
+    padding:
+      14px
+      20px
+      15px;
+
+  }
+
+
+  .menu-title {
+
+    font-size:
+      clamp(
+        58px,
+        18vw,
+        100px
+      );
+
+  }
+
+
+  .menu-number {
+
+    font-size: 18px;
+
+    margin-left: 7px;
+
+  }
+
+
+  /* HERO */
+
+  .hero-section {
+
+    padding-left: 2rem;
+
+    padding-right: 2rem;
+
+  }
+
+
+  .hero-section h1 {
+
+    font-size: 54px;
+
+  }
+
+
+  .hero-section .para {
+
+    width: 90%;
+
+    font-size: 16px;
+
+  }
+
+
+  #explore-wrap {
+
+    width: 190px;
+
+    height: 70px;
+
+  }
+
+
+}
