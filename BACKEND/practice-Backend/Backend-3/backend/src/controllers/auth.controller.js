@@ -1,7 +1,7 @@
 import { hash } from "bcryptjs";
 import { userModel } from "../model/user.model.js";
 import jwt from "jsonwebtoken"
-const registerController = async (req, res, next) => {
+export const registerController = async (req, res, next) => {
     try {
         const { username, email, password, mobileNumber } = req.body
         const isUserExist = await userModel.findOne({ $or: [{ username }, { email }, { mobileNumber }] });
@@ -19,10 +19,11 @@ const registerController = async (req, res, next) => {
             });
         }
         const hashPassword = await hash(password, 10);
-        const user = userModel.create({
+        const user = await userModel.create({
             username,
             email,
-            password: hashPassword
+            password: hashPassword,
+            mobileNumber
         })
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET); 
         res.cookie("token",token)

@@ -24,3 +24,9 @@ Filtering
 # redis 
 # error handle 
 # express valodator 
+//  till now register API 
+// err handle 
+// validator 
+
+// next util for token 
+// middleware form jwt 

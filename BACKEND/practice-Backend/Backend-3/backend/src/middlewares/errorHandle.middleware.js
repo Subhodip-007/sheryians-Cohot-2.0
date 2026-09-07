@@ -1,6 +1,6 @@
-const handleError =async (err,req,res,next)=>{
+export const handleError =async (err,req,res,next)=>{
     const statusCode = res.statusCode === 200 ? 500 : res.statusCode
-    res.status(statusCode).json({
+    return res.status(statusCode).json({
     message: err.message,
     // Include stack trace only if you are in development mode
     stack: process.env.NODE_ENV === 'production' ? null : err.stack,
