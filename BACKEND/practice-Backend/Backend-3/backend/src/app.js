@@ -1,4 +1,8 @@
-const express = require("express");
-const app = express();
+import express from "express"
+import { authRouter } from "./routes/auth.route.js";
+import cookieParser from "cookie-parser"
+export const app = express();
 app.use(express.json())
- module.exports = app
+app.use(cookieParser())
+
+app.use("/api/auth",authRouter)
