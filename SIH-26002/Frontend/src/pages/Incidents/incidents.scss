@@ -1,0 +1,898 @@
+/* =========================================================
+   INCIDENT PAGE
+========================================================= */
+
+.incidents-page {
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.incidents-loading {
+    min-height: 100vh;
+
+    display: grid;
+
+    place-items: center;
+
+    background: #f1f1ed;
+
+    color: #111111;
+
+    font-size: 13px;
+}
+
+
+.incidents-loading button {
+    margin-top: 12px;
+
+    padding:
+        9px
+        13px;
+
+    border: 0;
+
+    border-radius: 8px;
+
+    background: #111111;
+
+    color: #ffffff;
+
+    font-size: 11px;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.incidents-header {
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+
+.incidents-header h1 {
+    margin-top: 7px;
+
+    font-family:
+        "Helvetica Neue",
+        "Inter",
+        Arial,
+        sans-serif;
+
+    font-size:
+        clamp(
+            48px,
+            6vw,
+            76px
+        );
+
+    font-weight: 500;
+
+    line-height: 0.9;
+
+    letter-spacing: -0.065em;
+}
+
+
+.incidents-subtitle {
+    max-width: 490px;
+
+    margin-top: 16px;
+
+    color: #71716b;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   SUMMARY
+========================================================= */
+
+.incident-summary {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            minmax(
+                65px,
+                1fr
+            )
+        );
+
+    border:
+        1px solid
+        #deded8;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+
+    background: #ffffff;
+}
+
+
+.incident-summary > div {
+    min-width: 72px;
+
+    padding:
+        11px
+        13px;
+
+    border-right:
+        1px solid
+        #e5e5df;
+}
+
+
+.incident-summary > div:last-child {
+    border-right: 0;
+}
+
+
+.incident-summary span {
+    display: block;
+
+    margin-bottom: 5px;
+
+    color: #85857f;
+
+    font-size: 8px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.10em;
+}
+
+
+.incident-summary strong {
+    font-family:
+        "Helvetica Neue",
+        "Inter",
+        Arial,
+        sans-serif;
+
+    font-size: 21px;
+
+    font-weight: 500;
+
+    letter-spacing: -0.04em;
+}
+
+
+/* =========================================================
+   TOOLBAR
+========================================================= */
+
+.incidents-toolbar {
+    margin-top: 40px;
+
+    padding-bottom: 16px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 16px;
+
+    border-bottom:
+        1px solid
+        #dfdfd9;
+}
+
+
+.incident-search {
+    width:
+        min(
+            430px,
+            100%
+        );
+
+    height: 44px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding:
+        0
+        13px;
+
+    border:
+        1px solid
+        #d7d7d1;
+
+    border-radius: 9px;
+
+    background: #ffffff;
+}
+
+
+.incident-search > span {
+    color: #999991;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+.incident-search input {
+    width: 100%;
+
+    height: 100%;
+
+    min-width: 0;
+
+    border: 0;
+
+    outline: 0;
+
+    background: transparent;
+
+    color: #111111;
+
+    font-size: 12px;
+}
+
+
+.incident-search input::placeholder {
+    color: #9a9a94;
+}
+
+
+/* =========================================================
+   SEVERITY FILTERS
+========================================================= */
+
+.incident-filters {
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+}
+
+
+.incident-filters::-webkit-scrollbar {
+    display: none;
+}
+
+
+.incident-filter {
+    flex-shrink: 0;
+
+    padding:
+        8px
+        10px;
+
+    border:
+        1px solid
+        #d7d7d1;
+
+    border-radius: 999px;
+
+    background: transparent;
+
+    color: #666661;
+
+    font-size: 9px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+.incident-filter.active {
+    border-color: #111111;
+
+    background: #111111;
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   STATUS FILTER
+========================================================= */
+
+.incident-status-filters {
+    margin-top: 14px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+}
+
+
+.incident-status-filters::-webkit-scrollbar {
+    display: none;
+}
+
+
+.incident-status-filters > span {
+    margin-right: 2px;
+
+    color: #85857f;
+
+    font-size: 8px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.1em;
+}
+
+
+.status-filter {
+    padding:
+        6px
+        9px;
+
+    border:
+        1px solid
+        #deded8;
+
+    border-radius: 999px;
+
+    background: transparent;
+
+    color: #777770;
+
+    font-size: 8px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+.status-filter.active {
+    border-color:
+        rgba(
+            255,
+            100,
+            31,
+            0.4
+        );
+
+    background:
+        rgba(
+            255,
+            100,
+            31,
+            0.08
+        );
+
+    color: #ff641f;
+}
+
+
+/* =========================================================
+   INCIDENT PANEL
+========================================================= */
+
+.incidents-panel {
+    margin-top: 18px;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        #deded8;
+
+    border-radius: 18px;
+
+    background: #ffffff;
+}
+
+
+/* =========================================================
+   TABLE HEAD
+========================================================= */
+
+.incidents-table-head {
+    display: grid;
+
+    grid-template-columns:
+        1.6fr
+        0.8fr
+        0.9fr
+        1fr
+        0.9fr;
+
+    gap: 18px;
+
+    padding:
+        14px
+        18px;
+
+    border-bottom:
+        1px solid
+        #e5e5df;
+
+    background:
+        #fafaf7;
+
+    color: #85857f;
+
+    font-size: 8px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.12em;
+}
+
+
+/* =========================================================
+   ROW
+========================================================= */
+
+.incident-row {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        1.6fr
+        0.8fr
+        0.9fr
+        1fr
+        0.9fr;
+
+    gap: 18px;
+
+    padding:
+        18px;
+
+    border: 0;
+
+    border-bottom:
+        1px solid
+        #e9e9e3;
+
+    background: #ffffff;
+
+    color: #111111;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        background
+        0.2s ease;
+}
+
+
+.incident-row:last-child {
+    border-bottom: 0;
+}
+
+
+.incident-row:hover {
+    background: #fafaf7;
+}
+
+
+.incident-row > div {
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: 5px;
+}
+
+
+.incident-row strong {
+    overflow: hidden;
+
+    color: #111111;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+.incident-row span {
+    color: #777770;
+
+    font-size: 9px;
+
+    line-height: 1.35;
+}
+
+
+/* =========================================================
+   INCIDENT MAIN
+========================================================= */
+
+.incident-main strong {
+    font-size: 12px;
+}
+
+
+.incident-main span {
+    max-width: 330px;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   SEVERITY
+========================================================= */
+
+.severity-badge {
+    width: fit-content;
+
+    padding:
+        5px
+        8px;
+
+    border-radius: 999px;
+
+    font-size: 8px !important;
+
+    font-weight: 700;
+
+    letter-spacing: 0.05em;
+}
+
+
+.severity-critical {
+    background:
+        rgba(
+            190,
+            43,
+            43,
+            0.10
+        );
+
+    color: #a32929 !important;
+}
+
+
+.severity-high {
+    background:
+        rgba(
+            255,
+            100,
+            31,
+            0.10
+        );
+
+    color: #c15020 !important;
+}
+
+
+.severity-medium {
+    background:
+        rgba(
+            220,
+            170,
+            20,
+            0.12
+        );
+
+    color: #987715 !important;
+}
+
+
+.severity-low {
+    background:
+        rgba(
+            70,
+            145,
+            85,
+            0.10
+        );
+
+    color: #36743e !important;
+}
+
+
+/* =========================================================
+   LOCATION
+========================================================= */
+
+.incident-location strong {
+    font-size: 10px;
+
+    font-weight: 600;
+}
+
+
+.incident-location span {
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   REPORTER
+========================================================= */
+
+.incident-reporter strong {
+    font-size: 10px;
+}
+
+
+.incident-reporter span {
+    text-transform: uppercase;
+
+    font-size: 8px;
+
+    letter-spacing: 0.07em;
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.incident-status {
+    flex-direction: row !important;
+
+    align-items: center;
+
+    justify-content: space-between !important;
+
+    gap: 8px !important;
+}
+
+
+.incident-status-badge {
+    width: fit-content;
+
+    padding:
+        5px
+        8px;
+
+    border-radius: 999px;
+
+    background: #eeeeea;
+
+    color: #666661 !important;
+
+    font-size: 8px !important;
+
+    font-weight: 700;
+
+    letter-spacing: 0.04em;
+}
+
+
+.status-reported {
+    background:
+        rgba(
+            255,
+            100,
+            31,
+            0.08
+        );
+
+    color: #c15020 !important;
+}
+
+
+.status-verified {
+    background:
+        rgba(
+            110,
+            155,
+            210,
+            0.12
+        );
+
+    color: #456b96 !important;
+}
+
+
+.status-resolved {
+    background:
+        rgba(
+            70,
+            145,
+            85,
+            0.10
+        );
+
+    color: #36743e !important;
+}
+
+
+.incident-arrow {
+    color: #ff641f !important;
+
+    font-size: 13px !important;
+
+    transition:
+        transform
+        0.2s ease;
+}
+
+
+.incident-row:hover
+.incident-arrow {
+    transform:
+        translate(
+            3px,
+            -2px
+        );
+}
+
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.incidents-empty {
+    min-height: 260px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+}
+
+
+.incidents-empty strong {
+    font-size: 14px;
+
+    font-weight: 500;
+}
+
+
+.incidents-empty span {
+    color: #85857f;
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1050px) {
+
+    .incidents-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .incident-summary {
+        width: 100%;
+    }
+
+
+    .incidents-toolbar {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .incident-search {
+        width: 100%;
+    }
+
+}
+
+
+@media (max-width: 850px) {
+
+    .incidents-table-head {
+        display: none;
+    }
+
+
+    .incident-row {
+        grid-template-columns:
+            1fr
+            1fr;
+
+        gap: 15px;
+    }
+
+
+    .incident-main {
+        grid-column:
+            1 / -1;
+    }
+
+
+    .incident-status {
+        align-items: flex-start !important;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .incident-summary {
+        grid-template-columns:
+            repeat(
+                2,
+                1fr
+            );
+    }
+
+
+    .incident-summary > div:nth-child(2) {
+        border-right: 0;
+    }
+
+
+    .incident-summary > div:nth-child(-n + 2) {
+        border-bottom:
+            1px solid
+            #e5e5df;
+    }
+
+
+    .incident-summary > div:nth-child(3) {
+        border-bottom: 0;
+    }
+
+
+    .incident-row {
+        grid-template-columns: 1fr;
+    }
+
+
+    .incident-main {
+        grid-column: auto;
+    }
+
+}

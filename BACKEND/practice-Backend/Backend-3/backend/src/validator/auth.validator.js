@@ -33,3 +33,17 @@ export const registerValidator = [
     .notEmpty().withMessage("Phone number is required")
     .isMobilePhone('any').withMessage('Please provide a valid phone number'),
 ];
+export const loginValidator = [
+  body("username")
+  .optional()
+  .trim()
+  .isString(),
+  body("email")
+  .optional()
+  .trim()
+  .isEmail().withMessage("please enter a valid email address format")
+  .normalizeEmail(),
+  body("password")
+  .trim()
+  .notEmpty().withMessage("password is required")
+];

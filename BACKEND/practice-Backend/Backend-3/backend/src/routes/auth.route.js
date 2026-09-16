@@ -1,7 +1,7 @@
 import { app } from "../app.js";
 import { Router } from "express"
-import { registerController } from "../controllers/auth.controller.js";
-import { registerValidator, validate } from "../validator/auth.validator.js";
+import { loginContorller, registerController } from "../controllers/auth.controller.js";
+import { loginValidator, registerValidator, validate } from "../validator/auth.validator.js";
 
 export const authRouter = Router()
 /**
@@ -15,4 +15,4 @@ export const authRouter = Router()
  *  @routes -"api/auth/login"
  *  @description
  */
-   //  authRouter.post("/login")
+    authRouter.post("/login",loginValidator,validate,loginContorller)

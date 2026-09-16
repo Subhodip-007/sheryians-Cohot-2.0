@@ -1,0 +1,673 @@
+/* =========================================================
+   SHIPMENTS PAGE
+========================================================= */
+
+.shipments-page {
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.shipments-loading {
+    min-height: 100vh;
+
+    display: grid;
+
+    place-items: center;
+
+    background: #f1f1ed;
+
+    color: #111111;
+
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.shipments-header {
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    gap: 30px;
+}
+
+
+.shipments-header h1 {
+    margin-top: 8px;
+
+    font-family:
+        "Helvetica Neue",
+        "Inter",
+        Arial,
+        sans-serif;
+
+    font-size:
+        clamp(
+            48px,
+            6vw,
+            78px
+        );
+
+    font-weight: 500;
+
+    line-height: 0.9;
+
+    letter-spacing: -0.065em;
+}
+
+
+.shipments-subtitle {
+    max-width: 420px;
+
+    margin-top: 17px;
+
+    color: #71716b;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+
+.shipment-count {
+    min-width: 100px;
+
+    padding-left: 20px;
+
+    border-left:
+        1px solid
+        rgba(
+            17,
+            17,
+            17,
+            0.14
+        );
+}
+
+
+.shipment-count span {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color: #ff641f;
+
+    font-size: 9px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.14em;
+}
+
+
+.shipment-count strong {
+    font-family:
+        "Helvetica Neue",
+        "Inter",
+        Arial,
+        sans-serif;
+
+    font-size: 42px;
+
+    font-weight: 500;
+
+    line-height: 1;
+
+    letter-spacing: -0.06em;
+}
+
+
+/* =========================================================
+   TOOLBAR
+========================================================= */
+
+.shipments-toolbar {
+    margin-top: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 18px;
+
+    padding-bottom: 18px;
+
+    border-bottom:
+        1px solid
+        rgba(
+            17,
+            17,
+            17,
+            0.10
+        );
+}
+
+
+.shipment-search {
+    width:
+        min(
+            410px,
+            100%
+        );
+
+    height: 44px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    padding:
+        0
+        13px;
+
+    border:
+        1px solid
+        #d7d7d1;
+
+    border-radius: 9px;
+
+    background: #ffffff;
+}
+
+
+.shipment-search > span {
+    color: #9a9a94;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+
+.shipment-search input {
+    flex: 1;
+
+    min-width: 0;
+
+    height: 100%;
+
+    border: 0;
+
+    outline: 0;
+
+    background: transparent;
+
+    color: #111111;
+
+    font-size: 12px;
+}
+
+
+.shipment-search input::placeholder {
+    color: #9a9a94;
+}
+
+
+.shipment-filters {
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+}
+
+
+.shipment-filters::-webkit-scrollbar {
+    display: none;
+}
+
+
+.shipment-filter {
+    flex-shrink: 0;
+
+    padding:
+        8px
+        11px;
+
+    border:
+        1px solid
+        #d7d7d1;
+
+    border-radius: 999px;
+
+    background: transparent;
+
+    color: #686862;
+
+    font-size: 10px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.04em;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+
+.shipment-filter:hover {
+    border-color: #111111;
+
+    color: #111111;
+}
+
+
+.shipment-filter.active {
+    border-color: #111111;
+
+    background: #111111;
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   TABLE PANEL
+========================================================= */
+
+.shipments-panel {
+    margin-top: 18px;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        #deded8;
+
+    border-radius: 18px;
+
+    background: #ffffff;
+}
+
+
+/* =========================================================
+   TABLE HEADER
+========================================================= */
+
+.shipments-table-head {
+    display: grid;
+
+    grid-template-columns:
+        1.2fr
+        1.6fr
+        1fr
+        1fr
+        0.9fr;
+
+    gap: 18px;
+
+    padding:
+        14px
+        18px;
+
+    border-bottom:
+        1px solid
+        #e5e5df;
+
+    background:
+        #fafaf7;
+
+    color: #85857f;
+
+    font-size: 8px;
+
+    font-weight: 600;
+
+    letter-spacing: 0.12em;
+}
+
+
+/* =========================================================
+   ROW
+========================================================= */
+
+.shipment-row {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        1.2fr
+        1.6fr
+        1fr
+        1fr
+        0.9fr;
+
+    gap: 18px;
+
+    padding:
+        18px;
+
+    border-bottom:
+        1px solid
+        #e9e9e3;
+
+    background: #ffffff;
+
+    color: #111111;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.shipment-row:last-child {
+    border-bottom: 0;
+}
+
+
+.shipment-row:hover {
+    background:
+        #fafaf7;
+}
+
+
+.shipment-row > div {
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    gap: 5px;
+}
+
+
+.shipment-row strong {
+    overflow: hidden;
+
+    font-size: 12px;
+
+    font-weight: 500;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+.shipment-row span {
+    color: #777770;
+
+    font-size: 10px;
+
+    line-height: 1.3;
+}
+
+
+/* =========================================================
+   ROUTE
+========================================================= */
+
+.shipment-route {
+    flex-direction: row !important;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 7px !important;
+}
+
+
+.shipment-route span {
+    color: #44443f;
+
+    font-size: 11px;
+}
+
+
+.route-arrow {
+    color: #ff641f !important;
+
+    font-size: 13px !important;
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.shipment-status {
+    flex-direction: row !important;
+
+    align-items: center;
+
+    justify-content: space-between !important;
+
+    gap: 8px !important;
+}
+
+
+.status-badge {
+    width: fit-content;
+
+    padding:
+        5px
+        8px;
+
+    border-radius: 999px;
+
+    font-size: 8px !important;
+
+    font-weight: 700;
+
+    letter-spacing: 0.05em;
+
+    color: #555555 !important;
+
+    background: #eeeeea;
+}
+
+
+.status-assigned {
+    background:
+        rgba(
+            130,
+            182,
+            246,
+            0.18
+        );
+
+    color: #295d92 !important;
+}
+
+
+.status-in_transit {
+    background:
+        rgba(
+            56,
+            142,
+            60,
+            0.10
+        );
+
+    color: #367a3a !important;
+}
+
+
+.status-delivered {
+    background:
+        rgba(
+            56,
+            142,
+            60,
+            0.10
+        );
+
+    color: #367a3a !important;
+}
+
+
+.row-arrow {
+    color: #ff641f !important;
+
+    font-size: 14px !important;
+
+    transition:
+        transform 0.2s ease;
+}
+
+
+.shipment-row:hover .row-arrow {
+    transform:
+        translateX(3px)
+        translateY(-2px);
+}
+
+
+/* =========================================================
+   EMPTY
+========================================================= */
+
+.shipments-empty {
+    min-height: 260px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 7px;
+
+    text-align: center;
+}
+
+
+.shipments-empty strong {
+    font-size: 14px;
+
+    font-weight: 500;
+}
+
+
+.shipments-empty span {
+    color: #85857f;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .shipments-toolbar {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .shipment-search {
+        width: 100%;
+    }
+
+
+    .shipment-filters {
+        width: 100%;
+    }
+
+
+    .shipments-table-head {
+        display: none;
+    }
+
+
+    .shipment-row {
+        grid-template-columns: 1fr 1fr;
+
+        gap: 18px;
+
+        padding: 18px;
+    }
+
+
+    .shipment-tracking {
+        grid-column: 1 / -1;
+    }
+
+
+    .shipment-route {
+        grid-column: 1 / -1;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .shipments-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .shipment-count {
+        padding-left: 0;
+
+        border-left: 0;
+
+        border-top:
+            1px solid
+            rgba(
+                17,
+                17,
+                17,
+                0.12
+            );
+
+        padding-top: 12px;
+    }
+
+
+    .shipment-row {
+        grid-template-columns: 1fr;
+
+        gap: 14px;
+    }
+
+
+    .shipment-tracking,
+    .shipment-route {
+        grid-column: auto;
+    }
+
+
+    .shipment-status {
+        align-items: flex-start !important;
+    }
+}

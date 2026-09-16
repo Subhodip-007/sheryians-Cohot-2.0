@@ -28,5 +28,10 @@ Filtering
 // err handle 
 // validator 
 
-// next util for token 
-// middleware form jwt 
+// next util for token done
+// login route controller valodator done 
+// task route controllre done 
+// task model done 
+// middleware form jwt done  
+// note validator  done 
+// notes -- get  controller pending  
