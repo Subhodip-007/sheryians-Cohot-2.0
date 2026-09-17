@@ -45,7 +45,22 @@ export const createTaskController = async (req,res,next)=>{
 }
 export const getTasksController = async(req,res,next)=>{
     try{
-        
+        if(!req.verifyToken){
+            const error = new Error(process.env.NODE_ENVIRONMENT === "production" ? "unauthorized access" : "unauthorized access : invalid token")
+            error.statusCode = 401;
+            return next(error)
+        }
+        const userId = req.verifyToken._id
+        const tasks = await taskModel.find({ createdBy: userId }).populate("tasks")
+        if(!tasks){
+            const error = new Error("Tasks not found")
+            error.statusCode = 404
+            return next(error)
+        }
+        res.status(200).json({
+            message:"Tasks fetched successfully",
+            tasks
+        })
 
     }catch(err){
         next(err)

@@ -34,4 +34,5 @@ Filtering
 // task model done 
 // middleware form jwt done  
 // note validator  done 
-// notes -- get  controller pending  
+// notes -- get  controller done 
+// get all task by id 
