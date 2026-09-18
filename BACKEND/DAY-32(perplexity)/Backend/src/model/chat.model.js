@@ -1,6 +1,6 @@
 import {Schema , model } from "mongoose";
 
-const chatSchema = Schema({
+const chatSchema = new Schema({
     user:{
         type: mongoose.Schema.Types.ObjectId,
         ref: "user-collection",

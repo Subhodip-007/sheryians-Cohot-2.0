@@ -27,3 +27,7 @@ src --> app.js
 server.js
 DB connection
 now we will create all the model files
+-- chat , message , user 
+--  now basic Authentication
+-- register flow is changed
+-- auth.route  

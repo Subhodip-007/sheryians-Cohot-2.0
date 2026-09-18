@@ -1,7 +1,6 @@
-import { app } from "./src/app";
+import { app } from "./src/app.js";
 import dotenv from "dotenv/config";
-import { connectToDB } from "./src/config/Database";
-dotenv.config();
+import { connectToDB } from "./src/config/Database.js";
 connectToDB();
 app.listen(3000,()=>{
     console.log("server is running on port 3000")

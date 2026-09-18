@@ -1,25 +1,47 @@
-import {model , Schema} from "mongoose";
 
-const userSchema = Schema({
-    username:{
-        type: string,
-        required:true,
-        unique:true,
+import { model, Schema } from "mongoose";
+import bcrypt from "bcrypt";
+
+const userSchema = new Schema(
+  {
+    username: {
+      type: String,
+      required: true,
+      unique: true,
     },
-    email:{
-        type: string,
-        required:true,
-        unique:true,
+
+    email: {
+      type: String,
+      required: true,
+      unique: true,
     },
-    password:{
-        type: string,
-        required:true,
+
+    password: {
+      type: String,
+      required: true,
     },
-    verified:{
-        type: boolean,
-        default:false,
+
+    verified: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  { timestamps: true }
+);
+
+// Hash password before saving
+userSchema.pre("save", async function() {
+    if (!this.isModified("password")) {
+        return;
     }
 
-},{timestamps: true});
+    this.password = await bcrypt.hash(this.password, 10);
+});
 
-export const userModel = model("user-collection",userSchema);
+// Compare entered password with hashed password
+userSchema.methods.comparePassword = async function (password) {
+  return await bcrypt.compare(password, this.password);
+};
+
+export const userModel = model("user-collection", userSchema);
+
