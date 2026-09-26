@@ -2,6 +2,9 @@ import { compare, hash } from "bcryptjs";
 import { userModel } from "../model/user.model.js";
 import jwt from "jsonwebtoken"
 import { tokenGenerator } from "../utils/tokenGenerator.js";
+import { recordStats } from "framer-motion";
+import { TokenVerify } from "../middlewares/verifyToken.js";
+import { Result } from "express-validator";
 export const registerController = async (req, res, next) => {
     try {
         const { username, email, password, mobileNumber } = req.body
@@ -30,7 +33,12 @@ export const registerController = async (req, res, next) => {
         res.cookie("token",token)
         res.status(200).json({
             message:"user registration successful",
-            user,
+            user:{
+                username,
+                email,
+                mobileNumber
+            },
+        
         })
 
 
@@ -71,11 +79,32 @@ export const loginContorller = async(req,res,next)=>{
             user:{
                 username:isUserExist.username,
                 email:isUserExist.email
-            }
+            },
+            token
         })
     }catch(err){
         next(err)
 
     }
 }
+export const getuserController = async(req,res,next)=>{
+    try{
+        if(!req.User){
+            let error = new Error(process.env.NODE_ENVIRONMENT === "production" ? "unauthorived access" : "unauthorized access : invalid token")
+            error.statusCode = 400
+            return next(error)
+        }
+        const user = await userModel.findById(req.TokenVerify._id)
+        res.status(200).json({
+            message:"user fetched successfully",
+                user:{
+                    user
+                }
+                
 
+        })
+
+    }catch(err){
+        next(err)
+    }
+}

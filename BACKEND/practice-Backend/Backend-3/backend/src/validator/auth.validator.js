@@ -11,24 +11,24 @@ export const validate =(req,res,next)=>{
 }
 export const registerValidator = [
   // Swapped to match the capital letters used in your registerController
-  body("Username")
+  body("username")
     .isString()
     .trim()
     .notEmpty().withMessage("Username is required")
     .isLength({ min: 3 }).withMessage("Username must be at least 3 characters long"),
     
-  body("Email")
+  body("email")
     .trim()
     .notEmpty().withMessage("Email is required") // Fixed message
     .isEmail().withMessage("Please provide a valid email address") // Fixed message
     .normalizeEmail(),
     
-  body("Password")
+  body("password")
     .trim()
     .notEmpty().withMessage("Password is required")
     .isLength({ min: 6 }).withMessage("Password must be at least 6 characters long"),
     
-  body("Phone") // Kept as Phone to align with your earlier controller update
+  body("mobileNumber") // Kept as Phone to align with your earlier controller update
     .trim()
     .notEmpty().withMessage("Phone number is required")
     .isMobilePhone('any').withMessage('Please provide a valid phone number'),

@@ -15,14 +15,12 @@
     content="width=device-width, initial-scale=1.0"
   />
 
-  <!-- Hugeicons -->
   <link
     rel="stylesheet"
     href="https://cdn.hugeicons.com/font/hgi-stroke-rounded.css"
     crossorigin="anonymous"
   />
 
-  <!-- Google Fonts -->
   <link
     rel="preconnect"
     href="https://fonts.googleapis.com"
@@ -47,51 +45,14 @@
 
   <main id="main">
 
-
-    <!-- =================================================
-         FIXED BACKGROUND
-    ================================================== -->
-
     <div id="bg-view-port">
-
-      <!-- Normal paper -->
       <div class="grid-layer grid-light"></div>
-
-      <!-- Inverted paper -->
-      <div class="grid-layer grid-dark"></div>
-
-      <!-- Wormhole -->
-      <div class="wormhole-effect"></div>
-
     </div>
 
-
-
-    <!-- =================================================
-         FIXED NAVIGATION
-    ================================================== -->
-
+<!-- nav -->
     <nav id="top-nav">
-
-      <button
-        id="nav-toggle"
-        aria-label="Open menu"
-      >
-
-        <!-- Original icon -->
-
-        <i
-          class="
-            nav-open-icon
-            hgi
-            hgi-stroke
-            hgi-rounded
-            hgi-bar-code-02
-          "
-        ></i>
-
-
-        <!-- Cross -->
+      <button id="nav-toggle" aria-label="Open menu">
+        <i class="nav-open-icon hgi hgi-stroke hgi-rounded hgi-bar-code-02"></i>
 
         <span class="nav-close-icon">
           <span></span>
@@ -99,161 +60,62 @@
         </span>
 
       </button>
-
     </nav>
 
-
-
-    <!-- =================================================
-         NAVIGATION PANEL
-    ================================================== -->
-
+<!-- aside -->
     <aside id="menu-panel">
 
       <div class="menu-header">
-
         <span>MENU</span>
-
       </div>
 
-
       <div class="menu-links">
-
-
-        <a
-          href="#about"
-          class="menu-item"
-        >
-
-          <span
-            class="menu-number number-orange"
-          >
-            01.
-          </span>
-
-          <span class="menu-title">
-            ABOUT
-          </span>
-
+        <a href="#about" class="menu-item">
+        <span class="menu-number number-orange">01.</span>
+        <span class="menu-title">ABOUT</span>
         </a>
 
-
-
-        <a
-          href="#projects"
-          class="menu-item"
-        >
-
-          <span
-            class="menu-number number-blue"
-          >
-            02.
-          </span>
-
-          <span class="menu-title">
-            PROJECTS
-          </span>
-
+        <a href="#projects" class="menu-item">
+          <span class="menu-number number-blue">02.</span>
+          <span class="menu-title">PROJECTS</span>
         </a>
 
-
-
-        <a
-          href="#resume"
-          class="menu-item"
-        >
-
-          <span
-            class="menu-number number-green"
-          >
-            03.
-          </span>
-
-          <span class="menu-title">
-            RESUME
-          </span>
-
+        <a href="#resume" class="menu-item">
+          <span class="menu-number number-green">03.</span>
+          <span class="menu-title">RESUME</span>
         </a>
 
-
-
-        <a
-          href="#contact"
-          class="menu-item"
-        >
-
-          <span
-            class="menu-number number-white"
-          >
-            04.
-          </span>
-
-          <span class="menu-title">
-            CONTACT
-          </span>
-
+        <a href="#contact" class="menu-item">
+          <span class="menu-number number-white">04.</span>
+          <span class="menu-title">CONTACT</span>
         </a>
-
-
       </div>
 
     </aside>
 
-
-
-    <!-- =================================================
-         SCROLLING CONTENT
-    ================================================== -->
-
+<!-- cover -->
     <div id="page-scroll">
-
-
-      <!-- =================================================
-           PAGE 1
-      ================================================== -->
-
+      <!-- page-1 -->
       <section id="page-1">
-
         <div class="hero-section">
-
-
           <h1 class="palette-mosaic-regular">
-
             BLANK-
-
             <span class="great-vibes-regular">
               folio
             </span>
-
           </h1>
-
-
-          <p class="para yuyu-regular">
-
-            a
-
+          <p class="para yuyu-regular">a
             <span class="highlight">
               Full-Stack (MERN) Developer
             </span>
-
             from
-
             <span class="highlight">
               India 🇮🇳
             </span>,
-
             fighting bugs from India and
-
             (still searching for the time machine back to 2016).
-
           </p>
-
-
-
-          <!-- =================================================
-               EXPLORE BUTTON
-          ================================================== -->
-
+          <!-- gpt code button svg -->
           <div id="explore-wrap">
 
             <svg
@@ -275,88 +137,317 @@
             </svg>
 
           </div>
-
-
           <span class="btn-statemant">
             Do you really expect this button works...
           </span>
+        </div>
+      </section>
 
+<!-- page-2 -->
+    <section class="page-2" id="about">
+
+  <div class="about-text">
+    <h2>
+      Currently learning: MERN, System Design, Cybersecurity,
+      and how to sleep before 3 AM.
+      Looking to collaborate on ideas that sound impossible at first.
+      Looking for help with bugs that magically fix themselves
+      just as I'm about to smash my screen.
+      Ask me about Web Development—where bugs disappear the
+      moment you're about to lose it, and even AI gets tired of
+      answering my endless questions.
+    </h2>
+  </div>
+
+</section>
+
+
+<section class="projects-section" id="projects">
+
+  <div class="projects-header">
+
+    <span class="section-index">
+      PROJECTS
+    </span>
+
+  </div>
+
+
+  <!-- INFINITE PROJECT TRACK -->
+
+  <div class="projects-window">
+
+    <div class="projects-track">
+
+      <!-- PROJECT 01 -->
+      <article class="project-card">
+
+        <div class="project-image project-image-one">
+          <span class="project-number">01</span>
+
+          <div class="project-image-text">
+            SETU
+          </div>
+        </div>
+
+        <div class="project-content">
+
+          <div class="project-top">
+            <span>01 — FULL STACK</span>
+            <span>2026</span>
+          </div>
+
+          <h3>SETU</h3>
+
+          <p>
+            AI-assisted logistics intelligence platform designed
+            for route optimization, risk analysis and real-time
+            shipment tracking in low-connectivity environments.
+          </p>
+
+          <div class="project-tech">
+            <span>React</span>
+            <span>Node</span>
+            <span>MongoDB</span>
+            <span>Socket.IO</span>
+          </div>
+
+          <a href="#" class="project-link">
+            VIEW PROJECT
+            <span>↗</span>
+          </a>
 
         </div>
 
-      </section>
+      </article>
 
 
+      <!-- PROJECT 02 -->
+      <article class="project-card">
 
-      <!-- =================================================
-           PAGE 2
-      ================================================== -->
+        <div class="project-image project-image-two">
+          <span class="project-number">02</span>
 
-      <section
-        class="page-2"
-        id="about"
-      >
+          <div class="project-image-text">
+            API
+          </div>
+        </div>
 
-        <h2>
-          PAGE 2
-        </h2>
+        <div class="project-content">
 
-      </section>
+          <div class="project-top">
+            <span>02 — BACKEND</span>
+            <span>2026</span>
+          </div>
 
+          <h3>API FAILURE INTELLIGENCE</h3>
 
+          <p>
+            Backend observability platform that detects API failures,
+            analyzes latency patterns and groups recurring errors
+            into actionable incidents.
+          </p>
 
-      <!-- =================================================
-           PROJECTS
-      ================================================== -->
+          <div class="project-tech">
+            <span>Node.js</span>
+            <span>Express</span>
+            <span>MongoDB</span>
+            <span>Redis</span>
+          </div>
 
-      <section
-        class="page-2"
-        id="projects"
-      >
+          <a href="#" class="project-link">
+            VIEW PROJECT
+            <span>↗</span>
+          </a>
 
-        <h2>
-          PROJECTS
-        </h2>
+        </div>
 
-      </section>
-
-
-
-      <!-- =================================================
-           RESUME
-      ================================================== -->
-
-      <section
-        class="page-2"
-        id="resume"
-      >
-
-        <h2>
-          RESUME
-        </h2>
-
-      </section>
+      </article>
 
 
+      <!-- PROJECT 03 -->
+      <article class="project-card">
 
-      <!-- =================================================
-           CONTACT
-      ================================================== -->
+        <div class="project-image project-image-three">
 
-      <section
-        class="page-2"
-        id="contact"
-      >
 
-        <h2>
-          CONTACT
-        </h2>
+          <div class="project-image-text">
+            KANBAN
+          </div>
+        </div>
 
-      </section>
+        <div class="project-content">
 
+          <div class="project-top">
+            <span>03 — WEB APP</span>
+            <span>2026</span>
+          </div>
+
+          <h3>VISUAL TASK SYSTEM</h3>
+
+          <p>
+            Interactive task management system with drag-and-drop
+            workflows, filtering, task states and a responsive
+            productivity-focused interface.
+          </p>
+
+          <div class="project-tech">
+            <span>React</span>
+            <span>JavaScript</span>
+            <span>CSS</span>
+            <span>Framer Motion</span>
+          </div>
+
+          <a href="#" class="project-link">
+            VIEW PROJECT
+            <span>↗</span>
+          </a>
+
+        </div>
+
+      </article>
+
+
+      <!-- DUPLICATE SET FOR INFINITE LOOP -->
+
+      <article class="project-card">
+        <div class="project-image project-image-one">
+          <div class="project-image-text">SETU</div>
+        </div>
+
+        <div class="project-content">
+
+          <div class="project-top">
+            <span>01 — FULL STACK</span>
+            <span>2026</span>
+          </div>
+
+          <h3>SETU</h3>
+
+          <p>
+            AI-assisted logistics intelligence platform designed
+            for route optimization, risk analysis and real-time
+            shipment tracking in low-connectivity environments.
+          </p>
+
+          <div class="project-tech">
+            <span>React</span>
+            <span>Node</span>
+            <span>MongoDB</span>
+            <span>Socket.IO</span>
+          </div>
+
+          <a href="#" class="project-link">
+            VIEW PROJECT <span>↗</span>
+          </a>
+
+        </div>
+      </article>
+
+
+      <article class="project-card">
+        <div class="project-image project-image-two">
+          <div class="project-image-text">API</div>
+        </div>
+
+        <div class="project-content">
+
+          <div class="project-top">
+            <span>02 — BACKEND</span>
+            <span>2026</span>
+          </div>
+
+          <h3>API FAILURE INTELLIGENCE</h3>
+
+          <p>
+            Backend observability platform that detects API failures,
+            analyzes latency patterns and groups recurring errors
+            into actionable incidents.
+          </p>
+
+          <div class="project-tech">
+            <span>Node.js</span>
+            <span>Express</span>
+            <span>MongoDB</span>
+            <span>Redis</span>
+          </div>
+
+          <a href="#" class="project-link">
+            VIEW PROJECT <span>↗</span>
+          </a>
+
+        </div>
+      </article>
+
+
+      <article class="project-card">
+        <div class="project-image project-image-three">
+          <div class="project-image-text">KANBAN</div>
+        </div>
+
+        <div class="project-content">
+
+          <div class="project-top">
+            <span>03 — WEB APP</span>
+            <span>2026</span>
+          </div>
+
+          <h3>VISUAL TASK SYSTEM</h3>
+
+          <p>
+            Interactive task management system with drag-and-drop
+            workflows, filtering, task states and a responsive
+            productivity-focused interface.
+          </p>
+
+          <div class="project-tech">
+            <span>React</span>
+            <span>JavaScript</span>
+            <span>CSS</span>
+            <span>Framer Motion</span>
+          </div>
+
+          <a href="#" class="project-link">
+            VIEW PROJECT <span>↗</span>
+          </a>
+
+        </div>
+      </article>
 
     </div>
 
+  </div>
+
+</section>
+
+   <section class="page-3" id="contact">
+
+    <div class="bottom-div">
+
+        <a href="#" target="_blank">
+            Instagram
+        </a>
+
+        <a href="#" target="_blank">
+            LinkedIn
+        </a>
+
+        <a href="#" target="_blank">
+            GitHub
+        </a>
+
+        <a href="#" target="_blank">
+            Resume
+        </a>
+
+        <a href="#" target="_blank">
+            Twitch
+        </a>
+
+    </div>
+
+</section>
+    </div>
   </main>
 
 

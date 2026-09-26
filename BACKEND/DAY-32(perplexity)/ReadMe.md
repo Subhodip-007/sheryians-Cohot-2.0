@@ -31,3 +31,19 @@ now we will create all the model files
 --  now basic Authentication
 -- register flow is changed
 -- auth.route  
+--  auth controller 
+--  till now what we have done is we have just implemented auth email but we r left with sending link and the when it is clicked it will be verified
+so now email send ---> verification link + token ---> when clicked ---> req send to server 
+// now we will create login route 
+// validator - login 
+// get me api 
+testing penging - ?
+/// basic auth complete---------
+now main implementation is AI
+we will user multiple models gemini and mistral
+-- draw
+ai.service.js
+now we will use langchain
+---  class - 13
+today we will cover gen-AI introduction
+what is generative-AI --> content generate krran  which can be (text,audio,image,code) LLM
