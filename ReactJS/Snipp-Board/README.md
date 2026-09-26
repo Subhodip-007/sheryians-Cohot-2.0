@@ -35,6 +35,14 @@ Snipp-Board/
 │   ├── App.css
 │   ├── index.css
 │   └── main.jsx
+│
+├── .gitignore
+├── eslint.config.js
+├── index.html
+├── package.json
+├── package-lock.json
+├── vite.config.js
+└── README.md
 
 node_modules/ is intentionally omitted from this documentation
 because it contains dependencies rather than application code.
