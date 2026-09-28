@@ -1,5 +1,5 @@
 import { Router } from "express"
-import { createTaskController, getTaskControllerById, getTasksController } from "../controllers/task.controller.js";
+import { createTaskController, getTaskControllerById, getTasksController, deleteTaskControllerById,updateTaskControllerById } from "../controllers/task.controller.js";
 import { TokenVerify } from "../middlewares/verifyToken.js";
 import { taskValidator, validate } from "../validator/task.validator.js";
 export const taskRoute = Router()
@@ -26,4 +26,17 @@ taskRoute.get("/get/:id",TokenVerify,getTaskControllerById)
  * @route  - api/task/delete/:id 
  * @description -
  */
-taskRoute.delete("/")
+taskRoute.delete("/delete/:id",TokenVerify,deleteTaskControllerById)
+/**
+ * @method - PATCH 
+ * @route  - api/task/update/:id 
+ * @description -
+ */
+taskRoute.patch("/update/:id",TokenVerify,updateTaskControllerById)
+//  for deleteall try implemention of drop 
+
+/**
+ * @method - PATCH 
+ * @route  - api/task/iscomplete/:id 
+ * @description -
+ */

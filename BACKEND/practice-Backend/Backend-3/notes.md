@@ -35,4 +35,9 @@ Filtering
 // middleware form jwt done  
 // note validator  done 
 // notes -- get  controller done 
-// get all task by id done
+// get all & task by id done
+// delete task by id done 
+// update task --- completed
+// get task based of query -- pending
+// toggle-complete --  hit route to complete -- pending
+// update task througe query -- pending
