@@ -23,7 +23,7 @@ main{
 }
 .main-board{
     height: 600px;
-    width: 600px;
+    width: 800px;
     display: flex;
     flex-direction: column;
     align-items:center;
@@ -53,6 +53,7 @@ main{
     padding: .3rem;
     background-color: #111;
     color:whitesmoke;
+    border-radius:.5rem;
 }
 .button-grp{
     display: flex;
@@ -126,4 +127,17 @@ select{
     color: rgb(175, 175, 175);
     padding: .5rem;
     
+}
+.mid-btn{
+    background-color:#111;
+    color:whitesmoke;
+    padding: .5rem;
+    border-radius:.5rem;
+    
+}
+.mid-btn-grp{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: .5rem;
 }

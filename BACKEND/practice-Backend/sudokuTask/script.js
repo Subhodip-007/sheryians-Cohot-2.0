@@ -1,23 +1,57 @@
-const sudoku = [
-    [5, 3, 0, 0, 7, 0, 0, 0, 0],
-    [6, 0, 0, 1, 9, 5, 0, 0, 0],
-    [0, 9, 8, 0, 0, 0, 0, 6, 0],
+// genetate sudoku algo 
+// flow --> a 9X9 array.filled - 0  -- > isvalid function
+function genereteSudoku(){
+    const board = Array.from(
+        { length: 9 },
+        () => Array(9).fill(0)
+    );
+// is valid....................................
+        function isValid(row, col, number) {
 
-    [8, 0, 0, 0, 6, 0, 0, 0, 3],
-    [4, 0, 0, 8, 0, 3, 0, 0, 1],
-    [7, 0, 0, 0, 2, 0, 0, 0, 6],
+        // Check the row
+        for (let i = 0; i < 9; i++) {
 
-    [0, 6, 0, 0, 0, 0, 2, 8, 0],
-    [0, 0, 0, 4, 1, 9, 0, 0, 5],
-    [0, 0, 0, 0, 8, 0, 0, 7, 9]
-];
+            if (board[row][i] === number) {
+                return false;
+            }
+        }
+        // Check the column
+        for (let i = 0; i < 9; i++) {
+
+            if (board[i][col] === number) {
+                return false;
+            }
+        }
+         // Check the 3 x 3 box
+        let startRow = Math.floor(row / 3) * 3;
+        let startCol = Math.floor(col / 3) * 3;
+        for (let i = startRow; i < startRow + 3; i++) {
+
+            for (let j = startCol; j < startCol + 3; j++) {
+
+                if (board[i][j] === number) {
+                    return false;
+                }
+            }
+        }
+        // Number is valid
+        return true;
+    }
+      
+
+}
+//......................................................................
+
 let selectedCell = null;
 let selectedRow = null;
 let selectedCol = null;
+let invalidCounter = 0;
+const resetBtn = document.querySelector("#reset-btn");
 const board = document.querySelector(".board");
 const error  =  document.querySelector(".error");
 const errorvalue = document.querySelector(".incorrect-move");
 const timer = document.querySelector(".timer");
+
 function checkWin() {
 
     for (let row = 0; row < 9; row++) {
@@ -77,48 +111,80 @@ function checkBox(Row,col,num){
     return true;
 
 }
+// TESTING..... timer feature 
 const timervalue  = 60*20
 let min = null
 let sec = null 
+// 
 
 
 
-let invalidCounter = 0;
 
 for (let row = 0; row < 9; row++) {
+
     for (let col = 0; col < 9; col++) {
 
-    const gridItem = document.createElement("div");
+        const gridItem = document.createElement("div");
+
         if (sudoku[row][col] !== 0) {
-    gridItem.textContent = sudoku[row][col];
-     gridItem.classList.add("fixed");
-}
+
+            gridItem.textContent = sudoku[row][col];
+
+            gridItem.classList.add("fixed");
+
+        }
+
         gridItem.classList.add("grid-item");
 
         gridItem.addEventListener("click", function () {
+
             if (gridItem.classList.contains("fixed")) {
-    return;
-}
+                return;
+            }
 
-        if (selectedCell) {
+            if (selectedCell) {
                 selectedCell.classList.remove("active");
-        }
+            }
 
-        selectedCell = gridItem;
-        selectedCol = col;
-        selectedRow = row
+            selectedCell = gridItem;
+            selectedCol = col;
+            selectedRow = row;
 
-        selectedCell.classList.add("active");
+            selectedCell.classList.add("active");
 
-    console.log("Row:", selectedRow)
-    console.log("Column:", selectedCol)
+            console.log("Row:", selectedRow);
+            console.log("Column:", selectedCol);
 
-    });
+        });
 
         board.appendChild(gridItem);
     }
-
 }
+resetBtn.addEventListener('click', () => {
+
+    const cells = document.querySelectorAll(".grid-item");
+
+    for (let row = 0; row < 9; row++) {
+
+        for (let col = 0; col < 9; col++) {
+
+            const index = row * 9 + col;
+
+            if (!cells[index].classList.contains("fixed")) {
+
+                sudoku[row][col] = 0;
+
+                cells[index].textContent = "";
+                errorvalue.style.color = 'white'
+                invalidCounter=0;
+                errorvalue.textContent=`Error  ${invalidCounter}`;;
+
+            }
+
+        }
+    }
+
+});
 document.addEventListener("keydown", (e) => {
 
     if (!selectedCell) {
@@ -166,10 +232,11 @@ document.addEventListener("keydown", (e) => {
         console.log(sudoku);
 
     }
+   
 
 });
 
 
-
+// generater pending....
 
 

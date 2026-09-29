@@ -66,6 +66,33 @@ export const getTasksController = async(req,res,next)=>{
         next(err)
     }
 }
+export const filterTaskController = async(req,res,next)=>{
+    try{
+          if(!req.user){
+            const error = new Error(process.env.NODE_ENVIRONMENT === "production" ? "unauthorized access" : "unauthorized access : invalid token")
+            error.statusCode = 401;
+            return next(error)
+        }
+        const userId = req.user._id;
+        const queryFilter = { createdBy: userId };
+        const { completed, priority } = req.query;
+                // Handle ?completed=true or ?completed=false
+        if (completed !== undefined) {
+            queryFilter.iscomplete = completed === "true";
+        }
+        if (priority !== undefined) {
+            queryFilter.priority = priority;
+        }
+         const tasks = await taskModel.find(queryFilter);
+         res.status(200).json({
+            success: true,
+            results: tasks.length,
+            tasks
+        });
+    }catch(err){
+        next(err)
+    }
+}
 export const getTaskControllerById = async(req,res,next)=>{
     try{
         if(!req.user){

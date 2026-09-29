@@ -1043,7 +1043,7 @@ getUser("shub",function(rawdata){
     console.log(rawdata);
 getuserposts(rawdata.id,function(posts){
 console.log(posts)
-
+``````````````
 })
 })
 

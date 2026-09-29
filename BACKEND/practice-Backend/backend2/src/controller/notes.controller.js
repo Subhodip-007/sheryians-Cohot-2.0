@@ -143,6 +143,7 @@ const GetAllPostController = async (req,res) =>{
         })
     }
 }
+
 module.exports = {
     notesCreationController,
     notesDeleteController,

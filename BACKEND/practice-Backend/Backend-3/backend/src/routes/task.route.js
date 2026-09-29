@@ -1,5 +1,5 @@
 import { Router } from "express"
-import { createTaskController, getTaskControllerById, getTasksController, deleteTaskControllerById,updateTaskControllerById } from "../controllers/task.controller.js";
+import { createTaskController, getTaskControllerById, getTasksController, deleteTaskControllerById,updateTaskControllerById, filterTaskController } from "../controllers/task.controller.js";
 import { TokenVerify } from "../middlewares/verifyToken.js";
 import { taskValidator, validate } from "../validator/task.validator.js";
 export const taskRoute = Router()
@@ -37,6 +37,7 @@ taskRoute.patch("/update/:id",TokenVerify,updateTaskControllerById)
 
 /**
  * @method - PATCH 
- * @route  - api/task/iscomplete/:id 
+ * @route  - api/task/find/:query 
  * @description -
  */
+taskRoute.get("/findby",TokenVerify,filterTaskController)
