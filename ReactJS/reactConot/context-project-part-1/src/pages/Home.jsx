@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useEffect, useRef } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
-
+import { X } from 'lucide-react';
+import { BookPlus } from 'lucide-react';
 import baguette from "../assets/img/baguette.png";
 import blueberryTart from "../assets/img/blueberry-tart.png";
 import breadRoll from "../assets/img/bread-roll.png";
@@ -30,6 +31,8 @@ import pretzel from "../assets/img/pretzel.png";
 import strawberryCake from "../assets/img/strawberry-cake.png";
 import BakedLogo from "../assets/img/bakedlogo.png";
 import Navbar from '../components/Navbar';
+import CreateRecipes from '../components/CreateRecipes';
+
 const FloatingItem = ({
   src,
   className,
@@ -121,8 +124,10 @@ const FloatingItem = ({
   );
 };
 const Home = () => {
+  
   return (
-    <main className="relative h-screen w-full overflow-hidden bg-[#faf9f5] select-none draggable">
+    <main className="relative h-screen w-full overflow-hidden bg-[#faf9f5] select-none draggable z-50">
+
       <Navbar/>
       {/* TOP LEFT */}
 

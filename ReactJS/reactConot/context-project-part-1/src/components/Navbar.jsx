@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { Home, CookingPot, Info } from "lucide-react";
-
+import { LayoutGrid } from 'lucide-react';
 const Navbar = () => {
   return (
     <nav className="fixed bottom-6 left-1/2 z-50 w-[90%] max-w-md -translate-x-1/2">
@@ -54,7 +54,7 @@ const Navbar = () => {
                   : "text-[#9a7b63] hover:text-[#b45309]"
               }`}
             >
-              <Info size={21} />
+              <LayoutGrid size={21} />
 
               <span className="text-[10px] font-medium tracking-wide">
                 About
