@@ -1,1 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Palette+Mosaic&family=Pixelify+Sans:wght@400..700&family=Playwrite+BE+WAL+Guides&family=SN+Pro:ital,wght@0,200..900;1,200..900&family=Yuyu&display=swap');
 @import "tailwindcss";
+.playwrite-be-wal-guides-regular {
+  font-family: "Playwrite BE WAL Guides", cursive;
+  font-weight: 400;
+  font-style: normal;
+}

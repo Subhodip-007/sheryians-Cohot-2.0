@@ -1,42 +1,59 @@
-import React, { useState } from 'react';
-import { ArrowUpRight, Upload } from 'lucide-react';
+import React, { useState, useContext } from 'react';
+import { Upload } from 'lucide-react';
+import { RecipeContext } from '../context/Racipes.contect';
 
-const CreateRecipes = ({ toggleForm , show , setShow, recipe , setRecipe }) => {
+
+const CreateRecipes = ({ toggleForm, show, setShow }) => {
+  // Local form state variables
   const [recipeName, setRecipeName] = useState("");
   const [description, setDescription] = useState("");
   const [mealType, setMealType] = useState(""); 
   const [instruction, setInstruction] = useState("");
-  const [fileName, setFileName] = useState("");
+  const [imagePreview, setImagePreview] = useState(""); // Holds the Base64 image string
 
+  // Consume setRecipe state setter from global Context
+  const { setRecipe } = useContext(RecipeContext); 
+
+  // Process the file to a renderable Base64 data string
   const handleFileChange = (e) => {
-    if (e.target.files.length > 0) {
-      setFileName(e.target.files[0].name);
+    const file = e.target.files[0]; // Capture the first selected file
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreview(reader.result); // Updates local state with target image string
+      };
+      reader.readAsDataURL(file);
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
     const payload = {
       recipeName,
       description,
-      mealType, // Added to submission payload
-      instruction
+      mealType,
+      instruction,
+      recipeImage: imagePreview // Save Base64 image inside global context payload
     };
-        setShow(false)
-     setRecipe((prevRecipes) => [...prevRecipes, payload]);
-    console.log("Recipe Payload:", payload);
-      setRecipeName("");
-  setDescription("");
-  setInstruction("");
-  setFileName("");
+        
+    setShow(false); // Close modal container form overlay
+    setRecipe((prevRecipes) => [...prevRecipes, payload]); // Append payload directly to Context array
+    
+    // Clear all local states upon successful submission
+    setRecipeName("");
+    setDescription("");
+    setMealType("");
+    setInstruction("");
+    setImagePreview("");
   };
 
   return (
-    <div className="min-h-screen w-full bg-transparent flex items-center justify-center p-4 antialiased text-black font-sans z-50">
+    <div className="min-h-screen w-full bg-transparent flex items-center justify-center p-4 antialiased text-black font-sans z-[999]">
       {/* Main Container - High-contrast grid box matching layout theme */}
       <div className="w-full max-w-3xl bg-white border border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
         
-        {/* Header Section - Kept small text height but scales wide */}
+        {/* Header Section */}
         <div className="border-b border-black p-4 tracking-wide">
           <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-500 block mb-1">
             CREATOR WORKSPACE
@@ -46,7 +63,7 @@ const CreateRecipes = ({ toggleForm , show , setShow, recipe , setRecipe }) => {
           </h1>
         </div>
 
-        {/* Form Container - Split horizontally into a 2-column grid to maximize wide space */}
+        {/* Form Container - Split horizontally into a 2-column grid */}
         <form onSubmit={handleSubmit} className="divide-y divide-black">
           
           {/* Grid wrapper for row fields */}
@@ -119,64 +136,59 @@ const CreateRecipes = ({ toggleForm , show , setShow, recipe , setRecipe }) => {
                   value={instruction}
                   onChange={(e) => setInstruction(e.target.value)}
                   placeholder="Step 1. Prep... Step 2. Heat..."
-                  rows={6} /* Increased row span to visually balance the left side columns */
+                  rows={6}
                   className="w-full border border-black p-2 text-xs focus:outline-none focus:bg-zinc-50 transition-colors placeholder:text-zinc-400 resize-none h-full min-h-[120px] bg-white"
                   required
                 />
               </div>
 
-              {/* 05 / Media Attachment */}
+              {/* 05 / Media Attachment Container */}
               <div className="p-4 flex flex-col gap-1 justify-end">
                 <label className="text-[10px] font-bold uppercase tracking-wider text-black">
                   05 / Recipe Cover Media
                 </label>
-                <label 
-                  htmlFor="profile_pic" 
-                  className="w-full border border-dashed border-black bg-zinc-50 hover:bg-zinc-100 transition-colors p-2 flex flex-row items-center justify-center gap-3 cursor-pointer group h-[38px]"
-                >
-                  <Upload size={14} className="text-zinc-600 group-hover:text-black transition-colors shrink-0" />
-                  <span className="text-[10px] font-bold uppercase tracking-wide truncate max-w-[180px]">
-                    {fileName ? fileName : "Upload Media"}
-                  </span>
-                  <span className="text-[9px] text-zinc-400 uppercase font-medium hidden sm:inline">
-                    (.jpg, .png, .pdf)
-                  </span>
+                <div className="border border-dashed border-black p-4 text-center cursor-pointer relative hover:bg-zinc-50 transition-colors">
                   <input
                     type="file"
-                    id="profile_pic"
-                    name="profile_pic"
-                    accept=".jpg, .png, .pdf"
+                    accept="image/*"
                     onChange={handleFileChange}
-                    className="hidden"
+                    className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                   />
-                </label>
+                  
+                  {/* Image Context Preview State Logic Check */}
+                  {imagePreview ? (
+                    <div className="flex items-center justify-center gap-2">
+                      <img 
+                        src={imagePreview} 
+                        alt="Preview" 
+                        className="w-12 h-12 object-cover border border-black" 
+                      />
+                      <span className="text-xs font-mono truncate max-w-[150px]">
+                        Image Loaded Successfully!
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="flex flex-col items-center gap-1 text-zinc-400">
+                      <Upload size={16} className="text-black" />
+                      <span className="text-xs font-bold text-black uppercase tracking-wider">
+                        Upload Cover Image
+                      </span>
+                    </div>
+                  )}
+                </div>
               </div>
+
             </div>
-
           </div>
 
-          {/* Form Action Layout Row */}
-          <div className="flex flex-col items-center">
-            {/* Brutalist Form Submit Button */}
-            <button
-              type="submit"
-              className="w-full p-4 text-left font-bold text-xs uppercase tracking-wider flex items-center justify-between group bg-white hover:bg-black hover:text-white transition-all duration-200 cursor-pointer"
-            >
-              <span>Publish Recipe</span>
-              <span className="transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200">
-                <ArrowUpRight size={18} strokeWidth={2.5} />
-              </span>
-            </button>
-          </div>
-
+          {/* Submit Action Action Trigger Button */}
+          <button 
+            type="submit" 
+            className="w-full bg-black text-white p-3 font-bold uppercase tracking-widest text-xs hover:bg-zinc-900 transition-colors"
+          >
+            Save Recipe
+          </button>
         </form>
-
-        {/* Footer Design Line */}
-        <div className="border-t border-black bg-zinc-50 px-4 py-2.5 flex justify-between items-center text-[9px] uppercase font-bold tracking-widest text-zinc-500">
-          <span>TACTILE UI</span>
-          <span>v1.0</span>
-        </div>
-
       </div>
     </div>
   );

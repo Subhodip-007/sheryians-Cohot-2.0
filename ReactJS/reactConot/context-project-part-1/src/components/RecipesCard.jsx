@@ -18,7 +18,7 @@ const RecipesCard = ({ recipe }) => {
               ))}
             </h1>
             {/* Dynamic Description Text */}
-            <p className="text-xs md:text-sm text-zinc-800 leading-relaxed font-normal max-w-[220px] break-words whitespace-normal">
+            <p className="text-xs md:text-sm text-zinc-800 leading-relaxed font-normal max-w-[350px] break-words whitespace-normal">
               {recipe.description}
             </p>
           </div>
