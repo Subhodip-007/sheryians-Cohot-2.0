@@ -12,6 +12,7 @@ const Recipes = () => {
    const toggleForm = ()=>{
      setShow(!show)
    }
+  
   return (
     <div className="relative h-screen w-full overflow-hidden bg-[#faf9f5] select-none dragga ">
       <Navbar />

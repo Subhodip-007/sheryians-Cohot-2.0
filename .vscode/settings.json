@@ -11,8 +11,8 @@
         },
         {
             "folderPath": "sheriyan-cohot-2.0\\BACKEND\\",
-            "color": "foldercolorizer.color_afaf00",
-            "isFolderOnly": true
+            "isFolderOnly": true,
+            "color": "foldercolorizer.color_afaf00"
         }
     ]
 }

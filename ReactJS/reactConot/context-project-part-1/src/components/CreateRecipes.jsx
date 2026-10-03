@@ -1,6 +1,8 @@
 import React, { useState, useContext } from 'react';
 import { Upload } from 'lucide-react';
 import { RecipeContext } from '../context/Racipes.contect';
+import { toast } from 'react-toastify';
+import { nanoid } from 'nanoid/non-secure';
 
 
 const CreateRecipes = ({ toggleForm, show, setShow }) => {
@@ -30,16 +32,18 @@ const CreateRecipes = ({ toggleForm, show, setShow }) => {
     e.preventDefault();
     
     const payload = {
+      id:nanoid(),
       recipeName,
       description,
       mealType,
       instruction,
       recipeImage: imagePreview // Save Base64 image inside global context payload
     };
+        console.log(payload);
         
     setShow(false); // Close modal container form overlay
     setRecipe((prevRecipes) => [...prevRecipes, payload]); // Append payload directly to Context array
-    
+    toast.success("new recipe created")
     // Clear all local states upon successful submission
     setRecipeName("");
     setDescription("");
