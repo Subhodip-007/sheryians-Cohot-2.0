@@ -1,43 +1,8 @@
 // genetate sudoku algo 
 // flow --> a 9X9 array.filled - 0  -- > isvalid function
 function genereteSudoku(){
-    const board = Array.from(
-        { length: 9 },
-        () => Array(9).fill(0)
-    );
-// is valid....................................
-        function isValid(row, col, number) {
+   
 
-        // Check the row
-        for (let i = 0; i < 9; i++) {
-
-            if (board[row][i] === number) {
-                return false;
-            }
-        }
-        // Check the column
-        for (let i = 0; i < 9; i++) {
-
-            if (board[i][col] === number) {
-                return false;
-            }
-        }
-         // Check the 3 x 3 box
-        let startRow = Math.floor(row / 3) * 3;
-        let startCol = Math.floor(col / 3) * 3;
-        for (let i = startRow; i < startRow + 3; i++) {
-
-            for (let j = startCol; j < startCol + 3; j++) {
-
-                if (board[i][j] === number) {
-                    return false;
-                }
-            }
-        }
-        // Number is valid
-        return true;
-    }
-      
 
 }
 //......................................................................
@@ -112,9 +77,7 @@ function checkBox(Row,col,num){
 
 }
 // TESTING..... timer feature 
-const timervalue  = 60*20
-let min = null
-let sec = null 
+
 // 
 
 

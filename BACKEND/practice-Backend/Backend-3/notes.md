@@ -39,5 +39,5 @@ Filtering
 // delete task by id done 
 // update task --- completed
 // get task based of query -- done 
-// toggle-complete --  hit route to complete -- pending
-// update task througe query -- pending
+// toggle-complete --  hit route to complete -- complete testing left 
+///////////////////////// END task //////////////////////////////////////////

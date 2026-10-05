@@ -10,6 +10,12 @@
 // mount component create on view unmount component delete from view , updata if data change
 now work of use effect is wo hamay mount unmount or update hohe samay help krsakay---- kya help ??
  jaab component create,delete, update hota hai - useEffect appne aap chalta ha  called by react
+
+ -- part 3 implementation of localstorage in create update delete
+ -- wild card route
+ -- add to fav
+ -- task if removed from recipe automaticly remove from fav
+ -- https://github.com/master-dhanesh/cohort-classwork/tree/main
 ## learning newthings like
 - useform
 - package like nanoid
