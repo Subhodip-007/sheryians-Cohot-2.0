@@ -1,9 +1,18 @@
 import React from 'react'
-
-const RecipesCard = ({ recipe }) => {
+import { Trash } from 'lucide-react';
+const RecipesCard = ({ recipe , setRecipe,recipeList }) => {
+    const deleteHandler = (id) =>{
+    const updatedRecipes = recipeList.filter(item => item.id !== id);
+  setRecipe(updatedRecipes);
+    console.log("deleted task id: ",id   );
+  }
   return (
-    <div className="w-full mx-auto bg-[#FAF9F6] text-black font-sans p-8 md:p-12 border border-zinc-200 shadow-sm antialiased mb-8">
-
+    <div className="w-full mx-auto bg-[#FAF9F6] text-black font-sans p-8 md:p-12 border border-zinc-200 shadow-sm antialiased mb-8 relative">
+    <div className="relative flex w-full justify-end ">
+        <button onClick={()=>{deleteHandler(recipe.id)}} className="p-4 rounded-full bg-amber-400 text-amber-50 font-mono ">
+        <Trash/>
+      </button>
+    </div>
       {/* UPPER SECTION: Title, Description, and Ingredients */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pb-8 border-b border-zinc-300">
 
@@ -25,49 +34,27 @@ const RecipesCard = ({ recipe }) => {
         </div>
 
         {/* Right Side: Ingredients Structured Grid Layout (Static Demo Template) */}
-        <div className="md:col-span-7">
-          <h2 className="text-lg font-serif italic font-bold mb-4">Ingredients:</h2>
+             <div className="md:col-span-7">
+  <h2 className="text-lg font-serif italic font-bold mb-4">Ingredients:</h2>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-y-4 gap-x-2">
-
-            {/* Ingredient Card 1 */}
-            <div className="flex flex-col bg-white/50 p-2 border border-zinc-100 rounded-sm">
-              <span className="text-[10px] uppercase font-bold text-zinc-400 tracking-wider">2 servings</span>
-              <span className="text-xs font-medium text-zinc-900 mt-0.5">gemelli pasta</span>
-            </div>
-
-            {/* Ingredient Card 2 */}
-            <div className="flex flex-col bg-white/50 p-2 border border-zinc-100 rounded-sm">
-              <span className="text-[10px] uppercase font-bold text-zinc-400 tracking-wider">juice of 1/4</span>
-              <span className="text-xs font-medium text-zinc-900 mt-0.5">lemon</span>
-            </div>
-
-            {/* Ingredient Card 3 */}
-            <div className="flex flex-col bg-white/50 p-2 border border-zinc-100 rounded-sm">
-              <span className="text-[10px] uppercase font-bold text-zinc-400 tracking-wider">3 oz</span>
-              <span className="text-xs font-medium text-zinc-900 mt-0.5">oyster mushrooms</span>
-            </div>
-
-            {/* Ingredient Card 4 */}
-            <div className="flex flex-col bg-white/50 p-2 border border-zinc-100 rounded-sm">
-              <span className="text-[10px] uppercase font-bold text-zinc-400 tracking-wider">1 Tbsp</span>
-              <span className="text-xs font-medium text-zinc-900 mt-0.5">miso</span>
-            </div>
-
-            {/* Ingredient Card 5 */}
-            <div className="flex flex-col bg-white/50 p-2 border border-zinc-100 rounded-sm">
-              <span className="text-[10px] uppercase font-bold text-zinc-400 tracking-wider">1 small</span>
-              <span className="text-xs font-medium text-zinc-900 mt-0.5">shallot</span>
-            </div>
-
-            {/* Ingredient Card 6 */}
-            <div className="flex flex-col bg-white/50 p-2 border border-zinc-100 rounded-sm">
-              <span className="text-[10px] uppercase font-bold text-zinc-400 tracking-wider">1/4 cup</span>
-              <span className="text-xs font-medium text-zinc-900 mt-0.5">heavy cream</span>
-            </div>
-
-          </div>
+  <div className="grid grid-cols-2 sm:grid-cols-3 gap-y-4 gap-x-2">
+    {recipe.ingredients
+      ?.split('\n')
+      .filter(step => step.trim() !== '')
+      .map((ingredientText, index) => (
+        <div key={index} className="flex flex-col bg-white/50 p-2 border border-zinc-100 rounded-sm">
+          <span className="text-[10px] uppercase font-bold text-zinc-400 tracking-wider">
+            Ingredient {index + 1}
+          </span>
+          <span className="text-xs font-medium text-zinc-900 mt-0.5">
+            {/* Removes any pre-written numbers or 'Ingredient 1.' typed by the user */}
+            {ingredientText.replace(/^\s*(ingredient\s*\d+\.?|\d+\.?)\s*/i, '')}
+          </span>
         </div>
+      ))}
+  </div>
+</div>
+ 
 
       </div>
 
@@ -75,16 +62,23 @@ const RecipesCard = ({ recipe }) => {
       <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pt-8 items-start">
 
         {/* Left Side: Recipe Preview Frame (Shows the cover media file name) */}
-        <div className="md:col-span-5">
-          <div className="border border-zinc-300 p-2 bg-white shadow-xs">
-            <div className="w-full aspect-square bg-zinc-200 flex flex-col items-center justify-center p-4 text-center text-xs font-mono text-zinc-500 uppercase tracking-wider gap-2">
-              <span className="font-bold border-b border-zinc-400 pb-1">Media Attachment</span>
-              <span className="text-[10px] text-zinc-400 font-sans normal-case break-all">
-                {recipe.coverMediaName || "No file uploaded"}
-              </span>
-            </div>
-          </div>
-        </div>
+       <div className="md:col-span-5">
+  <div className="border border-zinc-300 p-2 bg-white shadow-xs">
+    <div className="w-full aspect-square bg-zinc-200 flex flex-col items-center justify-center p-4 text-center text-xs font-mono text-zinc-500 uppercase tracking-wider gap-2">
+      {recipe.recipeImage ? (
+        <img
+          src={recipe.recipeImage}
+          alt={recipe.title || "Recipe preview"}
+          className="w-full h-full object-cover"
+        />
+      ) : (
+        <span className="text-[10px] text-zinc-400 font-sans normal-case break-all">
+          No file uploaded
+        </span>
+      )}
+    </div>
+  </div>
+</div>
 
         {/* Right Side: Dynamic Instructions Line Break Parser */}
         <div className="md:col-span-7">

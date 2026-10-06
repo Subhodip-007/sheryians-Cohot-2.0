@@ -11,6 +11,7 @@ const CreateRecipes = ({ toggleForm, show, setShow }) => {
   const [description, setDescription] = useState("");
   const [mealType, setMealType] = useState(""); 
   const [instruction, setInstruction] = useState("");
+  const [ingredients, setIngredients] = useState("");
   const [imagePreview, setImagePreview] = useState(""); // Holds the Base64 image string
 
   // Consume setRecipe state setter from global Context
@@ -37,6 +38,7 @@ const CreateRecipes = ({ toggleForm, show, setShow }) => {
       description,
       mealType,
       instruction,
+      ingredients,
       recipeImage: imagePreview // Save Base64 image inside global context payload
     };
         console.log(payload);
@@ -49,8 +51,10 @@ const CreateRecipes = ({ toggleForm, show, setShow }) => {
     setDescription("");
     setMealType("");
     setInstruction("");
+    setIngredients("");
     setImagePreview("");
   };
+
 
   return (
     <div className="min-h-screen w-full bg-transparent flex items-center justify-center p-4 antialiased text-black font-sans z-[999]">
@@ -105,7 +109,21 @@ const CreateRecipes = ({ toggleForm, show, setShow }) => {
                   required
                 />
               </div>
-
+              {/*02 ingredients  */}
+              <div className="p-4 flex flex-col gap-1">
+                <label className="text-[10px] font-bold uppercase tracking-wider text-black">
+                  02 / Ingredients  
+                </label>
+                <textarea
+                  id="recipeIngredients"
+                  value={ingredients}
+                  onChange={(e) => setIngredients(e.target.value)}
+                  placeholder="List ingredients here..."
+                  rows={2}
+                  className="w-full border border-black p-2 text-xs focus:outline-none focus:bg-zinc-50 transition-colors placeholder:text-zinc-400 resize-none bg-white"
+                  required
+                />
+              </div>
               {/* 03 / Meal Type Selection Section */}
               <div className="p-4 flex flex-col gap-1">
                 <label className="text-[10px] font-bold uppercase tracking-wider text-black">

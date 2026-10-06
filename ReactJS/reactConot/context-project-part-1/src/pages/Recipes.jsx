@@ -30,9 +30,13 @@ const Recipes = () => {
         </div> : null}
         </div>
         <div className=" h-[80%] w-[90%] bg-amber-50 rounded-xl overflow-auto">
-              {recipe.map((recipe, index) => (
-    // Pass the individual 'recipe' object down as a prop to your card component
-    <RecipesCard key={index} recipe={recipe} />
+            {recipe && recipe.map((r, index) => (
+    <RecipesCard 
+      key={r.id || index} 
+      recipe={r}              // The individual item object
+      recipeList={recipe}     // The full array from context
+      setRecipe={setRecipe}   // The state modifier from context
+    />
   ))}
         </div>
       </div>
