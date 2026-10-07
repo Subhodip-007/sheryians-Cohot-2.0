@@ -8,10 +8,19 @@ import { RecipeContext } from '../context/Racipes.contect';
 
 const Recipes = () => {
    const [show, setShow] = useState(false);
+   const [editRecipeId, setEditRecipeId] = useState(null);
   const {recipe , setRecipe} = useContext(RecipeContext) 
    const toggleForm = ()=>{
+    if(show){
+      setEditRecipeId(null)
+    }
      setShow(!show)
+     
    }
+  const edithandle = (id) => {
+  setEditRecipeId(id);
+  setShow(true);
+}
   
   return (
     <div className="relative h-screen w-full overflow-hidden bg-[#faf9f5] select-none dragga ">
@@ -26,7 +35,7 @@ const Recipes = () => {
       </div>
        {show ?
       <div className="absolute bottom-10 right-[50%] translate-x-1/2">
-        <CreateRecipes toggleForm = {toggleForm} show ={show} setShow={setShow}/> 
+        <CreateRecipes toggleForm = {toggleForm} show ={show} setShow={setShow} editRecipeId={editRecipeId}  setEditRecipeId={setEditRecipeId}/> 
         </div> : null}
         </div>
         <div className=" h-[80%] w-[90%] bg-amber-50 rounded-xl overflow-auto">
@@ -35,7 +44,11 @@ const Recipes = () => {
       key={r.id || index} 
       recipe={r}              // The individual item object
       recipeList={recipe}     // The full array from context
-      setRecipe={setRecipe}   // The state modifier from context
+      setRecipe={setRecipe}
+      show={show} 
+      setShow={setShow}
+      edithandle={edithandle}
+    
     />
   ))}
         </div>

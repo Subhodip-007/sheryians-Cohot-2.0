@@ -1,23 +1,34 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Upload } from 'lucide-react';
 import { RecipeContext } from '../context/Racipes.contect';
 import { toast } from 'react-toastify';
 import { nanoid } from 'nanoid/non-secure';
 
 
-const CreateRecipes = ({ toggleForm, show, setShow }) => {
+const CreateRecipes = ({ toggleForm, show, setShow ,editRecipeId, setEditRecipeId}) => {
   // Local form state variables
   const [recipeName, setRecipeName] = useState("");
   const [description, setDescription] = useState("");
   const [mealType, setMealType] = useState(""); 
   const [instruction, setInstruction] = useState("");
   const [ingredients, setIngredients] = useState("");
-  const [imagePreview, setImagePreview] = useState(""); // Holds the Base64 image string
-
-  // Consume setRecipe state setter from global Context
-  const { setRecipe } = useContext(RecipeContext); 
-
-  // Process the file to a renderable Base64 data string
+  const [imagePreview, setImagePreview] = useState(""); 
+  const { recipe,setRecipe } = useContext(RecipeContext);
+   useEffect(() => {
+    if (editRecipeId) {
+      // Find the specific recipe using the passed id
+      const currentRecipe = recipe.find(item => item.id === editRecipeId);
+      if (currentRecipe) {
+        setRecipeName(currentRecipe.recipeName || "");
+        setDescription(currentRecipe.description || "");
+        setMealType(currentRecipe.mealType || "");
+        setInstruction(currentRecipe.instruction || "");
+        setIngredients(currentRecipe.ingredients || "");
+        setImagePreview(currentRecipe.recipeImage || "");
+      }
+    }
+  }, [editRecipeId, recipe]);
+ 
   const handleFileChange = (e) => {
     const file = e.target.files[0]; // Capture the first selected file
     if (file) {
@@ -30,30 +41,54 @@ const CreateRecipes = ({ toggleForm, show, setShow }) => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+  e.preventDefault();
+  
+  if (editRecipeId) {
+    setRecipe((prevRecipes) => 
+      prevRecipes.map((item) => {
+        if (item.id === editRecipeId) {
+          return {
+            ...item,
+            recipeName,
+            description,
+            mealType,
+            instruction,
+            ingredients,
+            recipeImage: imagePreview || item.recipeImage 
+          };
+        }
+        return item;
+      })
+    );
     
+    toast.success("Recipe updated successfully");
+    setEditRecipeId(null); 
+  } else {
+    // Create new recipe logic
     const payload = {
-      id:nanoid(),
+      id: nanoid(),
       recipeName,
       description,
       mealType,
       instruction,
       ingredients,
-      recipeImage: imagePreview // Save Base64 image inside global context payload
+      recipeImage: imagePreview 
     };
-        console.log(payload);
         
-    setShow(false); // Close modal container form overlay
-    setRecipe((prevRecipes) => [...prevRecipes, payload]); // Append payload directly to Context array
-    toast.success("new recipe created")
-    // Clear all local states upon successful submission
-    setRecipeName("");
-    setDescription("");
-    setMealType("");
-    setInstruction("");
-    setIngredients("");
-    setImagePreview("");
-  };
+    setRecipe((prevRecipes) => [...prevRecipes, payload]); 
+    toast.success("New recipe created");
+  }
+      
+  setShow(false); 
+  
+  // Clear states
+  setRecipeName("");
+  setDescription("");
+  setMealType("");
+  setInstruction("");
+  setIngredients("");
+  setImagePreview("");
+};
 
 
   return (

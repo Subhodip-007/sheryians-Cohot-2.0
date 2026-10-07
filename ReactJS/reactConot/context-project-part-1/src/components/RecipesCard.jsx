@@ -1,16 +1,23 @@
 import React from 'react'
 import { Trash } from 'lucide-react';
-const RecipesCard = ({ recipe , setRecipe,recipeList }) => {
+import { set } from 'react-hook-form';
+const RecipesCard = ({ recipe , setRecipe,recipeList,show,setShow,edithandle }) => {
     const deleteHandler = (id) =>{
     const updatedRecipes = recipeList.filter(item => item.id !== id);
   setRecipe(updatedRecipes);
     console.log("deleted task id: ",id   );
   }
+  
+  
+
   return (
-    <div className="w-full mx-auto bg-[#FAF9F6] text-black font-sans p-8 md:p-12 border border-zinc-200 shadow-sm antialiased mb-8 relative">
-    <div className="relative flex w-full justify-end ">
+    <div className="w-full mx-auto bg-[#FAF9F6] text-black font-sans p-8 md:p-12 border border-zinc-200 shadow-sm antialiased mb-8">
+    <div className=" flex w-full justify-end ">
         <button onClick={()=>{deleteHandler(recipe.id)}} className="p-4 rounded-full bg-amber-400 text-amber-50 font-mono ">
         <Trash/>
+      </button>
+      <button onClick={()=>{edithandle(recipe.id)}} className="p-4 rounded-full bg-blue-400 text-blue-50 font-mono ml-2">
+        Edit
       </button>
     </div>
       {/* UPPER SECTION: Title, Description, and Ingredients */}
@@ -54,8 +61,6 @@ const RecipesCard = ({ recipe , setRecipe,recipeList }) => {
       ))}
   </div>
 </div>
- 
-
       </div>
 
       {/* LOWER SECTION: Image Block and Instructions */}
