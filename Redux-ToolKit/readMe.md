@@ -52,3 +52,5 @@ an object describing what happned
 -- wrap provider main.jsx
 -- inside store we make reducers bu for now firs lets make slices
 -- no we make slices
+
+## topic to study AsyncThunk
