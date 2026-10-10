@@ -7,7 +7,7 @@ const Home = () => {
   return (
 
   <div className="h-screen w-full bg-zinc-700">
-    <Navbar/>
+    {/* <Navbar/> */}
      <Canva/>
      
  </div>

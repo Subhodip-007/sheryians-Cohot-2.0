@@ -1,8 +1,3 @@
-
-
-
-   var a =10;
-
-var a =20
- 
-console.log(a);
+const arr =[10,20,30];
+const b = arr;
+console.log(b);
