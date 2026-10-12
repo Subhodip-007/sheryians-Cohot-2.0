@@ -4,13 +4,13 @@ import { RecipeContext } from '../../context/RecipeContext';
 
 const RecipesCard = ({recipe}) => {
   
-  let {handleDelete} = useContext(RecipeContext)
-  console.log("recipe", recipe)
+  let {handleDelete,handleEdit} = useContext(RecipeContext)
+  // console.log("recipe", recipe)
   return (
     <div className = "flex flex-col gap-2 bg-white/100 p-18 rounded-md shadow-md border border-zinc-300/50 mb-8">
       {/* button function section*/}
       <div className="w-full flex justify-end gap-2">
-        <button className="p-6 rounded-full bg-amber-600 font-mono">edit</button>
+        <button onClick={()=>{handleEdit(recipe.id)}} className="p-6 rounded-full bg-amber-600 font-mono">edit</button>
         <button onClick={()=>{handleDelete(recipe.id)}} className="p-6 rounded-full bg-amber-600 font-mono">delete</button>
       </div>
         {/* UPPER SECTION: Title, Description, and Ingredients */}
