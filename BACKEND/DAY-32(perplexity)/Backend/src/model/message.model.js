@@ -10,7 +10,7 @@ const messageSchema = new Schema({
         required:true,
     },
     role:{
-        type:string,
+        type:String,
         enum:['user','ai'],
         required:true,
     }

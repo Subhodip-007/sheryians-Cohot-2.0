@@ -48,4 +48,4 @@ now we will use langchain
 today we will cover gen-AI introduction
 what is generative-AI --> content generate krran  which can be (text,audio,image,code) LLM
 
-// - day 36 now we create our react folder
+// - day 36(124) now we create our react folder

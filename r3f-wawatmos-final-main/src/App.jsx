@@ -1,7 +1,13 @@
+
 import { ScrollControls, useScroll } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { EffectComposer, Noise } from "@react-three/postprocessing";
-import { useMemo, useEffect } from "react";
+import {
+  useMemo,
+  useEffect,
+  useCallback,
+} from "react";
+
 import { Experience } from "./components/Experience";
 import { Overlay } from "./components/Overlay";
 import { usePlay } from "./contexts/Play";
@@ -13,18 +19,23 @@ function MobileSwipeNavigation() {
     let startY = 0;
 
     const onTouchStart = (e) => {
+      if (e.touches.length !== 1) return;
       startY = e.touches[0].clientY;
     };
 
     const onTouchEnd = (e) => {
+      if (!scroll.el || e.changedTouches.length !== 1) return;
+
       const endY = e.changedTouches[0].clientY;
       const delta = startY - endY;
 
-      // Ignore tiny movements
       if (Math.abs(delta) < 50) return;
 
       scroll.el.scrollBy({
-        top: delta > 0 ? window.innerHeight : -window.innerHeight,
+        top:
+          delta > 0
+            ? window.innerHeight
+            : -window.innerHeight,
         behavior: "smooth",
       });
     };
@@ -49,6 +60,28 @@ function MobileSwipeNavigation() {
 function App() {
   const { play, end } = usePlay();
 
+  const handleFullscreen = useCallback(async () => {
+    try {
+      if (document.fullscreenElement) {
+        return true;
+      }
+
+      const element = document.documentElement;
+
+      if (element.requestFullscreen) {
+        await element.requestFullscreen();
+        return true;
+      }
+
+      // Standard document fullscreen may not be
+      // supported on some mobile browsers.
+      return false;
+    } catch (error) {
+      console.warn("Fullscreen unavailable:", error);
+      return false;
+    }
+  }, []);
+
   const effects = useMemo(
     () => (
       <EffectComposer>
@@ -60,7 +93,6 @@ function App() {
 
   return (
     <>
-    
       <Canvas>
         <color attach="background" args={["#ececec"]} />
 
@@ -85,7 +117,7 @@ function App() {
         {effects}
       </Canvas>
 
-      <Overlay />
+      <Overlay onFullscreen={handleFullscreen} />
     </>
   );
 }

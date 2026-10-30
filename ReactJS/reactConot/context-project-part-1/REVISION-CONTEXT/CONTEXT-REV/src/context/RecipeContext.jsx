@@ -8,6 +8,8 @@ export const RecipeContext = createContext();
 export const RecipeProvider = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [editId , setEditId] = useState(null);
+  const [isFav , setIsFav] = useState(false);
+  const [allFav , setAllFav] = useState([]);
   const [recipes, setrecipes] = useState(() => {
   const savedRecipes = localStorage.getItem('recipes');
   return savedRecipes ? JSON.parse(savedRecipes) : [];
@@ -86,10 +88,33 @@ useEffect(() => {
   const handleDelete = (id) =>{
     let updatedRecipe = recipes.filter((recipe)=> recipe.id !== id);
     setrecipes(updatedRecipe);
+    setAllFav((prev) => prev.filter((recipe) => recipe.id !== id));
   }
+  const handleFav = (id) => { 
+  if (isFav) {
+    // 1. If it IS already a favorite, REMOVE it
+    const updatedFav = allFav.filter((recipe) => recipe.id !== id);
+    setAllFav(updatedFav);
+    setIsFav(false); 
+  } else {
+    // 2. If it is NOT a favorite, ADD it
+    const recipeFound = recipes.find((recipe) => recipe.id === id);
+    if (recipeFound) {
+      let allfev = setAllFav((prev) => [...prev, recipeFound]);
+     
+    }
+    setIsFav(true);
+  }
+
+  
+  };
+   useEffect(() => {
+    console.log("Current count in useEffect:", allFav);
+  }, [allFav]); 
+
  
   return ( 
-    <RecipeContext.Provider value={{ isOpen, setIsOpen , handleButton , form , setform , handleChange , handleSubmit, recipes , setrecipes, handleDelete,handleEdit }}>
+    <RecipeContext.Provider value={{ isOpen, setIsOpen , handleButton , form , setform , handleChange , handleSubmit, recipes , setrecipes, handleDelete,handleEdit,isFav ,setIsFav ,handleFav }}>
       {children}
     </RecipeContext.Provider>
   );

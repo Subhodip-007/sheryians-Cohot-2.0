@@ -15,6 +15,7 @@ now work of use effect is wo hamay mount unmount or update hohe samay help krsak
  -- wild card route
  -- add to fav
  -- task if removed from recipe automaticly remove from fav
+ - add set timeout in delete to undo
  -- https://github.com/master-dhanesh/cohort-classwork/tree/main
 ## learning newthings like
 - useform

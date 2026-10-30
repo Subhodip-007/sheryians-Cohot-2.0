@@ -51,8 +51,11 @@ export const Experience = () => {
           curvePoints[1].y,
           curvePoints[1].z
         ),
-         title: "Duniya to saal 26 mein khatam hone wala tha na ?",
-        subtitle: `Par tera +1 aur moth ka nanga naach dekhne ke liye lagta hai duniya ne bhi apna plan postpone kar diya.`,
+        //  title: "Duniya to saal 26 mein khatam hone wali thi na ?",
+        // subtitle: `Par tera +1 aur maut ka nanga naach dekhne ke liye lagta hai duniya ne bhi apne plans postpone kar diye.`
+
+          title: "2026 mein duniya khatam hone wali thi, yaad hai na?",
+         subtitle: `Par tera +1 aur maut ka nanga naach dekhne ka suspense itna tha ki duniya ne bhi apni ending postpone kar di.`   
       },
       {
         cameraRailDist: 1.5,
@@ -61,8 +64,11 @@ export const Experience = () => {
           curvePoints[2].y,
           curvePoints[2].z
         ),
-        title: "Party Kahan Hai ?",
-        subtitle: `Chicken toh tu khilayega nahi,\nToh socha virtual hawa hi wish krr dun`
+        // title: "Party Kahan Hai ?",
+        // subtitle: `Chicken toh tu khilayega nahi,\nToh socha virtual hawa hi wish krr dun`
+
+        title: "Party kahan hai, madam? 👀",
+       subtitle: `Chicken toh tu khilane se rahi, toh socha virtual hawa mein hi birthday wish kar doon. ` 
       },
       {
         cameraRailDist: -1,
@@ -71,8 +77,11 @@ export const Experience = () => {
           curvePoints[3].y,
           curvePoints[3].z
         ),
-        title: "I guess mera saata gift acha laga hoga ?",
-        subtitle: `Nahi bhi laga tou kya paisa nahi hai mare pss....`,
+        // title: "I guess mera sasta gift acha laga hoga ?",
+        // subtitle: `Nahi bhi laga tou kya paisa nahi hai mare pss....`,
+
+        title: "Gift toh pasand aaya hoga na?",
+       subtitle: `Sasta tha, par dil se diya… budget nahi tha, warna mehenga bhi le aata! 💀`
       },
       {
         cameraRailDist: 1.5,
@@ -81,8 +90,10 @@ export const Experience = () => {
           curvePoints[4].y,
           curvePoints[4].z - 12
         ),
-        title: "chal chor ye sab...",
-        subtitle: `Yeh flight ki journey maine nahi banayi hai, thanks to Gemini Pro ka subscription!`,
+        // title: "chal chor ye sab...",
+        // subtitle: `Yeh flight ki journey maine nahi banayi hai, thanks to Gemini Pro ka subscription!`,
+        title: "Chal, chhod ye sab...",
+       subtitle: `Yeh flight ki journey meri banayi nahi hai, Gemini Pro ke subscription ki meherbani hai! `
       },
     ];
   }, []);

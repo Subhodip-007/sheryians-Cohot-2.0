@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="./style.css">
     <title>KanBan</title>
 </head>
 <body>
@@ -27,7 +27,7 @@
     </nav>
 
     <!-- Board -->
-    <section class="flex-1 flex gap-5 bg-zinc-800 p-6">
+    <section class="flex-1 min-h-0 flex gap-5 bg-zinc-800 p-6 overflow-hidden">
 
         <!-- Todo -->
         <div id="Todo" class="flex flex-col flex-1 bg-blue-300 rounded-xl p-5">
@@ -37,7 +37,7 @@
                 <span class="count">1</span>
             </div>
 
-            <div class="tododrop flex-1 bg-black rounded-xl p-4 flex flex-col gap-3 overflow-y-auto transition-all duration-200">
+            <div class="tododrop flex-1 min-h-0 w-full bg-black rounded-xl p-4 flex flex-col gap-3 overflow-y-auto">
 
               
 
@@ -78,6 +78,13 @@
 </main>
 
 <script src="script.js"></script>
-
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("./sw.js")
+        .catch(console.error);
+    });
+  }
+</script>
 </body>
 </html>

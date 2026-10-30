@@ -1,17 +1,21 @@
 import React, { useContext } from 'react'
 import { RecipeContext } from '../../context/RecipeContext';
+import { Bookmark, BookmarkOff, Edit, Trash } from 'lucide-react';
 
 
 const RecipesCard = ({recipe}) => {
   
-  let {handleDelete,handleEdit} = useContext(RecipeContext)
+  let {handleDelete,handleEdit ,isFav ,setIsFav, handleFav} = useContext(RecipeContext)
   // console.log("recipe", recipe)
   return (
     <div className = "flex flex-col gap-2 bg-white/100 p-18 rounded-md shadow-md border border-zinc-300/50 mb-8">
       {/* button function section*/}
-      <div className="w-full flex justify-end gap-2">
-        <button onClick={()=>{handleEdit(recipe.id)}} className="p-6 rounded-full bg-amber-600 font-mono">edit</button>
-        <button onClick={()=>{handleDelete(recipe.id)}} className="p-6 rounded-full bg-amber-600 font-mono">delete</button>
+      <div className="w-full flex justify-between gap-2">
+        <div><button onClick={()=>{handleFav(recipe.id)}}>{isFav ? <BookmarkOff/>:<Bookmark/>}</button></div>
+       <div className="flex items-center justify-between gap-2.5">
+         <button onClick={()=>{handleEdit(recipe.id)}} className=""><Edit/></button>
+        <button onClick={()=>{handleDelete(recipe.id)}} className=""><Trash/></button>
+       </div>
       </div>
         {/* UPPER SECTION: Title, Description, and Ingredients */}
   <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pb-8 border-b border-zinc-300">
