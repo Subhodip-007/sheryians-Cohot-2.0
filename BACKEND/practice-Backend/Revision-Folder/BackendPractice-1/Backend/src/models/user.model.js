@@ -1,7 +1,7 @@
-const { Schema, model } = require("mongoose");
 
-const userSchema = new Schema({
-    usernmae:{
+import mongoose from "mongoose";
+const userSchema = new mongoose.Schema({
+    username:{
         type:String,
         required:true,
         unique:true
@@ -11,12 +11,12 @@ const userSchema = new Schema({
         require:true,
         unique:true,
     },
-    Password:{
+    password:{
         type:String,
         require:true,
 
 
     }
 })
-const userModel = model("user-collection",userSchema);
+const userModel = mongoose.model("user-collection",userSchema);
 export default userModel;
