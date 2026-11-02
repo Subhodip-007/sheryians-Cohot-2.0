@@ -20,4 +20,10 @@ now lets setup database connection
 -- now for URI u need to set uri in .env 
 -- instal a package name dotenv 
 -- now dataMOdeling  of user
---- setup routes
+--- setup routes authrouter 
+and diff router and contrullers for and the routes u just made - in auth.controllers
+ in this we r built featuer 
+ mainly auth  -  registrer , login , getProfile , logout 
+ mainly divided into routes , controllers  ,  model , config ,
+ package - express dotenv bcrypt mongoose cookie-parser jsonwebtoken 
+  

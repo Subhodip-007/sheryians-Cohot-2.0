@@ -1,4 +1,4 @@
-import { spring } from "framer-motion";
+
 import { model, Schema } from "mongoose";
 
 const userScheme =  new Schema(
@@ -8,7 +8,7 @@ const userScheme =  new Schema(
         required:true,
         unique:true,
         },
-        emali:{
+        email:{
             type:String,
             require:true,
             unique:true,
