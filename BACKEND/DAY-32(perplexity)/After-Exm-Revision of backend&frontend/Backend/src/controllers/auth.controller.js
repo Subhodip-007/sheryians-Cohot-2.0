@@ -56,3 +56,87 @@ export const registerController = async (req,res)=>{
     }
 }
 // now insded of query we will pass token using parems 
+export const verifyEmailController = async (req,res,next)=>{
+    try{
+        const {token} = req.query;
+        let jwtTokenVerify = jwt.verify(token,process.env.JWT_SECRET);
+        if(!jwtTokenVerify){
+            return res.status(409).json({
+                message:"token invalid",
+                success:false
+            })
+        }
+        const user = await userModel.findOne({email:jwtTokenVerify.email});
+        if(!user){
+            return res.status(404).json({
+                message:"user not found",
+                success:false
+            })
+        } 
+        user.verified = true;
+        await user.save();
+        const html =`<p>email verified !</p>
+                        <a href="http://localhost:3000/api/auth/login">login<a>
+          ` 
+          res.send(html)
+             res.status(200).json({
+            message: "email verified successfully",
+            success:true,
+            user: {
+                _id: user._id,
+                username: user.username,
+                email: user.email
+            },
+            
+        });
+
+    }catch(err){
+        return res.status(500).json({
+            message:err.message,
+            success:false
+        })
+    }
+}
+export const loginController = async (req,res)=>{
+    try{
+        const { email,password } = req.body;
+        const user = await userModel.findOne({email}).select('+password');
+        if(!user){
+            return res.status(404).json({
+                message:"user not found",
+                success:false
+            })
+        }
+        const isMatch = await bcrypt.compare(password,user.password);
+        if(!isMatch){
+            return res.status(401).json({
+                message:"invalid cridentials",
+                success:false,
+            })
+        } 
+        if(!user.verified){
+            return res.status(401).json({
+                message:"unautorized access",
+                success:false
+            })
+        }
+        const token = jwt.sign({
+            id:user._id,
+
+        },process.env.JWT_SECRET,{expiresIn:'7d'})
+        res.cookie("token",token);
+        res.status(200).json({
+            message:"login sucessfull",
+            success:true, 
+            user:{
+                username:user.username,
+                email:user.email,
+                verified:user.verified
+            }
+
+        })
+
+    }catch(err){
+
+    }
+}

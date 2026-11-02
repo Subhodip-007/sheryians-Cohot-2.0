@@ -47,5 +47,5 @@ now we will use langchain
 ---  class - 13
 today we will cover gen-AI introduction
 what is generative-AI --> content generate krran  which can be (text,audio,image,code) LLM
-
+if u want to impleent moodel locally implement tenserflow 
 // - day 36(124) now we create our react folder

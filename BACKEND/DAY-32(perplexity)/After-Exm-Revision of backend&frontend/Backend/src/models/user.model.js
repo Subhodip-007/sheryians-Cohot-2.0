@@ -1,4 +1,5 @@
 
+import { select } from "framer-motion/client";
 import { model, Schema } from "mongoose";
 
 const userScheme =  new Schema(
@@ -16,6 +17,7 @@ const userScheme =  new Schema(
         password:{
             type:String,
             required:true,
+            select:false
 
         },
         verified:{
