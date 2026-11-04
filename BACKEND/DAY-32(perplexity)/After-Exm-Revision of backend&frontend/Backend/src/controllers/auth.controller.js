@@ -73,6 +73,9 @@ export const verifyEmailController = async (req,res,next)=>{
                 success:false
             })
         } 
+        if(user.verified){
+            res.send("already verified")
+        }
         user.verified = true;
         await user.save();
         const html =`<p>email verified !</p>
@@ -99,8 +102,8 @@ export const verifyEmailController = async (req,res,next)=>{
 }
 export const loginController = async (req,res)=>{
     try{
-        const { email,password } = req.body;
-        const user = await userModel.findOne({email}).select('+password');
+        const { username,email,password } = req.body;
+        const user = await userModel.findOne({$or:[{username},{email}]}).select('+password');
         if(!user){
             return res.status(404).json({
                 message:"user not found",
@@ -137,6 +140,10 @@ export const loginController = async (req,res)=>{
         })
 
     }catch(err){
-
+         return res.status(500).json({
+            message:err.message,
+            success:false
+        })
+    
     }
 }
