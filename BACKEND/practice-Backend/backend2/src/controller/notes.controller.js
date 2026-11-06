@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
-const notesModel = require("../model/notes.model");
-const notesCreationController = async (req, res) => {
+const notesModel = require("../model/notes.model.js");
+export const notesCreationController = async (req, res) => {
     try {
         if (!req.verifyToken) {
             return res.status(401).json({

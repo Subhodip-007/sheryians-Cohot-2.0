@@ -49,3 +49,54 @@ today we will cover gen-AI introduction
 what is generative-AI --> content generate krran  which can be (text,audio,image,code) LLM
 if u want to impleent moodel locally implement tenserflow 
 // - day 36(124) now we create our react folder
+- built a react app 
+- install react-router , tailwind , context 
+main file 
+ in app we have - app , routes , store-for-redux 
+ - wrap store in main
+ - call route in app routerProvider = {route};
+ -  feature - auth(page hooks service context(redux))
+
+                    main.jsx
+                       |
+                       v
+                     App.jsx
+                       |
+                       v
+                 AppProviders.jsx
+                       |
+              ┌────────┴────────┐
+              |                 |
+              v                 v
+         AuthProvider      CartProvider
+              |                 |
+         AuthContext        CartContext
+              |                 |
+              └────────┬────────┘
+                       |
+                       v
+                     Home.jsx
+                       |
+              ┌────────┴────────┐
+              |                 |
+           useAuth()         useCart()
+              |                 |
+          Auth State         Cart State
+
+            setup cors
+          package name morgan logger which req, api , time , info
+          now once u  relode your user data fetch in state will reinit to null 
+          so to preservee ,in app useredffect getmefunction
+  this process is known as hydrtion           
+  NOW WE WIll create  a protected component is uuser to prodect access to dashboard wrap dashboarb with protected 
+  dont forget to set loading true 
+  now we will implement that if u r loggined u cant come to login or register page in login 
+
+  now we will implemeit sockit io for chat implementation of fraonted and backend  
+  first implement socket in backend 
+  npm i socket.io and in server.js server side setup 
+
+  for client side we have different packege 
+  implement using doc 
+  chat service - chat.socket.js
+  chat - hooks - usechat -- connect frontend and backend together 

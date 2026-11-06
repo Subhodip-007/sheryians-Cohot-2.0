@@ -151,37 +151,32 @@ export const loginController = async(req,res,next )=>{
     }
 } 
 
-export const getUserController = async(req,res,next)=>{
-     try{
-       if(!req.user){
-            const error = new Error(
-                process.env.NODE_ENV === "production"
-                    ? "unauthorized access"
-                    : "token invalid"
-            );
-
-            error.statusCode = 400;
+export const getUserController = async (req, res, next) => {
+    try {
+        if (!req.user) {
+            const error = new Error("Unauthorized access");
+            error.statusCode = 401;
             return next(error);
-       }
-       const userId = req.user._id;
-       const user = await userModel.findById(userId);
-       if(!user){
-            const error = new Error(
-                process.env.NODE_ENV === "production"
-                    ? "user not found"
-                    : "User not exist with this id"
-            );
+        }
 
+        // Extract ID from decoded JWT
+        const userId = req.user.id;
+
+        const user = await userModel.findById(userId);
+
+        if (!user) {
+            const error = new Error("User not found");
             error.statusCode = 404;
             return next(error);
-       } 
-       res.status(200).json({
-        message:"user fetched successful",
-        success:true,
-        user
-       })
+        }
 
-     }catch(err){
-        next(err)
-     }
-} 
+        return res.status(200).json({
+            success: true,
+            message: "User fetched successfully",
+            user
+        });
+
+    } catch (err) {
+        next(err);
+    }
+};

@@ -1,19 +1,31 @@
 import React, { useState } from 'react';
-import { ArrowUpRight } from 'lucide-react';
-
+import { ArrowUpRight, LogOut } from 'lucide-react';
+import {useAuth} from "../hook/useAuth"
+import { Navigate, useNavigate } from 'react-router';
+import {useSelector} from "react-redux"
 const Login = () => {
   // 1. Your individual states
+  const user = useSelector(state=>state.auth.user)
+  const loading = useSelector(state=>state.auth.loading)
+  console.log(user,loading)
+  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  const handleSubmit = (e) => {
+  const {handleLogin} = useAuth()
+ const navigate = useNavigate()
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const payload = {
       email,
       password
     };
     console.log("login payload:", payload);
+    await handleLogin(payload)
+    navigate("/")
   };
+  if(!loading && user){
+    return <Navigate to="/" replace/>
+  }
 
   return (
     <div className="min-h-screen w-full bg-zinc-300 flex items-center justify-center p-4 antialiased text-black font-sans">

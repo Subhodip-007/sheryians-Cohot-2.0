@@ -1,11 +1,18 @@
-import React from 'react'
-import { router } from './app.routes';
-import { RouterProvider } from 'react-router';
+import React, { useEffect } from "react";
+import { router } from "./app.routes";
+import { RouterProvider } from "react-router";
+import { useAuth } from "../features/auth/hook/useAuth";
 
 const App = () => {
-  return (
-    <RouterProvider router={router}/>
-  )
-}
+    const { handleGetMe } = useAuth();
 
-export default App
+    useEffect(() => {
+        handleGetMe().catch((err) => {
+            console.log("Authentication initialization failed:", err);
+        });
+    }, []);
+
+    return <RouterProvider router={router} />;
+};
+
+export default App;

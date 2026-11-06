@@ -1,26 +1,31 @@
-import jwt from "jsonwebtoken"
 
-export const TokenVerify = (req,res,next)=>{
-     let token = req.cookies.token
-        if(!token){
-                 const error = new Error(
-                process.env.NODE_ENV === "production"
-                    ? "unauthorized access"
-                    : "token not found"
-            );
+import jwt from "jsonwebtoken";
 
-            error.statusCode = 400;
-            return next(error);
+export const TokenVerify = (req, res, next) => {
+    try {
+        const token = req.cookies?.token;
 
+        if (!token) {
+            return res.status(401).json({
+                success: false,
+                message: "Authentication token not found"
+            });
         }
-        let decoded=null;
-        try{
-             decoded = jwt.verify(token,process.env.JWT_SECRET)
-             req.userVerify = decoded
-             next(); 
-        }catch(err){
-            next(err)
 
-        }
-        
-}
+        const decoded = jwt.verify(
+            token,
+            process.env.JWT_SECRET
+        );
+
+        // Important: Same property used in controller
+        req.user = decoded;
+
+        next();
+
+    } catch (err) {
+        return res.status(401).json({
+            success: false,
+            message: "Invalid or expired token"
+        });
+    }
+};

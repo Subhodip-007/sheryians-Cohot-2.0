@@ -1,6 +1,11 @@
 import { title } from "framer-motion/client";
 import mongoose, { Schema } from "mongoose";
 const notesSchema = new mongoose.Schema({
+    userId:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref:"user-collection",
+        required:true
+    },
     title:{
         type:String,
         unique:true,

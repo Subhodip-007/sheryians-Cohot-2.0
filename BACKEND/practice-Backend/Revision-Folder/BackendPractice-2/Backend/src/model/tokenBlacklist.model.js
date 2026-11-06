@@ -5,5 +5,8 @@ const BlacklistTokenSchema = mongoose.Schema({
         required:true,
 
     },
-    
-})
+   
+},{timestamps:true})
+
+export const BlacklistTokenModel = mongoose.model("BL-Token_collection",BlacklistTokenSchema);
+

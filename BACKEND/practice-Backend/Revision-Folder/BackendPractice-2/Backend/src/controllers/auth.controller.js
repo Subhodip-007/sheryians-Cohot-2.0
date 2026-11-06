@@ -1,6 +1,7 @@
 import bcrypt from "bcryptjs";
 import { userModel } from "../model/user.model.js";
 import jwt from "jsonwebtoken"
+import { BlacklistTokenModel } from "../model/tokenBlacklist.model.js";
 export const registerController = async (req,res,next)=>{
     try{
         const { username,email,password } =  req.body;
@@ -101,10 +102,27 @@ export const getUserController = async(req,res,next)=>{
         next(err);
     }
 }
-const logoutController = async(req,res,next)=>{
+export const logoutController = async(req,res,next)=>{
     try{
         
+         if(!req.verifyToken){
+            const error = new Error("unauthorized access")
+            error.statusCode = 401
+            return next(error)
+        }
+        const token = req.verifyToken;
+        const savedToken = await BlacklistTokenModel.create({
+            token
+        })
+        res.clearCookie("token")
+       return res.status(200).json({
+            message:"logout successful",
+            success:true
+        })
+
+        
     }catch(err){
+        next(err)
 
     }
 }

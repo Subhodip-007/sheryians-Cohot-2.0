@@ -1,10 +1,11 @@
 import jwt from "jsonwebtoken"
+import { BlacklistTokenModel } from "../model/tokenBlacklist.model.js";
 export const TokenVerify = async (req, res, next) => {
 
     try {
 
         let token = req.cookies.token;
-
+       
         if (!token) {
 
             return res.status(401).json({
@@ -12,6 +13,10 @@ export const TokenVerify = async (req, res, next) => {
             });
 
         }
+        let blToken = await BlacklistTokenModel.findOne({ token });
+if (blToken) {
+    return res.status(401).json({ message: "unauthorized access" });
+}
 
         let verifyToken = jwt.verify(
             token,
