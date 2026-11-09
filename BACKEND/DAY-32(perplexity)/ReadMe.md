@@ -100,3 +100,11 @@ main file
   implement using doc 
   chat service - chat.socket.js
   chat - hooks - usechat -- connect frontend and backend together 
+
+  now we will see core functionality - implement storage for AI array the we have made earlier uning server frontend  UI state 
+  fron the we need some api simple interaction with ai 
+  chat.routes.js 
+  first api  - takes user input and give response 
+  for now we will send info using postman nad the will be send to ai
+  create a controller 
+

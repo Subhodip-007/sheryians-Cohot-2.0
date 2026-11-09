@@ -82,3 +82,39 @@ export const getAllNoteController = async(req,res,next) =>{
     }
 }
 // edit notes
+export const  editNotesController = async(req,res,next) =>{
+    try{
+        if(req.verifyToken){
+            const error = new Error("unauthorized access");
+            error.statusCode = 401
+            return next(error);
+        }
+        const noteId = req.params.id;
+        const note = await notesModel.findById(noteId);
+        if(!note){
+            const error = new Error("notes not found");
+            error.statusCode = 404;
+            return next(error)
+        }
+        if(note.userId.toString() !== req.verifyToken._id.toString()){
+            const error = new Error("unauthorized access");
+            error.statusCode = 401;
+            next(error);
+        }
+         const { title , description } = req.body;
+         if(title === undefined){
+            note.title = title;
+         }if(description === undefined){
+            note.description = description
+         }
+          await note.save()
+        return res.status(200).json({
+            message: "note edit successful",
+            note
+        })
+    }catch(err){
+         return res.status(500).json({
+            message: err.message
+        })
+    } 
+}
