@@ -107,4 +107,11 @@ main file
   first api  - takes user input and give response 
   for now we will send info using postman nad the will be send to ai
   create a controller 
+  check through postman and then we will start implemention the feeding req,body message to ai
 
+
+/// now lets built a feature in which we type comething in input and ai decide the chat title by itself
+// ok now for generation title we will not use gemini bcz its a big model insted we will use mistral
+npm i langchail/mistral ai
+use SystemMessage / HumanMessage 
+now will generate /create - we have to create chat user account so that user can create chat
