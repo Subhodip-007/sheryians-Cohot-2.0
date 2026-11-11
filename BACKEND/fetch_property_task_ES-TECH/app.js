@@ -1,5 +1,4 @@
 
-
 // all variable 
 const  API = "https://jsonplaceholder.typicode.com/todos";
 let formOpenButton = document.querySelector("#openForm");
@@ -40,8 +39,10 @@ let getTask = async ()=>{
     try{
         const res = await fetch(API + "?_limit=8");
         const data = await res.json();
-        console.log(data);
+        TaskList = data
+        localStorage.setItem("tasks", JSON.stringify(TaskList));
         
+        render(TaskList);
 
     }catch(err){
         console.log(err);
@@ -58,6 +59,7 @@ let createTodo = async (payload)=>{
         })
         const newTodo = await res.json();
         TaskList.unshift(newTodo);
+        localStorage.setItem("tasks", JSON.stringify(TaskList));
          console.log(TaskList);
          render(TaskList) 
     }catch(err){
@@ -90,7 +92,12 @@ let render = (dataList) => {
         `;
     });
 };
-toggleFormButton()
-submitHandler()
-getTask();
+let localData = localStorage.getItem("tasks");
+if (localData) {
+    TaskList = JSON.parse(localData);
+    render(TaskList);
+}
+// toggleFormButton()
+// submitHandler()
+// getTask();
 //  here we have arr where we store api todos using get and postand instantly add in array using unshift 

@@ -197,4 +197,12 @@ li.done span { text-decoration: line-through; color: #999; }
 // };
 
 // // Start the app → GET
-// getTodos();
+// getTodos();  
+
+
+
+
+
+
+
+

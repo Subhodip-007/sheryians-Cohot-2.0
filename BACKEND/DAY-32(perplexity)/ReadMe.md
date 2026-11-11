@@ -115,3 +115,16 @@ main file
 npm i langchail/mistral ai
 use SystemMessage / HumanMessage 
 now will generate /create - we have to create chat user account so that user can create chat
+
+
+ok 126 and today we r handle ui of dashboard using ai and sfterthat 
+we have created a chat.slice.js
+after creating chat slice set in central app.store.js
+
+// now we r done with stat layer of chat 
+
+// now we will crete service layer 
+services -> chat.api.js
+
+now after this hooklayer -
+now the hok is complex so look for it 
