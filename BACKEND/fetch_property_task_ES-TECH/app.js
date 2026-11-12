@@ -97,7 +97,7 @@ if (localData) {
     TaskList = JSON.parse(localData);
     render(TaskList);
 }
-// toggleFormButton()
-// submitHandler()
+toggleFormButton()
+submitHandler()
 // getTask();
 //  here we have arr where we store api todos using get and postand instantly add in array using unshift 
