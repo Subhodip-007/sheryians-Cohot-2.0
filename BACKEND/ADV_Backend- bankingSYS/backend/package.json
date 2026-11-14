@@ -1,0 +1,20 @@
+{
+  "name": "adv_backend--bankingsys",
+  "version": "1.0.0",
+  "description": "we r building a banking system \r - let basic setup express server\r - DB connection \r - user authentication\r - and a proper LEDGER system",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "npx nodemon server.js",
+    "start": "node server.js" 
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.3.0",
+    "morgan": "^1.12.1"
+  },
+  "devDependencies": {}
+}

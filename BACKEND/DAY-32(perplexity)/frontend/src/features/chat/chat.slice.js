@@ -106,7 +106,7 @@
 // export default chatSlice.reducer;
 
 import { createSlice } from "@reduxjs/toolkit";
-
+const savedTheme = localStorage.getItem("theme") || "light";
 const chatSlice = createSlice({
     name: 'chat',
     initialState: {
@@ -115,6 +115,7 @@ const chatSlice = createSlice({
         currentChatId: null, // Tracks active chat
         isLoading: false,
         error: null,
+        theme:savedTheme,
     },
     reducers: {
         setChats: (state, action) => {
@@ -123,14 +124,15 @@ const chatSlice = createSlice({
         setMessages: (state, action) => {
             state.messages = action.payload;
         },
-        addMessage: (state, action) => {
-            state.messages.push(action.payload);
-        },
         setCurrentChatId: (state, action) => {
             state.currentChatId = action.payload;
         },
         setLoading: (state, action) => {
             state.isLoading = action.payload;
+        },
+        setTheme:(state,action)=>{
+            state.theme = action.payload
+            localStorage.setItem("theme", action.payload);
         },
         setError: (state, action) => {
             state.error = action.payload;
@@ -149,5 +151,7 @@ const chatSlice = createSlice({
     }
 });
 
-export const { setChats, setMessages, addMessage, setCurrentChatId, setLoading, setError,deleteChat } = chatSlice.actions;
+export const { setChats, setMessages, setCurrentChatId, setLoading, setError,deleteChat,setTheme } = chatSlice.actions;
 export default chatSlice.reducer;
+
+

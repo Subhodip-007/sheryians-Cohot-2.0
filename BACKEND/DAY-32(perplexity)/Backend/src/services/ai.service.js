@@ -1,6 +1,10 @@
 import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 import { ChatMistralAI } from "@langchain/mistralai";
-import { AIMessage, HumanMessage, SystemMessage } from "langchain";
+import { AIMessage, HumanMessage, SystemMessage,createAgent } from "langchain";
+import { tool } from "@langchain/core/tools";
+import { z } from "zod";
+import { searchInternet } from "./internet.service.js";
+
 
 const MistralModelForTitle = new ChatMistralAI({
   model: "ministral-3b-latest",
@@ -14,6 +18,22 @@ const GeminiModel = new ChatGoogleGenerativeAI({
   apiKey: process.env.GEMINI_API_KEY,
   maxRetries: 0,
 });
+const searchInternetTool = tool(
+  searchInternet,
+  {
+    name: "search_internet",
+    description:
+      "Search the internet for current information, facts, news, and relevant web pages.",
+    schema: z.object({
+      query: z.string().describe("The search query to look up on the internet."),
+    }),
+  }
+); // tools retrun strig or no NO OBJ OR ARRAY
+const searchInternetAgent = createAgent({
+  model:GeminiModel,
+  tools:[searchInternetTool],
+
+})
 //  testing 
 // export const testAI = async () => {
 //   try {
@@ -24,17 +44,36 @@ const GeminiModel = new ChatGoogleGenerativeAI({
 //     console.log(err);
 //   }
 // };
+// export async function generateResponse(message) {
+//   try {
+//     // 1. Add 'await' so the function waits for the API call to finish
+//     const response = await searchInternetAgent.invoke(
+//       message.map((msg)=>{
+//         if(msg.role == "user") return new HumanMessage(msg.content)
+//           else if(msg.role == "ai") return new AIMessage(msg.content)
+//       })
+//     );
+//     // 2. Return 'response.content' to get the actual text string
+//     return response.content;
+//   } catch (error) {
+//     console.error("Error generating response:", error);
+//     throw error;
+//   }
+// }
 export async function generateResponse(message) {
   try {
-    // 1. Add 'await' so the function waits for the API call to finish
-    const response = await GeminiModel.invoke(
-      message.map((msg)=>{
-        if(msg.role == "user") return new HumanMessage(msg.content)
-          else if(msg.role == "ai") return new AIMessage(msg.content)
-      })
-    );
-    // 2. Return 'response.content' to get the actual text string
-    return response.content;
+    const response = await searchInternetAgent.invoke({
+      messages: message.map((msg) => {
+        if (msg.role === "user") {
+          return new HumanMessage(msg.content);
+        } else if (msg.role === "ai") {
+          return new AIMessage(msg.content);
+        }
+      }),
+    });
+
+    return response.messages.at(-1).content;
+
   } catch (error) {
     console.error("Error generating response:", error);
     throw error;

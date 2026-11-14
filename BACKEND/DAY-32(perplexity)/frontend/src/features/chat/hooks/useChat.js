@@ -127,18 +127,22 @@
 // };
 
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
  import { deleteChat as deleteChatApi, getChats, getMessages, sendMessage,} from "../service/chat.api";
 import {initializeSocketConnection} from "../service/chat.socket"
- import { setCurrentChatId , setError , setLoading,setMessages, setChats, deleteChat} from "../chat.slice"
+ import { setCurrentChatId , setError , setLoading,setMessages, setChats, deleteChat,setTheme} from "../chat.slice"
 export const useChat = ()=>{
    const dispatch = useDispatch();
+   const theme = useSelector((state) => state.chat.theme);
     const fetchAllChats = async () => {
         try{
             dispatch(setLoading(true));
             const data  = await getChats();
             if(data?.chats){
                 dispatch(setChats(data.chats))
+                console.log(data);
+                
+                
             }
             dispatch(setLoading(false));
 
@@ -215,13 +219,26 @@ export const useChat = ()=>{
         dispatch(setLoading(false));
     }
 };
+const toggleTheme = ()=>{
+    if(theme == "light"){
+       dispatch(setTheme("dark"))
+       console.log(theme);
+       
+    }else{
+        dispatch(setTheme("light"))
+        console.log(theme);
+        
+    }
+}
  return {
     initializeSocketConnection, // now this is not complete bcz we have to manage socketconnection in state
     fetchAllChats,
         getMessageOfChat,
         startNewChat,
         sendMessage: handleSendMessage,
-        handleDeleteChat
+        handleDeleteChat,
+        theme,
+        toggleTheme,
     
 
  }

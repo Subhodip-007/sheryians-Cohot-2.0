@@ -1,1 +1,8 @@
 @import "tailwindcss";
+
+.messages::-webkit-scrollbar{
+    display: none;
+}
+.chat::-webkit-scrollbar{
+    display: none;
+}
