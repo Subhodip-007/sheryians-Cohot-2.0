@@ -195,13 +195,112 @@ export const refreshTokenController = async(req,res)=>{
         })
     }
 }
-export const loginController = async(req,res) =>{
-    try{
 
-    }catch(err){
+export const loginController = async (req, res) => {
+    try {
+        const { email, password } = req.body;
 
+        // 1. Validate input
+        if (!email || !password) {
+            return res.status(400).json({
+                success: false,
+                message: "Email and password are required"
+            });
+        }
+
+        // 2. Find user
+        const user = await userModel.findOne({
+            email: email.toLowerCase().trim()
+        });
+
+        if (!user) {
+            return res.status(401).json({
+                success: false,
+                message: "Invalid credentials"
+            });
+        }
+
+        // 3. Check email verification
+        if (!user.isVerified) {
+            return res.status(403).json({
+                success: false,
+                message: "Please verify your email first"
+            });
+        }
+
+        // 4. Hash incoming password
+        const hashedPassword = crypto
+            .createHash("sha256")
+            .update(password)
+            .digest("hex");
+
+        // 5. Compare password
+        if (hashedPassword !== user.password) {
+            return res.status(401).json({
+                success: false,
+                message: "Invalid credentials"
+            });
+        }
+
+        // 6. Generate refresh token
+        const refreshToken = jwt.sign(
+            { _id: user._id },
+            config.JWT_SECRET,
+            { expiresIn: "7d" }
+        );
+
+        // 7. Hash refresh token before storing in DB
+        const hashedRefreshToken = crypto
+            .createHash("sha256")
+            .update(refreshToken)
+            .digest("hex");
+
+        // 8. Create session
+        const session = await sessionModel.create({
+            user: user._id,
+            refreshTokenHash: hashedRefreshToken,
+            ip: req.ip,
+            userAgent: req.headers["user-agent"]
+        });
+
+        // 9. Generate access token
+        const accessToken = jwt.sign(
+            {
+                _id: user._id,
+                session: session._id
+            },
+            config.JWT_SECRET,
+            { expiresIn: "15m" }
+        );
+
+        // 10. Set refresh token cookie
+        res.cookie("refreshToken", refreshToken, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            sameSite: "strict",
+            maxAge: 7 * 24 * 60 * 60 * 1000
+        });
+
+        // 11. Send response
+        return res.status(200).json({
+            success: true,
+            message: "Login successful",
+            accessToken,
+            user: {
+                _id: user._id,
+                username: user.username,
+                email: user.email
+            }
+        });
+
+    } catch (err) {
+        return res.status(500).json({
+            success: false,
+            message: err.message
+        });
     }
-}
+};
+
 export async function getMeController(req,res) {
 
     try{

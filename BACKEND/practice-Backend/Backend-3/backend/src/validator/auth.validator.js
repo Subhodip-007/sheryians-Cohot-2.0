@@ -32,6 +32,7 @@ export const registerValidator = [
     .trim()
     .notEmpty().withMessage("Phone number is required")
     .isMobilePhone('any').withMessage('Please provide a valid phone number'),
+    validate
 ];
 export const loginValidator = [
   body("username")
@@ -45,5 +46,6 @@ export const loginValidator = [
   .normalizeEmail(),
   body("password")
   .trim()
-  .notEmpty().withMessage("password is required")
+  .notEmpty().withMessage("password is required"),
+  validate
 ];
