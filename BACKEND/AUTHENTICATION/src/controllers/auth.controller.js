@@ -196,7 +196,7 @@ export const refreshTokenController = async(req,res)=>{
     }
 }
 
-export const loginController = async (req, res) => {
+export const loginController = async (req, res,next) => {
     try {
         const { email, password } = req.body;
 

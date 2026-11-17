@@ -1,12 +1,25 @@
 import jwt from "jsonwebtoken"
 import { config } from "../config/config.js";
-export const generateToken = async (user)=>{
-    try{
-        const token = jwt.sign({
+export const generateToken={
+    generateAccessToken:(user)=>{
+        try{
+             const token = jwt.sign({
             _id:user?._id,
-        },config.JWT_SECRET,{expiresIn:"1d"});    
+        },config.ACCESS_SECRET,{expiresIn:"15min"});    
         return token
-    }catch(err){
-        throw err
+        }catch(err){
+            throw err
+        }
+        
+    },
+    generateRefreshToken:(user)=>{
+          try{
+             const token = jwt.sign({
+            _id:user?._id,
+        },config.REFRESH_SECRET,{expiresIn:"7d"});    
+        return token
+        }catch(err){
+            throw err
+        }
     }
-}
+} 

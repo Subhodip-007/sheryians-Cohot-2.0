@@ -1,28 +1,38 @@
 
+
 import jwt from "jsonwebtoken";
 import { config } from "../config/config.js";
 
-export const tokenVerify = async (req, res, next) => {
+export const tokenVerify = (req, res, next) => {
     try {
-        // Get token from HTTP-only cookie
-        const token = req.cookies?.token;
+        const authHeader = req.headers.authorization;
+
+        const token = authHeader?.split(" ")[1]; 
+        
+        
 
         if (!token) {
-            const error = new Error("Authentication required");
+            const error = new Error("Access token required");
             error.statusCode = 401;
             return next(error);
         }
 
-        // Verify JWT
-        const decoded = jwt.verify(token, config.JWT_SECRET);
+        const decoded = jwt.verify(
+            token,
+            config.ACCESS_SECRET
+        );
 
-        // Attach user information to request
         req.user = decoded;
 
-        next();
+        return next();
 
     } catch (err) {
-        const error = new Error("Invalid or expired token");
+        const error = new Error(
+            err.name === "TokenExpiredError"
+                ? "Access token expired"
+                : "Invalid access token"
+        );
+
         error.statusCode = 401;
         return next(error);
     }

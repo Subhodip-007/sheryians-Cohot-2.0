@@ -1,6 +1,7 @@
 
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
+import { body } from "express-validator";
 
 const userSchema = new mongoose.Schema({
     username: {
@@ -17,6 +18,10 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    isVerified:{
+        type:Boolean,
+        default:false
     }
 });
 
