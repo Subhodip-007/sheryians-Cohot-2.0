@@ -232,6 +232,61 @@ export const logoutController = async (req, res, next) => {
 };
 // logout all 
 
+
+
+export const verifyOTPController = async (req, res, next) => {
+    try {
+        const { email, otp } = req.body;
+
+        // 1. Find OTP associated with email
+        const verify = await OtpModel.findOne({ email });
+
+        if (!verify) {
+            return res.status(404).json({
+                success: false,
+                message: "OTP not found or expired"
+            });
+        }
+
+        // 2. Compare entered OTP with hashed OTP
+        const isValidOTP = await bcrypt.compare(otp, verify.otp);
+
+        if (!isValidOTP) {
+            return res.status(400).json({
+                success: false,
+                message: "Invalid OTP"
+            });
+        }
+
+        // 3. Check OTP expiration
+        if (verify.expiresAt < new Date()) {
+            await OtpModel.deleteOne({ _id: verify._id });
+
+            return res.status(400).json({
+                success: false,
+                message: "OTP has expired"
+            });
+        }
+
+        // 4. Mark user as verified
+        await UserModel.findOneAndUpdate(
+            { email },
+            { isVerified: true }
+        );
+
+        // 5. Delete used OTP
+        await OtpModel.deleteOne({ _id: verify._id });
+
+        return res.status(200).json({
+            success: true,
+            message: "Email verified successfully"
+        });
+
+    } catch (err) {
+        return next(err);
+    }
+};
+
 // for logout 
 // during login set refresh token 
 ///hash and create a session storing hashed reftoken , user , ip , useragent
