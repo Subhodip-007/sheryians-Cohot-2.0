@@ -1,3 +1,14 @@
 {
-    "folder-color.pathColors": []
+    "folder-color.pathColors": [
+        {
+            "folderPath": "BACKEND\\ADV_Backend- bankingSYS\\",
+            "isFolderOnly": true,
+            "color": "foldercolorizer.color_af8700"
+        },
+        {
+            "folderPath": "BACKEND\\EXPENSE-TRACKER\\",
+            "isFolderOnly": true,
+            "color": "foldercolorizer.color_af8700"
+        }
+    ]
 }

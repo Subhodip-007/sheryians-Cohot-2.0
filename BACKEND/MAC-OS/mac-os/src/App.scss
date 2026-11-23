@@ -1,0 +1,47 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    background-color: black;
+    font-family: system-ui, sans-serif;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    position: relative;
+
+    background-image: url("/wallpaper2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #888;
+}

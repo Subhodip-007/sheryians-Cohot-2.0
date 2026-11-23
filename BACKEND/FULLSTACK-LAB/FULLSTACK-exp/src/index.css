@@ -1,0 +1,56 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    padding: 30px;
+}
+
+div {
+    margin-bottom: 15px;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+h3 {
+    margin: 20px 0;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 8px;
+    outline: none;
+    margin-right: 10px;
+}
+
+button {
+    padding: 10px 18px;
+    border: 1px solid black;
+    border-radius: 8px;
+    background: none;
+    cursor: pointer;
+}
+
+button:hover {
+    border-radius: 12px;
+}
+
+p {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 8px;
+}
+
+canvas {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+}

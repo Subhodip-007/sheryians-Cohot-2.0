@@ -32,6 +32,7 @@ body {
     background: var(--background);
     font-family: Arial, Helvetica, sans-serif;
     color: white;
+    display: flex;
 }
 
 button, input, textarea {
@@ -449,4 +450,66 @@ button, input, textarea {
     border-color: #A9BD96;
     background: var(--sage);
     color: #29352A;
+}
+.status-section{
+    height: 100vh;
+    width: 30%;
+    background-color: #1a1b1a;
+    padding: 1rem;
+    .heading{
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 2rem;
+        margin: 1rem;
+        
+    }
+
+    .logger-section{
+        height: 90%;
+        width: 90%;
+        border-radius:1rem;
+        background-color:#474947;
+        padding: .5rem;
+        
+        .status-cont{
+            min-height: 10%;
+            width: 100%;
+            background-color:#dee8df;
+            border-radius:1rem;
+            margin:auto;
+
+        }
+    }
+    
+}
+.status-cont {
+    margin: 12px 0;
+    font-family: sans-serif;
+}
+
+.log-entry {
+    padding: 10px 14px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+}
+
+.log-success {
+    background-color: #e6f4ea;
+    color: #137333;
+    border: 1px solid #ceead6;
+}
+
+.log-error {
+    background-color: #fce8e6;
+    color: #c5221f;
+    border: 1px solid #fad2cf;
+}
+
+.log-badge {
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.08);
 }

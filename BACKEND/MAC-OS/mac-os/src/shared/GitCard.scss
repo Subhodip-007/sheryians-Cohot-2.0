@@ -1,0 +1,137 @@
+.card-container{
+    display: flex;
+    gap:5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}
+.git-card {
+  min-width: 500px;
+  max-width: 30%;
+    flex-shrink: 0;
+  overflow: hidden;
+
+  background: #151515;
+  border: 1px solid #292929;
+  border-radius: 14px;
+
+  color: #fff;
+  transition: all 0.3s ease;
+  }
+
+  .git-card-image {
+    height: 190px;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    background: #222;
+
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .project-label {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+
+      padding: 6px 10px;
+      border-radius: 5px;
+
+      background: rgba(0, 0, 0, 0.7);
+      color: #ddd;
+
+      font-size: 11px;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  .git-card-content {
+    padding: 18px;
+
+    .git-card-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+
+      h2 {
+        font-size: 20px;
+        font-weight: 600;
+      }
+
+      .project-id {
+        color: #666;
+        font-size: 12px;
+      }
+    }
+
+    .git-card-description {
+      margin-top: 12px;
+      color: #999;
+      font-size: 13px;
+      line-height: 1.7;
+
+      min-height: 66px;
+    }
+
+    .git-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+
+      span {
+        padding: 5px 9px;
+        border: 1px solid #333;
+        border-radius: 5px;
+
+        background: #202020;
+        color: #bbb;
+
+        font-size: 11px;
+      }
+    }
+
+    .git-card-footer {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      margin-top: 22px;
+      padding-top: 15px;
+      border-top: 1px solid #292929;
+
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 7px;
+
+        padding: 9px 12px;
+        border-radius: 6px;
+
+        text-decoration: none;
+        font-size: 12px;
+        transition: 0.25s ease;
+      }
+
+      .repo-btn {
+        background: #252525;
+        color: #eee;
+
+       
+      }
+
+      .demo-btn {
+        background: #fff;
+        color: #111;
+        margin-left: auto;
+
+       
+      }
+    }
+  }
