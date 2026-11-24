@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Type Coercion</title>
+</head>
+
+<body>
+
+    <script>
+        // String + Number = String
+        // String - Number = Number
+        // String * Number = Number
+        // Boolean + Boolean = Number
+        // Array + Array = String
+
+        // [1] + 1 = "11" (string)
+        // [1,2] + 1 = "1,21"
+
+        // Number + Boolean = Number
+        // String + Boolean = String
+
+        console.log("5" + 2);
+        console.log("5" - 2);
+        console.log("5" * 2);
+
+        console.log(true + true);
+
+        console.log([1] + [2]);
+
+        console.log([1] + 1);
+        console.log([1, 2] + 1);
+
+        console.log(10 + true);
+        console.log("Hello" + true);
+    </script>
+
+</body>
+</html>
