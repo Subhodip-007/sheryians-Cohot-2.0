@@ -16,7 +16,6 @@ const validate = (req, res, next) => {
     next();
 };
 
-
 export const ExpenseValidator = [
 
     body("title")
@@ -37,19 +36,30 @@ export const ExpenseValidator = [
         .trim()
         .notEmpty()
         .withMessage("Expense category is required")
-        .bail(),
+        .bail()
+        .isLength({ max: 50 })
+        .withMessage("Category cannot exceed 50 characters"),
 
     body("amountPaise")
         .notEmpty()
         .withMessage("Expense amount is required")
         .bail()
-        .isInt({ min: 1 })
-        .withMessage("Amount must be a positive integer in paise"),
+        .isInt({ min: 1, max: Number.MAX_SAFE_INTEGER })
+        .withMessage("Amount must be a positive integer in paise")
+        .bail()
+        .custom(value => typeof value === "number")
+        .withMessage("Amount must be provided as a JSON number"),
 
     body("date")
         .optional()
-        .isISO8601()
-        .withMessage("Please provide a valid date"),
+        .isISO8601({ strict: true })
+        .withMessage("Please provide a valid date")
+        .bail()
+        .custom(value => {
+            const date = new Date(value);
+            return !Number.isNaN(date.getTime());
+        })
+        .withMessage("Invalid expense date"),
 
     validate
 ];

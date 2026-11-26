@@ -11,7 +11,9 @@ const Doc = () => {
   const {
     openGithub,
     openNotes,
-    openResume
+    openResume,
+    openYoutube,
+    closeLock
   } = useContext(AppContext);
 
   return (
@@ -29,11 +31,7 @@ const Doc = () => {
         <img src="/resume.svg" alt="Resume" />
       </button>
 
-      <button className="icon spotify">
-        <img src="/spotify.svg" alt="Spotify" />
-      </button>
-
-      <button className="icon mail">
+      <button className="icon mail" onClick={openYoutube}>
         <img src="/mail.svg" alt="Mail" />
       </button>
 

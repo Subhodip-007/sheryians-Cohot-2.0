@@ -513,3 +513,95 @@ button, input, textarea {
     border-radius: 4px;
     background: rgba(0, 0, 0, 0.08);
 }
+.logger-section {
+    width: 100%;
+    padding: 15px;
+    background: #111827;
+    border-radius: 10px;
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+    gap: 12px;
+    font-family: monospace;
+    overflow: scroll;
+}
+
+/* Main log card */
+.log-entry {
+    padding: 14px;
+    border-radius: 8px;
+    background: #1f2937;
+    border-left: 4px solid;
+}
+
+/* Header: Method + Status */
+.log-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #374151;
+}
+
+.log-header strong {
+    font-size: 14px;
+    color: #e5e7eb;
+}
+
+/* Status badge */
+.status {
+    padding: 4px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    background: #374151;
+    color: #e5e7eb;
+}
+
+/* Bottom information */
+.log-body {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.log-body p {
+    margin: 0;
+    font-size: 13px;
+    color: #9ca3af;
+    line-height: 1.5;
+}
+
+.log-body strong {
+    color: #e5e7eb;
+}
+
+/* Success */
+.log-entry.success {
+    border-left-color: #22c55e;
+}
+
+.log-entry.success .status {
+    color: #86efac;
+    background: #14532d;
+}
+
+/* Error */
+.log-entry.error {
+    border-left-color: #ef4444;
+}
+
+.log-entry.error .status {
+    color: #fca5a5;
+    background: #7f1d1d;
+}
+.logger-section {
+    overflow-y: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.logger-section::-webkit-scrollbar {
+    display: none;
+}

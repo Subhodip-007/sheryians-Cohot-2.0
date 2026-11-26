@@ -1,15 +1,17 @@
 
-import React from 'react'
+import React, { useContext } from 'react'
 import "../shared/Nav.scss"
 import DateTime from './DateTime';
+import { AppContext } from '../context/App.context';
 const Nav = () => {
+  const { closeLock } = useContext(AppContext)
   return (
     <nav className="nav-container">
         <div className="nav-left">
             <span>subhodip chatterjee</span>
             <div className="nav-item">
                 <a href="">file</a>
-                <a href="">lock</a>
+                <button onClick={closeLock}>Lock</button>
                 <a href="">window</a>
 
             </div>

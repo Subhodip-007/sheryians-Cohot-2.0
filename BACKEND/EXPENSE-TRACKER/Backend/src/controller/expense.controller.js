@@ -33,7 +33,6 @@ export const createExpenseController = async (req, res, next) => {
     }
 };
 
-
 // GET ALL EXPENSES
 export const getAllExpenceController = async (req, res, next) => {
     try {
@@ -51,7 +50,6 @@ export const getAllExpenceController = async (req, res, next) => {
         next(err);
     }
 };
-
 
 // GET SINGLE EXPENSE
 export const getSingleExpenseController = async (req, res, next) => {

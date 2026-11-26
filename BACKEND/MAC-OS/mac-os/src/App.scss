@@ -45,3 +45,7 @@ main {
 ::-webkit-scrollbar-thumb:hover {
   background: #888;
 }
+iframe {
+  border: none;
+  max-width: 100%;
+}

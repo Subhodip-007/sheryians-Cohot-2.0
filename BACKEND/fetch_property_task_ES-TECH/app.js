@@ -1,6 +1,7 @@
 const API = "https://jsonplaceholder.typicode.com/todos";
 
 let TaskList = [];
+let logger = [];
 
 // DOM ELEMENTS
 const formOpenButton = document.querySelector("#openForm");
@@ -18,61 +19,62 @@ const taskContainer = document.querySelector(".task-section");
 let isEditing = false;
 let editingId = null;
 
+// set localStorege 
+let setLocalStorage = (data)=>{
+    localStorage.setItem("tasks", JSON.stringify(data));
+}
 
 // LOGGER
-function showLog(method, status, message, success) {
-    loggerSection.innerHTML = `
-        <p class="${success ? "success" : "error"}">
-            <strong>Method:</strong> ${method} | 
-            <strong>Status:</strong> ${status} | 
-            <strong>Message:</strong> ${message} | 
-            <strong>Success:</strong> ${success ? true : false}
-        </p>
-    `;
+let showLog = (method, status, message, success)=> {
+loggerSection.innerHTML += `
+    <div class="log-entry ${success ? "success" : "error"}">
+        <div class="log-header">
+            <strong>${method}</strong>
+            
+            <span class="status">${status}</span>
+        </div>
+
+        <div class="log-body">
+            <p><strong>Message:</strong> ${message}</p>
+            <p><strong>Success:</strong> ${success}</p>
+        </div>
+    </div>
+`;
+    
 }
 // TOGGLE
-function toggleFormButton() {
+let toggleFormButton = ()=> {
 
     formOpenButton.addEventListener("click", () => {
         formContainer.classList.add("active");
     });
 
-    formCloseButton.addEventListener("click", () => {
+        formCloseButton.addEventListener("click", () => {
         formContainer.classList.remove("active");
         form.reset();
         isEditing = false;
         editingId = null;
         formSubmitButton.textContent = "Add Task";
     });
-
 }
 // GET
 async function getTask() {
-
-    try {
-
-        const res = await fetch(`${API}?_limit=8`);
+    try{
+        const res = await fetch(`${API}?_limit=10`);
         const data = await res.json();
-
         showLog("GET", res.status, "Fetched tasks", res.ok);
-
         TaskList = data;
-
-        localStorage.setItem("tasks", JSON.stringify(TaskList));
-
+        // localStorage.setItem("tasks", JSON.stringify(TaskList));
+         setLocalStorage(TaskList)
         render(TaskList);
-
-    } catch (err) {
+    }catch (err) {
         showLog("GET", 500, err.message, false);
         console.log(err);
     }
-
 }
 // POST
 async function createTodo(payload) {
-
     try {
-
         const res = await fetch(API, {
             method: "POST",
             headers: {
@@ -80,28 +82,20 @@ async function createTodo(payload) {
             },
             body: JSON.stringify(payload)
         });
-
         const data = await res.json();
-
         showLog("POST", res.status, `Created "${payload.title}"`, res.ok);
-        console.log(payload);
-        
-
+        // console.log(payload);
         const newTodo = {
             ...data,
             ...payload,
             id: Date.now()
         };
-
         TaskList.unshift(newTodo);
-
-        localStorage.setItem("tasks", JSON.stringify(TaskList));
-
+        // localStorage.setItem("tasks", JSON.stringify(TaskList));
+        setLocalStorage(TaskList)
         render(TaskList);
-
         form.reset();
         formContainer.classList.remove("active");
-
     } catch (err) {
         showLog("POST", 500, err.message, false);
         console.log(err);
@@ -109,7 +103,7 @@ async function createTodo(payload) {
 
 }
 
-// PUT /// FIX DONT BY GEMINI THAT WAS  SERVER ID AND STATUE LOG PROBLEM SERVER COUDENT FIND 
+// PUT /// FIX DONE BY GEMINI THAT WAS  SERVER ID AND STATUE LOG PROBLEM SERVER COUDENT FIND 
 async function updateTodo(id, payload) {
 
     try {
@@ -140,8 +134,8 @@ async function updateTodo(id, payload) {
             return task;
         });
 
-        localStorage.setItem("tasks", JSON.stringify(TaskList));
-
+        // localStorage.setItem("tasks", JSON.stringify(TaskList));
+        setLocalStorage(TaskList)
         render(TaskList);
 
         form.reset();
@@ -170,8 +164,8 @@ async function deleteTodo(id) {
 
         TaskList = TaskList.filter((task) => task.id !== id);
 
-        localStorage.setItem("tasks", JSON.stringify(TaskList));
-
+        // localStorage.setItem("tasks", JSON.stringify(TaskList));
+            setLocalStorage(TaskList)
         render(TaskList);
 
     } catch (err) {
@@ -314,34 +308,27 @@ taskContainer.addEventListener("change", (e) => {
             return task;
         });
 
-        localStorage.setItem("tasks", JSON.stringify(TaskList));
+        // localStorage.setItem("tasks", JSON.stringify(TaskList));
+        setLocalStorage(TaskList)
         showLog("PATCH", 200, `Updated completion for task #${id}`, true);
 
     }
 
 });
-// INITIALIZE
-function init() {
-
     toggleFormButton();
     submitHandler();
-
+    // getTask()
     const localData = localStorage.getItem("tasks");
-
     if (localData && JSON.parse(localData).length > 0) {
         TaskList = JSON.parse(localData);
         render(TaskList);
         showLog("LOCAL", 200, "Loaded tasks from localStorage", true);
-        console.log(TaskList);
-        
+        console.log(TaskList);  
     } else {
         getTask();
         console.log(TaskList);
-        
-        
-        
     }
 
-}
 
-init();
+
+

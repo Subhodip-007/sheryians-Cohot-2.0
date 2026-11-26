@@ -6,13 +6,14 @@ import { AppContext } from "../../context/App.context";
 
 const UseWindow = ({ children, windowId }) => {
 
-  const { closeGithub, closeNotes, closeResume } =
+  const { closeGithub, closeNotes, closeResume,closeYoutube } =
     useContext(AppContext);
 
   const closeFunctions = {
     github: closeGithub,
     notes: closeNotes,
-    resume: closeResume
+    resume: closeResume,
+    youtube: closeYoutube
   };
 
   const handleClose = () => {
